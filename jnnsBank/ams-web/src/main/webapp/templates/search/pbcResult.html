@@ -1,0 +1,127 @@
+<div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-book font-dark"></i>
+                <span class="caption-subject uppercase">客户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered word-break">
+                <tbody>
+                    <tr>
+                        <td class="td-label">账户：</td>
+                        <td class="td-label-right">{{ d.acctNo || '' }}</td>
+                        <td class="td-label">基本户注册地地区代码：</td>
+                        <td class="td-label-right">{{ d.basicAcctRegArea || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">存款人姓名：</td>
+                        <td class="td-label-right">{{ d.depositorName || '' }}</td>
+                        <td class="td-label">存款人类别：</td>
+                        <td class="td-label-right">{{ d.depositorType || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">证明文件种类1：</td>
+                        <td class="td-label-right">{{ d.fileType || '' }}</td>
+                        <td class="td-label">证明文件编号1：</td>
+                        <td class="td-label-right">{{ d.fileNo || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">证明文件种类2：</td>
+                        <td class="td-label-right">{{ d.fileType2 || '' }}</td>
+                        <td class="td-label">证明文件编号2：</td>
+                        <td class="td-label-right">{{ d.fileNo2 || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">法人类型：</td>
+                        <td class="td-label-right">{{ d.legalType || '' }}</td>
+                        <td class="td-label">法人姓名：</td>
+                        <td class="td-label-right">{{ d.legalName || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">法人证件种类：</td>
+                        <td class="td-label-right">{{ d.legalIdcardType || '' }}</td>
+                        <td class="td-label">法人证件编号：</td>
+                        <td class="td-label-right">{{ d.legalIdcardNo || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">邮政编码：</td>
+                        <td class="td-label-right">{{ d.zipCode || '' }}</td>
+                        <td class="td-label">联系电话：</td>
+                        <td class="td-label-right">{{ d.telephone || '' }}</td>
+                    </tr>
+                    <tr>
+                        <!--<td class="td-label">未标明注册资金：</td>-->
+                        <!--<td class="td-label-right">  </td>-->
+                        <td class="td-label">组织机构代码：</td>
+                        <td class="td-label-right">{{ d.orgCode || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">注册资本币种：</td>
+                        <td class="td-label-right">{{ d.regCurrencyType || '' }}</td>
+                        <td class="td-label">注册资本：</td>
+                        <td class="td-label-right">{{ d.registeredCapital || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label" colspan="2">无需办理税务登记证的文件或税务机关出具的证明：</td>
+                        <td class="td-label-right" colspan="2">{{ d.noTaxProve || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">纳税人识别号（国税）：</td>
+                        <td class="td-label-right">{{ d.stateTaxRegNo || '' }}</td>
+                        <td class="td-label">纳税人识别号（地税）：</td>
+                        <td class="td-label-right">{{ d.taxRegNo || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">注册（登记）地址：</td>
+                        <td class="td-label-right">{{ d.regAddress || '' }}</td>
+                        <td class="td-label">：</td>
+                        <td class="td-label-right"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">经营范围：</td>
+                        <td class="td-label-right" colspan="3">{{ d.businessScope || '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-book font-dark"></i>
+                <span class="caption-subject uppercase">上级机构信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered word-break">
+                <tbody>
+                    <tr>
+                        <td class="td-label">单位名称：</td>
+                        <td class="td-label-right">{{ d.parCorpName || '' }}</td>
+                        <td class="td-label">基本开户许可核准号：</td>
+                        <td class="td-label-right">{{ d.parAccountKey || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">法定代表（负责）人：</td>
+                        <td class="td-label-right">{{ d.parLegalType || '' }}</td>
+                        <td class="td-label">法人姓名：</td>
+                        <td class="td-label-right">{{ d.parLegalName || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">上级法人证件类型：</td>
+                        <td class="td-label-right">{{ d.parLegalIdcardType || '' }}</td>
+                        <td class="td-label">上级法人证件编号：</td>
+                        <td class="td-label-right">{{ d.parLegalIdcardNo || '' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">组织机构代码：</td>
+                        <td class="td-label-right">{{ d.parOrgCode || '' }}</td>
+                        <td class="td-label">备注：</td>
+                        <td class="td-label-right">{{ d.remark || '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

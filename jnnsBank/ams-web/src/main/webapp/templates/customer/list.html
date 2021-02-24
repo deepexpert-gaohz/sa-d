@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+            height: 50%;
+        }
+
+        .dropdown-div{
+            margin-left: 10px;
+        }
+
+        #toolbar {
+            width: 1000px;
+        }
+
+        .row .col-20 {
+            width: 20%;
+        }
+
+        .row {
+            margin-top: 15px;
+            margin-bottom: -20px;
+        }
+
+        .W120 .th-inner {
+            width:120px !important;
+        }
+        .W80 .th-inner {
+            width:80px !important;
+        }
+        .W60 .th-inner {
+            width:60px !important;
+        }
+
+        .W160 .th-inner {
+            width:160px !important;
+        }
+
+        .W180 .th-inner {
+            width:180px !important;
+        }
+
+        .W200 .th-inner {
+            width:200px !important;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">客户号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="customerNo">
+            </div>
+            <label class="layui-form-label">客户名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="depositorName">
+            </div>
+            <label class="layui-form-label">经济类型</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="economyType" title="">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <label class="layui-form-label">证件类型</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="credentialType" title="">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">法定代表人</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="legalName">
+            </div>
+            <label class="layui-form-label">客户开立机构</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="organName">
+            </div>
+            <label class="layui-form-label">是否风险异动</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="abnormal" title="">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+
+
+    <div id="toolbar" >
+        <div class="layui-input-inline">
+
+            <div class="btn-group dropdown-div">
+                <button class="layui-btn layui-btn-small dn" id="btn_customer_open" data-code="customerManager:create">
+                    客户开立
+                </button>
+            </div>
+            <!--<div class="btn-group dropdown-div">-->
+                <!--<button class="layui-btn layui-btn-small" id="btn_customer_change">-->
+                    <!--变更-->
+                <!--</button>-->
+            <!--</div>-->
+
+        </div>
+
+    </div>
+
+    <table id="paging_container">
+        <!--<tr>-->
+            <!--<td style="height: 100px; /*background: url(../img/timg.jpg) no-repeat;*/max-width:100%;">-->
+
+            <!--</td>-->
+        <!--</tr>-->
+        <tr>
+            <td>
+                <table id="customerTable">
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+<div class="layui-hide">
+    <input class="layui-btn layui-btn-small layui-upload-file" type="file" lay-type="file" name="file" id="file"></input>
+</div>
+<form action="../attach/batchSuspend_template.xls" method="get" id="templateDownloadForm"></form>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/customer/list.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+</body>
+
+</html>

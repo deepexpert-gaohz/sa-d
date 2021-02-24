@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="imageOption" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_option where yd_dictionary_id=32119222946717 and yd_value='44' </sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="未知类型"/>
+            <where>yd_dictionary_id=32119222946717 and yd_value='44'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

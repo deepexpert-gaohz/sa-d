@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase" id="typeName"></span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">ID编号</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="id" name="id" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">疑义反馈内容</label>
+                        <div class="col-xs-7 col-md-6">
+                            <textarea type="text" id="cntt" name="cntt" class="layui-input" style="height:100px;resize:none"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">联系人姓名</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="contactNm" name="contactNm" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">联系人电话</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="contactNb" name="contactNb" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4"></label>
+                        <div class="col-xs-7 col-md-6">
+                            <button type="button" class="layui-btn layui-btn" id="btnSubmit">提交</button>
+                            <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/networkVerifiedCommon.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/feedback.js"></script>
+
+</body>
+
+</html>

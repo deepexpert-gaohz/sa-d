@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>校验管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <link href="../plugins/open-sans-all/css/open-sans.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="../css/common.css" media="all"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/validate.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+</head>
+
+<body class="page-content company">
+<div class="row" >
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-body">
+				<div class="admin-main">
+					 <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+				        <div class="layui-form-item" style="margin-bottom:0px;">
+				            <label class="layui-form-label width-label">基本户核准号</label>
+				            <div class="layui-input-inline width-input">
+				                <input type="text" class="layui-input" id="accountKey">
+				            </div>
+				             <label class="layui-form-label width-label">基本户地区代码</label>
+				            <div class="layui-input-inline width-input">
+				                <input type="text" class="layui-input" id="regAreaCode">
+				            </div>
+				            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+				                <i class="fa fa-search" aria-hidden="true"></i>
+				                <span>查询</span>
+				                </button>
+				        </div>
+					  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BEGIN MAIN CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light">
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable-line boxless tabbable-reversed">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_0" data-toggle="tab"> 客户信息</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1" data-toggle="tab"> 上级机构信息</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_0">
+                                </div>
+                                <div class="tab-pane" id="tab_1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" >
+    <div class="col-md-7 col-md-offset-5">
+        <button type="button" id="btn_back"  class="layui-btn layui-btn">
+			 <span>返回</span>
+			</button>
+        <button type="button" id="btn_next"  class="layui-btn layui-btn">
+			 <span>下一步</span>
+			</button>
+        <button type="button" id="btn_ignore"  class="layui-btn layui-btn"  data-code="account:open_pbcIgnore">
+            <span>跳过</span>
+        </button>
+    </div>
+</div>
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/es5.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../js/loading.js"></script>
+<script type="text/javascript" src="../js/alert.js"></script>
+<script type="text/javascript" src="../ag/validate/detailPBOC.js"></script>
+</body>
+
+</html>

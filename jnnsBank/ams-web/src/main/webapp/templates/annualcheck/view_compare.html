@@ -1,0 +1,59 @@
+<style>
+    .table-bordered.table-simple>tbody>tr.not-match {
+        background-color: #d9534f;
+        color: white;
+    }
+</style>
+<div class="row" style="padding: 15px;">
+    <div class="col-md-12">
+        <!-- END EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-search-plus font-dark"></i>
+                    <span class="caption-subject uppercase">年检比对</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-3" style="display: inline-flex">
+                        <!--<a href="javascript:void(0)" class="btn blue batchAnnualSubmit" onclick="batchAnnualSubmit('{{d[0].annualResultId}}')">-->
+                            <!--<i class="fa fa-paper-plane-o"></i> 年检提交-->
+                        <!--</a>-->
+                        <!--<a href="javascript:void(0)" class="btn blue batchAnnualDispose" onclick="batchAnnualDispose('{{d[0].annualResultId}}')">-->
+                            <!--<i class="fa fa-paper-plane-o"></i> 年检处理-->
+                        <!--</a>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                <table class="table table-bordered word-break table-simple">
+                    <thead>
+                    <tr>
+                        <th width="10%">字段</th>
+                        <th width="30%">核心</th>
+                        <th width="30%">人行</th>
+                        <th width="30%">工商</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#  layui.each(d, function(index, item){ }}
+                        {{#  if( item.match === true ){ }}
+                        <tr>
+                        {{# } else { }}
+                        <tr class="not-match">
+                        {{#  } }}
+                            <td>{{ item.name  || ''  }}</td>
+                            <td>{{ item.CORE  || ''  }}</td>
+                            <td>{{ item.PBC  || ''  }}</td>
+                            <td>{{ item.SAIC || '' }}</td>
+                        </tr>
+                    {{#  }); }}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>

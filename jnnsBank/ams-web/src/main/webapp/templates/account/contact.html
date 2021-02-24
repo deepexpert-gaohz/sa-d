@@ -1,0 +1,82 @@
+<div class="row" id="isSameRegistAreaDiv">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">与注册地是否一致</label>
+            <div class="col-md-8">
+                <select name="isSameRegistArea" class="layui-input" id="isSameRegistArea" lay-filter="isSameRegistArea">
+                    <option value=""></option><option value="1">1-是</option><option value="0">0-否</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label col-md-2">办公地址(省市区)</label>
+            <div class="col-md-10">
+                <div id="workAddressDiv" class="account-address"></div>
+                <input type="hidden" class="layui-input" placeholder="" name="workProvinceChname" id="workProvinceChname">
+                <input type="hidden" class="layui-input" placeholder="" name="workCityChname" id="workCityChname">
+                <input type="hidden" class="layui-input" placeholder="" name="workAreaChname" id="workAreaChname">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label col-md-2">办公地址(详细地址)</label>
+            <div class="col-md-10">
+                <input type="text" class="layui-input" placeholder="" name="workAddress" id="workAddress">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">企业联系电话<span id="telephoneSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="telephone" id="telephone" required lay-verify="required">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">邮政编码<span id="zipcodeSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="zipcode" id="zipcode" required lay-verify="required" maxlength="6">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">财务主管姓名</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="financeName" id="financeName">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">财务身份证号码</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="financeIdcardNo" id="financeIdcardNo" lay-verify="required">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">财务主管手机号<span id="financeTelephoneSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="financeTelephone" id="financeTelephone" required lay-verify="required">
+            </div>
+        </div>
+    </div>
+</div>

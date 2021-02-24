@@ -1,0 +1,7 @@
+compare:
+  #比对锁住字段
+  compare:
+    fields: acctNo|!depositorName|!regNo|!legalName
+  #年检锁住字段
+  annual:
+    fields: acctNo|!depositorName|!regNo|!legalName

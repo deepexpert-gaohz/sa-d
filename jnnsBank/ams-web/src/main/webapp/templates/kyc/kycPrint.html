@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>国家企业信用信息公示系统-企业报告</title>
+    <link rel="stylesheet" href="../css/layui.css" media="all">
+
+</head>
+<body style='width:100%;font-family: "Microsoft YaHei";'>
+<div class="container">
+
+    <div class="page">
+        <div class="content">
+            <div class="container1 tabin mainContent print">
+                <a href="javascript:void(0)" onclick="$('.printContent').printArea();">
+                    <span>打印</span>
+                    <div class="print_img"></div>
+                </a>
+            </div>
+
+            <div class="container1 tabin mainContent printContent">
+
+                <style>
+                    * {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .content {
+                        margin-top: 16px;
+                        margin-bottom: 40px;
+                    }
+
+                    .printContent {
+                        position: relative;
+                        /*background:url('../images/printsy.png') repeat;*/
+                        background-size: 370px 162px;
+                    }
+
+                    .mainContent > div {
+                        border: 0px;
+                        padding: 20px 20px 20px;
+                    }
+
+                    .classified {
+                        /*background: url("../images/diandian.png") no-repeat scroll left center;*/
+                        color: #806000;
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                        padding-left: 11px;
+                        height: 14px;
+                    }
+
+                    .classify {
+                        /*background: url("../images/diandian.png") no-repeat scroll left center;*/
+                        color: #806000;
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                        padding-left: 11px;
+                    }
+
+                    .nothing {
+                        color: #555;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+
+                    table.dataTable tr th {
+                        border: 1px solid #efefef;
+                        background-color: #eae3d8;
+                        color: #997528;
+                        padding: 12px;
+                        box-sizing: border-box;
+                        font-size: 20px;
+                    }
+
+                    #assert_table th {
+                        text-align: right;
+                    }
+
+                    table.dataTable thead {
+                        background-color: #eae3d8;
+                        color: #997528;
+                        padding: 12px;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    table.dataTable tr td {
+                        border: 1px solid #efefef;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        word-break: break-all;
+                        line-height: 24px;
+                        font-size: 20px;
+                    }
+
+                    table.dataTable tr.odd {
+                        border: 1px solid #efefef;
+                        padding: 0px 0px;
+                        text-align: center;
+                        box-sizing: border-box;
+                        line-height: 35px;
+                        background-color: #f9f9f9;
+                    }
+
+                    table.dataTable tbody tr:hover {
+                        background-color: #f3f3f3;
+                    }
+
+                    .special td {
+                        line-height: 35px;
+                    }
+
+                    table.dataTable {
+                        border-collapse: collapse;
+                        width: 100% !important;
+                        table-layout: fixed;
+                        box-sizing: border-box;
+                        /*word-break:break-strict;*/
+                    }
+
+                    .special table {
+                        border-collapse: collapse;
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px;
+                        padding-left: 0px;
+                        clear: both;
+                        border-top-width: 0px;
+                        border-bottom-width: 0px;
+                        border-left-width: 0px;
+                        border-right-width: 0px;
+                    }
+
+                    .special {
+                        height: 100%;
+                    }
+
+                    .special table tr td {
+                        padding: 0px;
+                        /*height: 30px !important;*/
+                        border-top-width: 1px;
+                        border-bottom-width: 1px;
+                        border-left-width: 0px;
+                        border-right-width: 0px;
+                        min-height: 20px;
+                    }
+
+                    /*datatable*/
+
+                    .overview dl {
+                        display: inline-block;
+                        margin: 2px 0;
+                        width: 530px;
+                    }
+
+                    .info-dl.all {
+                        width: 1060px;
+                    }
+
+                    .overview dt::before {
+                        content: ".";
+                        left: 0;
+                        line-height: 20px;
+                        position: absolute;
+                        top: 0;
+                    }
+
+                    .overview dt {
+                        display: inline-block;
+                        font-weight: bold !important;
+                        line-height: 25px;
+                        padding-left: 10px;
+                        position: relative;
+                    }
+
+                    .overview dd {
+                        display: inline;
+                        line-height: 25px;
+                        margin-left: 10px;
+                    }
+
+                    .overview dd img, tr td img, span span img {
+                        margin-bottom: -2px;
+                    }
+
+                    .overview tr td {
+                        border-style: none;
+                        text-overflow: ellipsis;
+                        /* overflow: hidden; */
+                        padding-left: 0;
+
+                    }
+
+                    .item {
+                        max-width: 206px;
+                        min-width: 206px;
+                        font-weight: bold;
+                        color: #000;
+                    }
+
+                    .result {
+                        max-width: 298px;
+                        min-width: 298px;
+                        color: #000;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    .overview tr td.item_right {
+                        max-width: 117px;
+                        min-width: 117px;
+                        font-weight: bold;
+                        color: #555;
+                        font-size: 10px;
+                        text-align: right;
+                    }
+
+                    .needPaging_stock_first_child {
+                        border-top-width: 0px !important;
+                        border-bottom-width: 0px !important;
+                    }
+
+                    .needPaging_stock_last_child {
+                        border-bottom-width: 0px !important;
+                    }
+
+                    #needPaging_stock tr > td {
+                        padding: 12px;
+                    }
+
+                    .nopadding {
+                        padding: 0px !important;
+                    }
+
+                    #needPaging_stock {
+                        height: 1px;
+                    }
+
+                    #needPaging_stock .special table tr > td {
+                        padding-left: 12px;
+                        height: 65px;
+                    }
+
+                    .page {
+                        width: 1120px;
+                        margin: 0 auto;
+                    }
+
+                    table tr td {
+                        font-size: 14px;
+                        border: 1px solid #efefef;
+                        padding: 8px 10px;
+                        text-align: left;
+                    }
+
+                    .title {
+                        border: 0px;
+                        width: 400px;
+                        text-align: left;
+                        padding-left: 0px;
+                        color: #806000;
+                        font-size: 22px;
+                    }
+
+                    .ann-rep-year {
+                        border: 0px;
+                        width: 400px;
+                        text-align: left;
+                        padding-left: 0px;
+                        color: #806000;
+                        font-size: 18px;
+                        text-decoration: underline;
+                    }
+
+                    .detail-info {
+                        width: 100%;
+                    }
+
+                    .print {
+                        width: 60px;
+                        height: 80px;
+                        position: fixed;
+                        margin-top: 40px;
+                        margin-left: 1080px;
+                        text-align: center;
+                        z-index: 10000;
+                    }
+
+                    .print_img {
+                        width: 60px;
+                        height: 60px;
+                        background-image:url("../img/print.png");
+                        background-repeat: no-repeat;
+                    }
+
+                    .print span {
+                        color: #000;
+                        text-decoration: none;
+                    }
+
+                    .print a {
+                        text-decoration: none;
+                    }
+
+                    .print-header {
+                        margin: 30px 20px -20px;
+                        border-top: 3px solid #ccc;
+                        border-bottom: 2px solid #ccc;
+                        color: #806000;
+                        padding: 0;
+                        line-height: 50px;
+                        font-size: 20px;
+                    }
+
+                    .print-header span {
+                        color: red;
+                        font-size: 16px;
+                    }
+
+                    .print-guohui {
+                        margin: 200px auto 0;
+                        width: 150px;
+                        height: 165px;
+                        position: relative;
+                    }
+
+                    .print-guohui img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    .print-name {
+                        margin-top: 100px;
+                        width: 100%;
+                        height: 100px;
+                        position: relative;
+                    }
+
+                    .print-name img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100px;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    .print-title {
+                        margin: 130px auto;
+                        font-size: 50px;
+                        width: 100%;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+
+                    .print-entmsg {
+                        bottom: 380px;
+                        line-height: 40px;
+                        font-size: 20px;
+                        position: absolute;
+                        margin-left: 200px;
+                        min-height: 40px;
+                    }
+
+                    .print-entmsg span {
+                        display: inline-block;
+                        width: 520px;
+                        text-align: left;
+                    }
+
+                    .print-entmsg span:nth-of-type(2n+1) {
+                        font-weight: bold;
+                        width: 250px;
+                        margin-left: 0;
+                    }
+
+                    .print-foot {
+                        font-size: 20px;
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                    .zichan th {
+                        text-align: right;
+                    }
+
+                    .zichan td {
+                        text-align: left !important;
+                    }
+
+                    .frontpage {
+                        display: block;
+                        background-color: #ffffff;
+                        background-image: none;
+                    }
+
+                    .tl {
+                        text-align: left !important;
+                    }
+
+                    .tr {
+                        text-align: right !important;
+                    }
+
+                    .change-font tr td {
+                        font-size: 20px;
+                    }
+
+                    .title-font {
+                        font-size: 24px;
+                    }
+
+                    @media print {
+                        .frontpage {
+                            display: block;
+                        }
+                    }
+                </style>
+                <div style="height:1200px;margin:20px auto;position:relative" class="frontpage">
+                    <div class="print-title">企业信用信息公示报告</div>
+                    <div class="print-entmsg">
+                        <span style="position:absolute;top:0;left:0;text-align:left">企业名称:</span>
+                        <span style="text-align:left;margin-left:100px;" id="depositorName"></span><br>
+                    </div>
+                    <div style="position:absolute;bottom:300px;margin-left:200px;font-weight:bold;line-height:60px;font-size:20px;">
+                        <span style="width:130px;display:inline-block">报告生成时间:</span>
+                        <span id="printDate" style="font-weight:normal"></span><br>
+                    </div>
+                </div>
+                <p class="print-header" style="font-size:26px;color: #0C0C0C;">
+                    政府部门公示信息
+                </p>
+                <div class="details clearfix" id="kyc-jiben">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    基本信息
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="overview">
+                        <table class="detail-info change-font">
+                            <tbody>
+                            <tr>
+                                <td style="width:50%"><span class="item">统一社会信用代码：</span><span class="result" id="regNo"></span>
+                                </td>
+                                <td style="width:50%"><!-- 这里还需要添加业务逻辑 -->
+                                    <span class="item">企业名称：</span><span class="result" id="name"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="item">类型：</span><span class="result" id="type"></span></td>
+                                <td>
+			            	<span class="item">
+			            		法定代表人:
+			            		    			            	</span>
+                                    <span class="result" id="legalperson"></span>
+                                </td>
+                            </tr>
+                            <tr>
+
+
+                                <td><span class="item">
+			        	          成立日期：
+			        	              			        	    </span>
+                                    <span class="result" id="opendate"></span>
+                                </td>
+                                <td><span class="item">营业期限至：</span><span class="result" id="enddate"></span></td>
+                            </tr>
+
+
+                            <tr>
+                                <td><span class="item">登记机关：</span><span class="result" id="registorgan"></span></td>
+                                <td><span class="item">核准日期：</span><span class="result" id="licensedate"></span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="item">登记状态：</span><span class="result" id="state"></span>
+                                <td><span class="item">注册资本：</span><span class="result" id="registfund"></span></td>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <span class="item">住所：</span>
+                                    <span class="result" id="address">
+				        	</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span class="item">经营范围：</span><span class="result" id="scope"></span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="kyc-guquan">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                     <span class="item">
+                                    股权结构
+                                     </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:100%" colspan="2">
+                                <span class="item">
+                                股权比例
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="guquan">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-biangeng">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    变更信息
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:7%">
+                                <span class="item">
+                                序号
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                变更事项
+                                </span>
+                            </th>
+                            <th style="width:25%">
+                                <span class="item">
+                                变更前内容
+                                </span>
+                            </th>
+                            <th style="width:25%">
+                                <span class="item">
+                                变更后内容
+                                </span>
+                            </th>
+                            <th style="width:28%">
+                                <span class="item">
+                                变更日期
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="biangeng">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-shouyi">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    受益所有人
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                受益所有人
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                类型
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                受益比例
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                证件类型
+                                </span>
+                            </th>
+                            <th style="width:25%">
+                                <span class="item">
+                                证件号码
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="shouyi">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="kyc-djg">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    董监高人员
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                姓名
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                性别
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                职务
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="djg">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-gudong">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                   股东出资比例
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                股东名称
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                股东类型
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                认缴出资额(万元)
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                出资日期
+                                </span>
+                            </th>
+                            <th style="width:10%">
+                                <span class="item">
+                                出资比例
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="gudong">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-report">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    工商年报
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                序号
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                报送年度
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                发布时间
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="report">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-yichang">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    经营异常信息
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                列入经营异常名录原因
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                列入日期
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                移出经营异常名录原因
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                移出日期
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                作出决定机关
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="yichang">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="kyc-weifa">
+                    <div style="height:1px; background-color:#c9c5c6; width:100%;"></div>
+                    <div>
+                        <table style="border:0px">
+                            <tbody>
+                            <tr style="border:0px">
+                                <td style="border:0px;width:6px;">
+                                    <div style="height:9px;width:4px;background-color:#804000;float:left;padding-top:4px;padding-left:0px;padding-right:0px;"></div>
+                                </td>
+                                <td class="title">
+                                    <span class="item">
+                                    严重违法信息
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="display dataTable no-footer">
+                        <thead>
+                        <tr>
+                            <th style="width:25%">
+                                <span class="item">
+                                类别
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                列入严重违法失信企业名单（黑名单）原因
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                列入日期
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                做出决定机关(列入)
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                移出严重违法失信企业名单(黑名单)原因
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                移出日期
+                                </span>
+                            </th>
+                            <th style="width:15%">
+                                <span class="item">
+                                作出决定机关(移出)
+                                </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="weifa">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mainContent">
+                    <p style="text-align:center;font-size:16px;padding:0;line-height:40px;margin-top:-20px">
+                        （以上信息仅供参考，具体内容请以国家企业信用信息公示系统查询页面为准）
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../plugins/jquery.PrintArea.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/kyc/kycPrint.js"></script>
+</html>

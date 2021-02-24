@@ -1,0 +1,21 @@
+<div style="margin: 15px;" class="image-edit">
+    <form class="layui-form" action="">
+        <div class="layui-form-item" id="vErrorCodeDiv">
+            <label class="layui-form-label">差错类别</label>
+            <div class="layui-input-block">
+                <select name="vErrorCode" class="layui-input" id="vErrorCode" lay-verify="required">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                    <input type="text" id="remarks" name="remarks"  autocomplete="off" placeholder="" class="layui-input">
+            </div>
+        </div>
+
+        <input type="hidden" id="id" name="id" >
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+    <style>
+        /*
+            多条件搜索label标签显示全部名称
+         */
+        .layui-form-label {
+            width: 130px  !important;
+        }
+    </style>
+</head>
+
+<body>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+                <label class="layui-form-label">联网核查记录ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="msgLogId">
+                </div>
+                <label class="layui-form-label">联系人姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="contactNm">
+                </div>
+                <label class="layui-form-label">联系人电话</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="contactNb">
+                </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">机构名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="orgName">
+            </div>
+            <label class="layui-form-label">操作员</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="createdUserName">
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-bottom:0px;">
+
+                <label class="layui-form-label">时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" name="beginDate" placeholder="开始时间"/>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" name="endDate" placeholder="结束时间"/>
+                </div>
+
+                <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+        </div>
+    </form>
+
+    <div  id="toolbar" class="layui-btn-group">
+
+    </div>
+
+    <table id="list"></table>
+</div>
+
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/networkVerifiedCommon.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/feedbackSearchLog.js"></script>
+</body>
+
+</html>

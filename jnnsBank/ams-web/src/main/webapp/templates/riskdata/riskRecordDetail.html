@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #riskRecordDetailTble td {
+        width: 100px;
+        text-align: center;
+        height: 60px;
+        font-size: 18px;
+        margin: 0 0 0 0;
+    }
+    .inp{
+        　　border:none;
+        border:0;
+        outline:none;
+        box-radius:25%;
+        outline:medium;
+        text-align:center;
+        margin: 0 0 0 0;
+        height: 100%;
+        width: 100%;
+        font-size: 18px;
+    }
+</style>
+<body>
+    <form class="form-horizontal layui-form" id="riskRecordDetailForm">
+        <table id="riskRecordDetailTble" style="margin: auto;width: 800px;" border="1" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>客户号</td><td>机构号</td><td>开立客户柜员号</td><td>客户名称</td>
+            </tr>
+            <tr>
+                <td><input class="inp" type="text" readonly name="customerNo"/></td><td><input class="inp" type="text" readonly name="bankCode"/></td>
+                <td><input class="inp" type="text" readonly name="userNoCust"/></td><td><input class="inp" type="text" readonly name="customerName"/></td>
+            </tr>
+            <tr>
+                <td>账号</td><td>操作类型</td><td>账户性质</td><td>开立账户柜员号</td>
+            </tr>
+            <tr>
+                <td><input class="inp" type="text" readonly name="acctNo"/></td><td><input class="inp" type="text" readonly name="billType"/></td>
+                <td><input class="inp" type="text" readonly name="acctType"/></td><td><input class="inp" type="text" readonly name="userNoAcct"/></td>
+            </tr>
+            <tr>
+                <td>是否开客户</td><td>用户号</td><td>账户名</td><td>风险信息</td>
+            </tr>
+            <tr>
+                <td><input class="inp" type="text" readonly name="isOpenCust"/></td><td><input class="inp" type="text" readonly name="userNo"/></td>
+                <td><input class="inp" type="text" readonly name="acctName"/></td><td><input class="inp" type="text" readonly name="riskMessage"/></td>
+            </tr>
+            <tr>
+                <td>是否开账户</td><td>交易类型</td><td>创建时间</td><td></td>
+            </tr>
+            <tr>
+                <td><input class="inp" type="text" readonly name="isOpenAcct"/></td><td><input class="inp" type="text" readonly name="callType"/></td>
+                <td><input class="inp" type="text" readonly name="createdDate"/></td><td></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

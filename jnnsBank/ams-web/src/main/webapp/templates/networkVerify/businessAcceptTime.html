@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">业务受理时间查询</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">核查系统标识</label>
+                        <div class="col-xs-7 col-md-6">
+                            <select id="sysInd" name="sysInd" class="layui-input">
+                                <option value="">请选择</option>
+                                <option value="MIIT">01-手机号码核查</option>
+                                <option value="CSAT">02-纳税信息核查</option>
+                                <option value="SAMR">03-工商登记信息核查</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">查询日期</label>
+                        <div class="col-xs-7 col-md-6">
+                            <!--<input type="text" id="queDt" name="queDt" class="layui-input">-->
+                            <input type="text" autocomplete="off" class="layui-input date-picker" id="queDt" name="queDt"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4"></label>
+                        <div class="col-xs-7 col-md-6">
+                            <button type="button" class="layui-btn layui-btn" id="btnSubmit">提交</button>
+                            <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet light bordered" id="result" hidden style="margin-top: 20px">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-book font-dark"></i>
+                        <span class="caption-subject uppercase">查询结果</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-bordered word-break">
+                        <tbody>
+                        <tr>
+                            <td class="td-label">原查询日期：</td>
+                            <td class="td-label-right" id="orgnlQueDt"></td>
+                            <td class="td-label">申请报文处理状态：</td>
+                            <td class="td-label-right" id="procSts"></td>
+                        </tr>
+                        <tr id="procCdDiv">
+                            <td class="td-label">申请报文处理码：</td>
+                            <td class="td-label-right" id="procCd"></td>
+                            <td class="td-label">申请报文拒绝信息：</td>
+                            <td class="td-label-right" id="rjctInf"></td>
+                        </tr>
+                        <tr id="svcInf1">
+                            <td class="td-label">核查系统标识：</td>
+                            <td class="td-label-right" id="sysInd1"></td>
+                            <td class="td-label">被查询日期受理业务状态：</td>
+                            <td class="td-label-right" id="svcInd"></td>
+                        </tr>
+                        <tr id="svcInf2">
+                            <td class="td-label">被查询日期起始受理时间：</td>
+                            <td class="td-label-right" id="sysOpTm"></td>
+                            <td class="td-label">被查询日期结束受理时间：</td>
+                            <td class="td-label-right" id="sysClTm"></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/networkVerifiedCommon.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/businessAcceptTime.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="username">
+            </div>
+
+            <label class="layui-form-label">操作模块</label>
+            <div class="layui-input-inline">
+                <select id="operateModule">
+                    <option value></option>
+                    <option value>请选择</option>
+                    <option value="ROLE">角色管理</option>
+                    <option value="ANNUAL">年检管理</option>
+                    <option value="USER">用户管理</option>
+                    <option value="PERMISSION">菜单管理</option>
+                    <option value="ORGANIZATION">组织机构管理</option>
+                    <option value="ANNOUNCEMENT">公告管理</option>
+                    <option value="ADMINLOG">日志管理</option>
+                    <option value="DICTIONARY">数据字典管理</option>
+                    <option value="CONFIG">系统配置管理</option>
+                    <option value="NOTICE">证件到期提醒</option>
+                </select>
+            </div>
+
+            <label class="layui-form-label">操作类型</label>
+            <div class="layui-input-inline">
+                <div class="layui-input-inline">
+                    <select id="operateType" >
+                        <option value=" ">请选择</option>
+                        <option value="INSERT">新建</option>
+                        <option value="UPDATE">修改</option>
+                        <option value="DELETE">删除</option>
+                        <option value="SELECT">搜索</option>
+                        <option value="INSERT">新建</option>
+                        <option value="IMPORT">导入</option>
+                        <option value="EXPORT">导出</option>
+                        <option value="DISABLE">禁用</option>
+                        <option value="ENABLE">启用</option>
+                        <option value="START">启动</option>
+                        <option value="PAUSE">暂停</option>
+                        <option value="END">结束</option>
+                        <option value="OTHER">其他</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+
+            <label class="layui-form-label">是否成功</label>
+            <div class="layui-input-inline">
+                <select id="operateResult">
+                    <option value></option>
+                    <option value>请选择</option>
+                    <option value=true>成功</option>
+                    <option value=false>失败</option>
+                </select>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">操作时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" name="beginDate" placeholder="开始时间"/>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" name="endDate" placeholder="结束时间"/>
+                </div>
+            </div>
+
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+
+    <table id="traceTable">
+
+    </table>
+
+</div>
+<form action="../attach/user_template.xls" method="get" id="templateDownloadForm"></form>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/trace/trace.js"></script>
+</body>
+
+</html>

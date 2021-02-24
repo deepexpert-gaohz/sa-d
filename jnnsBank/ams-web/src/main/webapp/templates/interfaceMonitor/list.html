@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>接口监控记录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+
+<body>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<div class="admin-main">
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" name="beginDate" placeholder="开始时间"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" name="endDate" placeholder="结束时间"/>
+                    </div>
+                    <button type="button" id="btn_search"  class="layui-btn layui-btn">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6 col-md-5 col-lg-4">
+            <div id="echarts" style="height: 300px"></div>
+        </div>
+    </div>
+    
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">校验结果</label>
+            <div class="layui-input-inline">
+                <select name="processResult" class="layui-input" id="processResult" lay-filter="state">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="SUCCESS">成功</option>
+                    <option value="FAIL">失败</option>
+                </select>
+            </div>
+            <label class="layui-form-label">接口调用类型</label>
+            <div class="layui-input-inline">
+                <select name="tranType" class="layui-input" id="tranType" lay-filter="state">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="AMSCheck">人行查询</option>
+                    <option value="AMSSync">人行报送</option>
+                    <!--<option value="SAIC">工商查询</option>-->
+                </select>
+            </div>
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="acctNo">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_download">
+            <i class="layui-icon">&#xe601;</i>
+            导出
+        </button>
+    </div>
+
+    <table id="list"></table>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../plugins/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/interfaceMonitor/list.js"></script>
+</body>
+
+</html>

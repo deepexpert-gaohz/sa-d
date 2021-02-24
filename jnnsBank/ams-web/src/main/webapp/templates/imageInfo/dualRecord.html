@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,ie=ie8,ie=ie9,ie=ie10,ie=ie11">
+    <title>菊风云视频双录业务平台</title>
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/dualRecord.css" media="all">
+
+    <script type="text/javascript" language="javascript">
+        window.onunload = function () {
+            try {
+                cSharpActiveX.Destroy();
+                // console.log("cSharpActiveX.Destroy();");
+            } catch (err) {
+                var st = err;
+            }
+        }
+        var csax;
+        var username;
+
+        window.onload = function () {
+
+            $.ajax({
+                type: 'GET',
+                url: "../../config/findByKeyLike?configKey=dualRecordRemind",
+                dataType: "json",
+                success: function (res) {
+                    if (res.code=="ACK"){
+                        $("#wmInfo").html("");
+                        for (var i = 0; i < res.data.length; i++) {
+                            $("#wmInfo").append('<p>'+res.data[i].configValue+'</p>');
+                        }
+                    }
+                },
+                error:function (res) {
+                    // alert("失败");
+                }
+            });
+
+            $.ajax({
+                type: 'GET',
+                url: "../../config/findByKeyLike?configKey=riskWarning",
+                dataType: "json",
+                success: function (res) {
+                    if (res.code=="ACK"){
+
+                        for (var i = 0; i < res.data.length; i++) {
+                            var value = new Array();
+                            value = res.data[i].configValue.split("||");
+
+                            $(".files").append('<div class="fileItem msgItem"><i class="fa fa-file-text-o hybridFile'+i+' " data-id="'+i+'"></i><div class="fileName msgName">'+value[0]+'</div></div>');
+
+                            var html = '<div class="riskCont hybrid'+i+'"><div class="rsCont" style="white-space:pre-line;">';
+                            html += '<h2>'+value[0]+'</h2>';
+                            html += '<p>'+value[1]+'</p>';
+                            html += '</div></div>';
+                            $(".riskWarning").append(html);
+
+                            $('.fileItem .hybridFile'+i).dblclick(function(){
+                                var id = $(this).attr('data-id');
+                                $(this).parent().parent().hide();
+                                $('.riskCont').hide();
+                                $(".riskWarning").show();
+                                $('.hybrid'+id).show();
+                            });
+                        }
+                    }
+                },
+                error:function (res) {
+                    // alert("失败");
+                }
+            });
+
+            csax = document.createElement('object');
+            csax.setAttribute("classid", "clsid:E2AAFE18-F8B4-4523-9F94-175B64347F6A");
+            csax.setAttribute("id", "cSharpActiveX");
+            csax.setAttribute("name", "cSharpActiveX");
+            csax.setAttribute("style", "display: none");
+            document.body.appendChild(csax);
+
+
+            $.ajax({
+                url: "../../security/info",
+                type: "GET",
+                success: function (data) {
+                    if (data.code === 'ACK' && data.data) {
+                        username = data.data.username;
+                        $("#userName").val(username);
+                    }
+                },
+                error:function (res) {
+                    // alert("失败");
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: "../../config/findByKeyLike?configKey=dualRecordServerUrl",
+                dataType: "json",
+                success: function (res) {
+                    if (res.code=="ACK"){
+                        if (res.data.length>0){
+                            cSharpActiveX.CheckInTest(username, '12345678', res.data[0].configValue);// 192.168.111.10:8000
+                            $("#address").val(res.data[0].configValue);
+                        }
+                    }
+                },
+                error:function (res) {
+                    // alert("失败");
+                }
+            });
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="all">
+
+        <!--//登录-->
+        <div class="loginPage">
+            <img src="../img/dualRecord/bg.png">
+            <!-- <div class="loginPage" style="display:none"> -->
+            <div class="loginBox">
+                <div class="logo">
+                    <img class="logo-img" src="../img/dualRecord/logo@2x.png">
+                    <p class="log-text">菊风云视频双录业务平台</p>
+
+                </div>
+                <div class="loginCont">
+
+                    <div class="loginItem">
+                        <label>账号</label>
+                        <input type="text" id="userName" name="userName" class="input" maxlength="20" placeholder="请填写用户名" value="admin2" />
+                        <p class="errorInfo unameErr">账号<span></span></p>
+                    </div>
+                    <div class="loginItem">
+                        <label>密码</label>
+                        <input type="password" name="password" maxlength="20" class="input" placeholder="请填写密码" value="12345678" />
+                        <p class="errorInfo pwdErr">密码<span></span></p>
+                    </div>
+                    <button class="loginBtn" onclick="CheckIn()">登 录</button>
+                    <p class="serve-btn" onclick="serveHandle()">商务设置</p>
+                </div>
+                <div class="container-box">
+                    <div class="serve-box">
+                        <label>服务器</label>
+                        <input id="address" type="text" name="address" class="input" placeholder="请填写服务器地址"
+                            value="udp:192.168.111.10:8000" />
+                        <p class="errorInfo serverErr">服务器地址<span></span></p>
+                        <button class="cancel-btn" onclick="cancelHandle()">取消</button>
+                        <button class="confirm-btn" onclick="confirmHandle()">确认</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 登录后的页面 -->
+        <div class="checkin">
+
+            <div class="content">
+                <div class="container">
+
+
+                    <!--客户信息-->
+                    <div class="userMessage" style="width: 300px;height: 100%;float:left">
+                        <!--客户信息-->
+                        <div class="umTitle">客户信息</div>
+                        <div id="customer">
+
+                        </div>
+                    </div>
+
+                    <div class="contMargin"></div>
+
+                    <!--双录视频操作-->
+                    <div class="userVideo" >
+                        <!--视频-->
+                        <!--<div class="umTitle">视频通话</div>-->
+                        <div id ="video" class="video">
+                            <object id="server" name="server" classid="clsid:2E463559-3DCC-4262-9455-69B70F3E9626"></object>
+                        </div>
+                        <div class="infoMargin"></div>
+                        <!--操作按钮-->
+                        <div class="buttons">
+
+                            <div class="otherBtn" onclick="SnapShot(this)">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_photo@2x.png" /></div>实时拍照
+                            </div>
+                            <div class="otherBtn" onclick="GuestSnapShot()">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_picture@2x.png" /></div>前端拍照
+                            </div>
+                            <div class="otherBtn" onclick="noFonc()">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_rec@2x.png" /></div><span class="record">本地录制</span>
+                            </div>
+                            <div class="otherBtn" onclick="ShowMessage()">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_message@2x.png" /></div>文本消息
+                            </div>
+                            <div class="otherBtn" onclick="noFonc()">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_tuiliu@2x.png" /></div>虚拟背景墙
+                            </div>
+                            <div class="otherBtn oblast" onclick="TransferCall(this)">
+                                <div class="bimg"><img src="../img/dualRecord/Shape Copy 8@2x.png" /></div>通话转接
+                            </div>
+                            <div class="otherBtn oblast">
+                                <div onclick="SwitchCall(this)">
+                                    <div class="bimg"><img src="../img/dualRecord/meeting_voice@2x.png" /></div>
+                                    <span class="SwitchCall">通话切换</span>
+                                </div>
+                                <div class="obdisable obd1 dis-only-one"></div>
+                            </div>
+                            <div class="otherBtn oblast">
+                                <div onclick="ShareDesktop(this)">
+                                    <div class="bimg"><img src="../img/dualRecord/meeting_shareA@2x.png" /></div>
+                                    <span class="share ShareDesktop">屏幕共享</span>
+                                </div>
+                                <div class="obdisable obd2 obd3 dis-only-one"></div>
+                            </div>
+                            <div class="otherBtn oblast">
+                                <div onclick="noFonc()">
+                                    <div class="bimg"><img src="../img/dualRecord/meeting_shareB@2x.png" /></div>
+                                    <span class="SharedWindow">局部共享</span>
+                                </div>
+                                <div class="obdisable obd2 obd4 dis-only-one"></div>
+                            </div>
+                            <div class="otherBtn oblast" onclick="settingWindow()">
+                                <div class="bimg"><img src="../img/dualRecord/meeting_shareB@2x.png" /></div>设置
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contMargin"></div>
+
+                    <div style="height: 100%;width: 100%;margin-left:720px;">
+                        <div style="margin-right: 720px">
+
+                            <!--信息备注-->
+                            <div class="userMessage">
+                                <!--信息备注-->
+                                <div class="umTitle">信息备注</div>
+                                <div class="remarksInfo" style="padding: 10px 5px;height: 65%">
+                                    <textarea id="remarks" style="height: 100%;width: 100%" placeholder="座席人员可对重要信息进行备注"></textarea>
+                                </div>
+
+                                <!--人数-->
+                                <div class="serverInfo" style="text-align: center;">
+                                    <span>服务人数：</span><span class="serverNumber">0</span><br>
+                                    <span>排队人数：</span><span class="queueNumber">*</span>
+                                </div>
+
+                                <!--操作-->
+                                <div class="promptBox" style="text-align: center;">
+                                    <button class="pbtn talkKeep frow default" disabled onclick="HandlingResult(0)">办理失败</button>
+                                    <button class="pbtn talkKeep frow default" disabled onclick="HandlingResult(1)">办理成功</button><br>
+                                    <button class="pbtn talkKeep default HoldGetBack" data-status="hold" disabled onclick="HoldGetBack(this)">通话挂起</button>
+                                    <button class="pbtn pserver pStopserver" onclick="ApplyPause(this)">暂停服务</button>
+                                </div>
+                            </div>
+
+                            <!--<div class="contMargin"></div>-->
+
+                            <!--话术提示风险提示-->
+                            <div class="wordsInfo" style="margin-left: 15px">
+
+                                <!--话术提示-->
+                                <div class="wordsMsg">
+                                    <div class="umTitle">话术提示</div>
+                                    <div id="wmInfo" class="wmInfo">
+
+                                    </div>
+                                </div>
+
+                                <div class="infoMargin"></div>
+
+                                <!--风险提示-->
+                                <div class="infoMsg">
+                                    <div class="umTitle">风险提示</div>
+                                    <div class="folders umsg">
+                                        <div class="folderItem msgItem">
+                                            <i class="fa fa-folder"></i>
+                                            <div class="folderName msgName">风险揭示书</div>
+                                        </div>
+                                    </div>
+                                    <div class="files umsg">
+                                        <div class="riskTitle retrunfolder">&lt; 返回</div>
+
+                                    </div>
+                                    <div class="riskWarning">
+                                        <div class="riskTitle retrunfile">&lt; 返回</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 分辨率设置 -->
+    <div class="videoSet">
+        <div class="setTitle"><img src="../img/dualRecord/set@2x.png" />设置</div>
+        <div class="vsCont">
+            <p>分辨率</p>
+            <select class="resolution" name="resolution">
+                <option value="3">默认(自适应)</option>
+                <option value="1">流畅</option>
+                <option value="2">普通</option>
+                <option value="3">标清</option>
+                <option value="4">高清</option>
+            </select>
+            <div class="vsBtns">
+                <button class="vsCancle">取消</button><button class="vsSure" onclick="RequestVideo()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 退出提示 -->
+    <div class="logoutInfo">
+        <p>您正在通话中，确定要退出么？</p>
+        <div class="logBtns">
+            <button class="lbtnCancle">取消</button><button class="lbtnSure">确定</button>
+        </div>
+    </div>
+
+    <div class="panelBox">
+        <div style="height: 15px;"><i class="fa fa-times panelClose"></i></div>
+        <div class="panelItem">
+            <label>帧率</label>
+            <input type="number" name="fps" class="inp" placeholder="帧率" value="30" />
+        </div>
+        <div class="panelItem">
+            <label>码率</label>
+            <input type="number" name="bitRate" class="inp" placeholder="码率"  value="1"/>
+        </div>
+        <div class="panelItem">
+            <label>分辨率</label>
+            <input type="number" name="width" class="inp wid" placeholder="宽" value="720"/>
+            <input type="number" name="height" class="inp hei" placeholder="高" value="1280"/>
+            <button class="panelBtn" onclick="panel()">确定</button>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="../plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="../ag/imageInfo/dualRecord.js"></script>
+
+
+    <script>
+        var flg = false, //监听是否静音
+            address = '',
+            isHold = 'hold', //挂断和保持
+            isAnswer = false, //监听是否接听
+            isOpenRiskWarning = true, //监听是否打开风险提示
+            isOpenShareDesktop = true, //监听是否打开桌面共享
+            isVideoAudio = true, //监听视频通话还是语音通话 true视频  false音频
+            isStop = false, //监听是否暂停服务 true暂停 false开始
+            _shareType, //屏幕共享的类型
+            isRecord = true, //监听是否录制
+            isCalling = false,//监听是否通话
+            serverNumber = 0,//服务人数
+            ShareDesktopClick = true,//屏幕共享本身点击状态
+            SwitchAudioClick = true,//屏幕共享本身点击状态
+            SharedWindowClick = true,//局部共享本身点击状态
+            isLogin = false;//登录状态
+
+        // 暂无该功能
+        function noFonc() {
+            alert('此功能未开放，请联系客服');
+        }
+        function CheckIn() {
+            var userName = $("input[name=userName]").val(),
+                password = $("input[name=password]").val(),
+                groupId = $("input[name=groupId]").val();
+            address = $("input[name=address]").val();
+            var input = $(".input"),
+                errorInfo = $(".errorInfo");
+            for (var i = 0; i < input.length; i++) {
+                if (input.eq(i).val() == '') {
+                    errorInfo.eq(i).find('span').text('不能为空');
+                    errorInfo.eq(i).show();
+                    input.eq(i).addClass("error").focus();
+                    return;
+                } else {
+                    errorInfo.eq(i).hide();
+                    input.eq(i).removeClass("error");
+                }
+            }
+            // cSharpActiveX.CheckOut();
+            cSharpActiveX.CheckInTest(userName, password, address);
+        }
+
+        function serveHandle() {
+            $(".container-box").show();
+        }
+        function cancelHandle() {
+            $(".container-box").hide();
+        }
+        function confirmHandle() {
+            $(".container-box").hide();
+            address = $("input[name=address]").val();
+
+        }
+        function settingWindow() {
+            cSharpActiveX.Set();
+        }
+
+        function CheckOut() {
+            if (isCalling) {
+                $(".logoutInfo").show();
+                $(".lbtnSure").click(function () {
+                    $(".logoutInfo").hide();
+                    cSharpActiveX.End();//挂断
+                    cSharpActiveX.CheckOut();//坐席签出
+                });
+                $(".lbtnCancle").click(function () {
+                    $(".logoutInfo").hide();
+                });
+            } else {
+                cSharpActiveX.CheckOut();
+            }
+        }
+        // 分辨率
+        function RequestVideo() {
+            val = parseInt($(".resolution").val());
+            cSharpActiveX.RequestVideo(val);
+        }
+
+        // 服务
+        function ApplyPause(_this) {
+            var stop = _this.className;
+            if (stop.indexOf('default') == -1) {
+                if (stop.indexOf('pStopserver') == -1) {
+                    $(".pserver").addClass('pStopserver').text('暂停服务');
+                } else {
+                    $(".pserver").removeClass('pStopserver').text('开始服务');
+                }
+                isStop = !isStop;
+                cSharpActiveX.ApplyPause(isStop);
+                // console.log(isStop, "开始暂停服务");
+            }
+        }
+        //办理结果 1通过 0失败
+        function HandlingResult(res) {
+            if (res==1){
+                cSharpActiveX.SetVerifyResult(res ? true : false);
+                save();
+                //alert("办理成功");
+            } else {
+                cSharpActiveX.SetVerifyResult(res ? true : false);
+                alert("办理失败");
+            }
+        }
+
+        function save() {
+            //TODO 保存双录信息
+            var data = {
+                // filePath : "http://127.0.0.1/20191209094621.m4v",
+                // fileName : "12314566456",
+                // acctNo : "12312311231231",
+                remarks: $("#remarks").val(),
+                source: "image",
+                callId:GetSerialNumber(),
+                clientName:GetGuestUserId()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: "../../video/imageVideo",
+                data: data,
+                dataType: "json",
+                success: function (res) {
+                    //alert(res);
+                    alert("成功");
+                },
+                error:function (res) {
+                    alert("失败");
+                }
+            });
+        }
+
+        // 静音切换
+        function Mute(_this) {
+            flg = !flg;
+            cSharpActiveX.Mute(flg);
+            var txt = flg ? '取消静音' : '静音';
+            $(".mute").text(txt);
+        }
+        // 录制
+        function Record(_this) {
+            cSharpActiveX.EnableLocalRecord(isRecord);
+        }
+
+        // 语音切换
+        function SwitchCall(_this) {
+            // isVideoAudio = !isVideoAudio;
+            //切换到语音通话
+            if (SwitchAudioClick) {
+                cSharpActiveX.ToVoice();
+                $(".dis-only-one").show().eq(0).hide();
+            } else {
+                cSharpActiveX.ToVideo();
+                $(".dis-only-one").hide();
+            }
+            SwitchAudioClick = !SwitchAudioClick;
+            // isVideoAudio ? $(".dis-only-one").hide() : $(".obd2,.obd3").show();
+            // $(".voice").text(txt);
+        }
+        //桌面共享
+        function ShareDesktop(_this) {
+            _shareType = 'desktop'; //桌面共享
+            // todo mike.chen
+            if (ShareDesktopClick) {
+                $(".dis-only-one").show().eq(1).hide();
+            } else {
+                $(".dis-only-one").hide();
+            }
+            cSharpActiveX.EnableDesktopShare(isOpenShareDesktop);
+            $('.ShareDesktop').text(ShareDesktopClick ? '关闭屏幕共享' : '屏幕共享');
+            ShareDesktopClick = !ShareDesktopClick;
+            //todo
+
+            // isOpenShareDesktop ? $(".obd4").show() : $(".obd4").hide();
+            // isOpenShareDesktop && isOpenRiskWarning ? $(".obd1").show() : $(".obd1").hide();
+            // isOpenShareDesktop ? cSharpActiveX.EnableDesktopShare(true) : cSharpActiveX.EnableDesktopShare(false);
+        }
+        // 共享webwindow
+        function SharedWindow(_this) {
+            // console.log(SharedWindowClick);
+            _shareType = 'warning'; //风险提示界面共享
+            // isOpenRiskWarning ? $(".obd3").show() : $(".obd3").hide();
+            // isOpenShareDesktop && isOpenRiskWarning ? $(".obd1").show() : $(".obd1").hide();
+            // todo mike.chen
+            if (SharedWindowClick) {
+                $(".dis-only-one").show().eq(2).hide();
+            } else {
+                $(".dis-only-one").hide();
+            }
+            cSharpActiveX.ShareIEWindow(SharedWindowClick);
+            $('.SharedWindow').text(SharedWindowClick ? '关闭局部共享' : '局部共享');
+            SharedWindowClick = !SharedWindowClick;
+
+            //todo
+
+            // isOpenRiskWarning ? cSharpActiveX.ShareIEWindow(true) : cSharpActiveX.ShareIEWindow(false);
+        }
+
+        //截图确认SnapShot
+        function SnapShot(_this) {
+            cSharpActiveX.SnapShot();
+        }
+
+        // 转接
+        function TransferCall(_this) {
+            cSharpActiveX.Transfer("G2");
+        }
+
+        //配置
+        function panel() {
+            var fps = parseInt($("input[name=fps]").val()),
+                bitRate = parseInt($("input[name=bitRate]").val()),
+                wid = parseInt($("input[name=width]").val()),
+                hei = parseInt($("input[name=height]").val());
+            var succ = cSharpActiveX.SetScreenMode(fps, bitRate, hei, wid);
+            // console.log("分辨率是否设置成功：",succ);
+            setTimeout(function () {
+                $(".panelBox").hide();
+            }, 1000);
+        }
+        //通话挂起
+        /*param self:dom自身*/
+        function HoldGetBack(self) {
+            var status = isHold;
+            cSharpActiveX.HoldGetBack(status);//status:hold会话保持 get:保持取回
+            $('.HoldGetBack').text(status === 'hold' ? '保持取回' : '通话挂起');
+            isHold = status === 'hold' ? 'get' : 'hold';
+            if (status === 'hold') {
+                $(".obDisable").show();
+            } else {
+                $(".obDisable").hide();
+            }
+        }
+        // 文本消息
+        function ShowMessage() {
+            cSharpActiveX.ShowMessage();
+        }
+        // 前端拍照
+        function GuestSnapShot() {
+            cSharpActiveX.GuestSnapshot();
+        }
+
+        //在通话中获取访客的 id
+        function GetGuestUserId(){
+            return cSharpActiveX.GuestUserId();
+        }
+
+        // 用于获取自己的标识，
+        function GetUserId(){
+            return cSharpActiveX.UserId();
+        }
+
+        //用于获取通话的唯一标识（用于查询视频文件）
+        function GetSerialNumber(){
+            return cSharpActiveX.GetSerialNumber();
+        }
+    </script>
+
+
+    <script language="javascript" for="cSharpActiveX" event="OnCheckStateChange(value)">
+        function cSharpActiveX:: OnCheckStateChange(value) {
+            if (value == 2) {
+                serverNumber = 0;
+                $('.serverNumber').text(serverNumber);//服务人数初始化
+                $('.userId').text(cSharpActiveX.UserId());//获取userId
+                $(".loginPage").hide();
+                $("body").css('overflow', 'auto');
+                $("#server").css("display", "block");
+                // alert("您已登录成功");
+                isLogin = true;
+                // $(".checkin").show();
+            } else if (value == 0) {
+                // $(".checkin").hide();
+                if (isLogin) {
+                    $("body").css('overflow', 'hidden');
+                    $(".loginPage").show();
+                    $("#server").hide();
+                    isHold = 'hold';
+                    $('.HoldGetBack').text('通话挂起');
+                    $(".talkKeep").attr("disabled", "true");     //liling
+                    $(".obDisable").show();
+                    $(".pbtn").not('.pserver').addClass('default');
+                    $(".pserver").removeClass("default");
+                    $(".share").text("屏幕共享");
+                    $(".record").text("本地录制");
+                    isAnswer = false;
+                    flg = false;
+                    isVideoAudio = true;
+                    isOpenShareDesktop = true;
+                    isOpenRiskWarning = true;
+                    isRecord = true;
+                    isCalling = false;
+                    isStop = false;
+                    cSharpActiveX.ApplyPause(isStop);
+                    cSharpActiveX.EnableLocalRecord(false);
+                    cSharpActiveX.ToVideo();
+                    cSharpActiveX.EnableDesktopShare(false);
+                    // cSharpActiveX.ShareIEWindow(false);
+                    isLogin = false;
+                    $(".pserver").addClass('pStopserver').text("暂停服务");
+                    $(".record").text("本地录制");
+                    $(".obdisable").hide();
+                    alert("您已登出");
+                } else {
+                    alert("登录失败");
+                }
+            }
+            // console.log("登录状态：",value);
+        }
+    </script>
+    <script language="javascript" for="cSharpActiveX" event="OnApplyResult(appid,pause,succ)">
+        function cSharpActiveX:: OnApplyResult(appid, pause, succ) {
+            // console.log(appid, pause, succ, '开始暂停服务');
+            /*
+                @param pause: true:暂停服务成功 false:开启服务成功
+            */
+            if (pause) {
+                $(".pserver").removeClass('pStopserver').text("开始服务");
+                isStop = true;
+            } else {
+                $(".pserver").addClass('pStopserver').text("暂停服务");
+                isStop = false;
+            }
+        }
+    </script>
+    <script language="javascript" for="cSharpActiveX" event="OnRecordStart(val)">
+        function cSharpActiveX:: OnRecordStart(val) {
+            // console.log(val, '本地录制');
+            /*
+                @param pause: true:本地录制
+            */
+            if (val) {
+                $(".record").text("结束录制");
+                isRecord = false;
+            } else {
+                $(".record").text("本地录制");
+                isRecord = true;
+            }
+        }
+    </script>
+    <script language="javascript" for="cSharpActiveX" event="OnDesktopShare(type)">
+        function cSharpActiveX:: OnDesktopShare(type) {
+            // console.log(type, '屏幕共享是否开启');
+            /*
+                @param:type true:开启 false:关闭
+                _shareType   desktop:桌面共享||warning:风险提示
+
+            */
+            if (_shareType === 'desktop') {
+                // console.log('desktop');
+                isOpenShareDesktop = type ? false : true;
+                var txt = type ? '关闭共享' : '屏幕共享';
+                $(".share").text(txt);
+                if (type) {
+                    $(".risk").prop('disabled', true).addClass('disable');
+                } else {
+                    $(".risk").prop('disabled', false).removeClass('disable');
+                }
+            } else {
+                // console.log('warning');
+                isOpenRiskWarning = type ? false : true;
+                var txt = isOpenRiskWarning ? '关闭提示' : '风险提示';
+                $(".risk").text(txt);
+                if (type) {
+                    $(".share").prop('disabled', true).addClass('disable');
+                } else {
+                    $(".share").prop('disabled', false).removeClass('disable');
+                }
+            }
+        }
+    </script>
+    <script language="javascript" for="cSharpActiveX" event="OnCallStateChange(type,reason)">
+        function cSharpActiveX:: OnCallStateChange(type, reason) {
+
+            // console.log(type, '通过状态改变：0来电，1通话中，2挂断');
+
+            if (type == 0) { //来电
+
+                isCalling = false;
+
+                // 打开双录受理页面
+                var data = {
+                    href : "../ui/imageInfo/blank.html",
+                    title :"双录受理"
+                };
+                parent.tab.tabAdd(data);
+                parent.$("#dualRecordPage").show();
+
+                // console.log(GetGuestUserId());
+                // console.log(GetUserId());
+                // console.log(GetSerialNumber());
+
+            } else if (type == 1) { //通话中
+
+                serverNumber += 1;
+                $(".talkKeep").removeAttr("disabled")    //liling
+                $('.serverNumber').text(serverNumber);//更新服务人数
+                isAnswer = true;
+                $(".pserver").addClass("default");
+                $(".obDisable").hide();
+                $(".pbtn").removeClass('default');
+                isCalling = true;
+                $.get('../../video/customer?clientName='+GetGuestUserId(),function (res) {
+                    if(res.code=="ACK"){
+                        $("#customer").append('<p>企业名称：'+ res.data.name + '</p>');
+                        $("#customer").append('<p>法人名称：'+ res.data.legalperson + '</p>');
+                        $("#customer").append('<p>法人证件类型：'+ res.data.legalIdcardType + '</p>');
+                        $("#customer").append('<p>法人证件号码：'+ res.data.legalIdcardNo + '</p>');
+                        $("#customer").append('<p>账户性质：'+ res.data.acctType + '</p>');
+                        $("#customer").append('<p>统一社会信用机构代码/注册号：'+ res.data.registno + '</p>');
+                        $("#customer").append('<p>注册资金：'+ res.data.registfund + '</p>');
+                        $("#customer").append('<p>开业日期：'+ res.data.opendate + '</p>');
+                        $("#customer").append('<p>主要经营场所：'+ res.data.legalName + '</p>');
+                        $("#customer").append('<p>营业期限起始日期：'+ res.data.startdate + '</p>');
+                        $("#customer").append('<p>营业期限终止日期：'+ res.data.businessLicenseDue + '</p>');
+                        $("#customer").append('<p>登记机关：'+ res.data.registorgan + '</p>');
+                        $("#customer").append('<p>核准日期：'+ res.data.licensedate + '</p>');
+                    }else{
+                        parent.layer.msg('获取客户信息失败');
+                    }
+                });
+
+            } else { //挂断
+
+                $("#customer").empty();
+
+                $(".talkKeep").attr("disabled", "true");     //liling
+                $(".obDisable").show();
+                isHold = 'hold'
+                $('.HoldGetBack').text('通话挂起');
+
+                $(".pbtn").not('.pserver').addClass('default');
+                $(".pserver").removeClass("default");
+                $(".share").text("屏幕共享");
+                $(".record").text("本地录制");
+                $(".obdisable").hide();
+
+                isAnswer = false;
+                flg = false;
+                isVideoAudio = true;
+                isOpenShareDesktop = true;
+                isOpenRiskWarning = true;
+                isRecord = true;
+                isCalling = false;
+                cSharpActiveX.EnableLocalRecord(false);//本地视频录制
+                cSharpActiveX.ToVideo();
+                cSharpActiveX.EnableDesktopShare(false);
+                // cSharpActiveX.ShareIEWindow(false);
+
+            }
+        }
+    </script>
+
+    <!-- 更新排队人数 -->
+    <script language="javascript" for="cSharpActiveX" event="OnWaitCount(count)">
+        function cSharpActiveX:: OnWaitCount(count) {
+            $('.queueNumber').text(count);
+            // console.log("排队人数    ", count)
+        }
+    </script>
+</body>
+
+</html>

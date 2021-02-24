@@ -1,0 +1,36 @@
+
+<div class="admin-main">
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">当前表英文名</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="mTable" readonly="readonly">
+            </div>
+            <label class="layui-form-label">依赖表英文名</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="relyTable">
+            </div>
+            <button type="button" id="btn_query_modelRely" class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <div id="toolbarModelRely" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btnRely1_add" data-code="apply:modelRely_add">
+            <i class="layui-icon">&#xe654;</i>
+            新建
+        </button>
+        <button class="layui-btn layui-btn-small" id="btnRely_edit" data-code="apply:modelRely_edit">
+            <i class="layui-icon">&#xe642;</i>
+            修改
+        </button>
+        <button class="layui-btn layui-btn-small" id="btnRely_del" data-code="apply:modelRely_del">
+            <i class="layui-icon">&#xe640;</i>
+            删除
+        </button>
+    </div>
+    <table id="modelRelyTable">
+
+    </table>
+    <div id="main" style="width: 100%;height:400px;"></div>
+</div>

@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    druid:
+      url: ${ams.db.url:jdbc:mysql://192.168.111.10:3307/ams4.0?useUnicode=true&characterEncoding=UTF8}
+      username: ${ams.db.user:root}
+      password: ${ams.db.pass:roottest}
+      driver-class-name: ${ams.db.driver:com.mysql.jdbc.Driver}
+      filters: stat,slf4j
+      filter:
+        slf4j:
+          enabled: true
+          statement-log-enabled: true
+          statement-executable-sql-log-enable: true
+      pool-prepared-statements: true
+      max-open-prepared-statements: 100
+      max-active: 20
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      log-abandoned: true
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+liquibase:
+  enabled: false
+  change-log: classpath:/db/db.changelog-master.xml

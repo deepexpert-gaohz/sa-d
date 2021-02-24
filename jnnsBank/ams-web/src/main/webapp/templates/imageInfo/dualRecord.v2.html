@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,ie=ie8,ie=ie9,ie=ie10,ie=ie11">
+    <title>双录</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/plugins/adminlte/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../assets/plugins/adminlte/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../assets/plugins/jquery-magnify/css/jquery.magnify.css">
+    <link rel="stylesheet" href="../assets/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dualRecord.css">
+    <!--[if lt IE 9]>
+    <script src="../assets/plugins/ie/html5shiv.min.js"></script>
+    <script src="../assets/plugins/ie/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <section class="content hidden">
+        <div class="c1-c2-c3">
+
+            <div class="c1 box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">客户信息</h3>
+                </div>
+                <div class="box-body c1-body">
+
+                </div>
+            </div>
+
+            <div class="c2">
+                <div class="c2-r1 box">
+                    <div class="box-body c2-r1-body">
+                        <object id="server" name="server" classid="clsid:2E463559-3DCC-4262-9455-69B70F3E9626" style="height: 98%;width: 98%;">
+                        </object>
+                    </div>
+                </div>
+                <!--操作按钮-->
+                <div class="c2-r2 box">
+                    <div class="box-body c2-r2-body">
+                        <ul class="tools-list" id="tools_list">
+                            <li data-type="SnapShot"><img src="../img/dualRecord/meeting_photo@2x.png"><span>实时拍照</span></li>
+<!--                            <li data-type="GuestSnapShot"><img src="../img/dualRecord/meeting_picture@2x.png"><span>前端拍照</span></li>-->
+<!--                            <li data-type="noFonc"><img src="../img/dualRecord/meeting_rec@2x.png"><span>本地录制</span></li>-->
+                            <li data-type="ShowMessage"><img src="../img/dualRecord/meeting_message@2x.png"><span>文本消息</span></li>
+<!--                            <li data-type="noFonc"><img src="../img/dualRecord/meeting_tuiliu@2x.png"><span>虚拟背景墙</span></li>-->
+                            <li data-type="TransferCall"><img src="../img/dualRecord/Shape Copy 8@2x.png"><span>通话转接</span></li>
+<!--                            <li data-type="SwitchCall"><img src="../img/dualRecord/meeting_voice@2x.png"><span>通话切换</span></li>-->
+                            <li data-type="ShareDesktop"><img src="../img/dualRecord/meeting_shareA@2x.png"><span id="ShareDesktop">屏幕共享</span></li>
+<!--                            <li data-type="SharedWindow"><img src="../img/dualRecord/meeting_shareB@2x.png"><span>局部共享</span></li>-->
+<!--                            <li data-type="settingWindow"><img src="../img/dualRecord/meeting_min@2x.png"><span>设置</span></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--信息备注-->
+            <div class="c3 box info-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">信息备注</h3>
+                </div>
+                <div class="box-body c3-body">
+                    <textarea class="form-control info-txt" rows="15" placeholder="" id="remarks"></textarea>
+                    <div class="info-counts">
+                        服务人数：<span id="serverNumber">0</span><br>
+                        排队人数：<span id="queueNumber">0</span>
+                    </div>
+                    <div class="info-btns">
+                        <button class="btn btn-default" id="handlingResultFail" disabled>办理失败</button>
+                        <button class="btn btn-default" id="handlingResultSuccess" disabled>办理成功</button><br>
+                        <button class="btn btn-default" id="holdGetBack" disabled>电话挂起</button>
+                        <button class="btn btn-danger" id="applyPause">暂停服务</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 话术提示&风险提示-->
+        <div class="c4">
+            <div class="c4-r1 box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">话术提示</h3>
+                </div>
+                <div class="box-body c4-r1-body" id="speechTips">
+                </div>
+            </div>
+
+            <div class="c4-r2 box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">风险提示</h3>
+                </div>
+                <div class="box-body c4-r2-body">
+                    <div class="folders" id="folders">
+                        <i class="fa fa-folder"></i><span>风险揭示书</span>
+                    </div>
+
+                    <div class="files hidden" id="files">
+                        <div class="file-back"><span id="files_back">&lt; 返回</span></div>
+                    </div>
+
+                    <div class="risk-warning hidden" id="risk_warning">
+                        <div class="file-back"><span id="risk_warning_back">&lt; 返回</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--登录页-->
+    <div class="login-page" id="login_page">
+        <div class="login-box" id="login_box">
+            <div class="logo">
+                <img class="logo-img" src="../img/dualRecord/logo.png">
+                <p class="logo-text" style="font-size: 20px">账管视频双录业务平台</p>
+                <p style="color: red" class="hidden" id="ieTips">仅支持IE8+浏览器环境下使用</p>
+            </div>
+            <div class="login-content">
+                <div class="form-group">
+                    <label>账号</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="请填写用户名">
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="请填写密码" value="123456">
+                </div>
+                <button class="btn btn-block btn-primary" id="checkIn">登录</button>
+<!--                <button class="btn btn-block btn-link">商务设置</button>-->
+            </div>
+        </div>
+        
+        <div class="serve-container hidden" id="serve_box">
+            <div class="serve-box">
+                <div class="serve-content">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>服务器</label>
+            
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="请填写服务器地址" value="udp:192.168.111.10:8000">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-block btn-default">取消</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-block btn-primary">确认</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/plugins/fastclick/fastclick.js"></script>
+    <script src="../assets/plugins/adminlte/js/adminlte.js"></script>
+    <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../assets/plugins/jquery-validation/additional-methods.js"></script>
+    <script src="../assets/plugins/jquery-validation/localization/messages_zh.js"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="../assets/libs/config.js"></script>
+    <script src="../assets/libs/util.js"></script>
+    <script src="../assets/libs/global.js"></script>
+    <script src="../assets/js/imageInfo/dualRecord.js"></script>
+
+    <!--  监测登录状态  -->
+    <script language="javascript" for="cSharpActiveX" event="OnCheckStateChange(value)">
+        function cSharpActiveX::OnCheckStateChange(value){
+            console.log("登录状态：",value);
+            if (value == 2) {
+                $('#serverNumber').text(0);//服务人数初始化
+                $(".login-page").addClass("hidden");//登录页隐藏
+                $(".content").removeClass("hidden");//受理页展示
+                page.options.isLogin = true;
+                // alert("您已登录成功");
+            } else if (value == 0) {
+                Util.message("双录系统登录失败，请手动登录。");
+                $(".login-page").removeClass("hidden");//登录页展示
+                $(".content").addClass("hidden");//受理页隐藏
+                cSharpActiveX.ApplyPause(false);
+                cSharpActiveX.EnableLocalRecord(false);
+                cSharpActiveX.EnableDesktopShare(false);
+            }
+        }
+    </script>
+    <!-- 监测申请暂停结果-->
+    <script language="javascript" for="cSharpActiveX" event="OnApplyResult(appid,pause,succ)">
+        function cSharpActiveX::OnApplyResult(appid, pause, succ) {
+            // console.log(appid, pause, succ, '开始暂停服务');
+            //@param pause: true:暂停服务成功 false:开启服务成功
+            if (pause) {
+                $("#applyPause").addClass("btn-primary").removeClass('btn-danger').text('开始服务');
+                page.options.isStop = true;
+            } else {
+                $("#applyPause").addClass('btn-danger').removeClass('btn-primary').text('暂停服务');
+                page.options.isStop = false;
+            }
+        }
+    </script>
+    <!--  监测录制结果  -->
+    <script language="javascript" for="cSharpActiveX" event="OnRecordStart(val)">
+        function cSharpActiveX::OnRecordStart(val) {
+            console.log(val, '本地录制');
+            //@param pause: true:本地录制
+            if(val){
+                $(".record").text("结束录制");
+                isRecord = false;
+            }else{
+                $(".record").text("本地录制");
+                isRecord = true;
+            }
+        }
+    </script>
+    <!--  监测桌面共享  -->
+    <script language="javascript" for="cSharpActiveX" event="OnDesktopShare(type)">
+        function cSharpActiveX::OnDesktopShare(type) {
+            console.log(type, '屏幕共享是否开启');
+            // @param:type true:开启 false:关闭 _shareType   desktop:桌面共享||warning:风险提示
+            // $('.share,.risk').prop('disabled',false).removeClass("disable");
+            if (_shareType === 'desktop') {
+                // console.log('desktop');
+                isOpenShareDesktop = type ? false : true;
+                var txt = type ? '关闭共享' : '屏幕共享';
+                $(".share").text(txt);
+                if (type) {
+                    $(".risk").prop('disabled', true).addClass('disable');
+                } else {
+                    $(".risk").prop('disabled', false).removeClass('disable');
+                }
+            } else {
+                // console.log('warning');
+                isOpenRiskWarning = type ? false : true;
+                var txt = isOpenRiskWarning ? '关闭提示' : '风险提示';
+                $(".risk").text(txt);
+                if (type) {
+                    $(".share").prop('disabled', true).addClass('disable');
+                } else {
+                    $(".share").prop('disabled', false).removeClass('disable');
+                }
+            }
+        }
+    </script>
+    <!--  监测来电  -->
+    <script language="javascript" for="cSharpActiveX" event="OnCallStateChange(type,reason)">
+        function cSharpActiveX:: OnCallStateChange(type, reason) {
+
+            console.log(type, '通过状态改变：0来电，1通话中，2挂断');
+
+            if (type == 0) { //来电
+                var data = {// 打开双录受理页面
+                    href : "../ui/imageInfo/blank.html",
+                    title :"双录受理"
+                };
+                parent.tab.tabAdd(data);
+                parent.$("#dualRecordPage").show();
+
+            } else if (type == 1) { //通话中
+                page.options.serverNumber += 1;
+                $('#serverNumber').text(page.options.serverNumber);//更新服务人数
+                //按钮更新
+                $("#holdGetBack").removeAttr("disabled").removeClass("btn-default").addClass("btn-primary");
+                $("#handlingResultFail").removeAttr("disabled").removeClass("btn-default").addClass("btn-primary");
+                $("#handlingResultSuccess").removeAttr("disabled").removeClass("btn-default").addClass("btn-primary");
+
+                //展示客户信息
+                $.get('../../video/customer?clientName='+page.GetGuestUserId(),function (res) {
+                    if(res.code=="ACK"){
+                        $(".c1-body").empty();
+                        if(res.data.name==null || res.data.name == undefined){
+                            $(".c1-body").append('<p>客户姓名：'+ (res.data.customerName||"暂无") + '</p>');
+                            $(".c1-body").append('<p>证件号：'+ (res.data.legalIdcardNo||"暂无") + '</p>');
+                            $(".c1-body").append('<p>手机号：'+ (res.data.clientName||"暂无") + '</p>');
+                        }else {
+                            $(".c1-body").append('<p>企业名称：'+ (res.data.name||"暂无") + '</p>');
+                            $(".c1-body").append('<p>法人名称：'+ (res.data.legalperson||"暂无") + '</p>');
+                            $(".c1-body").append('<p>法人证件类型：'+ (res.data.legalIdcardType||"暂无") + '</p>');
+                            $(".c1-body").append('<p>法人证件号码：'+ (res.data.legalIdcardNo||"暂无") + '</p>');
+                            $(".c1-body").append('<p>账户性质：'+ (res.data.acctType||"暂无") + '</p>');
+                            $(".c1-body").append('<p>统一社会信用机构代码/注册号：'+ (res.data.registno||"暂无") + '</p>');
+                            $(".c1-body").append('<p>注册资金：'+ (res.data.registfund||"暂无") + '</p>');
+                            $(".c1-body").append('<p>开业日期：'+ (res.data.opendate||"暂无") + '</p>');
+                            $(".c1-body").append('<p>主要经营场所：'+ (res.data.legalName||"暂无") + '</p>');
+                            $(".c1-body").append('<p>营业期限起始日期：'+ (res.data.startdate||"暂无") + '</p>');
+                            $(".c1-body").append('<p>营业期限终止日期：'+ (res.data.businessLicenseDue||"暂无") + '</p>');
+                            $(".c1-body").append('<p>登记机关：'+ (res.data.registorgan||"暂无") + '</p>');
+                            $(".c1-body").append('<p>核准日期：'+ (res.data.licensedate||"暂无") + '</p>');
+                        }
+                    }else{
+                        $(".c1-body").empty();
+                        $(".c1-body").append('<p>获取客户信息失败:'+res.message+'未查询到工商信息</p>');
+                    }
+                });
+
+            } else { //挂断
+                $(".c1-body").empty();//客户信息清空
+                $("#remarks").val("");//信息备注清空
+                $("#holdGetBack").attr("disabled",true).addClass("btn-default").removeClass("btn-primary");
+                $("#handlingResultFail").attr("disabled",true).addClass("btn-default").removeClass("btn-primary");
+                $("#handlingResultSuccess").attr("disabled",true).addClass("btn-default").removeClass("btn-primary");
+                cSharpActiveX.EnableLocalRecord(false);//本地视频录制
+                cSharpActiveX.ToVideo();
+                cSharpActiveX.EnableDesktopShare(false);
+            }
+        }
+    </script>
+    <!-- 更新排队人数 -->
+    <script language="javascript" for="cSharpActiveX" event="OnWaitCount(count)">
+        function cSharpActiveX::OnWaitCount(count) {
+            $('#queueNumber').text(count);
+            console.log("排队人数:", count);
+            $(".login-page").addClass("hidden");//登录页隐藏
+            $(".content").removeClass("hidden");//受理页展示
+        }
+    </script>
+</body>
+
+</html>

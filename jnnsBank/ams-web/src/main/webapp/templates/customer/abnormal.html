@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+            height: 50%;
+        }
+
+        .dropdown-div{
+            margin-left: 10px;
+        }
+
+        #toolbar {
+            width: 1000px;
+        }
+
+        .row .col-20 {
+            width: 20%;
+        }
+
+        .row {
+            margin-top: 15px;
+            margin-bottom: -20px;
+        }
+
+        .W120 .th-inner {
+            width:120px !important;
+        }
+        .W80 .th-inner {
+            width:80px !important;
+        }
+        .W60 .th-inner {
+            width:60px !important;
+        }
+
+        .W160 .th-inner {
+            width:160px !important;
+        }
+
+        .W180 .th-inner {
+            width:180px !important;
+        }
+
+        .W200 .th-inner {
+            width:200px !important;
+        }
+
+        /*
+            多条件搜索label标签显示全部名称
+         */
+        .layui-form-label {
+            width: 120px  !important;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">客户名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="depositorName">
+            </div>
+            <label class="layui-form-label">银行机构名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="organName">
+            </div>
+            <label class="layui-form-label">银行机构代码</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="code">
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">系统异动时间</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" placeholder="开始时间"/>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" placeholder="结束时间"/>
+            </div>
+
+            <label class="layui-form-label">严重违法</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="illegal" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">经营异常</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="changeMess" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+            <label class="layui-form-label">经营到期</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="businessExpires" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+            <label class="layui-form-label">工商状态异常</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="abnormalState" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">登记信息异动</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="changed" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+            <label class="layui-form-label">处理状态</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="processState" >
+                    <option value=""></option>
+                    <option value=" ">请选择</option>
+                    <option value="1">待处理</option>
+                    <option value="2">处理中</option>
+                    <option value="3">已处理</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">处理时间</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="processTimeBeginDate" placeholder="开始时间"/>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="processTimeEndDate" placeholder="结束时间"/>
+            </div>
+            <label class="layui-form-label">处理人</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="processer" />
+            </div>
+
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+
+    </form>
+
+
+    <div id="toolbar" >
+        <div class="layui-input-inline">
+
+            <div class="btn-group dropdown-div">
+                <button class="layui-btn layui-btn-small dn" id="btn_abnormal_export" data-code="customerAbnormal_manager:export">
+                    导出
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_abnormal_process" data-code="customerAbnormal_manager:process">
+                    异动处理
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_abnormal_process_finish" data-code="customerAbnormal_manager:processFinish">
+                    异动处理完成
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_abnormal_note" data-code="customerAbnormal_manager:note">
+                    批量短信通知
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_sendHistory" data-code="customerAbnormal_manager:history">
+                    短信发送历史
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_managerHistory" data-code="customerAbnormal_manager:history">
+                    异动管理历史
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <table id="paging_container">
+        <tr>
+            <td>
+                <table id="abnormalTable">
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/customer/abnormal.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+</body>
+
+</html>

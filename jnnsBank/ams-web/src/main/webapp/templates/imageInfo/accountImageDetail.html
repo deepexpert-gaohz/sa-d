@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>账户影像详情</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../plugins/jquery-magnify/css/jquery.magnify.css">
+    <link rel="stylesheet" href="../css/imageInfo.css">
+    <link rel="stylesheet" href="../css/videoInfo.css" />
+    <link rel="stylesheet" href="../plugins/jPlayer/skin/blue.monday/css/jplayer.blue.monday.min.css">
+</head>
+<body class="page-content">
+<h1 class="page-title"><span id="name"></span></h1>
+
+<form class="form-horizontal layui-form" id="editForm">
+    
+    <div id="accountInfo"></div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-institution font-dark"></i>
+                <span class="caption-subject uppercase">账户影像信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="image-list" id="imageList"></div>
+        </div>
+    </div>
+    <div class="portlet light bordered" id="videoInfo">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-institution font-dark"></i>
+                <span class="caption-subject uppercase">双录视频信息</span>
+            </div>
+        </div>
+        <div class="portlet-body" id="videoDiv">
+            <div class="video-list" id="video_list">
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/html" id="jibenTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户开户日期: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="yibanTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户证明文件种类: </th>
+                    <td>{{ formatFileType(d.acctFileType) }}</td>
+                    <th>开户证明文件编号: </th>
+                    <td>{{ d.acctFileNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户日期: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>备注: </th>
+                    <td colspan="3">{{ d.remark || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="yusuanTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户日期: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>开户证明文件种类1: </th>
+                    <td>{{ formatFileType(d.acctFileType) }}</td>
+                    <th>开户证明文件编号1: </th>
+                    <td>{{ d.acctFileNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户证明文件种类2: </th>
+                    <td>{{ formatFileType(d.acctFileType2) }}</td>
+                    <th>开户证明文件编号2: </th>
+                    <td>{{ d.acctFileNo2 || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户构成方式: </th>
+                    <td>{{ formatAccountNameFrom(d.accountNameFrom) }}</td>
+                    <th>资金性质: </th>
+                    <td>{{ formatCapitalProperty(d.capitalProperty) }}</td>
+                </tr>
+                <tr>
+                    <th>取现标识: </th>
+                    <td>{{ d.enchashmentType ? '是' : '否' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">资金管理人信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>资金管理人姓名: </th>
+                    <td>{{ d.fundManager || '-' }}</td>
+                    <th>资金管理人身份证种类: </th>
+                    <td>{{ formatIdCardType(d.fundManagerIdcardType) }}</td>
+                </tr>
+                <tr>
+                    <th>资金管理人身份证编号: </th>
+                    <td>{{ d.fundManagerIdcardNo || '-' }}</td>
+                    <th>联系电话: </th>
+                    <td>{{ d.fundManagerTelephone || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">内设部门信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>内设部门名称: </th>
+                    <td>{{ d.insideDeptName || '-' }}</td>
+                    <th>负责人姓名: </th>
+                    <td>{{ d.insideLeadName || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>负责人身份证种类: </th>
+                    <td>{{ formatIdCardType(d.insideLeadIdcardType) || '-' }}</td>
+                    <th>负责人身份证编号: </th>
+                    <td>{{ d.insideLeadIdcardNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>联系电话: </th>
+                    <td>{{ d.insideTelephone || '-' }}</td>
+                    <th>邮政编码: </th>
+                    <td>{{ d.insideZipcode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>地址: </th>
+                    <td colspan="3">{{ d.insideAddress || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="feiyusuanTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户日期: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>开户证明文件种类1: </th>
+                    <td>{{ formatFileType(d.acctFileType) }}</td>
+                    <th>开户证明文件编号1: </th>
+                    <td>{{ d.acctFileNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户构成方式: </th>
+                    <td>{{ formatAccountNameFrom(d.accountNameFrom) }}</td>
+                    <th>资金性质: </th>
+                    <td>{{ formatCapitalProperty(d.capitalProperty) }}</td>
+                </tr>
+                <tr>
+                    <th>备注: </th>
+                    <td colspan="3">{{ d.remark || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">资金管理人信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>资金管理人姓名: </th>
+                    <td>{{ d.fundManager || '-' }}</td>
+                    <th>资金管理人身份证种类: </th>
+                    <td>{{ formatIdCardType(d.fundManagerIdcardType) }}</td>
+                </tr>
+                <tr>
+                    <th>资金管理人身份证编号: </th>
+                    <td>{{ d.fundManagerIdcardNo || '-' }}</td>
+                    <th>联系电话: </th>
+                    <td>{{ d.fundManagerTelephone || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">内设部门信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>内设部门名称: </th>
+                    <td>{{ d.insideDeptName || '-' }}</td>
+                    <th>负责人姓名: </th>
+                    <td>{{ d.insideLeadName || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>负责人身份证种类: </th>
+                    <td>{{ formatIdCardType(d.insideLeadIdcardType) || '-' }}</td>
+                    <th>负责人身份证编号: </th>
+                    <td>{{ d.insideLeadIdcardNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>联系电话: </th>
+                    <td>{{ d.insideTelephone || '-' }}</td>
+                    <th>邮政编码: </th>
+                    <td>{{ d.insideZipcode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>地址: </th>
+                    <td colspan="3">{{ d.insideAddress || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="linshiTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户时间: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th>有效期: </th>
+                    <td>{{ d.effectiveDate || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="feilinshiTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户时间: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th>申请开户原因: </th>
+                    <td>{{ formatAcctCreateReason(d.acctCreateReason) }}</td>
+                </tr>
+                <tr>
+                    <th>开户证明文件种类1: </th>
+                    <td>{{ formatFileType(d.acctFileType) }}</td>
+                    <th>开户证明文件编号1: </th>
+                    <td>{{ d.acctFileNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>有效期: </th>
+                    <td>{{ d.effectiveDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">建筑施工及安装单位信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>项目部名称: </th>
+                    <td>{{ d.nontmpProjectName || '-' }}</td>
+                    <th>负责人姓名: </th>
+                    <td>{{ d.nontmpLegalName || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>身份证种类: </th>
+                    <td>{{ formatIdCardType(d.nontmpLegalIdcardType) }}</td>
+                    <th>身份证编号: </th>
+                    <td>{{ d.nontmpLegalIdcardNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>联系电话: </th>
+                    <td>{{ d.nontmpTelephone || '-' }}</td>
+                    <th>邮政编码: </th>
+                    <td>{{ d.nontmpZipcode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>地址: </th>
+                    <td colspan="3">{{ d.nontmpAddress || '-' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="teshuTpl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">账户信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>账号: </th>
+                    <td>{{ d.acctNo || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>账户名称: </th>
+                    <td>{{ d.acctName || '-' }}</td>
+                    <th>账户性质: </th>
+                    <td>{{ formatAcctType(d.acctType) }}</td>
+                </tr>
+                <tr>
+                    <th>开户银行名称: </th>
+                    <td>{{ d.bankName || '-' }}</td>
+                    <th>开户银行代码: </th>
+                    <td>{{ d.bankCode || '-' }}</td>
+                </tr>
+                <tr>
+                    <th>开户日期: </th>
+                    <td>{{ d.acctCreateDate || '-' }}</td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../plugins/jquery-magnify/js/jquery.magnify.js"></script>
+<script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/accountImageDetail.js"></script>
+<script type="text/javascript" src="../plugins/jPlayer/jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/videoInfo.js"></script>
+</body>
+
+</html>

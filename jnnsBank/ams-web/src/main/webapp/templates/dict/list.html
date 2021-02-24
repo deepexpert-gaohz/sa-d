@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>字典管理</title>
+    <link rel="stylesheet" href="../css/ag.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link href="../plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../plugins/select2/css/select2.css" media="all">
+    <link href="../plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <style>
+        .layui-input-block{
+            margin-left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="dictionaryToolbar" class="layui-btn-group">
+                <button class="layui-btn layui-btn-small dn" id="btn_add" data-code="apply:dict_Add">
+                    <i class="layui-icon">&#xe654;</i>
+                    新建
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_edit" data-code="apply:dict_Edit">
+                    <i class="layui-icon">&#xe642;</i>
+                    修改
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_del" data-code="apply:dict_Del">
+                    <i class="layui-icon">&#xe640;</i>
+                    删除
+                </button>
+            </div>
+            <table id="dictionaryTable">
+
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <div id="optionToolbar" class="layui-btn-group">
+                <button class="layui-btn layui-btn-small dn" id="btn_option_add" data-code="apply:dictManager_Add">
+                    <i class="layui-icon">&#xe654;</i>
+                    添加
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_option_edit" data-code="apply:dictManager_Edit">
+                    <i class="layui-icon">&#xe642;</i>
+                    修改
+                </button>
+                <button class="layui-btn layui-btn-small dn" id="btn_option_del" data-code="apply:dictManager_Del">
+                    <i class="layui-icon">&#xe640;</i>
+                    移除
+                </button>
+            </div>
+            <table id="optionTable">
+
+            </table>
+        </div>
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="../plugins/respond.min.js"></script>
+    <script src="../plugins/excanvas.min.js"></script>
+    <script src="../plugins/ie8.fix.min.js"></script>
+    <script src="../plugins/json2.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../layui.js"></script>
+    <script type="text/javascript" src="../ag/common/util.js"></script>
+    <script type="text/javascript" src="../ag/dict/dict.js"></script>
+    <script type="text/javascript" src="../ag/dict/option.js"></script>
+</body>
+
+</html>

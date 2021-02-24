@@ -1,0 +1,270 @@
+spring:
+  application:
+    name: ams-web
+  profiles:
+    active: apply, kyc, db, company, image, compare, networkVerify, cust, compareFields, pdf ,wlmq
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: com.ideatech.common.jpa.IdeaNamingStrategy
+  transaction:
+    default-timeout: 3600
+  #spring-session配置
+  session:
+    store-type: jdbc
+    jdbc:
+      initializer:
+        enabled: false
+jasypt:
+  encryptor:
+    password: ideatech
+#session超时时间，与web.xml中的session-config节点应保持一致
+#此处单位为秒，与web.xml中单位为分钟
+server:
+  session:
+    timeout: 600
+
+ams:
+  company:
+    daibulu:
+      #pbc 只上报人行账管(基本户信用代码字段根据下面eccs属性控制true：上报显示机构信用上报字段；false：不上报 即隐藏机构代码证字段)  auto-保持原有界面
+      syncModel: auto
+      #客户信息是否单独管理
+    customer:
+      alone: false
+    pbc:
+      #人行上报挡板是否开启
+      mock:
+        login: true
+        sync: true
+        #上报是否包含信用代码系统
+      eccs: true
+    #流程是否是审核
+    check: true
+    #数据定期导入模式，increase-增量更新（重庆） tp1还是t+1自动报送
+    data-import-type: increase
+    #是否有存量数据导入（即变更久悬销户基于存量数据操作）
+    datenbestand: true
+    #核心导入分隔符，编码，文件夹
+    import:
+      file:
+        split: '|!'
+        chartset: GBK
+    #是否开启数据查询计费日志记录
+    writeMoney: false
+  #核心导入文件夹
+  nmnx:
+    core:
+      file:
+        path: /home/weblogic/idea/apprott/core
+  schedule:
+    #是否是主机，所有定时任务都需要加上此参数，用于主备机选择关闭所有定时任务
+    host: true
+    pushCore:
+      use: false
+      timing: 0 0/30 * * * ?
+      file: /home/weblogic/idea/apprott/pushCoreFilePath
+    pushCancelHeZhunCore:
+      use: false
+      timing: 0 0/1 * * * ?
+      file: /home/weblogic/idea/apprott/pushCancelHeZhunCoreFilePath
+    autoSync:
+      #自动上报是否打开，此开关有2层系统配置中也有,必须同时为true才生效
+      use: true
+      timing: 0 0/30 * * * ?
+    autoStatistics:
+      #年检结果自动统计
+      use: false
+      timing: 0 15 10 * * ?
+    tpo:
+      #T+1定时任务
+      use: false
+      timing: 0 0/1 * * * ?
+    batch-suspend:
+      #批量久悬定时任务
+      use: false
+      timing: 0 0 10 * * ?
+    fresh-company:
+      #新注册企业定时任务
+      use: false
+      timing: 0 0 6 * * ?
+    clear-company:
+      #新注册企业自动清除任务
+      use: false
+      timing: 0 0 12 * * ?
+      days: 90
+  scheduler:
+    updateEccsPassword: 0 0 18 1 * ?
+    breakAppointTiming: 0 0 0 * * ?
+    check-ams-password: 0 0 18 2 * ?
+  export-excel:
+    folder: /home/weblogic/idea/apprott/pbcFilePath
+  pbcCollection:
+    executor:
+      num: 20
+  saicCollection:
+    executor:
+      num: 5
+    retryLimit: 3
+  illegalImport:
+    executor:
+      num: 10
+  customerTuneImport:
+    executor:
+      num: 10
+  annual:
+    #    submit: false (机构管理页面按照机构配置年检是否提交)
+    business-license-expired: false
+    saicLocal: true
+    export-use: false
+    export-timing: 0 0 0 * * ?
+    export-folder: /home/weblogic/idea/annual/export
+    saic-file-location: /home/weblogic/idea/annual/saic
+    saic-file-location-finish: /home/weblogic/idea/annual/saicFinish
+    noticeMessage: 年检结果短信通知模版{acctNo}{depositorName}{result}{pbcSubmitStatus}{match}{saicStatus}{dataProcessStatus}{dataProcessPerson}
+    exportNum: 50000 #结果导出excel，多少条数据分页控制。必须小于65536
+  compare:
+    compare-executor-num: 500
+    downPath: /home/weblogic/idea/downPath
+    statistics-executor-num: 10
+  preOpenAccount:
+    message: 短信模版{applyid}{branch}{applytime}{status}
+    failMessage: 短信模版{applyid}{branch}{applytime}{status}
+    clerkMessage: 短信模版{applyid}{branch}{applytime}{status}
+
+  accounts:
+    upload:
+      path: /home/weblogic/idea/accountsImages
+      zipPath: /home/weblogic/idea/accountsImagesZip
+
+  announcement:
+    upload:
+      path: /home/weblogic/idea/announcementAttachment
+
+  batch:
+    # 是否启用只比对大于占比25%的受益人
+    beneficiaryNameCompare: false
+
+
+  #到期超期短信提醒
+  notice:
+    #（临时户、经办人证件）到期超期是否过滤销户久悬
+    noticeFlag: true
+    # 是否启用定时任务
+    use: false
+    # 发送时间（频率）
+    timing: 0 0 12 * * ?
+    #0 0/1 * * * ?
+    # 短信模版
+    noticeMessage: 短信模版{legalName}
+    #通知提醒到期超期数据更新
+    overDue:
+      # 是否启用定时任务
+      use: true
+      # 发送时间（频率）默认每天0点更新
+      timing: 0 0 0 * * ?
+
+  #上报失败短信提醒
+  pbcFault:
+    # 是否启用定时任务
+    use: false
+    # 发送时间（频率）
+    timing: 0 0 9,17 * * ?
+
+  #客户异动提醒
+  customer:
+    # 短信模版
+    noticeMessage: 短信模版{depositorName}{legalName}
+
+  #  是否打印人行返回的数据日志，默认为false
+  pbcDataLog: false
+
+  #用户操作痕迹
+  userTrace:
+    #是否启用
+    use: false
+
+  #客户综合尽调接口模式是否记录查询
+  customerManagerSearch:
+    #运营商校验
+    verifyCarrierOperator:
+      use: false
+    #公司基本信息查询
+    saicByName:
+      use: false
+
+  web:
+    passby:
+      - /**/*.css
+      - /ui/img/**
+      - /lib/**
+      - /**/*.js
+      - /**/*.ttf
+      - /**/*.woff2
+      - /api/**
+      - /*/api/**
+      - /**/*.html
+      - /health
+      - /config/download
+      - /config/getVersionNumber
+      - /config/getIdentifyCodeEnabled
+      - /user/change
+      - /sso/login
+      - /imageCode
+      - /login/fail
+      - /risk/**
+    login: /ui/login.html
+    logout: /ui/login.html
+    ssoFail: /ui/CASError.html
+    index: /ui/index.html
+    defaultPassword: ENC(y6A8S6GjgvyRhFy019H50w==)
+    #Aa123456进行ENC加密
+    defaultSM4Password: ENC(4fWbDNsjxm+DCOb+k9AhHecsGGom8wYC)
+    defaultRoleCode: 0
+    eccsPasswordPrefix: Aa
+    custPassby:
+    maximumSessions: -1
+    maxSessionsPreventsLogin: false
+flyway:
+  baseline-on-migrate: true
+  locations: classpath:db/migration
+validate:
+  create-customer:
+    type: 0
+    pbcTest: false
+    #    强行开户：若为true，则无论工商、人行、核心数据验证结果是否一致，都能进行继续开户，默认为false
+    forceOpenAccount: false
+systemlog:
+  file:
+    location: /var/log/ams-web
+printfilepath:
+  file:
+    location: /var/log/ams-web
+management:
+  security:
+    enabled: false
+change:
+  file: /home/weblogic/idea/test/20180712.txt
+version:
+  number:
+#sm4加密方式是否启用(启用时需新库重新初始化生成表)
+sms4Encrypt:
+  #是否启用
+  enabled: false
+  #密钥
+  key: 6850d893ef4265ea2bbcabda9c072f00
+#账管登录密码复杂校验规则
+amsLoginPwdRule:
+  #是否启用
+  enabled: false
+#系统登录时候验证码校验
+identifyCode:
+  #是否启用
+  enabled: false
+#用户密码错误后锁定（输入错误4次后进行锁定）
+amsLoginLocked:
+  #是否启用
+  enabled: false
+  #锁定时间（单位：分钟）
+  lockedTime: 30
+

@@ -1,0 +1,108 @@
+ams:
+  jnbc:
+    duiZhang:
+      #编码集
+      charset: utf-8
+      #分隔符
+      symbol: '\t<f>\t'
+      #从jnbc对账数据的文件格式
+      fileFormat: .txt
+      #取回jnbc对账数据文件的本地存放地址
+      filePath: /home/weblogic/RCS
+      #访问jnbc对账数据的文件名1
+      fileName1: RCS_AC_BALANCE_CHECK_OUT_
+      #访问jnbc对账数据的文件名2
+      fileName2: RCS_AC_PRINT_MAIN_
+      #访问jnbc对账数据的文件名3
+      fileName3: RCS_AC_ACCOUNT_NETBANK_HISTORY_
+  szsm:
+    ods:
+      #江南农商获取数仓推送的账户，客户T+1文件。
+      #设置数据库schema
+      schema: ams4
+      #获取 T+1文件的方式（FTP,SFTP,BENDI）
+      way: SFTP
+      #总行机构ID
+      orgId: root
+      #总行机构名称
+      orgName: 组织机构根目录
+      #定时任务开关
+      open: false
+      #定时任务时间
+      time: 0 0 8 * * ?
+      #编码集
+      charset: utf-8
+      #分隔符
+      symbol: ""
+      #访问SZSModsFTP的账户
+      username: root
+      #访问SZSModsFTP的密码
+      passwold: Sr123456
+      #访问SZSModsFTP的ip
+      url: 39.105.59.172
+      #访问SZSModsFTP的端口
+      port: 22
+      #访问SZSModsFTP的地址
+      ftpPath: /home/weblogic/RCS
+      #取回SZSModsFTP文件的本地存放地址
+      filePath: /home/weblogic/RCS
+      #取回SZSModsFTP文件处理后存放地址
+      fileFinshPath: home/weblogic/RCS2
+      #访问SZSModsFTP的取回文件名3
+      fileName3: UDM_INTF_AMS_CLIENT_CORP
+      #访问SZSModsFTP的取回文件名5
+      fileName5: TFS_CUST_CPRO_ACCT_INFO
+      #从ODS获取得文件得格式
+      fileFormat: .txt
+  risk:
+    schedule:
+      #同步账管平台存量风险数据
+      syncRiskData:
+        #同步开关
+        use: true
+        #同步时间
+        timing: 0 0 12 * * ?
+  #客户异动提醒
+  customer:
+    # 短信模版
+    noticeMessage: 短信模版开头
+    noticeMessageEnd: 短信模版结尾|
+    #短信银行标识
+    HH: XXXXX|
+    #公司ID
+    GSID: 1001|
+    #公司密码
+    MM: 123456|
+    #扩展端口号
+    KZDKH: 1261|
+    #扩展端口ID
+    KZDKHID: 1261|
+    #项目简称
+    simpleProName: ams
+    #异动短信通知tcp ip
+    transactionUrl: 194.1.35.9
+    #端口
+    transactionPort: 9195
+    #定时任务开关
+    transaction:
+      queryUrlDate:
+        #是否开启工商数据同步
+        use: false
+        #同步周期
+        timing: 0 0/30 * * * ?
+      checkTransaction:
+        #是否开启客户异动校验
+        use: false
+        #同步周期
+        timing: 0 0/35 * * * ?
+  esb:
+    url: http://10.1.14.234:30063/AMS
+  business:
+    url: ${saic.url.baseUrl}/api/saic-basic-info
+  companyException:
+    url: ${saic.url.baseUrl}/api/company-exception-list
+  companyBlack:
+    url: ${saic.url.baseUrl}/api/company-black-list
+
+
+

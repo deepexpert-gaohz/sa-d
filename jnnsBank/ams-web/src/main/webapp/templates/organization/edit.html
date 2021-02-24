@@ -1,0 +1,101 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">机构名称</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入机构名称"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">机构简称</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="shortName" autocomplete="off" placeholder="请输入机构简称"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">机构代码</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="code" lay-verify="required" autocomplete="off" placeholder="请输入机构代码"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">人行机构代码</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="pbcCode" lay-verify="required|pbccode" placeholder="请输入人行机构代码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">金融机构编码</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="institutionCode" placeholder="请输入金融机构编码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人手机号码</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="mobile" lay-verify="notRequiredPhone" placeholder="请输入手机号码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">机构类型</label>
+
+            <div class="layui-input-block">
+                <select id="orgType" name="orgType" lay-verify="required" lay-search="" class="renderSelect">
+                    <option value="DEFAULT">请选择机构类型</option>
+                    <option value="BANK">银行类</option>
+                    <option value="AGENCY">中介机构类</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">网点电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="telephone" lay-verify="telephone" placeholder="请输入网点电话"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">网点状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isOpen" value="1" title="开放">
+                <input type="radio" name="isOpen" value="0" title="关闭">
+            </div>
+        </div>
+
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">网点类型</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isOperatingDepartment" value="1" title="业务网点">
+                <input type="radio" name="isOperatingDepartment" value="0" title="行政网点">
+            </div>
+        </div>
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">选择地区</label>
+            <div id="addressDist"></div>
+        </div>
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">详细地址</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="address" placeholder="请输入详细地址" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <input type="hidden" name="parentId" id="parentId"/>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

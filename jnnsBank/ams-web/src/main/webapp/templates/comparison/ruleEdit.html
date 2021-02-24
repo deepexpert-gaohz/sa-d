@@ -1,0 +1,47 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="" id = "ruleEdit">
+		<div class="tabbable-line boxless tabbable-reversed">
+			<ul class="nav nav-tabs" id="kycTabs">
+				<li class="active">
+					<a href="#tab_01" data-toggle="tab"> 数据源配置</a>
+				</li>
+				<li>
+					<a href="#tab_02" data-toggle="tab"> 规则配置</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab_01">
+					<div class="layui-form-item">
+						<label class="layui-form-label">规则名称</label>
+						<div class="layui-input-block">
+						<input type="hidden" id="id" name="id" class="layui-input">
+						<input type="text" id="name" name="name" class="layui-input" lay-verify="required">
+						</div>
+					</div>
+					<div class="layui-form-item" pane="">
+						<label class="layui-form-label">黑名单校验</label>
+						<div class="layui-input-block">
+							<input type="checkbox" id="bussBlackList" name="bussBlackList" lay-skin="primary" title="企业黑名单">
+							<input type="checkbox" id="personBlackList" name="personBlackList" lay-skin="primary" title="法人黑名单">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">比对数据源选择</label>
+						<div class="layui-input-block" id="compareData">
+						</div>
+					</div>
+
+					<table class="layui-table" id="dataList">
+						<thead><tr><th>比对数源</th><th>先决数源</th></tr></thead>
+						<tbody id="tbody"></tbody>
+					</table>		
+				</div>
+				<div class="tab-pane" id="tab_02">
+					<table class="layui-table" id="fieldList">
+					</table>
+				</div>
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

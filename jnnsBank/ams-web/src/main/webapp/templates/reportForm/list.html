@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table-fixed-columns.css"/>
+	<link rel="stylesheet" href="../css/layui.css" media="all"/>
+	<link rel="stylesheet" href="../css/global.css" media="all">
+	<link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/common.css" media="all">
+	<link rel="stylesheet" href="../css/dashboard.css" media="all">
+	<link rel="stylesheet" href="../css/webuploader/webuploader.css"/>
+</head>
+<body>
+<div class="admin-main">
+	<form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+		<div class="layui-form-item" style="margin-bottom:0px;">
+			<label class="layui-form-label">日期</label>
+			<div class="layui-input-inline">
+				<input type="text" autocomplete="off" class="layui-input date-picker" id="currentDate" name="currentDate" placeholder="请选择日期"/>
+			</div>
+
+			<button type="button" id="btn_query"  class="layui-btn layui-btn">
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</button>
+		</div>
+
+	</form>
+
+	<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+
+	<div id="toolbar" class="layui-btn-group">
+		<button class="layui-btn layui-btn-small dn" id="exportBtn" data-code="apply:menu_Add">
+			<i class="layui-icon">&#xe601;</i>
+			导出
+		</button>
+	</div>
+
+	<table id="reportTable" border="1" style="width:100%" data-height="400">
+	</table>
+</div>
+<div>
+	<span>报送说明:</span>
+<br>
+<!--	<span>1.银行应该按当月本统计表报送至所在地人民银行分支机构支付结算部门。数据报送按照属地原则执行，
+		由银行当地管辖行向所属人民银行分支机构报送，不纳入其上级管辖行重复报送。
+	</span>
+	<br>
+	<span>
+		2.人民银行上海总部金融服务一部，各分行、营业管理部、省会(首府)城市中心支行、深圳市中心支行支付结算处应按月
+		汇总合并辖区内银行统计表，并发送至总行杨青业务网邮箱。
+	</span>-->
+</div>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table-fixed-columns.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/report/AqmatReport.js"></script>
+<script type="text/javascript" src="../ag/report/base64.js"></script>
+<script type="text/javascript" src="../ag/report/tableExport.js"></script>
+
+<script>
+	// $(document).ready(function(){
+	// 	$("#exportBtn").click(function(){
+	// 		//导出
+	// 		$("#reportTable").tableExport({type:"excel",escape:"false",fileName:'企业银行账户数量监测分析表'+new Date().getTime()});
+	// 	});
+	// });
+
+	var host = getHost();
+	//alert(host);
+</script>
+
+</body>
+
+</html>

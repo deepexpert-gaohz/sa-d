@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="annualFields" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_comparefields </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_comparefields">
+            <column name="yd_lock_filed" valueBoolean="false"/>
+        </update>
+    </changeSet>
+</databaseChangeLog>

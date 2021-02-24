@@ -1,0 +1,32 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">当前表名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="modelTable" id="modelTable" lay-verify="required" autocomplete="off"  class="layui-input" readonly="readonly">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">表中文名</label>
+            <div class="layui-input-block">
+                <input type="text" name="modelTableCn" id="modelTableCn" lay-verify="required" autocomplete="off"  class="layui-input"readonly="readonly">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">依赖表名称</label>
+            <div class="layui-input-block">
+                <select id="relyTable" name="relyTable"  lay-verify="required" lay-filter="relyTableName">
+                    <option value="">请选择依赖表名称</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">依赖中文名</label>
+            <div class="layui-input-block">
+                <input type="text" name="relyTableCn" id="relyTableCn" lay-verify="required" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

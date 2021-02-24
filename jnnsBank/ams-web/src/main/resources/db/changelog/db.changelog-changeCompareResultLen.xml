@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="houxianghua" id="schema-mysql-changeCompareResultLen" dbms="mysql">
+        <modifyDataType columnName="yd_compare_result"
+                        newDataType="longtext"
+                        tableName="yd_annual_result"/>
+    </changeSet>
+
+    <changeSet id="schema-oracle-changeCompareResultLen" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <dbms type="oracle"/>
+                <tableExists tableName="YD_ANNUAL_RESULT"/>
+                <sqlCheck expectedResult="VARCHAR2">SELECT DATA_TYPE FROM USER_TAB_COLUMNS WHERE
+                    TABLE_NAME='YD_ANNUAL_RESULT' AND COLUMN_NAME = 'YD_COMPARE_RESULT'
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="oracle"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-oracle-changeCompareResultLen.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>

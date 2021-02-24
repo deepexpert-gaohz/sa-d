@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>业务影像补录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../plugins/jquery-magnify/css/jquery.magnify.css">
+    <link rel="stylesheet" href="../css/imageInfo.css">
+    <link rel="stylesheet" href="../css/videoInfo.css" />
+    <link rel="stylesheet" href="../plugins/jPlayer/skin/blue.monday/css/jplayer.blue.monday.min.css">
+</head>
+<body class="page-content">
+<h1 class="page-title"><span id="name"></span></h1>
+<div class="bill-info" id="billInfo"></div>
+<form class="form-horizontal layui-form" id="editForm">
+    <input type="hidden" id="acctTypeVal">
+    <input type="hidden" id="legalName">
+    <input type="hidden" id="regNo">
+    <input type="hidden" id="depositorName">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">业务信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">账号</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctNo" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4" >账户性质</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctType" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">开户银行名称</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="bankName" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">开户银行代码</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="bankCode" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4" >开户证明文件种类1</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctFileType" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">开户证明文件编号1</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctFileNo" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4" >开户证明文件种类2</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctFileType2" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">开户证明文件编号2</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctFileNo2" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">业务开户日期</label>
+                        <div class="col-xs-9 col-md-8">
+                            <input type="text" id="acctCreateDate" class="layui-input" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-institution font-dark"></i>
+                <span class="caption-subject uppercase">业务影像信息</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided">
+                    <div class="btn green btn-outline" id="btnSendImage" ><span>传送影像平台</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="image-list" id="imageList"></div>
+        </div>
+    </div>
+    <div class="portlet light bordered" id="videoInfo">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-institution font-dark"></i>
+                <span class="caption-subject uppercase">双录视频信息</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group btn-group-devided">
+                    <div class="btn green btn-outline" id="btnVideoRecord" ><span>发起双录</span></div>
+                    <div class="btn green btn-outline" id="btnVideoUpload" ><span>本地上传</span></div>
+                    <div class="btn green btn-outline" id="btnVideoSend" ><span>上传影像平台</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body" id="videoDiv">
+            <div class="video-list" id="video_list">
+
+            </div>
+        </div>
+    </div>
+    <div class="row" id="syncDiv" style="display: none">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="syncSystem">
+                <div class="row" >
+                    <div style="margin-left: 15px;margin-top: 30px" class="btn green btn-outline"  id="btn_syncImage"><span>影像上报</span></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../plugins/jquery-magnify/js/jquery.magnify.js"></script>
+<script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/billImageEdit.js"></script>
+<script type="text/javascript" src="../plugins/jPlayer/jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/videoInfo.js"></script>
+
+</body>
+
+</html>

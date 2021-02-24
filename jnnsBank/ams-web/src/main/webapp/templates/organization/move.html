@@ -1,0 +1,70 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">被迁机构</label>
+            <div class="layui-input-block">
+                <select id="fromOrgId" name="fromOrgId" lay-verify="required" disabled>
+                    <option value="">请选择所属机构</option>
+                </select>
+            </div>
+        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">迁移种类</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<select id="moveType" name="moveType" lay-verify="required" value="0">-->
+                    <!--<option value="0">机构迁移</option>-->
+                    <!--<option value="1">数据迁移</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="layui-form-item" id="toMoveData">
+            <label class="layui-form-label">迁移类型</label>
+            <div class="layui-input-block">
+                <select id="moveData" name="moveData" lay-verify="required" value="0">
+                    <option value="0">数据全部迁移</option>
+                    <option value="1">数据部分迁移</option>
+                    <option value="2">机构信息迁移</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" id="toMoveTemplate" style="display:none;">
+            <label class="layui-form-label">迁移数据</label>
+            <div class="layui-input-block">
+                <select id="moveTemplate" name="moveTemplate" lay-verify="required" value="0" disabled>
+                    <option value="0">所有数据</option>
+                    <option value="1">用户迁移模板</option>
+                    <option value="2">客户迁移模板</option>
+                    <option value="3">账户迁移模板</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" id="excelTemplate" style="display:none;">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-block">
+                <a id="excelDownload" href="#">模版下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="excelUpload" href="#">迁移上传</a>
+            </div>
+        </div>
+        <div class="layui-form-item" id="toOrg">
+            <label class="layui-form-label">迁移机构</label>
+            <div class="layui-input-block">
+                <select id="toOrgId" name="toOrgId" lay-verify="required" lay-search="">
+                    <option value="">请选择所属机构</option>
+                </select>
+            </div>
+        </div>
+        <!--<div class="layui-form-item" id="dataAll">-->
+            <!--<label class="layui-form-label">含下属机构数据</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<select id="containOrgan" name="containOrgan" lay-verify="required" disabled>-->
+                    <!--<option value="1">是</option>-->
+                    <!--<option value="0">否</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <input type="hidden" name="parentId" id="parentId"/>
+        <button lay-filter="move" lay-submit style="display: none;"></button>
+    </form>
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+</div>

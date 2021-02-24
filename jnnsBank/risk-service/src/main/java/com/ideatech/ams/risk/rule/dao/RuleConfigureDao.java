@@ -1,0 +1,24 @@
+package com.ideatech.ams.risk.rule.dao;
+
+import com.ideatech.ams.risk.rule.entity.RuleConfigure;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+public interface RuleConfigureDao extends JpaRepository<RuleConfigure, Long>, JpaSpecificationExecutor<RuleConfigure> {
+
+    RuleConfigure findRuleConfigureById(Long id);
+
+    RuleConfigure findByRuleId(String RuleId);
+
+    List<RuleConfigure> findByCorporateBank(String code);
+
+    @Transactional
+    @Query(value = "delete from yd_risk_rule_configuration where yd_corporate_bank=?1", nativeQuery = true)
+    @Modifying
+    void deleteByCorporateBank(String code);
+}

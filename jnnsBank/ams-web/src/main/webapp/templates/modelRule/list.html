@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link href="../plugins/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+<body>
+<div class="admin-main">
+<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+    <div class="layui-form-item" style="margin-bottom:0px;">
+
+
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <table id="modelTable">
+
+        </table>
+    </div>
+
+    <div class="col-sm-6">
+        <div  id="elementToolbar" class="layui-btn-group">
+            <button class="layui-btn layui-btn-small dn" id="btn_element_add" data-code="apply:function_Add">
+                <i class="layui-icon">&#xe654;</i>
+                添加
+            </button>
+            <button class="layui-btn layui-btn-small dn" id="btn_element_edit" data-code="apply:function_Edit">
+                <i class="layui-icon">&#xe642;</i>
+                修改
+            </button>
+            <button class="layui-btn layui-btn-small dn" id="btn_element_del" data-code="apply:function_Del">
+                <i class="layui-icon">&#xe640;</i>
+                移除
+            </button>
+            <!--<button class="layui-btn layui-btn-small dn" id="btn_init" data-code="apply:model_init">-->
+                <!--<i class="layui-icon">&#xe641;</i>-->
+                <!--规则初始化-->
+            <!--</button>-->
+        </div>
+        <table id="elementTable">
+
+        </table>
+    </div>
+</div>
+</div>
+
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+<![endif]-->
+
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../plugins/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+<script src="../plugins/jquery-treegrid/js/jquery.treegrid.bootstrap3.js"></script>
+<script src="../plugins/jquery-treegrid/extension/jquery.treegrid.extension.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/modelRule/rule.js"></script>
+<script type="text/javascript" src="../ag/modelRule/element.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    druid:
+#      url: jdbc:mariadb://127.0.0.1:3306/ams4?useUnicode=true&characterEncoding=UTF8
+#      username: root
+#      password: 4616
+      url: jdbc:mysql://127.0.0.1:3308/ams4.0-0622-03?useUnicode=true&characterEncoding=UTF8
+      username: root
+      password: 
+      driver-class-name: org.mariadb.jdbc.Driver
+      validation-query: select 1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  transaction:
+    default-timeout: 3600

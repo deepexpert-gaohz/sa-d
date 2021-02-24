@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>开户信息</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../plugins/jquery-magnify/css/jquery.magnify.css">
+    <link rel="stylesheet" href="../css/imageInfo.css" />
+    <link rel="stylesheet" href="../css/videoInfo.css" />
+    <link rel="stylesheet" href="../css/common.css" media="all"/>
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css" media="all"/>
+    <link rel="stylesheet" href="../css/image/image.css" />
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+    <link rel="stylesheet" href="../plugins/jPlayer/skin/blue.monday/css/jplayer.blue.monday.min.css">
+    
+    <style>
+        .cus-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 160px;
+            font-weight: 400;
+            text-align: right;
+            /*background-color: #d2d2d2;*/
+        }
+        .cus-3-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 220px;
+            font-weight: 400;
+            text-align: left;
+        }
+        .control-label {
+            text-align: right;
+        }
+        .image-set img{
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        .image-add span {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 180px;
+            background-color: #ccc;
+        }
+        .image-add i{
+            font-size: 50px;
+            color: #fff;
+        }
+        .cus-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 150px;
+            font-weight: 400;
+            text-align: left;
+            /*background-color: #d2d2d2;*/
+        }
+        .cus-3-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 220px;
+            font-weight: 400;
+            text-align: left;
+        }
+        .video-image {
+            position: relative;
+            width: 100px;
+            height: 120px;
+            background-color: #ccc;
+        }
+        .video-image img {
+            width: 100px;
+            height: 120px;
+        }
+        .video-image .fa-download {
+            position:absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .video-image .fa-play-circle-o {
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin-top: -30px;
+            margin-left: -30px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 50px;
+        }
+        .layui-checkbox-disbaled span {
+            background-color: #3598dc!important;
+        }
+        .magnify-modal {
+            box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+        }
+        .magnify-header .magnify-toolbar {
+            width: 40px;
+            background-color: rgba(0, 0, 0, .5);
+        }
+        .magnify-stage {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-width: 0;
+        }
+        .magnify-footer .magnify-toolbar {
+            display: inline-block;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .5);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .magnify-stage img {
+            width: 0;
+        }
+        .magnify-loading {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body class="page-content">
+<h1 class="page-title"><span id="name">企业名称</span>
+</h1>
+<form class="form-horizontal layui-form" id="formId">
+
+    <div id="headDiv"></div>
+
+    <div class="row" >
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-vcard-o font-dark"></i>
+                        <span class="caption-subject uppercase">账户信息</span>
+                        <span class="caption-subject uppercase" style="color: red; display: none;" id="qxkhxkz">（取消开户许可证核发）</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided">
+                            <input type="hidden" name="preOpenAcctId" id="preOpenAcctId">
+                            <input type="hidden" name="openAccountLogId" id="openAccountLogId">
+
+                            <input type="hidden" name="selectPwd" id="selectPwd">
+                            <!--<input type="hidden" name="openKey" id="openKey">-->
+                            <!--<input type="hidden" name="denyReason" id="denyReason">-->
+                            <!--<div class="btn green btn-outline dn" lay-filter="print"-->
+                            <!--lay-submit id="printBtn"><span>打印</span></div>-->
+                            <!--<div class="btn green btn-outline" lay-filter="keep" id="keepBtn"-->
+                                 <!--lay-submit><span>保存</span></div>-->
+                            <div class="btn green btn-outline" lay-filter="save" id="saveBtn" ><span>提交</span></div>
+                            <div class="btn green btn-outline" lay-filter="reject" id="rejectBtn" style="display: none"><span>驳回</span></div>
+                            <!--<div class="btn green btn-outline" lay-filter="delete" id="deleteBtn" style="display: none" data-code="account:notActive_delete"><span>删除</span></div>-->
+                            <div class="btn green btn-outline" lay-filter="cancel"  id="cancel" ><span>返回</span></div>
+                            <div class="btn green btn-outline" lay-filter="printBtn" id="printBtn" style="display: none" data-code="apply:account_jiben_print"><span>打印</span></div>
+                        </div>
+                    </div>
+                </div>
+                    <!--<div class="portlet-body" id="accountDiv">-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">账号<span style="color: red; padding-left: 5px">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="layui-input" autocomplete="off" placeholder="" name="acctNo" id="acctNo" maxlength="32" required lay-verify="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">账户性质</label>
+                            <div class="col-md-8">
+                                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType" disabled>
+                                    <option value="">请选择</option>
+                                    <option value="jiben" selected>基本存款账户</option>
+                                    <option value="yiban">一般存款账户</option>
+                                    <option value="yusuan">预算单位专用存款账户</option>
+                                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                                    <option value="teshu">特殊单位专用存款账户</option>
+                                    <option value="linshi">临时机构临时存款账户</option>
+                                    <option value="feilinshi">非临时机构临时存款账户</option>
+                                    <option value="yanzi">验资户临时存款账户</option>
+                                    <option value="zengzi">增资户临时存款账户</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">开户银行名称<span id="bankNameSpan" style="color: red; padding-left: 5px">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="layui-input" placeholder="" name="bankName" id="bankName" readonly required lay-verify="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">开户银行代码<span id="bankCodeSpan" style="color: red; padding-left: 5px">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="layui-input" placeholder="" name="bankCode" id="bankCode" readonly required lay-verify="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">开户日期<span id="acctCreateDateSpan" style="color: red; padding-left: 5px">*</span></label>
+                            <div class="col-md-4">
+                                <input type="text" name="acctCreateDate" id="acctCreateDate" placeholder="请选择日期" autocomplete="off" class="layui-input date-picker" required lay-verify="required" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="oldAccountKeyDiv">
+                            <label class="control-label col-md-4">原基本存款账户编号</label>
+                            <div class="col-md-4">
+                                <input type="text" name="oldAccountKey" id="oldAccountKey" class="layui-input" placeholder="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">币种类型</label>
+                            <div class="col-md-8">
+                                <select disabled name="currencyType" class="layui-input" id="currencyType" lay-filter="currencyType">
+                                    <option value="">请选择</option>
+                                    <option value="0">多币种</option>
+                                    <option value="1" selected>单币种</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden" id="currency1_div">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">币种</label>
+                            <div class="col-md-10">
+                                <div class="radio-group" id="currency1">
+                                    <input disabled checked type="radio" name="currency1" value="CNY" title="人民币">
+                                    <input type="radio" name="currency1" value="USD" title="美元"> 
+                                    <input type="radio" name="currency1" value="HKD" title="港元"> 
+                                    <input type="radio" name="currency1" value="EUR" title="欧元"> 
+                                    <input type="radio" name="currency1" value="KRW" title="韩元"> 
+                                    <input type="radio" name="currency1" value="JPY" title="日元"> 
+                                    <input type="radio" name="currency1" value="GBP" title="英镑"> 
+                                    <input type="radio" name="currency1" value="SGD" title="新加坡元"> 
+                                    <input type="radio" name="currency1" value="AUD" title="澳大利亚元"> 
+                                    <input type="radio" name="currency1" value="CAD" title="加拿大元"> 
+                                    <input type="radio" name="currency1" value="XEU" title="其它货币折美元"> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden" id="currency0_div">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-2">币种</label>
+                            <div class="col-md-10">
+                                <div class="checkbox-group" id="currency0">
+                                    <input type="checkbox" name="currency0" value="CNY" title="人民币" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="USD" title="美元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="HKD" title="港元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="EUR" title="欧元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="KRW" title="韩元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="JPY" title="日元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="GBP" title="英镑" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="SGD" title="新加坡元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="AUD" title="澳大利亚元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="CAD" title="加拿大元" lay-skin="primary">
+                                    <input type="checkbox" name="currency0" value="XEU" title="其它货币折美元" lay-skin="primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
+        </div>
+    </div>
+
+    <div class="row" id="customerInfo">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tabbable-line boxless tabbable-reversed">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_0" data-toggle="tab"> 客户信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_1" data-toggle="tab"> 法人代表信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_2" data-toggle="tab"> 组织机构代码证信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_3" data-toggle="tab"> 税务登记信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_4" data-toggle="tab"> 联系信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_5" data-toggle="tab"> 其他信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_6" data-toggle="tab"> 上级机构信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_7" data-toggle="tab"> 关联企业信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_8" data-toggle="tab"> 股东信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_9" data-toggle="tab"> 授权经办人信息</a>
+                                    </li>
+                                    <li id="accountImageInfo" style="display: none">
+                                        <a href="#tab_10" data-toggle="tab"> 账户影像信息</a>
+                                    </li>
+                                    <li id="imageInfo" style="display: none">
+                                        <a href="#tab_image" data-toggle="tab"> 账户影像信息</a>
+                                    </li>
+                                    <li id="thirdImage" style="display: none">
+                                        <a href="#tab_thirdImage" data-toggle="tab"> 账户影像信息</a>
+                                    </li>
+                                    <li id="videoInfo" style="display: none">
+                                        <a href="#tab_video" data-toggle="tab"> 双录信息</a>
+                                    </li>
+                                    <li id="applyVideoCall" style="display: none">
+                                        <a href="#tab_videoCall" data-toggle="tab"> 双录信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_20" data-toggle="tab"> 关联业务流水</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_21" data-toggle="tab"> 操作记录</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_0">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-address-book-o font-dark"></i>
+                                                    <span class="caption-subject uppercase">客户信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="saicDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_1">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-user-circle-o font-dark"></i>
+                                                    <span class="caption-subject uppercase">法人代表信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="legalDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-newspaper-o font-dark"></i>
+                                                    <span class="caption-subject uppercase">组织机构代码证信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="orgDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_3">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-cny font-dark"></i>
+                                                    <span class="caption-subject uppercase">税务登记信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="taxDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_4">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-phone-square font-dark"></i>
+                                                    <span class="caption-subject uppercase">联系信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="contactDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_5">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-pencil-square font-dark"></i>
+                                                    <span class="caption-subject uppercase">其他信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="otherDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_6">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">上级机构信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="superviserDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_7">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">关联企业信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="relateCompanyDiv">
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_8">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">股东信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="stockHoderDiv">
+                                            </div>
+                                            <div class="row" id="btn_more_delete"><!--需隐藏-->
+                                                <div class="col-md-6">
+                                                    <button class="layui-btn layui-btn-small" id="stockHoderMoreBtn" >更多</button>
+                                                    <button class="layui-btn layui-btn-danger layui-btn-small" id="stockHoderDelBtn" data-id="">删除</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_9">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">授权经办人信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="agentDiv">
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_10">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">账户影像信息</span>
+                                                </div>
+                                                <div class="caption font-dark">
+                                                    <span class="caption-subject"><span id="imageBatchNo1" name="imageBatchNo1"></span></span>
+                                                </div>
+                                                <div class="actions">
+                                                    <div class="btn-group btn-group-devided">
+                                                        <div class="btn green btn-outline dn" id="btnScanImage" data-code="image:btn_scanImage"><span>扫描影像</span></div>
+                                                        <div class="btn green btn-outline dn" id="btnSendImage" data-code="image:btn_sendImage"><span>传送影像平台</span></div>
+                                                        <div class="btn green btn-outline" id="btn_syncImage" data-code="account:btn_syncImage"><span>影像上报人行</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="image-list" id="imageList">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_thirdImage">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">账户影像信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <!--<div id="thirdUrl" class="portlet-body">
+
+                                                </div>-->
+                                                <iframe id="thirdUrl" width="100%" height="650">
+
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_image" style="display: none">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">账户影像信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="imageDiv">
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+
+                                    <div class="tab-pane" id="tab_video">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">双录信息</span>
+                                                </div>
+                                                <div class="actions">
+                                                    <div class="btn-group btn-group-devided">
+                                                        <div class="btn green btn-outline" id="btnMessageSend" data-code="video:btnMessageSend"><span>发送远程双录短信</span></div>
+                                                        <div class="btn green btn-outline" id="btnVideoRecord" data-code="video:btnVideoRecord"><span>发起临柜双录</span></div>
+                                                        <div class="btn green btn-outline" id="btnVideoUpload" data-code="video:btnVideoUpload"><span>本地上传</span></div>
+                                                        <div class="btn green btn-outline" id="btnVideoSend" data-code="video:btnVideoSend"><span>上传影像平台</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="videoDiv">
+                                                <div class="form-group" id="imageVideoDiv">
+                                                    <label class="control-label col-sm-4">双录视频编号</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" name="videoNo" id="videoNo" class="layui-input">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="btn green btn-outline" id="btnVideoQuery" ><span>查询</span></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="video-list" id="video_list">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_videoCall">
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">双录信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="videoCallDiv"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab_20">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">关联业务流水</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <table id="billsTable"></table>
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div class="tab-pane" id="tab_21">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">操作记录</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <table id="operateLogTable"></table>
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+                                    <div id="hiddenFieldDiv"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="row" id="syncDiv">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="syncSystem">
+                <div id="sync1" class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-vcard-o font-dark"></i>
+                        <span class="caption-subject uppercase">上报系统</span>
+                    </div>
+                </div>
+
+                <div class="row" >
+                    <!--<div style="margin-left: 15px">-->
+                        <!--<div style="display: inline" id="isSyncAmsDiv"><input type="checkbox" id="isSyncAms" name="isSyncAms" lay-skin="primary" title="人行账管系统"></div>-->
+                        <!--<div style="display: inline" id="isSyncEccsDiv"><input type="checkbox" id="isSyncEccs" name="isSyncEccs" lay-skin="primary" title="信用机构系统"></div>-->
+                    <!--</div>-->
+
+                    <div style="margin-left: 15px;margin-top: 30px" class="btn green btn-outline dn" data-code="account:verifyPass" lay-filter="verifyForm" id="verifyPass"><span id="verifyPassName">审核通过</span></div>
+                    <div style="margin-left: 15px;margin-top: 30px" class="btn green btn-outline dn" data-code="account:verifyNotPass" lay-filter="verifyForm" id="verifyNotPass"><span id="verifyNotPassName">审核退回</span></div>
+
+                    <div style="margin-left: 15px;margin-top: 30px" class="btn green btn-outline dn" data-code="account:bulu_verify" lay-filter="verifyForm" id="verifyFormBtn"><span id="verifyBtnName">审核并上报</span></div>
+                    <div style="margin-left: 15px;margin-top: 30px" class="btn green btn-outline" lay-filter="addInfoForm" id="addInfoFormBtn"><span>补录</span></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js" type="text/javascript"></script>
+
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+
+<!--<script type="text/javascript" src="../lay/modules/laydate.js"></script>-->
+
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../plugins/jquery-magnify/js/jquery.magnify.js"></script>
+<script type="text/javascript" src="../plugins/jPlayer/jplayer/jquery.jplayer.min.js"></script>
+<script src="../js/loading.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script src="../js/webuploader/webuploader.js" type="text/javascript" ></script>
+<!--<script src="../js/webuploader/upload.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="../ag/accttype/videoInfo.js"></script>
+<script type="text/javascript" src="../ag/bank/videoCall.js"></script>
+<script type="text/javascript" src="../ag/accttype/jibenOpen.js"></script>
+<script type="text/javascript" src="../ag/accttype/billTable.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../js/saic.js"></script>
+<script type="text/javascript" src="../ag/image/imageAll.js"></script>
+<script type="text/javascript" src="../ag/accttype/operateLogTable.js"></script>
+<!--<script type="text/javascript" src="../ag/image/scan.js"></script>-->
+
+</body>
+
+</html>

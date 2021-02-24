@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="schema-mysql-changeColumnColorLen" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <dbms type="mysql"/>
+                <tableExists tableName="yd_compare_result"/>
+                <sqlCheck expectedResult="255">select CHARACTER_MAXIMUM_LENGTH from information_schema.columns where
+                    table_name='yd_compare_result' and column_name = 'yd_column_color' GROUP BY
+                    CHARACTER_MAXIMUM_LENGTH desc limit 1
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-mysql-changeColumnColorLen.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="schema-oracle-changeColumnColorLen" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <dbms type="oracle"/>
+                <tableExists tableName="YD_COMPARE_RESULT"/>
+                <sqlCheck expectedResult="255">SELECT CHAR_LENGTH FROM USER_TAB_COLUMNS WHERE
+                    TABLE_NAME='YD_COMPARE_RESULT' AND COLUMN_NAME = 'YD_COLUMN_COLOR'
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="oracle"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-oracle-changeColumnColorLen.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>

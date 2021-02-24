@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>提醒列表</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .layui-form-pane .layui-form-label {
+            width: 180px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+     <!--   <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="acctNo">
+            </div>
+
+            <label class="layui-form-label">账户名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="openBank">
+            </div>-->
+        <!--</div>-->
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="depositorName">
+            </div>
+                
+            <span id="legalNameDiv" style="display: none">
+                <label class="layui-form-label">法人(负责人)姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="legalName">
+                </div>
+            </span>
+            
+            <span id="fileDueDiv" style="display: none">
+                <label class="layui-form-label">证明文件到期日</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="fileDue" id="fileDue" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" onclick="layui.laydate({elem: this})">
+
+                </div>
+            </span>
+
+            <label class="layui-form-label">核实状态</label>
+            <div class="layui-input-inline">
+                <select name="checkStatus" class="layui-input" id="checkStatus" style="width: 120px">
+                    <option value="选择">请选择</option>
+                    <option value="已核实">已核实</option>
+                    <option value="">未核实</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-bottom:0px;">
+
+            <span id="legalIdcardDueDiv" style="display: none">
+                <label class="layui-form-label" style="width: 200px">法人(负责人)证件到期日</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="legalIdcardDue" id="legalIdcardDue" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker">
+                </div>
+            </span>
+
+            
+
+            <span id="fileDue2Div" style="display: none">
+                <label class="layui-form-label">证明文件编号</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="fileNo">
+                </div>
+            </span>
+        
+            <span id="isFileDueOverDiv" style="display: none">
+                <label class="layui-form-label">是否超期</label>
+                <div class="layui-input-inline">
+                    <select name="isFileDueOver" class="layui-input" id="isFileDueOver" style="width: 120px">
+                        <option value="">请选择</option>
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </div>
+            </span>
+
+            <span id="isLegalIdcardDueOverDiv" style="display: none">
+                <label class="layui-form-label">是否超期</label>
+                <div class="layui-input-inline">
+                    <select name="isLegalIdcardDueOver" class="layui-input" id="isLegalIdcardDueOver" style="width: 120px">
+                        <option value="">请选择</option>
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </div>
+            </span>
+
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+
+            <div  id="toolbar1" class="layui-btn-group">
+                <button type="button" id="btn_download1"  class="layui-btn layui-btn dn" data-code="apply:log_Down">
+                    核实
+                </button>
+            </div>
+        </div>
+    </form>   
+        
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" data-code="notice:legalDue-export" id="btn_export">
+            <i class="layui-icon">&#xe601;</i>
+            导出
+        </button>
+    </div>
+    
+    <table id="noticeList">
+
+    </table>
+</div>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/es5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/notice/notice.js"></script>
+</body>
+
+</html>

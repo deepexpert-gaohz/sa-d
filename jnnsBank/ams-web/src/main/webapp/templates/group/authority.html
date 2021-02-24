@@ -1,0 +1,82 @@
+<div class="admin-main" style="margin: 15px;">
+    <form class="layui-form" action="">
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+    <div class="row">
+        <hr>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="input-check-node" class="sr-only">Search Tree:</label>
+                <input type="input" class="form-control" id="input-check-node"
+                       placeholder="菜单名">
+            </div>
+            <div  id="menuTreeDiv" style="height:550px;overflow-y:scroll">
+                <div id="menuTreeview"></div>
+            </div>
+            <!--<div class="text-right" style="margin-top: 5%">-->
+                <!--<button class="btn btn-info" id="btn_add" data-code="apply:add_pre">-->
+                    <!--<span>保存</span>-->
+                <!--</button>-->
+                    <!--<button class="btn btn-outline" id="addBeneficiaryBtn"><span>重置</span></button>-->
+            <!--</div>-->
+
+        </div>
+        <div class="col-sm-6">
+            <div  id="elementToolbar" class="form-group">
+            </div>
+            <div  id="btnDiv" >
+                <table id="elementTable">
+
+                </table>
+            </div>
+            <!--<div class="text-right" style="margin-top: 5%">-->
+                <!--<button class="btn btn-info" id="btn_add2" data-code="apply:add_pre">-->
+                    <!--<span>保存</span>-->
+                <!--</button>-->
+                <!--<button class="btn btn-outline" id="addBeneficiaryBtn2"><span>重置</span></button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var winWidth = 0;
+    var winHeight = 0;
+
+    //函数：获取尺寸
+    function findDimensions() {
+
+        //获取窗口宽度
+        if (window.innerWidth) {
+            winWidth = window.innerWidth;
+        } else if ((document.body) && (document.body.clientWidth)) {
+            winWidth = document.body.clientWidth;
+        }
+
+        //获取窗口高度
+        if (window.innerHeight) {
+            winHeight = window.innerHeight;
+        } else if ((document.body) && (document.body.clientHeight)) {
+            winHeight = document.body.clientHeight;
+        }
+
+        //通过深入Document内部对body进行检测，获取窗口大小
+        if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+            winHeight = document.documentElement.clientHeight;
+            winWidth = document.documentElement.clientWidth;
+        }
+
+        //
+        $("#menuTreeDiv").css("height",winHeight-220+"px");
+        //btnDiv
+        $("#btnDiv").css("height",winHeight-170+"px");
+    }
+
+    findDimensions();
+
+    //调用函数，获取数值
+    window.onresize = findDimensions;
+
+</script>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="dictionary-industryCodeOption2" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_option </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="M:科学研究、技术服务和地质勘查业"/>
+            <where>yd_name='M：科学研究、技术服务和地址勘察业'</where>
+        </update>
+        <update tableName="yd_sys_option">
+            <column name="yd_value" value="科学研究、技术服务和地质勘查业"/>
+            <where>yd_value='科学研究、技术服务和地址勘察业'</where>
+        </update>
+        <update tableName="yd_sys_option">
+            <column name="yd_value" value="社会保障基金"/>
+            <where>yd_value='社会保障金'</where>
+        </update>
+        <update tableName="yd_sys_option">
+            <column name="yd_value" value="港、澳、台居民通行证"/>
+            <where>yd_value='港、澳、台通行证'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

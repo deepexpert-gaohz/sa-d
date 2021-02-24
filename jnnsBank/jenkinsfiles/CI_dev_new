@@ -1,0 +1,459 @@
+#!/usr/bin/env groovy
+pipeline {
+
+    agent any
+
+
+    tools {
+        jdk 'JDK1.7'
+        maven 'M3'
+    }
+
+    parameters {
+
+        choice(name: 'server_type', choices: 'release\n' +
+            'mini-release\n' +
+            'sonar', description: '请选择部署类型')
+    }
+
+    stages {
+        stage('check out code')  {
+            agent { label "master" }
+            steps {
+//               checkout scm
+                checkout([$class                           : 'GitSCM',
+                          branches                         : [[name: '${chooseBranch}']],
+                          doGenerateSubmoduleConfigurations: false, extensions: [],
+                          submoduleCfg                     : [],
+                          userRemoteConfigs                : [[credentialsId: '844b9cc9-93e7-4200-a8af-9187f021fc25', url: 'http://47.97.172.215:8980/idea-ams/ams.git']]
+                ])
+
+            }
+        }
+
+        stage('Build and push') {
+            agent { label "master" }
+            steps {
+                echo '您选择的分支是' + env.chooseBranch
+                echo '您选择的build类型是' + env.server_type
+                script {
+                    if (env.server_type == 'sonar') {
+                        withEnv(["JAVA_HOME=/opt/jdk1.8.0_161"]) {
+                            withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]) {
+                                sh 'mvn clean package -pl ams-web -am -Dmaven.test.skip=true -Dmaven.compile.fork=true -T 1C'
+                                def scannerHome = tool 'scanner';
+                                withSonarQubeEnv('sonar') {
+                                    sh "${scannerHome}/bin/sonar-scanner"
+                                }
+                            }
+                        }
+                    } else {
+                        if (env.server_type == 'release') {
+                            withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]) {
+                                sh '''
+                                prior_version=$(cat /opt/files/version/big_version.txt)
+                                echo ${prior_version}
+                                current_version=$((${prior_version}+1))
+                                sed -i "s|number:|number: 4.${current_version}.0|" /var/lib/jenkins/workspace/${JOB_NAME}/ams-web/src/main/resources/application.yml
+                                cp -r /opt/files/conf/${JOB_NAME}/application-kyc.yml /var/lib/jenkins/workspace/${JOB_NAME}/ams-web/src/main/resources
+                                mvn versions:set -DoldVersion=* -DnewVersion=4.${current_version}.0 -DprocessAllModules=true -DallowSnapshots=true  
+                                mvn clean deploy -am -Dmaven.test.skip=true -Dmaven.compile.fork=true -T 1C        
+
+                                mvn versions:revert
+                                '''
+                                sshagent(['2d155b90-d8c6-4628-88f4-ad81925ee4fb']) {
+                                    sh '''
+                                prior_version=$(cat /opt/files/version/big_version.txt)
+                                echo ${prior_version}
+                                current_version=$((${prior_version}+1))
+                            d1="`date +%Y%m%d`"
+                            echo ${d1}
+                            cd /var/lib/jenkins/workspace/${JOB_NAME}
+                            /usr/local/git/bin/git config --global user.email "77086142@qq.com"
+                            /usr/local/git/bin/git config --global user.name "Charles Kong"
+                            /usr/local/git/bin/git tag -a 4.${current_version}.0 -m "描述信息：对当前发布代码打标记"
+                            /usr/local/git/bin/git push ssh://git@47.97.172.215:8922/idea-ams/ams.git 4.${current_version}.0
+                            echo "${current_version}" > /opt/files/version/big_version.txt
+                            echo "0" > /opt/files/version/mini_version.txt
+                 '''
+                                }
+
+                            }
+                        } else {
+                            if (env.server_type == 'mini-release') {
+                                withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]) {
+                                    sh '''
+                                prior_big_version=$(cat /opt/files/version/big_version.txt)
+                                echo ${prior_big_version}
+                                current_big_version=$((${prior_big_version}))
+                                prior_mini_version=$(cat /opt/files/version/mini_version.txt)
+                                echo ${prior_mini_version}
+                                current_mini_version=$((${prior_mini_version}+1))
+                                sed -i "s|number:|number: 4.${current_big_version}.${current_mini_version}|" /var/lib/jenkins/workspace/${JOB_NAME}/ams-web/src/main/resources/application.yml
+                                cp -r /opt/files/conf/${JOB_NAME}/application-kyc.yml /var/lib/jenkins/workspace/${JOB_NAME}/ams-web/src/main/resources
+                                mvn versions:set -DoldVersion=* -DnewVersion=4.${current_big_version}.${current_mini_version} -DprocessAllModules=true -DallowSnapshots=true  
+                                mvn clean deploy -am -Dmaven.test.skip=true -Dmaven.compile.fork=true -T 1C        
+                                
+                                mvn versions:revert        
+                                '''
+                                    sshagent(['2d155b90-d8c6-4628-88f4-ad81925ee4fb']) {
+                                        sh '''
+                                prior_big_version=$(cat /opt/files/version/big_version.txt)
+                                echo ${prior_big_version}
+                                current_big_version=$((${prior_big_version}))
+                                prior_mini_version=$(cat /opt/files/version/mini_version.txt)
+                                echo ${prior_mini_version}
+                                current_mini_version=$((${prior_mini_version}+1))
+                            d1="`date +%Y%m%d`"
+                            echo ${d1}
+                            cd /var/lib/jenkins/workspace/${JOB_NAME}
+                            /usr/local/git/bin/git config --global user.email "77086142@qq.com"
+                            /usr/local/git/bin/git config --global user.name "Charles Kong"
+                            /usr/local/git/bin/git tag -a 4.${current_big_version}.${current_mini_version} -m "描述信息：对当前发布代码打标记"
+                            /usr/local/git/bin/git push ssh://git@47.97.172.215:8922/idea-ams/ams.git 4.${current_big_version}.${current_mini_version}
+                            echo "${current_mini_version}" > /opt/files/version/mini_version.txt
+                 '''
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        stage('run demo') {
+            agent { label "demo" }
+            steps {
+                sh '''
+                  cp -r /opt/files/conf/${JOB_NAME}/application-cust.properties /usr/jenkins/workspace/${JOB_NAME}/ams-web/src/main/resources
+                  mvn clean package -pl ams-web -am -Dmaven.test.skip=true -Dmaven.compile.fork=true -T 1C
+                  rm -rf /opt/files/webapps/${JOB_NAME}
+                  mkdir /opt/files/webapps/${JOB_NAME}
+                  cd /usr/jenkins/workspace/${JOB_NAME}/ams-web/target
+                  cp -r ams.war /opt/files/webapps/${JOB_NAME}
+                  docker rm -f ${JOB_NAME}tomcat || true
+                  docker run -d --privileged=true -v /opt/files/webapps/${JOB_NAME}:/usr/local/apache-tomcat-7.0.90/webapps -v /home/${JOB_NAME}/dgbb:/home/${JOB_NAME}/dgbb -v /home/${JOB_NAME}/dgbb2:/home/${JOB_NAME}/dgbb2 -p 9090:8080 --name ${JOB_NAME}tomcat jdk7/tomcat7
+                  '''
+            }
+        }
+        stage('change_jira_status') {
+            agent { label "master" }
+            steps {
+                script {
+                    withEnv(['JIRA_SITE=LOCAL']) {
+                        def transitionInput_area_defect =
+                            [
+                                transition: [
+                                    id: '801'
+                                ]
+                            ]
+
+                        def transitionInput_close_defect =
+                            [
+                                transition: [
+                                    id: '751'
+                                ]
+                            ]
+
+
+
+
+                        def min_version = new File("/opt/files/version/mini_version.txt").getText().split("\n")
+                        def big_version = new File("/opt/files/version/big_version.txt").getText().split("\n")
+                        String version = "4." + big_version[0] + "." + min_version[0]
+                        def now = new Date().format("yyyy-MM-dd")
+
+                        Map versionlist = new HashMap()
+                        def projects = jiraGetProjects() //获取project
+                        for (i=0;i<projects.data.key.size();i++){
+//                            if (projects.data.key[i]=="AMS"||projects.data.key[i]=="IDP"||projects.data.key[i]=="KXH"){
+                            if (projects.data.key[i]=="AMS"){
+                                echo "do not"
+                            }
+                            else if(projects.data.key[i]=="IDP"){
+                                echo "do not"
+                            }
+                            else if(projects.data.key[i]=="KXH"){
+                                echo "do not"
+                            }
+                            else
+                            {
+                                def key = projects.data.key[i]
+                                echo key
+                                def newVersion = jiraNewVersion version: [name: version, project: projects.data.key[i], released: true, releaseDate: now]
+                                versionlist.put(key, newVersion.data)
+                            }
+                        }
+
+                        List issueList=new ArrayList()
+                        def result_area = jiraJqlSearch jql: 'issuetype in (改进, 新需求, 区域反馈缺陷, 新功能) AND project not in (客户项目汇总, AMS, IDP, 易账户, 台州人行影像) AND status in (内部通过, 转给现场) and sprint != 108'
+                        def area_issues = result_area.data.issues
+                        for (i = 0; i < area_issues.size(); i++) {
+                            //获取key前缀
+                            def key= area_issues[i].key
+                            def project=key.split("-")
+                            def issue=area_issues[i].key.toString()+": "+area_issues[i].fields.summary.toString()
+//                            issueList.add(issue)
+                            def result = jiraGetIssue idOrKey: area_issues[i].key
+                            def fixVersions = result.data.fields.fixVersions << versionlist.get(project[0]) //从map里取key的版本
+                            def testIssue = [fields: [fixVersions: fixVersions]]
+                            def brach = area_issues[i].fields.customfield_10700
+                            if (brach == null) {
+                                issueList.add(issue)
+                                jiraEditIssue idOrKey: area_issues[i].key, issue: testIssue   //给ticket的修复版本加上版本号
+                                jiraTransitionIssue idOrKey: area_issues[i].key, input: transitionInput_area_defect
+                                jiraAddComment idOrKey: area_issues[i].key, comment: "请更新部署AMS到版本【" + version + "】后进行确认"
+                            } else {
+                                brach.each {
+                                    if (it == "develop") {
+                                        issueList.add(issue)
+                                        jiraEditIssue idOrKey: area_issues[i].key, issue: testIssue
+                                        //给ticket的修复版本加上版本号
+                                        jiraTransitionIssue idOrKey: area_issues[i].key, input: transitionInput_area_defect
+                                        jiraAddComment idOrKey: area_issues[i].key, comment: "请更新部署AMS到版本【" + version + "】后进行确认"
+                                    }
+                                }
+
+                            }
+
+
+                        }
+
+                        def result_nomarl = jiraJqlSearch jql: 'issuetype in (故事,故障) AND project not in (客户项目汇总, AMS, IDP, 易账户, 台州人行影像) and status = 内部通过 and sprint != 108'
+
+                        def nomarl_issues = result_nomarl.data.issues
+                        for (i = 0; i < nomarl_issues.size(); i++) {
+                            //获取key前缀
+                            def key= nomarl_issues[i].key
+                            def project=key.split("-")
+                            def issue=nomarl_issues[i].key.toString()+": "+nomarl_issues[i].fields.summary.toString()
+//                            issueList.add(issue)
+                            def result = jiraGetIssue idOrKey: nomarl_issues[i].key
+                            def fixVersion = result.data.fields.fixVersions << versionlist.get(project[0])
+                            def testIssue = [fields: [fixVersions: fixVersion]]
+                            def brach = nomarl_issues[i].fields.customfield_10700
+                            if (brach == null) {
+                                issueList.add(issue)
+                                jiraEditIssue idOrKey: nomarl_issues[i].key, issue: testIssue
+                                jiraTransitionIssue idOrKey: nomarl_issues[i].key, input: transitionInput_close_defect
+                                jiraAddComment idOrKey: nomarl_issues[i].key, comment: "该ticket关闭于版本【" + version + "】"
+
+                            } else {
+                                brach.each {
+                                    if (it == "develop") {
+                                        issueList.add(issue)
+                                        jiraEditIssue idOrKey: nomarl_issues[i].key, issue: testIssue
+                                        jiraTransitionIssue idOrKey: nomarl_issues[i].key, input: transitionInput_close_defect
+                                        jiraAddComment idOrKey: nomarl_issues[i].key, comment: "该ticket关闭于版本【" + version + "】"
+                                    }
+                                }
+                            }
+                        }
+
+                        def result = jiraJqlSearch jql: 'issuetype in (故事) AND project not in (客户项目汇总, AMS, IDP, 易账户, 台州人行影像) and status = 转给现场  and sprint != 108'
+
+                        def confirm_issues = result.data.issues
+                        for (i = 0; i < confirm_issues.size(); i++) {
+                            //获取key前缀
+                            def key= confirm_issues[i].key
+                            def project=key.split("-")
+                            def issue=confirm_issues[i].key.toString()+": "+confirm_issues[i].fields.summary.toString()
+//                            issueList.add(issue)
+                            def result1 = jiraGetIssue idOrKey: confirm_issues[i].key
+                            def fixVersion = result1.data.fields.fixVersions << versionlist.get(project[0])
+                            def testIssue = [fields: [fixVersions: fixVersion]]
+                            def brach = confirm_issues[i].fields.customfield_10700
+                            if (brach == null) {
+                                issueList.add(issue)
+                                jiraEditIssue idOrKey: confirm_issues[i].key, issue: testIssue
+                                jiraTransitionIssue idOrKey: confirm_issues[i].key, input: transitionInput_area_defect
+                                jiraAddComment idOrKey: confirm_issues[i].key, comment: "请更新部署AMS到版本【" + version + "】后进行确认"
+
+                            } else {
+                                brach.each {
+                                    if (it == "develop") {
+                                        issueList.add(issue)
+                                        jiraEditIssue idOrKey: confirm_issues[i].key, issue: testIssue
+                                        jiraTransitionIssue idOrKey: confirm_issues[i].key, input: transitionInput_area_defect
+                                        jiraAddComment idOrKey: confirm_issues[i].key, comment: "请更新部署AMS到版本【" + version + "】后进行确认"
+                                    }
+                                }
+                            }
+                        }
+
+
+
+                        if(issueList.isEmpty()){
+                            echo "no issue"
+                            def testIssue = [fields: [ // id or key must present for project.
+                                                       project: [id: '11204'],  //账管重构项目ID
+                                                       summary: '版本记录【'+version+'】',
+                                                       description: '没有单据关联到当前版本',
+                                                       // id or name must present for issueType.
+                                                       issuetype: [id: '10106']]]
+                            response = jiraNewIssue issue: testIssue
+                            echo response.successful.toString()
+                            echo response.data.toString()
+
+                        }
+                        else{
+                            echo "not empty"
+                            String issueDesc=""
+
+                            for (i=0;i<issueList.size();i++){
+                                issueDesc=issueDesc+issueList[i]+'\n'
+
+                            }
+                            echo issueDesc
+
+                            def testIssue = [fields: [ // id or key must present for project.
+                                                       project: [id: '11204'],  //账管重构项目ID
+                                                       summary: '版本记录【'+version+'】',
+                                                       description: issueDesc,
+                                                       // id or name must present for issueType.
+                                                       issuetype: [id: '11007']]]
+                            response = jiraNewIssue issue: testIssue
+
+                            echo response.successful.toString()
+                            echo response.data.toString()
+
+
+                        }
+                        //send email
+                        emailext body: '最新版本发布啦~，版本包含单据信息在：'+ response.data.key.toString()+'，请大家自行查看并及时跟进状态', subject: '【最新版本发布】'+version, to: 'dearall@ideatech.info'
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    post {
+        always {
+//            sh "mvn clean deploy -am -Dmaven.test.skip=true -Dmaven.compile.fork=true -T 1C  "
+//            findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', isRankActivated: true, pattern: '**/**/findbugsXml.xml', unHealthy: ''
+            sh '''
+                   big_version=$(cat /opt/files/version/big_version.txt)
+                   mini_version=$(cat /opt/files/version/mini_version.txt)
+                   echo 4.$big_version.$mini_version
+                   
+                '''
+        }
+
+        failure {
+            emailext attachLog: true, body: '''<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${ENV, var="JOB_NAME"}-第${BUILD_NUMBER}次构建日志</title>
+</head>
+
+<body leftmargin="8" marginwidth="0" topmargin="8" marginheight="4" offset="0">
+    <table width="95%" cellpadding="0" cellspacing="0" style="font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif">
+        <tr>
+            <td>(本邮件由程序自动下发，请勿回复！)</td>
+        </tr>
+        <tr>
+            <td>
+                <h2><font color="#FF0000">构建结果 - ${BUILD_STATUS}</font></h2>
+            </td>
+        </tr>
+        <tr>
+            <td><br />
+                <b><font color="#0B610B">构建信息</font></b>
+                <hr size="2" width="100%" align="center" />
+            </td>
+        </tr>
+        <tr>  
+            <td>
+                <ul>
+                    <li>项目名称：${PROJECT_NAME}</li>
+                    <li>构建编号：${BUILD_NUMBER}</li>                    
+                    <li>触发原因：${CAUSE}</li>   
+                    <li>构建日志：<a href="${BUILD_URL}console">${BUILD_URL}console</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><font color="#0B610B">变更信息:</font></b>
+               <hr size="2" width="100%" align="center" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>上次构建成功后变化 :  ${CHANGES_SINCE_LAST_SUCCESS}</a></li>
+                </ul>    
+            </td>
+        </tr>
+ <tr>
+            <td>
+                <ul>
+                    <li>上次构建不稳定后变化 :  ${CHANGES_SINCE_LAST_UNSTABLE}</a></li>
+                </ul>    
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>历史变更记录 : <a href="${PROJECT_URL}changes">${PROJECT_URL}changes</a></li>
+                </ul>    
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>变更集:${JELLY_SCRIPT,template="html"}</a></li>
+                </ul>    
+            </td>
+        </tr>
+        <!--
+        <tr>
+            <td>
+                <b><font color="#0B610B">Failed Test Results</font></b>
+                <hr size="2" width="100%" align="center" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre style="font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif">$FAILED_TESTS</pre>
+                <br />
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <b><font color="#0B610B">构建日志 (最后 100行):</font></b>
+                <hr size="2" width="100%" align="center" />
+            </td>
+        </tr>-->
+        <!-- <tr>
+            <td>Test Logs (if test has ran): <a
+                href="${PROJECT_URL}ws/TestResult/archive_logs/Log-Build-${BUILD_NUMBER}.zip">${PROJECT_URL}/ws/TestResult/archive_logs/Log-Build-${BUILD_NUMBER}.zip</a>
+                <br />
+            <br />
+            </td>
+        </tr> -->
+        <!--
+        <tr>
+            <td>
+                <textarea cols="80" rows="30" readonly="readonly" style="font-family: Courier New">${BUILD_LOG, maxLines=100,escapeHtml=true}</textarea>
+            </td>
+        </tr>-->
+        <hr size="2" width="100%" align="center" />
+ 
+    </table>
+
+</body>
+</html>''', recipientProviders: [developers()], subject: '[Jenkins]自动化构建：$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: '77086142@qq.com'
+
+        }
+    }
+
+}
+

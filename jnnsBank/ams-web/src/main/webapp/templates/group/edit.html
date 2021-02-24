@@ -1,0 +1,31 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入名称"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">编码</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="code" lay-verify="required" placeholder="请输入编码" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">等级</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="level" lay-verify="required" placeholder="请输入等级" autocomplete="off"
+                       class="layui-input">
+                <span>等级: 0为最大，依次递减</span>
+            </div>
+        </div>
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

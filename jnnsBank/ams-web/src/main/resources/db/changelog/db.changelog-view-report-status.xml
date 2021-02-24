@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="yd_created_date" dbms="mysql" value="DATE_FORMAT ( yd_created_date, '%Y-%m-%d' )"/>
+    <property  name="yd_created_date" dbms="oracle" value="to_char ( yd_created_date, 'yyyy-mm-dd' )"/>
+    <property  name="yd_created_date" dbms="db2" value="to_char ( yd_created_date, 'yyyy-mm-dd' )"/>
+
+    <changeSet id="init-0-1" author="houxianghua">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <tableExists tableName="YD_REPORT_STATUS_V"/>
+            </and>
+        </preConditions>
+        <dropTable tableName="YD_REPORT_STATUS_V"/>
+    </changeSet>
+
+    <changeSet id="init-1-1" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <viewExists viewName="YD_REPORT_STATUS_V"/>
+            </not>
+        </preConditions>
+        <createView viewName="YD_REPORT_STATUS_V">
+            SELECT
+            ${yd_created_date} AS yd_created_date,
+            yd_acct_type,
+            yd_pbc_sync_status,
+            yd_eccs_sync_status,
+            yd_organ_full_id
+            FROM
+            yd_account_bills_all
+        </createView>
+    </changeSet>
+</databaseChangeLog>

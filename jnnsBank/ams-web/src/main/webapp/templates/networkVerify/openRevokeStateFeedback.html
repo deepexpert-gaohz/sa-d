@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">企业开销户状态反馈</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">企业名称</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="entNm" name="entNm" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">字号名称</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="traNm" name="traNm" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">统一社会信用代码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="uniSocCdtCd" name="uniSocCdtCd" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">账户状态标识</label>
+                        <div class="col-xs-7 col-md-6">
+                            <select id="acctSts" name="acctSts" class="layui-input">
+                                <option value="">请选择</option>
+                                <option value="OPEN">已开户</option>
+                                <option value="CLOS">已销户</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">变更日期</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" autocomplete="off" class="layui-input date-picker" id="chngDt" name="chngDt"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4"></label>
+                        <div class="col-xs-7 col-md-6">
+                            <button type="button" class="layui-btn layui-btn" id="btnSubmit">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet light bordered" id="result" hidden>
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-book font-dark"></i>
+                        <span class="caption-subject uppercase">查询结果</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-bordered word-break" id="success" hidden>
+                        <tbody>
+                        <tr>
+                            <td class="td-label">业务状态：</td>
+                            <td class="td-label-right" id="prcSts"></td>
+                            <td class="td-label">业务处理码：</td>
+                            <td class="td-label-right" id="prcCd"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">拒绝业务的参与机构行号：</td>
+                            <td class="td-label-right" id="ptyId"></td>
+                            <td class="td-label">参与机构业务拒绝码：</td>
+                            <td class="td-label-right" id="ptyPrcCd"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">业务拒绝信息：</td>
+                            <td class="td-label-right" id="rjctInf"></td>
+                            <td class="td-label">处理日期（终态日期）：</td>
+                            <td class="td-label-right" id="prcDt"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">轧差场次：</td>
+                            <td class="td-label-right" id="netgRnd"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/networkVerifiedCommon.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/openRevokeStateFeedback.js"></script>
+
+</body>
+
+</html>

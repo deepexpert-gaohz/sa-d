@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+
+    <changeSet id="update_2_apply_record" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply_record'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-list"/>
+            <where>yd_code = 'apply_record'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_applying" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'applying'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-calendar-minus-o"/>
+            <where>yd_code = 'applying'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_applyed" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'applyed'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-calendar-o"/>
+            <where>yd_code = 'applyed'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_apply_success" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply_success'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="400"/>
+            <column name="yd_icon" value="fa-calendar-check-o"/>
+            <where>yd_code = 'apply_success'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_apply_fail" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply_fail'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="500"/>
+            <column name="yd_icon" value="fa-calendar-times-o"/>
+            <where>yd_code = 'apply_fail'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_customerManager_search" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerManager_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="20000"/>
+            <column name="yd_icon" value="fa-search-plus"/>
+            <where>yd_code = 'customerManager_search'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_jibenUnique_search" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'jibenUnique_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-adjust"/>
+            <where>yd_code = 'jibenUnique_search'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_pbc_result_byAcctNo" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'pbc_result_byAcctNo'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-search"/>
+            <where>yd_code = 'pbc_result_byAcctNo'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_pbc_result_byAccountKey" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'pbc_result_byAccountKey'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-newspaper-o"/>
+            <where>yd_code = 'pbc_result_byAccountKey'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_eccs_result_search" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'eccs_result_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="400"/>
+            <column name="yd_icon" value="fa-eraser"/>
+            <where>yd_code = 'eccs_result_search'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_saicInfo_byName" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'saicInfo_byName'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="500"/>
+            <column name="yd_icon" value="fa-desktop"/>
+            <where>yd_code = 'saicInfo_byName'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_carrierOperator_search" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'carrierOperator_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="600"/>
+            <column name="yd_icon" value="fa-id-badge"/>
+            <where>yd_code = 'carrierOperator_search'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_idCard_search" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'idCard_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="700"/>
+            <column name="yd_icon" value="fa-address-card-o"/>
+            <where>yd_code = 'idCard_search'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_kyc_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'kyc_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="30000"/>
+            <column name="yd_icon" value="fa-search"/>
+            <where>yd_code = 'kyc_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_customer_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customer_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="40000"/>
+            <column name="yd_icon" value="fa-users"/>
+            <where>yd_code = 'customer_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_acc_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'acc_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="50000"/>
+            <column name="yd_icon" value="fa-address-book-o"/>
+            <where>yd_code = 'acc_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_companyAccounts_manager_whiteList" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'companyAccounts_manager_whiteList'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-clone"/>
+            <where>yd_code = 'companyAccounts_manager_whiteList'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_daibulu_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'daibulu_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-plus-square-o"/>
+            <where>yd_code = 'daibulu_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_companyAccounts_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'companyAccounts_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-address-card-o"/>
+            <where>yd_code = 'companyAccounts_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_statistics_report" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'statistics_report'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="60000"/>
+            <column name="yd_icon" value="fa-area-chart"/>
+            <where>yd_code = 'statistics_report'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_statistics_infoManager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'statistics_infoManager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-bar-chart"/>
+            <where>yd_code = 'statistics_infoManager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_statistics_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'statistics_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-line-chart"/>
+            <where>yd_code = 'statistics_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_image_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'image_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="70000"/>
+            <column name="yd_icon" value="fa-image"/>
+            <where>yd_code = 'image_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_image_customer" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'image_customer'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-user"/>
+            <where>yd_code = 'image_customer'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_image_account" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'image_account'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-address-card-o"/>
+            <where>yd_code = 'image_account'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_image_bill" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'image_bill'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-book"/>
+            <where>yd_code = 'image_bill'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_compare_manager_menu" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'compare_manager_menu'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="80000"/>
+            <column name="yd_icon" value="fa-balance-scale"/>
+            <where>yd_code = 'compare_manager_menu'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_annual_manager_menu" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="90000"/>
+            <column name="yd_icon" value="fa-gavel"/>
+            <where>yd_code = 'annual_manager_menu'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_annual_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-tasks"/>
+            <where>yd_code = 'annual_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_annualHistory_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annualHistory_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-hourglass"/>
+            <where>yd_code = 'annualHistory_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_noticeManager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'noticeManager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100000"/>
+            <column name="yd_icon" value="fa-bell-o"/>
+            <where>yd_code = 'noticeManager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_legalDueNoticeCode" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'legalDueNoticeCode'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-address-card-o"/>
+            <where>yd_code = 'legalDueNoticeCode'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_fileDueNoticeCode" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'fileDueNoticeCode'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-file-image-o"/>
+            <where>yd_code = 'fileDueNoticeCode'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_operatorIdcardDueCode" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'operatorIdcardDueCode'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-id-card-o"/>
+            <where>yd_code = 'operatorIdcardDueCode'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_beneficiary_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'beneficiary_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_url" value=""/>
+            <column name="yd_order_num" value="110000"/>
+            <column name="yd_icon" value="fa-hourglass-half"/>
+            <where>yd_code = 'beneficiary_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_shareholderComparison" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'beneficiary_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'shareholderComparison'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="shareholderComparison"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量股东信息比对"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-gavel"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'beneficiary_manager')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量股东信息比对"/>
+            <column name="yd_url" value="../ui/beneficiary/stockHolderList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_beneficiaryNameComparison" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'beneficiary_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'beneficiaryNameComparison'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="beneficiaryNameComparison"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量受益人名称比对"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-window-restore"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'beneficiary_manager')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量受益人名称比对"/>
+            <column name="yd_url" value="../ui/beneficiary/beneficiaryNameList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_beneficiaryComparison" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'beneficiary_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'beneficiaryComparison'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="beneficiaryComparison"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量受益人比对"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-user"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'beneficiary_manager')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量受益人比对"/>
+            <column name="yd_url" value="../ui/beneficiary/beneficiaryList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_operatorComparison" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'beneficiary_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'operatorComparison'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="operatorComparison"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量电信运营商校验"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-desktop"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="400"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'beneficiary_manager')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量电信运营商校验"/>
+            <column name="yd_url" value="../ui/beneficiary/telecomList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_batchCollectTask" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'batchCollectTask'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="batchCollectTask"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量采集任务"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-inbox"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="120000"/>
+            <column name="yd_parent_id" valueComputed="-1"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量采集任务"/>
+            <column name="yd_url" value=""/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_illegal_manager_mysql" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'batchCollectTask'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'illegal_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-mysql-illegal_manager.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="update_2_illegal_manager_oracle" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'batchCollectTask'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'illegal_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="oracle"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-oracle-illegal_manager.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="update_2_batchBeneficiaryCollect" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'batchCollectTask'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'batchBeneficiaryCollect'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="batchBeneficiaryCollect"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量受益人采集"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-user"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'batchCollectTask')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量受益人采集"/>
+            <column name="yd_url" value="../ui/beneficiary/beneficiaryCollectList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_batchKyc" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'batchCollectTask'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'batchKyc'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="batchKyc"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="批量客户尽调"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-users"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'batchCollectTask')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="批量客户尽调"/>
+            <column name="yd_url" value="../ui/beneficiary/customerTuneList.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="update_2_fresh_company_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'fresh_company_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="130000"/>
+            <column name="yd_icon" value="fa-building-o"/>
+            <where>yd_code = 'fresh_company_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_system_interface_monitor" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'system_interface_monitor'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="140000"/>
+            <column name="yd_icon" value="fa-pie-chart"/>
+            <column name="yd_title" value="接口统计"/>
+            <column name="yd_description" value="接口统计"/>
+            <where>yd_code = 'system_interface_monitor'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_statistice_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'statistice_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-exchange"/>
+            <column name="yd_title" value="人行报送统计"/>
+            <column name="yd_description" value="人行报送统计"/>
+            <where>yd_code = 'statistice_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_system_saic_monitor" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'system_saic_monitor'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-usb"/>
+            <column name="yd_title" value="工商查询统计"/>
+            <column name="yd_description" value="工商查询统计"/>
+            <where>yd_code = 'system_saic_monitor'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200000"/>
+            <column name="yd_icon" value="fa-cogs"/>
+            <where>yd_code = 'sys_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_role_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_role_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="100"/>
+            <column name="yd_icon" value="fa-address-book-o"/>
+            <where>yd_code = 'sys_role_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_user_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_user_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="200"/>
+            <column name="yd_icon" value="fa-user"/>
+            <where>yd_code = 'sys_user_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_menu_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_menu_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="300"/>
+            <column name="yd_icon" value="fa-align-justify"/>
+            <where>yd_code = 'sys_menu_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_org_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_org_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="400"/>
+            <column name="yd_icon" value="fa-university"/>
+            <where>yd_code = 'sys_org_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_config_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_config_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="500"/>
+            <column name="yd_icon" value="fa-server"/>
+            <where>yd_code = 'sys_config_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_dict_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_dict_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="600"/>
+            <column name="yd_icon" value="fa-book"/>
+            <where>yd_code = 'sys_dict_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_meta_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_meta_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="800"/>
+            <column name="yd_icon" value="fa-folder-open-o"/>
+            <where>yd_code = 'sys_meta_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_log_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_log_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="900"/>
+            <column name="yd_icon" value="fa-file-text-o"/>
+            <where>yd_code = 'sys_log_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_blacklist_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_blacklist_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="1000"/>
+            <column name="yd_icon" value="fa-ban"/>
+            <where>yd_code = 'sys_blacklist_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_whitelist_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_whitelist_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="1100"/>
+            <column name="yd_icon" value="fa-bookmark"/>
+            <where>yd_code = 'sys_whitelist_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_holiday_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'holiday_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="1200"/>
+            <column name="yd_icon" value="fa-calendar"/>
+            <where>yd_code = 'holiday_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_template_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_template_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="1300"/>
+            <column name="yd_icon" value="fa-print"/>
+            <where>yd_code = 'sys_template_manager'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="update_2_sys_announcement_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_announcement_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_order_num" value="1400"/>
+            <column name="yd_icon" value="fa-bullhorn"/>
+            <where>yd_code = 'sys_announcement_manager'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

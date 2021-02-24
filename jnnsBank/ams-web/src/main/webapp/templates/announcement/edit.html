@@ -1,0 +1,24 @@
+<div style="margin: 15px;">
+	<form class="layui-form" action="">
+		<div class="layui-form-item">
+			<label class="layui-form-label">公告标题 <span style="color: red; padding-left: 5px">*</span></label>
+			<div class="layui-input-block">
+				<input type="text" id="title" name="title" lay-verify="required|title" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">公告内容 <span style="color: red; padding-left: 5px">*</span></label>
+			<div class="layui-input-block">
+				<textarea id="content" name="content" class="layui-textarea" rows="10" lay-verify="required|content" maxlength=""></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label" id="btn_upload" style="color: blue;">上传附件 </label>
+			<div class="layui-input-block">
+				<label id="upload" style="display: none">已上传</label>
+				<input type="hidden" id="attachmentId" name="attachmentId">
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

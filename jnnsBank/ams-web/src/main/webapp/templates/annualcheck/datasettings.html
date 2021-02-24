@@ -1,0 +1,175 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-dark">
+                            <i class="fa fa-university font-dark"></i>
+                            <span class="caption-subject uppercase">人行采集配置</span>
+                        </div>
+                        <div class="actions">
+                            <input type="checkbox" checked="" name="bankSwitchBtn" id="bankSwitchBtn" lay-skin="switch" lay-filter="bankSwitchBtn" lay-text="ON|OFF">
+                        </div>
+                    </div>
+                    <div id="bankConfigDiv" class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form">
+                                    <div class="form-body form-horizontal">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">数据截止日期</span>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group date form_date" data-date-format="yyyy-mm-dd"
+                                                             id="bankEndDate">
+                                                            <input type="text" size="5" readonly class="form-control">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default date-set" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">开始时间</span>
+                                                    <div class="col-md-6">
+                                                        <!--<div class="input-group date form_datetime" data-date-format="hh:ii"-->
+                                                        <!--id="bankStartDatetime">-->
+                                                            <!--<input type="text" size="5" readonly class="form-control">-->
+                                                            <!--<span class="input-group-btn">-->
+                                                                <!--<button class="btn default date-set" type="button">-->
+                                                                    <!--<i class="fa fa-calendar"></i>-->
+                                                                <!--</button>-->
+                                                            <!--</span>-->
+                                                        <!--</div>-->
+                                                        <div class="input-group bootstrap-timepicker timepicker" data-template="modal">
+                                                            <input id="bankStartDatetime" type="text" readonly class="form-control input-small">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">结束时间</span>
+                                                    <div class="col-md-6">
+                                                        <!--<div class="input-group date form_datetime" data-date-format="hh:ii"-->
+                                                             <!--id="bankEndDatetime">-->
+                                                            <!--<input type="text" size="5" readonly class="form-control">-->
+                                                            <!--<span class="input-group-btn">-->
+                                                                <!--<button class="btn default date-set" type="button">-->
+                                                                    <!--<i class="fa fa-calendar"></i>-->
+                                                                <!--</button>-->
+                                                            <!--</span>-->
+                                                        <!--</div>-->
+                                                        <div class="input-group bootstrap-timepicker timepicker" data-template="modal">
+                                                            <input id="bankEndDatetime" type="text" readonly class="form-control input-small">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-md-8">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-dark">
+                            <i class="fa fa-balance-scale font-dark"></i>
+                            <span class="caption-subject uppercase">工商采集配置</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form">
+                                    <div class="form-body form-horizontal">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">采集</span>
+                                                    <div class="col-md-10">
+                                                        <input type="radio" name="saicSwitchBtn" lay-filter="saicSwitchBtn" value="FILE" title="文件导入采集">
+                                                        <input type="radio" name="saicSwitchBtn" lay-filter="saicSwitchBtn" value="TIMING" title="定时开始采集">
+                                                        <input type="radio" name="saicSwitchBtn" lay-filter="saicSwitchBtn" value="IMMEDIATELY" title="手动开始采集">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="saicStartTime" hidden>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">开始日期</span>
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="saicStartDate" id="saicStartDate" placeholder="开始日期" autocomplete="off" class="layui-input date-picker"
+                                                               onclick="layui.laydate({elem: this, format: 'YYYY-MM-DD hh:mm:ss', istime: true})">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-2">结束日期</span>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group date form_date"
+                                                             data-date-format="yyyy-mm-dd" id="saicEndDate">
+                                                            <input type="text" size="16" readonly
+                                                                   class="form-control">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default date-set" type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-md-8">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

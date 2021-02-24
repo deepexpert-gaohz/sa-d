@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">手机号码联网核查</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">姓名</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="nm" name="nm" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">手机号码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="mobNb" name="mobNb" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">证件类型</label>
+                        <div class="col-xs-7 col-md-6">
+                            <select id="idTp" name="idTp" class="layui-input">
+                                <option value="">请选择</option>
+                                <option value="IC00">00-身份证</option>
+                                <option value="IC02">02-军官证</option>
+                                <option value="IC03">03-士兵证</option>
+                                <option value="IC04">04-港澳往来通行证</option>
+                                <option value="IC05">05-临时身份证</option>
+                                <option value="IC06">06-户口簿</option>
+                                <option value="IC08">08-外国人永久居留证</option>
+                                <option value="IC20">20-台湾往来通行证</option>
+                                <option value="IC21">21-外国公民护照</option>
+                                <option value="IC22">22-港澳居民居住证</option>
+                                <option value="IC23">23-台湾居民居住证</option>
+                                <option value="IC24">24-中国人民武装警察身份证件</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">证件号码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="identification" name="identification" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">统一社会信用代码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="uniSocCdtCd" name="uniSocCdtCd" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">工商注册号</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="bizRegNb" name="bizRegNb" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">操作员姓名</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="opNm" name="opNm" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4"></label>
+                        <div class="col-xs-7 col-md-6">
+                            <button type="button" class="layui-btn" id="btnSubmit">提交</button>
+                            <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="portlet light bordered" id="result" hidden style="margin-top: 20px">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-book font-dark"></i>
+                        <span class="caption-subject uppercase">查询结果</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-bordered word-break" id="success" hidden>
+                        <tbody>
+                        <tr>
+                            <td class="td-label">手机号码：</td>
+                            <td class="td-label-right" id="mobNb1"></td>
+                            <td class="td-label">手机号码核查结果：</td>
+                            <td class="td-label-right" id="rslt"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">手机运营商：</td>
+                            <td class="td-label-right" id="mobCrr"></td>
+                            <td class="td-label">手机号归属地代码：</td>
+                            <td class="td-label-right" id="locMobNb"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">手机号归属地名称：</td>
+                            <td class="td-label-right" id="locNmMobNb"></td>
+                            <td class="td-label">客户类型：</td>
+                            <td class="td-label-right" id="cdTp"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">手机号码状态：</td>
+                            <td class="td-label-right" id="sts"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered word-break" id="fail" hidden>
+                        <tbody>
+                        <tr>
+                            <td class="td-label">申请报文拒绝状态：</td>
+                            <td class="td-label-right" id="procSts"></td>
+                            <td class="td-label">申请报文拒绝码：</td>
+                            <td class="td-label-right" id="procCd"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">申请报文拒绝信息：</td>
+                            <td class="td-label-right" colspan="3" id="rjctInf"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/networkVerifiedCommon.js"></script>
+<script type="text/javascript" src="../ag/networkVerify/phoneNumber.js"></script>
+
+</body>
+
+</html>

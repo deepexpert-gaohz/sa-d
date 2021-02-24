@@ -1,0 +1,25 @@
+compare:
+  task:
+    loop-use: false #定时任务监控是否开启
+  online:
+    pbc:
+      executorNum: 10 #人行在线采集的线程数
+      validDays: 7 #人行数据缓存有效天数
+      retryLimit: 5 #人行在线采集的重采次数
+      useLocal: true #人行在线采集是否用本地有效期内的数据
+    saic:
+      executorNum: 5 #工商在线采集的线程数
+      retryLimit: 3 #工商在线采集的重采次数
+      useLocal: true #工商在线采集是否用本地有效期内的数据
+  saicCheck:
+    # 是否启用工商异常校验任务
+    use: false
+    #执行周期（创建定时任务的周期）默认：每三个月的15日执行。0 0/10 * * *  0 0 0 15 1/3 ?
+    timing: 0 0 0 15 1/3 ?
+    #客户工商异常校验结果Excel生成路径
+    filePath: /home/weblogic/idea/saicCheck/export
+  import:
+    coreTransform:
+      use: false
+    executorNum: 10 #文件导入开启的线程数
+

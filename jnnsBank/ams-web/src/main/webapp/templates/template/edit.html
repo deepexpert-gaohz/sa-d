@@ -1,0 +1,88 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">单据类型</label>
+            <div class="layui-input-block">
+                <select id="billType" name="billType">
+                    <option value="ACCT_INIT">存量</option>
+                    <option value="ACCT_OPEN">新开户</option>
+                    <option value="ACCT_CHANGE">变更</option>
+                    <option value="ACCT_SUSPEND">久悬</option>
+                    <option value="ACCT_SEARCH">查询</option>
+                    <option value="ACCT_REVOKE">销户</option>
+                    <option value="ACCT_SAIC">工商信息</option>
+                    <option value="APPT_UNCOMPLETE">接洽打印</option>
+                    <option value="APPT_AFTERCOMPLETE">已受理详情</option>
+                </select></div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">存款人类别</label>
+            <div class="layui-input-block">
+                <select id="depositorType" name="depositorType">
+                    <option value="ALL">所有</option>
+                    <option value="DEPOSITOR_TYPE_01">企业法人</option>
+                    <option value="DEPOSITOR_TYPE_02">非法人企业</option>
+                    <option value="DEPOSITOR_TYPE_03">机关</option>
+                    <option value="DEPOSITOR_TYPE_04">实行预算管理的事业单位</option>
+                    <option value="DEPOSITOR_TYPE_05">非预算管理的事业单位</option>
+                    <option value="DEPOSITOR_TYPE_06">团级(含)以上军队及分散执勤的支(分)队</option>
+                    <option value="DEPOSITOR_TYPE_07">团级(含)以上武警部队及分散执勤的支(分)队</option>
+                    <option value="DEPOSITOR_TYPE_08">社会团体</option>
+                    <option value="DEPOSITOR_TYPE_09">宗教组织</option>
+                    <option value="DEPOSITOR_TYPE_10">民办非企业组织</option>
+                    <option value="DEPOSITOR_TYPE_11">外地常设机构</option>
+                    <option value="DEPOSITOR_TYPE_12">外国驻华机构</option>
+                    <option value="DEPOSITOR_TYPE_13">有字号的个体工商户</option>
+                    <option value="DEPOSITOR_TYPE_14">无字号的个体工商户</option>
+                    <option value="DEPOSITOR_TYPE_15">居民委员会、村民委员会、社区委员会</option>
+                    <option value="DEPOSITOR_TYPE_16">单位设立的独立核算的附属机构</option>
+                    <option value="DEPOSITOR_TYPE_17">其他组织</option>
+                    <option value="DEPOSITOR_TYPE_20">境外机构</option>
+                    <option value="DEPOSITOR_TYPE_50">QFII</option>
+                    <option value="DEPOSITOR_TYPE_51">境外贸易机构</option>
+                    <option value="DEPOSITOR_TYPE_52">跨境清算</option>
+                    <option value="DEPOSITOR_TYPE_53">工商信息</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-block">
+                <select id="acctType" name="acctType">
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模版名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="templateName" placeholder="请输入打印模版名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 55%">
+                <label class="layui-form-label">打印模板</label>
+                <div class="layui-input-block">
+                    <input id="file" type="file" name="file" class="layui-upload-file" lay-type="file" lay-ext="pdf"
+                           lay-title="请选择PDF打印模板">
+                    <input type="hidden" name="fileName" id="fileName">
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <label class="layui-form-label" id="displayName"></label>
+            </div>
+        </div>
+        <input type="hidden" name="id" id="id">
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

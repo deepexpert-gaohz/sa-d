@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="permission-addDictionary-applynoteOption" author="taire" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_dictionary where yd_name = 'applyNoteValue2Item'</sqlCheck>
+                </not>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_option where yd_dictionary_id = '32119222946721' and yd_value = '06'</sqlCheck>
+            </and>
+        </preConditions>
+
+        <insert tableName="yd_sys_option">
+            <column name="yd_id" value="716"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_dictionary_id" value="32119222946721"/>
+            <column name="yd_name" value="公司其他原因"/>
+            <column name="yd_value" value="06"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

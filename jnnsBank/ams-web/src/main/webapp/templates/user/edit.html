@@ -1,0 +1,48 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-block">
+							<input type="text" name="cname" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+					<div class="layui-input-block">
+						<input type="text" name="username" lay-verify="required" placeholder="请输入账户" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item" id="pwd">
+					<label class="layui-form-label">密码</label>
+					<div class="layui-input-block">
+						<input type="password" name="password" id="password" lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">角色</label>
+					<div class="layui-input-block">
+						<select id="roleId" name="roleId" lay-verify="required">
+							<option value="">请选择角色</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">机构</label>
+					<div class="layui-input-block">
+						<select id="orgId" name="orgId" lay-verify="required" lay-search="">
+							<option value="">请选择所属机构</option>
+						</select>
+					</div>
+					<div class="layui-input-block layui-word-aux">可通过搜索来获取相关机构</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否启用</label>
+					<div class="layui-input-block">
+						<input type="radio" name="enabled" value="true" title="启用" checked>
+						<input type="radio" name="enabled" value="false" title="禁用">
+					</div>
+				</div>
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

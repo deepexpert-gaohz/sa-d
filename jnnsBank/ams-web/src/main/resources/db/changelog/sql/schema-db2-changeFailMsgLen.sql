@@ -1,0 +1,1 @@
+alter table YD_SYNC_HISTORY alter YD_FAIL_MSG set data type varchar(1000);

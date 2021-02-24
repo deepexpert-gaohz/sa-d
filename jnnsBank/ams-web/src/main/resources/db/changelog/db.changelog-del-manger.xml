@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="del_sys_image_manager" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_image_manager'</sqlCheck>
+            </and>
+        </preConditions>
+       <delete tableName="yd_sys_permission">
+            <where>yd_code = 'sys_image_manager'</where>
+       </delete>
+    </changeSet>
+    <changeSet id="del_image_Add" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply:image_Add'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_permission">
+            <where>yd_code = 'apply:image_Add'</where>
+        </delete>
+    </changeSet>
+    <changeSet id="del_image_Edit" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply:image_Edit'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_permission">
+            <where>yd_code = 'apply:image_Edit'</where>
+        </delete>
+    </changeSet>
+    <changeSet id="del_image_Del" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'apply:image_Del'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_permission">
+            <where>yd_code = 'apply:image_Del'</where>
+        </delete>
+    </changeSet>
+
+
+    <changeSet id="del_accountImage" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_config where yd_config_key = 'accountImage'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_config">
+            <where>yd_config_key = 'accountImage'</where>
+        </delete>
+    </changeSet>
+    <changeSet id="del_image" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_config where yd_config_key = 'image'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_config">
+            <where>yd_config_key = 'image'</where>
+        </delete>
+    </changeSet>
+    <changeSet id="del_thirdImageMockEnabled" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_config where yd_config_key = 'thirdImageMockEnabled'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_config">
+            <where>yd_config_key = 'thirdImageMockEnabled'</where>
+        </delete>
+    </changeSet>
+    <changeSet id="del_thirdUrl" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_config where yd_config_key = 'thirdUrl'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_config">
+            <where>yd_config_key = 'thirdUrl'</where>
+        </delete>
+    </changeSet>
+</databaseChangeLog>

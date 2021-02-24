@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>上报记录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+<body>
+<div class="admin-main">
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+
+            <!--<label class="layui-form-label">账号</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text"  class="layui-input" id="acctNo" name="acctNo">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">账户名称</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" class="layui-input" id="acctName" name="acctName">-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">账户性质</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">-->
+                    <!--<option value="">请选择</option>-->
+                    <!--<option value="jiben">基本存款账户</option>-->
+                    <!--<option value="yiban">一般存款账户</option>-->
+                    <!--<option value="yusuan">预算单位专用存款账户</option>-->
+                    <!--<option value="feiyusuan">非预算单位专用存款账户</option>-->
+                    <!--<option value="teshu">特殊单位专用存款账户</option>-->
+                    <!--<option value="linshi">临时机构临时存款账户</option>-->
+                    <!--<option value="feilinshi">非临时机构临时存款账户</option>-->
+                    <!--<option value="yanzi">验资户临时存款账户</option>-->
+                    <!--<option value="zengzi">增资户临时存款账户</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<label class="layui-form-label">开户行</label>-->
+            <!--<div class="layui-input-inline">-->
+                <!--<input type="text" class="layui-input" id="openBankName" name="openBankName">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="entname" name="entname">
+            </div>
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="phone" name="phone">
+            </div>
+            <label class="layui-form-label">校验类型</label>
+            <div class="layui-input-inline">
+                <select name="type" class="layui-input" id="type" lay-filter="type">
+                    <option value="">请选择</option>
+                    <option value="PBC">人行校验</option>
+                    <option value="SAIC">工商校验</option>
+                    <option value="PHONE">手机号实名校验</option>
+                    <option value="JUDICIAL_INFORMATION">司法信息</option>
+                </select>
+            </div>
+            <label class="layui-form-label">校验机构</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="proofBankName" name="proofBankName">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">操作员</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="username" name="username">
+            </div>
+            <label class="layui-form-label">校验时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="beginDate" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDate" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+            <button type="button" class="layui-btn layui-btn-primary" id="pdf_btn">
+                导出PDF
+            </button>
+            <button type="button" class="layui-btn layui-btn-primary" id="pdf_excel">
+                导出EXCEL
+            </button>
+        </div>
+    </form>
+    <table id="syncTable">
+
+    </table>
+</div>
+
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/proof/moneyList.js"></script>
+
+</body>
+</html>

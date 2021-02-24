@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8">
+		<title id="titleName"></title>
+		<meta name="renderer" content="webkit">
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+		<link rel="stylesheet" href="css/layui.css" media="all" />
+		<link rel="stylesheet" href="css/global.css" media="all">
+		<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+
+	</head>
+
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域 -->
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item layadmin-flexible" lay-unselect>
+						<a href="javascript:;" class="admin-event-toggle" title="侧边伸缩">
+							<i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+						</a>
+					</li>
+					<!-- <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+						<a href="http://www.ideatech.info" target="_blank" title="官网">
+							<i class="layui-icon layui-icon-website"></i>
+						</a>
+					</li> -->
+					<li class="layui-nav-item" lay-unselect="">
+						<a href="javascript:;" class="admin-event-home" title="首页">
+							<i class="layui-icon layui-icon-home"></i>
+						</a>
+					</li>
+					<li class="layui-nav-item" lay-unselect="">
+						<a href="javascript:;" class="admin-event-refresh" title="刷新">
+							<i class="layui-icon layui-icon-refresh-3"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+					<!--<li class="layui-nav-item">-->
+						<!--<a href="javascript:;"><i class="fa fa-television"></i></a>-->
+						<!--<dl class="layui-nav-child" id="menuSys"> &lt;!&ndash; 二级菜单 &ndash;&gt;-->
+						<!--</dl>-->
+					<!--</li>-->
+					<!--<li class="layui-nav-item">
+						<a href=""><i class="fa fa-envelope"></i> <span class="layui-badge">10</span></a>
+						<dl class="layui-nav-child">
+							<dd><a href="">预约待处理 <span class="layui-badge">2</span></a></dd>
+							<dd><a href="">开户待审核 <span class="layui-badge">8</span></a></dd>
+							<dd><a href="">账户核准成功 <span class="layui-badge">0</span></a></dd>
+						</dl>
+					</li>-->
+					<li class="layui-nav-item" id="saic_network_state" style="display: none">
+						<a href="javascript:void(0);">工商网络状态：<i class="fa fa-wifi"></i></a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:void(0);"><i class="fa fa-bell"></i> <span class="layui-badge" id="noticeTotal">0</span></a>
+						<dl class="layui-nav-child">
+							<dd><a id="resvrUnprocessList">预约未及时接洽 <span class="layui-badge" id="resvrUnprocess">0</span></a></dd>
+							<dd><a id="tempAcctList">临时户到期 <span class="layui-badge" id="tempAcct">0</span></a></dd>
+							<dd><a id="fileDueNoticeList">证明文件到期 <span class="layui-badge" id="fileDueNoticeDay">0</span></a></dd>
+							<dd><a id="legalDueNoticeList">法人证件到期 <span class="layui-badge" id="legalDueNoticeDay">0</span></a></dd>
+							<dd><a id="operatorDueNoticeList">经办人证件到期 <span class="layui-badge" id="operatorDueNoticeDay">0</span></a></dd>
+						</dl>
+					</li>
+					
+					<li class="layui-nav-item">
+						<a href="javascript:;" class="admin-header-user">
+							<span id="username"></span>
+						</a>
+						<dl class="layui-nav-child">
+							<!--<dd id="lock">-->
+								<!--<a href="javascript:;">-->
+									<!--<i class="fa fa-lock" aria-hidden="true" style="padding-right: 3px;padding-left: 1px;"></i> 锁屏 (Alt+L)-->
+								<!--</a>-->
+							<!--</dd>-->
+							<dd>
+								<a id="changePwdBtn"><i class="fa fa-key" aria-hidden="true"></i> 修改密码</a>
+							</dd>
+							<dd>
+								<a href="../logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect="">
+						<a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="layui-side layui-bg-black" id="admin-side">
+				<div class="layui-side-scroll" >
+					<div class="layui-logo" id='logo'>
+						<span>账户管理平台</span>
+					</div>
+					<div id="admin-navbar-side" lay-filter="side" class="layui-side-menu">
+					</div>
+				</div>
+			</div>
+			<div id="admin-body" class="layui-body">
+				<div class="layadmin-pagetabs" id="LAY_app_tabs">
+					<div class="layui-icon layadmin-tabs-control layui-icon-prev" id="prev"></div>
+					<div class="layui-icon layadmin-tabs-control layui-icon-next" id="next"></div>
+					<div class="layui-icon layadmin-tabs-control layui-icon-down">
+						<ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+							<li class="layui-nav-item">
+								<a href="javascript:;"><span class="layui-nav-more"></span></a>
+								<dl class="layui-nav-child">
+									<dd class="layui-tab-actions" data-event="closeThisTab">
+										<a href="javascript:;">关闭当前标签页</a>
+									</dd>
+									<dd class="layui-tab-actions" data-event="closeOtherTabs">
+										<a href="javascript:;">关闭其它标签页</a>
+									</dd>
+									<dd class="layui-tab-actions" data-event="closeAllTabs">
+										<a href="javascript:;">关闭全部标签页</a>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+					<div class="layui-tab admin-nav-card" lay-filter="admin-tab" id="LAY_app_tabsheader">
+						<ul class="layui-tab-title"  style="left: 0px;">
+							<li lay-id="/" class="layui-this" style="display: none;"><i class="layui-icon layui-icon-home"></i>
+						</ul>
+						<div class="layui-tab-content" style="position: absolute;width: 100%;left: 0px;min-height: 150px; padding: 0px;">
+							<div id="dualRecordPage" style="width: 100%;height:100%;display:none" >
+								<iframe style="width: 100%;height:100%;" src="../ui/imageInfo/dualRecord.v2.html"></iframe>
+							</div>
+							<div class="layui-tab-item layui-show">
+								<!--<iframe src="comparison/taskManager.html"></iframe>-->
+								<iframe src="about.html"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="site-tree-mobile layui-hide">
+				<i class="layui-icon">&#xe602;</i>
+			</div>
+			<div class="site-mobile-shade"></div>
+
+            <!--[if lt IE 9]>
+            <script src="plugins/respond.min.js"></script>
+            <script src="plugins/excanvas.min.js"></script>
+            <script src="plugins/ie8.fix.min.js"></script>
+            <script src="plugins/es5.js"></script>
+			<![endif]-->
+
+			<script type="text/javascript" src="jquery.min.js"></script>
+            <script type="text/javascript" src="layui.js"></script>
+            <script type="text/javascript" src="datas/nav.js"></script>
+            <script type="text/javascript" src="ag/common/util.js"></script>
+            <script src="js/index.js"></script>
+		</div>
+	</body>
+
+</html>

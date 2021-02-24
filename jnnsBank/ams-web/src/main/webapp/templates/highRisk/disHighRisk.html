@@ -1,0 +1,34 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">处理方式</label>
+            <div class="layui-input-block">
+                <select id="handleMode" name="handleMode" lay-verify="required" lay-filter="handlMode">
+                    <option value="">请选择处理方式</option>
+                    <option value="1">不处理</option>
+                    <option value="2">止付</option>
+                    <option value="3">暂停非柜面</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" id="reason">
+            <div class="col-md-12">
+                <label class="layui-form-label">柜员号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="kyh" lay-verify="required">
+                </div>
+            </div>
+        </div>
+        <div class="row" id="reason1">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2">原因</label>
+                    <div class="layui-input-block">
+                        <textarea name="disReason" class="layui-textarea" lay-verify="required" id="disReason"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

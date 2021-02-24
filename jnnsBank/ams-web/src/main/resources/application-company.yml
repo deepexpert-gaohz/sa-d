@@ -1,0 +1,37 @@
+import:
+  file:
+    split: "|!"
+    lineEndAuto: true
+    lineEndPrefix:
+    fileType: txt,TXT
+    location: /home/weblogic/idea/apprott/dgbb
+    locationFinish: /home/weblogic/idea/apprott/dgbb2
+    chartset: GBK
+    scheduletimingIsUse: false
+    scheduletiming: 0 0/5 * * * ?
+    executor-file:
+      num: 5
+    executor:
+      num: 5
+    #    是否需要人行数据覆盖核心数据
+    pbcCoverCore: false
+    #是否使用时间暂停方式，false代表不使用，走原来的方式
+    #pbcCoverCoreTimeUse: false
+    #人行覆盖核心执行时间周一到周五(19:00:00-05:00:00),周末(19:00:00-05:00:00),周末不配默认24小时执行，中间用,分割
+    #pbcCoverCoreTime: 19:00:00-05:00:00
+    #T+1配置
+    tpo:
+      split: '|!'
+      charset: GBK
+      folder:
+        begin: /home/weblogic/idea/tpo/begin
+        finish: /home/weblogic/idea/tpo/finish
+      extension: txt
+      fields-always-full: true
+    batch-suspend:
+      split: '|!'
+      charset: GBK
+      folder:
+        begin: /home/weblogic/idea/batch-suspend/begin
+        finish: /home/weblogic/idea/batch-suspend/finish
+      extension: txt

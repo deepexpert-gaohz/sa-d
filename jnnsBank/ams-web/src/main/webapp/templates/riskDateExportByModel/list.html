@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css"/>
+</head>
+<body>
+<div class="admin-main">
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">机构名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="orgName">
+            </div>
+            <label class="layui-form-label">风险类型</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="riskType">
+            </div>
+            <label class="layui-form-label">模型名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="modelName">
+            </div>
+
+            <div class="layui-inline" >
+                <label class="layui-form-label">数据日期</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="startEndTime" placeholder="开始 到 结束">
+                </div>
+                <button type="button" id="btn_query" class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small dn" id="btn_export_byModel" data-code="apply:menu_Add">
+            <i class="layui-icon">&#xe601;</i>
+            按模型导出
+        </button>
+        <button class="layui-btn layui-btn-small dn" id="btn_export_byOrg" data-code="apply:menu_Edit">
+            <i class="layui-icon">&#xe601;</i>
+            按机构导出
+        </button>
+
+    </div>
+    <table id="dateTable">
+
+    </table>
+
+</div>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../ag/model/modriskDateExportOrgl.js"></script>
+<script type="text/javascript">
+    layui.use('laydate', function() {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#startEndTime'
+            ,type: 'date'
+            ,range: '~'
+
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <title>开户数量统计</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css" />
+  <link rel="stylesheet" href="../css/layui.css" media="all" />
+  <link rel="stylesheet" href="../css/global.css" media="all">
+  <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <div class="admin-main">
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+      <div class="layui-form-item" style="margin-bottom:0px;">
+        <button type="button" id="btn_depositorType" class="layui-btn layui-btn-primary pull-left" >选择存款人类别</button>
+        <button type="button" id="btn_acctType" class="layui-btn layui-btn-primary pull-left" style="margin-right:10px;">选择账户性质</button>
+
+        <label class="layui-form-label">上报时间</label>
+        <div class="layui-input-inline">
+          <input type="text" id="createddatestart" placeholder="开始时间" autocomplete="off" class="layui-input date-picker">
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" id="createddateend" placeholder="结束时间" autocomplete="off" class="layui-input date-picker">
+        </div>
+
+        <button type="button" id="btn_query"  class="layui-btn layui-btn pull-left">
+            <i class="fa fa-search" aria-hidden="true"></i> 搜索
+        </button>
+        <button type="button" id="btn_query_pbc"  class="layui-btn layui-btn pull-left">
+            人行上报数据统计
+        </button>
+      </div>
+    </form>
+
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    
+    <div style="margin-top: 15px;">
+      <div id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_export">导出Excel</button>
+      </div>
+    </div>
+
+    <table id="list" class="layui-table">
+    </table>
+
+  </div>
+
+  <!--[if lt IE 9]>
+  <script src="../plugins/respond.min.js"></script>
+  <script src="../plugins/excanvas.min.js"></script>
+  <script src="../plugins/ie8.fix.min.js"></script>
+  <script src="../plugins/json2.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="../plugins/jquery.min.js"></script>
+  <script type="text/javascript" src="../bootstrap.min.js"></script>
+  <script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+  <script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+  <script src="../plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+  <script type="text/javascript" src="../layui.js"></script>
+  <script type="text/javascript" src="../ag/common/util.js"></script>
+  <script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+  <script type="text/javascript" src="../ag/company/businessStatisticsOpen.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="init-1" author="BD" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <viewExists viewName="yd_public_core_all_v"/>
+            </not>
+        </preConditions>
+        <createView viewName="yd_public_core_all_v">
+            select c.yd_id,
+            c.yd_created_by,
+            c.yd_created_date,
+            c.yd_last_update_by,
+            c.yd_last_update_date,
+            c.yd_version_ct,
+            c.yd_acct_no,
+            case when c.yd_account_class is null then a.yd_account_class ELSE c.yd_account_class END AS yd_account_class,
+            c.yd_account_id,
+            c.yd_account_key,
+            c.yd_account_name_from,
+            case when c.yd_account_status is null then a.yd_account_status ELSE c.yd_account_status END AS yd_account_status,
+            case when c.yd_acct_active_date is null then a.yd_acct_active_date ELSE c.yd_acct_active_date END AS yd_acct_active_date,
+            case when c.yd_acct_cancel_reason is null then a.yd_acct_cancel_reason ELSE c.yd_acct_cancel_reason END AS yd_acct_cancel_reason,
+            case when c.yd_acct_big_type is null then b.yd_acct_big_type ELSE c.yd_acct_big_type END AS yd_acct_big_type,
+            case when c.yd_acct_create_date is null then a.yd_acct_create_date ELSE c.yd_acct_create_date END AS yd_acct_create_date,
+            case when c.yd_acct_create_reason is null then a.yd_acct_create_reason ELSE c.yd_acct_create_reason END AS yd_acct_create_reason,
+            case when c.yd_acct_file_no is null then b.yd_acct_file_no ELSE c.yd_acct_file_no END AS yd_acct_file_no,
+            case when c.yd_acct_file_no2 is null then b.yd_acct_file_no2 ELSE c.yd_acct_file_no2 END AS yd_acct_file_no2,
+            case when c.yd_acct_file_type is null then b.yd_acct_file_type ELSE c.yd_acct_file_type END AS yd_acct_file_type,
+            case when c.yd_acct_file_type2 is null then b.yd_acct_file_type2 ELSE c.yd_acct_file_type2 END AS yd_acct_file_type2,
+            case when (case when c.yd_acct_name is null then a.yd_acct_name ELSE c.yd_acct_name END) is null THEN c.yd_depositor_name ELSE c.yd_acct_name END AS yd_acct_name,
+            case when c.yd_acct_short_name is null then a.yd_acct_short_name ELSE c.yd_acct_short_name END AS yd_acct_short_name,
+            case when c.yd_acct_suspen_date is null then a.yd_acct_suspen_date ELSE c.yd_acct_suspen_date END AS yd_acct_suspen_date,
+            case when c.yd_acct_type is null then b.yd_acct_type ELSE c.yd_acct_type END AS yd_acct_type,
+            c.yd_bank_card_no,
+            case when c.yd_bank_code is null then a.yd_bank_code ELSE c.yd_bank_code END AS yd_bank_code,
+            case when c.yd_bank_name is null then a.yd_bank_name ELSE c.yd_bank_name END AS yd_bank_name,
+            c.yd_basic_account_status,
+            c.yd_basic_acct_reg_area,
+            c.yd_basic_bank_code,
+            c.yd_basic_bank_name,
+            c.yd_business_license_due,
+            c.yd_business_license_no,
+            c.yd_business_scope,
+            c.yd_business_scope_eccs,
+            case when c.yd_cancel_date is null then a.yd_cancel_date ELSE c.yd_cancel_date END AS yd_cancel_date,
+            case when c.yd_capital_property is null then b.yd_capital_property ELSE c.yd_capital_property END AS yd_capital_property,
+            c.yd_change_fields_str,
+            c.yd_corp_scale,
+            c.yd_credential_due,
+            c.yd_credential_no,
+            c.yd_credential_type,
+            c.yd_currency_type,
+            c.yd_customer_class,
+            c.yd_customer_id,
+            c.yd_customer_log_id,
+            c.yd_customer_no,
+            c.yd_data_date,
+            c.yd_depositor_name,
+            c.yd_depositor_type,
+            c.yd_economy_industry_code,
+            c.yd_economy_industry_name,
+            c.yd_economy_type,
+            case when c.yd_effective_date is null then a.yd_effective_date ELSE c.yd_effective_date END as yd_effective_date,
+            case when c.yd_enchashment_type is null then b.yd_enchashment_type ELSE c.yd_enchashment_type END as yd_enchashment_type,
+            c.yd_file_due,
+            c.yd_file_due2,
+            c.yd_file_no,
+            c.yd_file_no2,
+            c.yd_file_setup_date,
+            c.yd_file_setup_date2,
+            c.yd_file_type,
+            c.yd_file_type2,
+            c.yd_finance_idcard_no as yd_finance_idcard_no,
+            c.yd_finance_name as yd_finance_name,
+            c.yd_finance_telephone as yd_finance_telephone,
+            c.yd_from_source as yd_from_source,
+            case when c.yd_fund_manager is null then b.yd_fund_manager ELSE c.yd_fund_manager END AS yd_fund_manager,
+            case when c.yd_fund_manager_idcard_due is null then b.yd_fund_manager_idcard_due ELSE c.yd_fund_manager_idcard_due END as yd_fund_manager_idcard_due,
+            case when c.yd_fund_manager_idcard_no is null then b.yd_fund_manager_idcard_no ELSE c.yd_fund_manager_idcard_no END as yd_fund_manager_idcard_no,
+            case when c.yd_fund_manager_idcard_type is null then b.yd_fund_manager_idcard_type ELSE c.yd_fund_manager_idcard_type END as yd_fund_manager_idcard_type,
+            case when c.yd_fund_manager_telephone is null then b.yd_fund_manager_telephone ELSE c.yd_fund_manager_telephone END as yd_fund_manager_telephone,
+            c.yd_handle_status,
+            c.yd_image_batch_no,
+            c.yd_industry_code,
+            case when c.yd_inside_address is null then b.yd_inside_address ELSE c.yd_inside_address END as yd_inside_address,
+            case when c.yd_inside_dept_name is null then b.yd_inside_dept_name ELSE c.yd_inside_dept_name END as yd_inside_dept_name,
+            case when c.yd_inside_lead_idcard_due is null then b.yd_inside_lead_idcard_due ELSE c.yd_inside_lead_idcard_due END as yd_inside_lead_idcard_due,
+            case when c.yd_inside_lead_idcard_no is null then b.yd_inside_lead_idcard_no ELSE c.yd_inside_lead_idcard_no END as yd_inside_lead_idcard_no,
+            case when c.yd_inside_lead_idcard_type is null then b.yd_inside_lead_idcard_type ELSE c.yd_inside_lead_idcard_type END as yd_inside_lead_idcard_type,
+            case when c.yd_inside_lead_name is null then b.yd_inside_lead_name ELSE c.yd_inside_lead_name END as yd_inside_lead_name,
+            case when c.yd_inside_telephone is null then b.yd_inside_telephone ELSE c.yd_inside_telephone END as yd_inside_telephone,
+            case when c.yd_inside_zipcode is null then b.yd_inside_zipcode ELSE c.yd_inside_zipcode END as yd_inside_zipcode,
+            c.yd_interbank_no,
+            c.yd_is_identification,
+            c.yd_is_same_regist_area,
+            c.yd_legal_idcard_due,
+            c.yd_legal_idcard_no,
+            c.yd_legal_idcard_type,
+            c.yd_legal_name,
+            c.yd_legal_telephone,
+            c.yd_legal_type,
+            c.yd_no_tax_prove,
+            case when c.yd_nontmp_address is null then b.yd_nontmp_address ELSE c.yd_nontmp_address END as yd_nontmp_address,
+            case when c.yd_nontmp_legal_idcard_due is null then b.yd_nontmp_legal_idcard_due ELSE c.yd_nontmp_legal_idcard_due END as yd_nontmp_legal_idcard_due,
+            case when c.yd_nontmp_legal_idcard_no is null then b.yd_nontmp_legal_idcard_no ELSE c.yd_nontmp_legal_idcard_no END as yd_nontmp_legal_idcard_no,
+            case when c.yd_nontmp_legal_idcard_type is null then b.yd_nontmp_legal_idcard_type ELSE c.yd_nontmp_legal_idcard_type END as yd_nontmp_legal_idcard_type,
+            case when c.yd_nontmp_legal_name is null then b.yd_nontmp_legal_name ELSE c.yd_nontmp_legal_name END as yd_nontmp_legal_name,
+            case when c.yd_nontmp_project_name is null then b.yd_nontmp_project_name ELSE c.yd_nontmp_project_name END as yd_nontmp_project_name,
+            case when c.yd_nontmp_telephone is null then b.yd_nontmp_telephone ELSE c.yd_nontmp_telephone END as yd_nontmp_telephone,
+            case when c.yd_nontmp_zipcode is null then b.yd_nontmp_zipcode ELSE c.yd_nontmp_zipcode END as yd_nontmp_zipcode,
+            case when c.yd_operator_idcard_due is null then b.yd_operator_idcard_due ELSE c.yd_operator_idcard_due END as yd_operator_idcard_due,
+            case when c.yd_operator_idcard_no is null then b.yd_operator_idcard_no ELSE c.yd_operator_idcard_no END as yd_operator_idcard_no,
+            case when c.yd_operator_idcard_type is null then b.yd_operator_idcard_type ELSE c.yd_operator_idcard_type END as yd_operator_idcard_type,
+            case when c.yd_operator_name is null then b.yd_operator_name ELSE c.yd_operator_name END as yd_operator_name,
+            case when c.yd_operator_telephone is null then b.yd_operator_telephone ELSE c.yd_operator_telephone END as yd_operator_telephone,
+            c.yd_org_code,
+            c.yd_org_code_due,
+            c.yd_org_eccs_no,
+            c.yd_org_en_name,
+            c.yd_org_status,
+            c.yd_org_type,
+            c.yd_org_type_detail,
+            case when c.yd_organ_full_id is null then a.yd_organ_full_id ELSE c.yd_organ_full_id END AS yd_organ_full_id,
+            c.yd_par_account_key,
+            c.yd_par_corp_name,
+            c.yd_par_legal_idcard_due,
+            c.yd_par_legal_idcard_no,
+            c.yd_par_legal_idcard_type,
+            c.yd_par_legal_name,
+            c.yd_par_legal_telephone,
+            c.yd_par_legal_type,
+            c.yd_par_org_code,
+            c.yd_par_org_code_due,
+            c.yd_par_org_eccs_due,
+            c.yd_par_org_eccs_no,
+            c.yd_par_reg_no,
+            c.yd_par_reg_type,
+            case when c.yd_ref_bill_id is null then a.yd_ref_bill_id ELSE c.yd_ref_bill_id END AS yd_ref_bill_id,
+            c.yd_ref_customer_log_id,
+            c.yd_reg_address,
+            c.yd_reg_area,
+            c.yd_reg_area_chname,
+            c.yd_reg_area_code,
+            c.yd_reg_city,
+            c.yd_reg_city_chname,
+            c.yd_reg_country,
+            c.yd_reg_currency_type,
+            c.yd_reg_full_address,
+            c.yd_reg_no,
+            c.yd_reg_office,
+            c.yd_reg_province,
+            c.yd_reg_province_chname,
+            c.yd_remark,
+            c.yd_reg_type,
+            c.yd_registered_capital,
+            case when c.yd_saccpostfix is null then b.yd_saccpostfix ELSE c.yd_saccpostfix END as yd_saccpostfix,
+            case when c.yd_saccprefix is null then b.yd_saccprefix ELSE c.yd_saccprefix END as yd_saccprefix,
+            c.yd_seal_name,
+            c.yd_setup_date,
+            c.yd_state_tax_due,
+            c.yd_state_tax_reg_no,
+            c.yd_tax_due,
+            c.yd_tax_reg_no,
+            c.yd_telephone,
+            c.yd_work_address,
+            c.yd_work_area,
+            c.yd_work_area_chname,
+            c.yd_work_city,
+            c.yd_work_city_chname,
+            c.yd_work_country,
+            c.yd_work_full_address,
+            c.yd_work_province,
+            c.yd_work_province_chname,
+            c.yd_zipcode,
+            c.yd_account_license_no,
+            c.yd_currency0,
+            c.yd_currency1
+            from yd_core_public_account c
+            left join yd_accounts_all a
+            on c.yd_acct_no = a.yd_acct_no
+            left join yd_account_public b
+            on b.yd_account_id = a.yd_id
+        </createView>
+    </changeSet>
+    <changeSet id="init-2" author="houxianghua">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <tableExists tableName="YD_OPEN_ACCOUNT_ALL"/>
+            </and>
+        </preConditions>
+        <dropTable tableName="YD_OPEN_ACCOUNT_ALL"/>
+    </changeSet>
+    <changeSet id="init-4" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <viewExists viewName="YD_OPEN_ACCOUNT_ALL_BILL"/>
+            </not>
+        </preConditions>
+        <createView viewName="YD_OPEN_ACCOUNT_ALL_BILL" >
+            SELECT
+            *
+            FROM
+            YD_ACCOUNT_BILLS_ALL
+            WHERE
+            YD_PBC_SYNC_STATUS = 'tongBuChengGong'
+            AND YD_BILL_TYPE = 'ACCT_OPEN'
+        </createView>
+        <createView viewName="YD_OPEN_ACCOUNT_ALL_LOG" >
+            SELECT
+            YD_ID AS LOG_ID,
+            YD_REF_BILL_ID,
+            YD_DEPOSITOR_TYPE
+            FROM
+            YD_ACCOUNT_PUBLIC_LOG
+            WHERE
+            YD_PRE_LOG_ID IS NULL
+        </createView>
+        <createView viewName="YD_OPEN_ACCOUNT_ALL_PUBLIC" >
+            SELECT
+            YAA.YD_REF_BILL_ID,
+            YAA.YD_ACCT_NO,
+            YAP.YD_DEPOSITOR_TYPE
+            FROM
+            YD_ACCOUNTS_ALL YAA
+            LEFT JOIN YD_ACCOUNT_PUBLIC YAP ON YAA.YD_ID = YAP.YD_ACCOUNT_ID
+        </createView>
+        <createView viewName="YD_OPEN_ACCOUNT_ALL" >
+            SELECT
+            CASE WHEN YAPL.LOG_ID IS NULL
+            THEN
+            YAP.YD_DEPOSITOR_TYPE
+            ELSE
+            YAPL.YD_DEPOSITOR_TYPE
+            END AS YD_DEPOSITOR_TYPE,
+            ORG.YD_ID AS YD_ORGAN_ID,
+            ORG.YD_CODE AS YD_ORGAN_CODE,
+            ORG.YD_NAME AS YD_ORGAN_NAME,
+            U.YD_CNAME AS YD_USER_NAME,
+            BILL.YD_ID,
+            BILL.YD_CREATED_BY,
+            BILL.YD_CREATED_DATE,
+            BILL.YD_LAST_UPDATE_BY,
+            BILL.YD_LAST_UPDATE_DATE,
+            BILL.YD_VERSION_CT,
+            BILL.YD_ACCOUNT_ID,
+            BILL.YD_ACCOUNT_KEY,
+            BILL.YD_ACCT_IS_FROM_CORE,
+            BILL.YD_ACCT_NO,
+            BILL.YD_ACCT_TYPE,
+            BILL.YD_APPROVE_DATE,
+            BILL.YD_APPROVE_DESC,
+            BILL.YD_APPROVER,
+            BILL.YD_BILL_DATE,
+            BILL.YD_BILL_NO,
+            BILL.YD_BILL_TYPE,
+            BILL.YD_CANCEL_HE_ZHUN,
+            BILL.YD_CHANGE_FIELD_IS_ECCS_SYNC,
+            BILL.YD_CHANGE_FIELD_IS_PBC_SYNC,
+            BILL.YD_CORE_DATA_COMPLETED,
+            BILL.YD_CORE_OPERATOR,
+            BILL.YD_CORE_SYNC_ERROR,
+            BILL.YD_CORE_SYNC_METHOD,
+            BILL.YD_CORE_SYNC_STATUS,
+            BILL.YD_CORE_SYNC_TIME,
+            BILL.YD_CUSTOMER_LOG_ID,
+            BILL.YD_CUSTOMER_NO,
+            BILL.YD_DENY_REASON,
+            BILL.YD_DEPOSITOR_NAME,
+            BILL.YD_DESCRIPTION,
+            BILL.YD_ECCS_OPERATOR,
+            BILL.YD_ECCS_SYNC_CHECK,
+            BILL.YD_ECCS_SYNC_ERROR,
+            BILL.YD_ECCS_SYNC_STATUS,
+            BILL.YD_ECCS_SYNC_TIME,
+            BILL.YD_FINAL_STATUS,
+            BILL.YD_FROM_SOURCE,
+            BILL.YD_HANDING_MARK,
+            BILL.YD_INIT_FULL_STATUS,
+            BILL.YD_INIT_REMARK,
+            BILL.YD_OPEN_KEY,
+            BILL.YD_ORGAN_FULL_ID,
+            BILL.YD_ORIGINAL_BILL_ID,
+            BILL.YD_PBC_CHECK_DATE,
+            BILL.YD_PBC_CHECK_STATUS,
+            BILL.YD_PBC_OPERATOR,
+            BILL.YD_PBC_SYNC_CHECK,
+            BILL.YD_PBC_SYNC_ERROR,
+            BILL.YD_PBC_SYNC_METHOD,
+            BILL.YD_PBC_SYNC_STATUS,
+            BILL.YD_PBC_SYNC_TIME,
+            BILL.YD_PRE_OPEN_ACCT_ID,
+            BILL.YD_SELECT_PWD,
+            BILL.YD_STATUS,
+            BILL.YD_STRING001,
+            BILL.YD_STRING002,
+            BILL.YD_STRING003,
+            BILL.YD_STRING004,
+            BILL.YD_STRING005,
+            BILL.YD_STRING006,
+            BILL.YD_STRING007,
+            BILL.YD_STRING008,
+            BILL.YD_STRING009,
+            BILL.YD_STRING010,
+            BILL.YD_WHITE_LIST,
+            BILL.YD_OPEN_ACCOUNT_SITE_TYPE,
+            BILL.YD_IMAGE_BATCH_NO
+            FROM
+            YD_OPEN_ACCOUNT_ALL_BILL BILL
+            LEFT JOIN
+            YD_OPEN_ACCOUNT_ALL_LOG YAPL ON BILL.YD_ID  = YAPL.YD_REF_BILL_ID
+            LEFT JOIN
+            YD_OPEN_ACCOUNT_ALL_PUBLIC YAP ON BILL.YD_ID = YAP.YD_REF_BILL_ID
+            LEFT JOIN
+            YD_SYS_ORGANIZATION ORG ON BILL.YD_ORGAN_FULL_ID = ORG.YD_FULL_ID
+            LEFT JOIN
+            YD_SYS_USER U ON BILL.YD_CREATED_BY = U.YD_ID
+        </createView>
+    </changeSet>
+</databaseChangeLog>

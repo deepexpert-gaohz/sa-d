@@ -1,0 +1,59 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="fa fa-book font-dark"></i>
+            <span class="caption-subject uppercase">身份证号</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-bordered word-break">
+            <tbody>
+                <tr>
+                    <td class="td-label">姓名：</td>
+                    <td class="td-label-right">{{ d.idCardName || '' }}</td>
+                    <!--<td class="td-label-right" colspan="2" rowspan="5">-->
+                        <!--{{# if( d.img ) { }}-->
+                            <!--<img class="img" src="{{ d.img || '' }}">-->
+                        <!--{{# } else { }}-->
+                            <!--<div class="no-img">暂无图片</div>-->
+                        <!--{{# } }}-->
+                    <!--</td>-->
+                </tr>
+                <tr>
+                    <td class="td-label">身份证号：</td>
+                    <td class="td-label-right">{{ d.idCardNo || '' }}</td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td class="td-label">民族：</td>-->
+                    <!--<td class="td-label-right"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td class="td-label">出生年月：</td>-->
+                    <!--<td class="td-label-right"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td class="td-label">有效期限：</td>-->
+                    <!--<td class="td-label-right"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td class="td-label">发证机关：</td>-->
+                    <!--<td class="td-label-right" colspan="3"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td class="td-label">住址：</td>-->
+                    <!--<td class="td-label-right" colspan="3"></td>-->
+                <!--</tr>-->
+                <tr>
+                    <td class="td-label">查询结果：</td>
+                    <td class="td-label-right" colspan="3" class="result-text">
+                        {{# if( d.checkStatus == '1' ) { }}
+                            <i class="fa fa-street-view"></i> {{ d.checkResult || '' }}
+                        {{# } else { }}
+                            <i class="fa fa-user-times red"></i> {{ d.checkResult || '' }}
+                        {{# } }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

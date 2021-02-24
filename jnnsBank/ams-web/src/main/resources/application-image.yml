@@ -1,0 +1,51 @@
+#影像配置
+ams:
+  image:
+    #是否启用高拍仪
+    HardWare: false
+    interfaceSyncUse: false
+    #影像平台ip
+    ip: 10.1.61.97
+    #影像平台端口
+    socketPort: 8023
+    #影像平台登录名
+    username: admin
+    #影像平台登录密码
+    password: 111
+    #影像平台其他配置
+    serverName: aaa
+    groupName: bbb
+    coreGroupName: core
+    STARTCOLUMN: BUSI_START_DATE
+    modelCode: FUCK_FILE
+    filePartName: FUCK_DOC
+    #影像在本系统存放地址
+    path: /home/weblogic/idea/image
+    video:
+      #视频存储类型提供两种方式:(1)、fastdfs:文件服务器;(2)、nginx：存储在应用服务器下面，通过搭建nginx服务去访问视频资源
+      type: nginx
+      nginx:
+        #选择nginx时，指定存放视频的目录，此目录保持跟nginx配置文件一致
+        path: /home/weblogic/idea/video
+        #nginx服务所在的IP地址
+        IP: 127.0.0.1
+        #nginx端口号
+        port: 80
+      #双录视频格式
+      format: mp4|!avi|!rmvb
+      #双录视频大小限制,单位：兆(M)
+      maxSize: 50
+      #视频同步到影像平台定时任务
+      schedule:
+        use: false
+        timing: 0 0 23 * * ?
+    # 远程双录短信提醒模版
+    noticeMessage: 远程双录短信通知模版{bankName}{depositorName}{legalName}{acctType}{url}{telephone}
+    # 人脸识别配置
+    faceRecognition:
+      key: 123******************123
+      url: http://matrix.ideatech.info/cloudidp/api/real-person-verify
+      resultUrl: http://matrix.ideatech.info/cloudidp/api/query-verify-status
+    #菊风双录系统根据会议id获取视频接口
+    videoFile:
+      url: http://192.168.111.10:8999/third_api/video_file/cid?callId=

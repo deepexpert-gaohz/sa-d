@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <style>
+        .dropdown-div{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="admin-main">
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">双录编号</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="recordsNo" name="recordsNo">
+            </div>
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="acctNo" name="acctNo">
+            </div>
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="depositorName" name="depositorName">
+            </div>
+
+            <!--            <label class="layui-form-label">账户性质</label>-->
+            <!--            <div class="layui-input-inline">-->
+            <!--                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">-->
+            <!--                    <option value="">请选择</option>-->
+            <!--                    <option value="jiben">基本存款账户</option>-->
+            <!--                    <option value="yiban">一般存款账户</option>-->
+            <!--                    <option value="yusuan">预算单位专用存款账户</option>-->
+            <!--                    <option value="feiyusuan">非预算单位专用存款账户</option>-->
+            <!--                    <option value="teshu">特殊单位专用存款账户</option>-->
+            <!--                    <option value="linshi">临时机构临时存款账户</option>-->
+            <!--                    <option value="feilinshi">非临时机构临时存款账户</option>-->
+            <!--                    <option value="yanzi">验资户临时存款账户</option>-->
+            <!--                    <option value="zengzi">增资户临时存款账户</option>-->
+            <!--                </select>-->
+            <!--            </div>-->
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">客户名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="customerName" name="customerName">
+            </div>
+            <label class="layui-form-label">法人名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="legalName" name="legalName">
+            </div>
+            <label class="layui-form-label">业务种类</label>
+            <div class="layui-input-inline">
+                <select name="businessType" class="layui-input" id="businessType" lay-filter="businessType">
+                    <option value="">请选择</option>
+                    <option value="">请选择</option>
+                    <option value="CORPORATE">对公业务</option>
+                    <option value="PERSONAL">个人业务</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">双录用户</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="username" name="username">
+            </div>
+            <label class="layui-form-label">双录方式</label>
+            <div class="layui-input-inline">
+                <select name="recordType" class="layui-input" id="recordType" lay-filter="recordType">
+                    <option value="">请选择</option>
+                    <option value="">请选择</option>
+                    <option value="REMOTERECORD">远程双录</option>
+                    <option value="LOCALUPLOAD">本地上传</option>
+                    <option value="CLOSETRECORD">临柜双录</option>
+                </select>
+            </div>
+            <label class="layui-form-label">双录时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="beginDate" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDate" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+    <div id="toolbar">
+        <div class="layui-input-inline">
+            <div class="btn-group dropdown-div paging_report">
+                <button class="layui-btn layui-btn-small dn" data-code="video:create" id="btn_video_open">
+                    新建双录
+                </button>
+            </div>
+            <div class="btn-group dropdown-div paging_report">
+                <button class="layui-btn layui-btn-small dn" id="btn_xkh" data-code="apply:account_success">
+                    账户开户
+                </button>
+                <!--                <button type="button" class="btn dropdown-toggle layui-btn layui-btn-small dn" id="dropdownMenu1" data-toggle="dropdown" data-code="account:open"> 账户开户-->
+                <!--                    <span class="caret"></span>-->
+                <!--                </button>-->
+                <!--                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="jiben">基本存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="yiban">一般存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="yusuan">预算单位专用存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="feiyusuan">非预算单位专用存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="linshi">临时机构临时存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="feilinshi">非临时机构临时存款账户</a>-->
+                <!--                    </li>-->
+                <!--                    <li role="presentation">-->
+                <!--                        <a role="menuitem" tabindex="-1" data-type="teshu">特殊单位专用存款账户</a>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+            </div>
+            <div class="btn-group dropdown-div paging_report">
+                <button class="layui-btn layui-btn-small dn" id="btn_export_excel" data-code="video:export_excel">
+                    结果导出
+                </button>
+            </div>
+        </div>
+    </div>
+    <table id="videoTable">
+
+    </table>
+</div>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/list.v2.js"></script>
+</body>
+</html>

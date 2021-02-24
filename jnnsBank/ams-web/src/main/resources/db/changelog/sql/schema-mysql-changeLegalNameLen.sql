@@ -1,0 +1,14 @@
+ALTER TABLE `yd_core_public_account` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_public_account` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_public_account_error` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_public_account_error` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_public_account_finish` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_public_account_finish` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_collection` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_core_collection` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public_log` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public_log` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public_mid` MODIFY COLUMN `yd_legal_name` VARCHAR ( 50 );
+ALTER TABLE `yd_customer_public_mid` MODIFY COLUMN `yd_finance_name` VARCHAR ( 50 );

@@ -1,0 +1,52 @@
+<div class="row" style="margin: 15px;">
+	<div class="col-sm-6">
+		<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+			<div class="layui-form-item" style="margin-bottom:0px;">
+				<label class="layui-form-label">机构名称</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" id="ac_name">
+				</div>
+				<label class="layui-form-label">核心机构号</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" id="ac_code">
+				</div>
+				<button type="button" id="btn_ca_query"  class="layui-btn layui-btn">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</button>
+			</div>
+		</form>
+
+		<div id="ca_toolbar" class="layui-btn-group org-tree-action">
+			<button class="layui-btn layui-btn-small" id="btn_cancel_audit">
+				<i class="layui-icon">&#xe66f;</i> 取消核准
+			</button>
+		</div>
+
+		<div id="ca_tree" class="tree-demo"> </div>
+	</div>
+	<div class="col-sm-6">
+		<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+			<div class="layui-form-item" style="margin-bottom:0px;">
+				<label class="layui-form-label">机构名称</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" id="organName">
+				</div>
+				<label class="layui-form-label">人行机构号</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" id="bankCode">
+				</div>
+				<button type="button" id="btn_ca_list_query"  class="layui-btn layui-btn">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</button>
+			</div>
+		</form>
+
+		<div  id="ca_list_toolbar" class="layui-btn-group">
+			<button class="layui-btn layui-btn-small" id="btn_recall_cancel_audit">
+				<i class="layui-icon">&#xe65c;</i> 撤回核准业务
+			</button>
+		</div>
+		
+		<table id="ca_list"></table>
+	</div>
+</div>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"/>
+    <property  name="now" dbms="oracle" value="sysdate"/>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="noticeLegalDueExportBtn" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'legalDueNoticeCode'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'notice:legalDue-export'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="notice:legalDue-export"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="法人证件到期信息导出"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="0"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'legalDueNoticeCode')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="法人证件到期信息导出"/>
+            <column name="yd_url" value="../ui/notice/legalDueList.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="noticeFileDueExportBtn" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'fileDueNoticeCode'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'notice:fileDue-export'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="notice:fileDue-export"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="证明文件到期信息导出"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="0"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'fileDueNoticeCode')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="证明文件到期信息导出"/>
+            <column name="yd_url" value="../ui/notice/legalDueList.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="noticeOperatorDueExportBtn" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'operatorIdcardDueCode'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'notice:operatorDue-export'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="notice:operatorDue-export"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="经办人证件到期信息导出"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="0"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'operatorIdcardDueCode')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="经办人证件到期信息导出"/>
+            <column name="yd_url" value="../ui/notice/operatorIdcardDueList.html"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

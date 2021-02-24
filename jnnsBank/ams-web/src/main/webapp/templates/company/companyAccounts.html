@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+            height: 50%;
+        }
+
+        .dropdown-div{
+            margin-left: 10px;
+        }
+
+        #toolbar {
+            width: 1000px;
+        }
+
+        .row .col-20 {
+            width: 20%;
+        }
+
+        .W120 .th-inner {
+            width:120px !important;
+        }
+        .W80 .th-inner {
+            width:80px !important;
+        }
+        .W60 .th-inner {
+            width:60px !important;
+        }
+
+        .W160 .th-inner {
+            width:160px !important;
+        }
+
+        .W180 .th-inner {
+            width:180px !important;
+        }
+
+        .W200 .th-inner {
+            width:200px !important;
+        }
+
+        @media (min-width: 768px) {
+            .col-sm-2 {
+                width: 12.5%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="acctNo">
+            </div>
+            <label class="layui-form-label">账户名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="name">
+            </div>
+        
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-inline">
+                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">账户状态</label>
+            <div class="layui-input-inline">
+                <select name="accountStatus" class="layui-input" id="accountStatus" lay-filter="accountStatus">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="normal">正常</option>
+                    <option value="suspend">久悬</option>
+                    <option value="revoke">销户</option>
+                    <option value="notActive">未激活</option>
+                </select>
+            </div>
+            <label class="layui-form-label">开户行</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="bankName">
+            </div>
+            <label class="layui-form-label">网点机构号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="kernelOrgCode">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">本异地标识</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="openAccountSiteType" lay-filter="openAccountSiteType">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <option value="LOCAL">本地</option>
+                    <option value="ALLOPATRIC">异地</option>
+                </select>
+            </div>
+            <label class="layui-form-label">开户日期</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input date-picker" autocomplete="off" id="beginDateAcctCreate" placeholder="开始时间"/>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input date-picker" autocomplete="off" id="endDateAcctCreate" placeholder="结束时间"/>
+            </div>
+
+            <div class="paging_report_hide" hidden>
+                <label class="layui-form-label">存量状态</label>
+                <div class="layui-input-inline">
+                    <select name="string003" class="layui-input" id="string003" lay-filter="string003">
+                        <option value="-1">全量</option>
+                        <option value="1">初始化存量</option>
+                        <option value="0">增量</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+
+    
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-xs-3 col-sm-2 dn" id="zhsq" data-code="companyAccount_zhsq">
+            <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                <div class="visual">
+                    <i class="fa fa-comments"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="zhsqCount">0</span>
+                    </div>
+                    <div class="desc"> 账户申请 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="dbl" data-code="companyAccount_dbl">
+            <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
+                <div class="visual">
+                    <i class="fa fa-edit"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="dblCount" class="text-ellipsis">0</span> </div>
+                    <div class="desc"> 待补录 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="dsh" data-code="companyAccount_dsh">
+            <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="dshCount">0</span>
+                    </div>
+                    <div class="desc"> 待审核 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="dsb" data-code="companyAccount_dsb">
+            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="dsbCount">0</span> </div>
+                    <div class="desc"> 待上报 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="cgsb" data-code="companyAccount_cgsb">
+            <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+                <div class="visual">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="bbcgCount">0</span> </div>
+                    <div class="desc"> 报备成功 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="hztg" data-code="companyAccount_hztg">
+            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="hzcgCount">0</span> </div>
+                    <div class="desc"> 核准成功 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-3 col-sm-2 dn" id="clzh" data-code="companyAccount_clzh">
+            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="clzhCount">0</span> </div>
+                    <div class="desc"> 存量账户 </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <table id="paging_container" width="100%">
+        <tr>
+            <td>
+                <div id="toolbar" >
+                    <div class="layui-input-inline">
+                        <div class="btn-group dropdown-div paging_report">
+                            <button type="button" class="btn dropdown-toggle layui-btn layui-btn-small dn" id="dropdownMenu1" data-toggle="dropdown" data-code="account:open"> 开户
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="jiben">基本存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="yiban">一般存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="yusuan">预算单位专用存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="feiyusuan">非预算单位专用存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="linshi">临时机构临时存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="feilinshi">非临时机构临时存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="teshu">特殊单位专用存款账户</a>
+                                </li>
+                                <!--<li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="yanzi">验资户临时存款账户</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" data-type="zengzi">增资户临时存款账户</a>
+                                </li>-->
+                            </ul>
+                        </div>
+                        <div class="btn-group dropdown-div">
+                        <button class="layui-btn layui-btn-small dn" id="btn_view" data-code="account:view">
+                            查看
+                        </button>
+                        </div>
+                        <div class="btn-group dropdown-div paging_report downSuspend">
+                            <button type="button" class="btn dropdown-toggle layui-btn layui-btn-small dn" id="btn_down_suspend" data-toggle="dropdown" data-code="account:batch_suspend">批量久悬
+                                <span class="caret"></span>
+                                <span class="layui-badge-dot layui-bg-orange" style="display: none;"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="suspendMenu" aria-labelledby="dropdownSuspend">
+                                <li role="suspendMenuItem">
+                                    <a role="suspendMenuItem" tabindex="-1" data-type="suspendDown">模板下载</a>
+                                </li>
+                                <li role="suspendMenuItem">
+                                    <a role="suspendMenuItem" tabindex="-1" data-type="suspendUp">上传</a>
+                                </li>
+                                <li role="suspendMenuItem">
+                                    <a role="suspendMenuItem" tabindex="-1" data-type="suspendDetail">处理记录</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="btn-group dropdown-div paging_report">
+                            <button class="layui-btn layui-btn-small dn" id="btn_select_suspend">批量久悬</button>
+                        </div>
+
+                        <div class="btn-group dropdown-div paging_report">
+                            <button class="layui-btn layui-btn-small dn" id="btn_update_acctType" data-code="account:update_accttype">存量账户性质更新</button>
+                        </div>
+                        <div class="btn-group dropdown-div paging_report_1 " style="display: none">
+                            <button class="layui-btn layui-btn-small dn" id="btn_down_account" data-code="account:down_account">账户信息导出</button>
+                        </div>
+                        <input type="hidden" id="accountId">
+            
+                        <!--<button class="layui-btn layui-btn-small" id="btn_khjd">-->
+                            <!--导出excel-->
+                        <!--</button>-->
+                    </div>
+            
+                </div>
+                <table id="userTable">
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+<div class="layui-hide">
+    <input class="layui-btn layui-btn-small layui-upload-file" type="file" lay-type="file" name="file" id="file"></input>
+</div>
+<form action="../attach/batchSuspend_template.xls" method="get" id="templateDownloadForm"></form>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/company/companyAccounts.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+</body>
+
+</html>

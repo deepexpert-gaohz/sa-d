@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="imageSync-syncButton" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'companyAccounts_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'account:btn_syncImage'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="account:btn_syncImage"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="影像上报人行"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"></column>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'companyAccounts_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="影像上报人行"/>
+            <column name="yd_url" value="../ui/company/companyAccounts.html?whiteList=0"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="btn_video_edit" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'companyAccounts_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'account:btn_video_edit'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="account:btn_video_edit"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="双录编辑"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"></column>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'companyAccounts_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="双录编辑"/>
+            <column name="yd_url" value="../ui/company/companyAccounts.html?whiteList=0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>外部数据接口配置</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+
+
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css"/>
+</head>
+<body>
+<div class="admin-main">
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+    </form>
+    <div id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small dn" id="btn_add" data-code="apply:model_add">
+            <i class="layui-icon">&#xe654;</i>
+            新建
+        </button>
+        <button class="layui-btn layui-btn-small dn" id="btn_edit" data-code="apply:model_edit">
+            <i class="layui-icon">&#xe642;</i>
+            修改
+        </button>
+        <button class="layui-btn layui-btn-small dn" id="btn_del" data-code="apply:model_del">
+            <i class="layui-icon">&#xe640;</i>
+            删除
+        </button>
+    </div>
+    <table id="modelTable">
+    </table>
+</div>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+ <script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/highRisk/riskApi.js"></script>
+<script type="text/javascript" src="../ag/model/modelField.js"></script>
+
+<script src="../plugins/echarts/echarts.min.js" type="text/javascript" ></script>
+<script src="../ag/model/modelRely.js" type="text/javascript" ></script>
+</body>
+</html>

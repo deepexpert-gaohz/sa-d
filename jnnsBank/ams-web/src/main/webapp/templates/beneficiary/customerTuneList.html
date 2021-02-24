@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>批量客户尽调</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../css/layui.css" media="all" />
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+</head>
+
+<body>
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <div class="admin-main">
+        <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+            <div class="layui-form-item" style="margin-bottom:0px;">
+                <label class="layui-form-label">批次号</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="batchNo">
+                </div>
+                <label class="layui-form-label">处理时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" placeholder="开始时间"/>
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" placeholder="结束时间"/>
+                </div>
+                <button type="button" id="btn_query" class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <button type="reset" class="layui-btn layui-btn-primary">
+                    重置
+                </button>
+            </div>
+        </form>
+
+        <div id="toolbar" class="layui-btn-group">
+            <button class="layui-btn layui-btn-small dn" id="btn_download" data-code="kyc:downloadTemplate">
+                <i class="layui-icon">&#xe601;</i>
+                导入模版下载
+            </button>
+            <button class="layui-btn layui-btn-small dn" id="btn_upload" data-code="kyc:uploadCustomers">
+                <i class="layui-icon">&#xe62f;</i>
+                上传客户尽调列表
+            </button>
+        </div>
+
+        <table id="list"></table>
+    </div>
+
+    <script src="../plugins/respond.min.js"></script>
+    <script src="../plugins/excanvas.min.js"></script>
+    <script src="../plugins/ie8.fix.min.js"></script>
+    <script src="../plugins/json2.js"></script>
+
+    <script type="text/javascript" src="../plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+    <script type="text/javascript" src="../layui.js"></script>
+    <script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+    <script type="text/javascript" src="../ag/common/util.js"></script>
+    <script type="text/javascript" src="../ag/beneficiary/customerTuneList.js"></script>
+
+</body>
+
+</html>

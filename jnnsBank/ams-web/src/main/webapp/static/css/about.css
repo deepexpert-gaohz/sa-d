@@ -1,0 +1,101 @@
+.backlog{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    min-height: 100px;
+    margin-bottom: 30px;
+    padding: 0 30px;
+    border-radius: 4px;
+    background-color: #666;
+    text-align: left;
+    color: #fff;
+}
+.backlog:hover {
+    color: #fff;
+}
+.backlog.blue {
+    background-color: #3598dc;
+}
+.backlog.blue .backlog-item {
+    background-color: #5dade3;
+}
+.backlog.purple {
+    background-color: #8E44AD;
+}
+.backlog.purple .backlog-item {
+    background-color: #a569bd;
+}
+.backlog.yellow {
+    background-color: #c49f47;
+}
+.backlog.red {
+    background-color: #e7505a;
+}
+.backlog i{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 100px;
+    color: #FFF;
+    opacity: .2;
+    filter: alpha(opacity=20)
+}
+.backlog-header {
+    color: #fff;
+}
+.backlog-header h3{
+    margin: 0;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.backlog-header p{
+    padding-bottom: 30px; 
+    line-height: 50px;
+    text-align: center;
+    font-size: 46px;
+    cursor: pointer;
+}
+.backlog-item {
+    display: block;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+.backlog-item h4{
+    font-size: 15px;
+}
+.backlog-item p{
+    line-height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.winBox {
+	height:40px;
+	overflow:hidden;
+	position:relative;
+}
+.scroll {
+	width:3000px;
+	position:absolute;
+	left:0px;
+    top:0px;
+    margin: 0;
+    padding: 0;
+}
+.scroll li {
+    float:left;
+    margin-right: 50px;
+	line-height:40px;
+    text-align:center;
+    list-style:none;
+}
+.scroll a {
+    cursor: pointer;
+	text-decoration:none;
+}
+.scroll img {
+	border:none;
+}

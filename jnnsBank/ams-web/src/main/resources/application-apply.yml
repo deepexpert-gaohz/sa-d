@@ -1,0 +1,107 @@
+encrypt:
+  ideatech:
+    autoCreate: false
+    privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdOIekTQ+3ZtGL
+            y3dtY9O5lxVHsNRSzL03vgQlNUlQoj1xmiCofzikbOMi91+ksHv+8xWUGBBT3het
+            Lm4y0fMbFDkDtHkFP6tka5z3+cajKZtWzRepcixAneYFMqJj1ji3CUdqELA3pPbu
+            kbv8wySool5KIz6tlKfBFMLv5iiUhKxGN8d6KAP4n+wwphVb5qoof+M1ir0d8YuC
+            tMi/iJzMAnx6UzE2xCuksFUr0F1gjCsRzqt57zOijtlNZDExNqae+1SOzBaqRyLu
+            B7/C11cPyDfxVqy+d9Y/ZTZs3JKrqdGLNyU2+5YngXdESwVqTuH5KoN6+kXAH2IP
+            WDwesd4fAgMBAAECggEBAIPgMwbCDPjNqd8U4CxFnAcEj7j+vlplmiHzpQ6Az+pu
+            7BMqMVKkxCJHo45k6Tj/QELuK595P9jZZgrB83V1XfHM2LYe35Rjf6RQD+6A+PlL
+            oR0CE2LyfeQFjje17TjJK/F8Owbg0K8cFHSwkXrHRSyeZXDSd3SqSLxQaeNIr6lC
+            /soeUs/6jNXhj4RDn2mXAX8JX7kUEtN1kg7LzAmL1sr0DV/w4PWeftfcReBt7jHe
+            VPaZqJqENtPLDGh/kzlT59dIUTtxIsFLf5xQvZD2w9SF2qLwd1ygqJRWSbmKTDE9
+            /sWMzYqKl7BzpgqO9OIWkc/wSHqhiaIm+fmFgIn8ymECgYEA1zGFlXN0WQSw9zXD
+            ybLxihuJVEIM1c2DHu1ZAMUUpFdoVtNLKSBMoLhZxgUM6iS1Q+AOHz6cvOOJpP5L
+            z+WPZoTQKeda7rcIoU6FigMsXuVKGUmjtVvqUCUALHCK72xb9aS0bp0c956WNM7W
+            CXTe9M1Y4qXcSD1jq6OMPNhaK0MCgYEAuwjAJKjP4okqyFItXdW+7EZcNyEACXE2
+            1QbsObsxrE+rOiSXCDAZ5jTXUvsVHsbfuCx8p1WLyyXpKzO/+XXxMmCeIljlkZhP
+            4blcuOqyOwFfoVMPJNmaJdSocWN6kr7M4Ycx35qFXR5yQuVGMbHXB/IxmJXirbYR
+            eUhjWyFSvfUCgYACD+NrzzNqNvVLKSS7Jg/SdvkV6Zwd4F5FSZj0vO65tGy3iEbM
+            Ghch4yJZF2tMQxXJlLgN7Jer57JF9nnbgCOjo9oqzKC+cNqQUSROckFWl3PiUiZT
+            cpIIOpKJ2no6WRt4ex+Pf8nrRYXC88hxRsFsLxuO8G/v8UanOmX5n0kd6QKBgQCx
+            QQPIOmx6BwESxD7WdSHyDmSKoq3ERRVwIpVxySS0ZvShr9erHNsOvvlqXSaQ+m0/
+            wHmKpJpNtuoZ1XuU0d/6nHKBnrpCl5TtGZz0awjqvsyAuZTamZdrTvUsMNkThdvp
+            yRTNE0ZdD+O93kf+BMsDbtbuAu7HLou045O15AjkmQKBgC2SZ8gq/yiRQjdlIe8d
+            bKnheormfJJPo8WtzHdl9/12s8Uve2EG+aKaRnV6WJ2XhIQBHheaPWH5P2Oe3gkN
+            1Hw44zTEb5OFR95xJJc70iahsbFaCK6vx7JAjmM6mYiOXRAV6mZnvuVG3UCdVP/I
+            HiAIM8NChNpYUsBK6zCr9SMH
+            -----END RSA PRIVATE KEY-----
+    publicKey: |
+            -----BEGIN RSA PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnTiHpE0Pt2bRi8t3bWPT
+            uZcVR7DUUsy9N74EJTVJUKI9cZogqH84pGzjIvdfpLB7/vMVlBgQU94XrS5uMtHz
+            GxQ5A7R5BT+rZGuc9/nGoymbVs0XqXIsQJ3mBTKiY9Y4twlHahCwN6T27pG7/MMk
+            qKJeSiM+rZSnwRTC7+YolISsRjfHeigD+J/sMKYVW+aqKH/jNYq9HfGLgrTIv4ic
+            zAJ8elMxNsQrpLBVK9BdYIwrEc6ree8zoo7ZTWQxMTamnvtUjswWqkci7ge/wtdX
+            D8g38VasvnfWP2U2bNySq6nRizclNvuWJ4F3REsFak7h+SqDevpFwB9iD1g8HrHe
+            HwIDAQAB
+            -----END RSA PUBLIC KEY-----
+  thirdPart:
+    publicKey: |
+            -----BEGIN RSA PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhxU/EAEs5BIwUS6WOnvb
+            oy0K+9eN2+vUTME6h4cQcz/4zWRwnBPM83rsjwmCBXYlJ6i3bnhVQQz3pES6B86C
+            lj0AkYlRzwrrOFby+p8Jr+arxhrvjR3YE4liLjrNp5oNmqnZ7dnYbvJy5aFKK/Xo
+            s97YeBnsIHHPV5ztDtnSneDKt7rMTmc3+Iog60UJB8hgXyHgKp7KJ/Wc+pSe3RjJ
+            bKDCj0ZT3ErSe4+J4ym/Q1dTPlJGAn+3OXam3rpmrtkO4zfb036tHVWSYoUhlWiw
+            Rrvt9LVJ+2xI/pzufnCBcs9MUVdmpgJk7SXroGCqCy+wmyKwsEY3WR6Vih72Gz5I
+            SwIDAQAB
+            -----END RSA PUBLIC KEY-----
+#本地配置
+apply:
+  url:
+    #老接口
+    baseUrl: https://ezhanghu.cn/apply/open/openAccountApply
+#    baseUrl: https://ezhqa.ideatech.info:3209/apply/open/openAccountApply
+    #新接口(预约单创建、修改、业务状态变更)
+    newBaseUrl: https://qa-open.ezhanghu.cn/api/apply
+    baseSyncUrl: http://47.98.175.241:9765/apply/open/synchronize
+#    baseSyncUrl: https://ezhqa.ideatech.info:3209/apply/open/synchronize
+    #拉取预约信息-根据ID游标
+    pullId: ${apply.url.baseUrl}/pull-id
+    #新接口拉取预约信息-根据日期区间
+    pullTime: ${apply.url.newBaseUrl}/pull-time
+    #拉取预约信息-根据applyId获取单条数据
+    pullApplyId: ${apply.url.baseUrl}/pull-applyId
+    #状态修改接口
+    modilyStatus: ${apply.url.baseUrl}/modify-status
+    #状态修改接口(新模式)
+    newModilyStatus: ${apply.url.newBaseUrl}/modify-status
+    #预约单创建
+    addApplyAcctUrl: ${apply.url.newBaseUrl}/create
+    #预约单修改
+    editApplyAcctUrl: ${apply.url.newBaseUrl}/modify
+    #基本户核准号录入
+    addAcctKeyUrl: ${apply.url.newBaseUrl}/send-info
+    #预约影像接口
+    images: ${apply.url.baseUrl}/page/image
+    #新增机构
+    insertSync: ${apply.url.baseSyncUrl}/organizationInsertByCode
+    #更新机构
+    updateSync: ${apply.url.baseSyncUrl}/organizationUpdateByCode
+    #删除机构
+    deleteSync: ${apply.url.baseSyncUrl}/organizationDeleteByCode
+  newRule:
+    #预约新接口模式是否启用 true:启用 false:不启用
+    flag: false
+    #根据日期区间拉取预约数据
+    pull:
+      startDateTime: 2019-12-10 06:00:00
+      endDateTime: 2019-12-31 16:00:00
+  images:
+    path: /home/weblogic/idea/apply/image
+    scheduletimingIsUse: false
+    # 晚上6点到早上6点，每隔5分钟进行
+    scheduletiming: 0 0/5 0,1,2,3,4,5,18,19,20,21,22,23 * * ?
+  task:
+    scheduletiming:
+      delaySec: 300
+      flag: false
+    syncScheduletiming:
+      delaySec: 300
+      flag: false
+    regainApplyNum: 5

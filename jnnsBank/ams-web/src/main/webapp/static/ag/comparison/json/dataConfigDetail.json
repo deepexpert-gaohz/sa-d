@@ -1,0 +1,11 @@
+{ 
+	"data":
+	{ 
+		"id":1,
+		"name":"人行数据1",
+		"creator":"admin",
+		"createdDate":"2018-5-5",
+		"type":1,
+		"collectType":1
+	}
+}

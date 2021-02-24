@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <style>
+        body, div {
+            background: rgb(245, 245, 245) !important;
+        }
+
+        #imgdiv {
+            /*margin-top: -150px;*/
+            /*margin-left:auto;*/
+            /*margin-right:auto;*/
+            position: absolute;
+            top: 5px;
+            left: 100px;
+        }
+
+        .layui-btn {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body style="z-index: -1">
+<div style="/*margin-top: 30px;margin-left: 10px;*/z-index: 2;position:absolute;top: 5px;left: 10px;">
+    <button class="layui-btn" style="display: none" onclick="next(-1);"><i class="layui-icon"></i></button>
+    <br/>
+    <button class="layui-btn" style="display: none" onclick="next(1);"><i class="layui-icon"></i></button>
+    <br/>
+    <button class="layui-btn" onclick="imgRotate();"><i class="layui-icon">&#x1002;</i></button>
+
+</div>
+
+<div id="imgdiv" style="z-index: 1">
+
+</div>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../js/e-smart-zoom-jquery.min.js"></script>
+<script type="text/javascript" src="../js/jQueryRotate.js"></script>
+<script>
+    var LocString = String(window.document.location.href);
+
+    function getReqParam(str) {
+        var reg = new RegExp("(^|&)" + str + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return (r[2]);
+        return "";
+    }
+        var pics;
+        $(document).ready(function () {
+                pics = new Array();
+                $.get('../../image/getById/'+getReqParam("bId"), null, function (data) {
+                    pics[0] = "../../image/view/" + data.data.id;
+                    $("#imgdiv").append('<img class="pic" onload="setwh(this);" src="' + pics[0] + '">');
+                });
+
+            });
+
+            var i = 0;
+            var next = function (num) {
+                var layer = layui.layer;
+                i = i + num;
+                if (i < 0) {
+                    i = 0;
+
+                    layer.msg('已是第一张', {
+                        icon: 1,
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                    return;
+                }
+                if (i >= pics.length) {
+                    i = pics.length - 1;
+                    layer.msg('已是最后一张', {
+                        icon: 1,
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                    return;
+                }
+
+                $("#imgdiv").empty();
+                $("#imgdiv").append('<img class="pic" onload="setwh(this);" src="' + pics[i] + '">');
+
+                // $("img").attr("src", pics[i]);
+                rotateNum = 1;
+                $("#imgdiv").rotate(0);
+            };
+
+            var rotateNum = 1;
+            var imgRotate = function () {
+                // $("img").smartZoom("destroy");
+                // var h = $("#imgdiv").height();
+                // var w = $("#imgdiv").width();
+                //$("img").smartZoom("destroy");
+                $("#imgdiv").rotate(90 * rotateNum);
+                // $("img").rotate(90 * rotateNum);
+                // $("#imgdiv").width(h);
+                // $("#imgdiv").height(w);
+                // $("img").smartZoom();
+                rotateNum++;
+            };
+
+            var setwh = function (obj) {
+
+                // var seeWidth = document.documentElement.clientWidth ||
+                //     document.body.clientWidth;
+                var seeHeight = document.documentElement.clientHeight ||
+                    document.body.clientHeight;
+                //
+                // alert(seeWidth);
+                // alert(seeHeight);
+                var w = obj.width;
+                var h = obj.height;
+                if (h > w) {
+                    w = h;
+                } else {
+                    h = w;
+                }
+                $("#imgdiv").width(h);
+                $("#imgdiv").height(seeHeight - 30);
+
+                // $("#imgdiv").width(seeWidth-600);
+                // $("#imgdiv").height(seeHeight-30);
+
+                $("img").smartZoom();
+            };
+</script>
+</body>
+</html>

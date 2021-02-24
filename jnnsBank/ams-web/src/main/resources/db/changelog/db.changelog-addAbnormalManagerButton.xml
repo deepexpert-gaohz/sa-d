@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"/>
+    <property  name="now" dbms="oracle" value="sysdate"/>
+    <property  name="now" dbms="db2" value="current_timestamp"/>
+    <changeSet id="permission-customerAbnormal_manager_export" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager:export'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerAbnormal_manager:export"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="导出"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="175"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerAbnormal_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="导出"/>
+            <column name="yd_url" value="../ui/customer/abnormal.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-customerAbnormal_manager_process" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager:process'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerAbnormal_manager:process"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="异动处理"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="176"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerAbnormal_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="异动处理"/>
+            <column name="yd_url" value="../ui/customer/abnormal.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-customerAbnormal_manager_processFinish" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager:processFinish'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerAbnormal_manager:processFinish"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="异动处理完成"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="177"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerAbnormal_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="异动处理完成"/>
+            <column name="yd_url" value="../ui/customer/abnormal.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-customerAbnormal_manager_note" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager:note'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerAbnormal_manager:note"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="短信提醒"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="178"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerAbnormal_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="短信提醒"/>
+            <column name="yd_url" value="../ui/customer/abnormal.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-customerAbnormal_manager_history" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerAbnormal_manager:history'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerAbnormal_manager:history"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="短信发送历史"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="179"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerAbnormal_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="短信发送历史"/>
+            <column name="yd_url" value="../ui/customer/abnormal.html"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

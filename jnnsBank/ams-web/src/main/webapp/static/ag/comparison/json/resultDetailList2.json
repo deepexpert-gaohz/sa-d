@@ -1,0 +1,40 @@
+{
+  "code":0,
+  "fieldList":[
+    { "fieldName":"法人名称","isEqual":false },
+    { "fieldName":"注册资金","isEqual":true }
+  ],
+  "list":[
+    {
+      "id":1,
+      "name":"工商数据1",
+      "account":"111111",
+      "company":"宁波软件有限公司",
+      "fieldList":[
+        { "fieldName":"法人名称", "fieldValue":"111111", "isEqual":false },
+        { "fieldName":"注册资金", "fieldValue":"注册资金1","isEqual":true }
+      ],
+      "isBlack":false
+    },{
+      "id":2,
+      "name":"人行数据1",
+      "account":"111111",
+      "company":"宁波软件有限公司",
+      "fieldList":[
+        { "fieldName":"法人名称", "fieldValue":"111111", "isEqual":false },
+        { "fieldName":"注册资金", "fieldValue":"注册资金1","isEqual":true }
+      ],
+      "isBlack":false
+    },{
+      "id":3,
+      "name":"人行数据1",
+      "account":"111111",
+      "company":"宁波软件有限公司",
+      "fieldList":[
+        { "fieldName":"法人名称", "fieldValue":"111111", "isEqual":false },
+        { "fieldName":"注册资金", "fieldValue":"注册资金2","isEqual":true }
+      ],
+      "isBlack":false
+    }
+  ]
+}

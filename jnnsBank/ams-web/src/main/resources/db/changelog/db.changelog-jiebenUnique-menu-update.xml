@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <changeSet id="jibenUnique_searchId" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'jibenUnique_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_permission">
+            <column name="yd_icon" value="fa-tasks"/>
+            <where>yd_code = 'jibenUnique_search'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/account-api/account-api.iml" filepath="$PROJECT_DIR$/account-api/account-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/account-service/account-service.iml" filepath="$PROJECT_DIR$/account-service/account-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ams.iml" filepath="$PROJECT_DIR$/ams.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ams-ui/ams-ui.iml" filepath="$PROJECT_DIR$/ams-ui/ams-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ams-web/ams-web.iml" filepath="$PROJECT_DIR$/ams-web/ams-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/annual-api/annual-api.iml" filepath="$PROJECT_DIR$/annual-api/annual-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/annual-service/annual-service.iml" filepath="$PROJECT_DIR$/annual-service/annual-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-common/api-common.iml" filepath="$PROJECT_DIR$/api-common/api-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apply-api/apply-api.iml" filepath="$PROJECT_DIR$/apply-api/apply-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apply-service/apply-service.iml" filepath="$PROJECT_DIR$/apply-service/apply-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/compare-api/compare-api.iml" filepath="$PROJECT_DIR$/compare-api/compare-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/compare-service/compare-service.iml" filepath="$PROJECT_DIR$/compare-service/compare-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer-api/customer-api.iml" filepath="$PROJECT_DIR$/customer-api/customer-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer-service/customer-service.iml" filepath="$PROJECT_DIR$/customer-service/customer-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/db-entity/db-entity.iml" filepath="$PROJECT_DIR$/db-entity/db-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image-api/image-api.iml" filepath="$PROJECT_DIR$/image-api/image-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image-service/image-service.iml" filepath="$PROJECT_DIR$/image-service/image-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kyc-api/kyc-api.iml" filepath="$PROJECT_DIR$/kyc-api/kyc-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kyc-service/kyc-service.iml" filepath="$PROJECT_DIR$/kyc-service/kyc-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mivs-api/mivs-api.iml" filepath="$PROJECT_DIR$/mivs-api/mivs-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mivs-service/mivs-service.iml" filepath="$PROJECT_DIR$/mivs-service/mivs-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pbc-api/pbc-api.iml" filepath="$PROJECT_DIR$/pbc-api/pbc-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pbc-service/pbc-service.iml" filepath="$PROJECT_DIR$/pbc-service/pbc-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poi/poi.iml" filepath="$PROJECT_DIR$/poi/poi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proj-jnns/proj-jnns.iml" filepath="$PROJECT_DIR$/proj-jnns/proj-jnns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/risk-api/risk-api.iml" filepath="$PROJECT_DIR$/risk-api/risk-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/risk-service/risk-service.iml" filepath="$PROJECT_DIR$/risk-service/risk-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/system-api/system-api.iml" filepath="$PROJECT_DIR$/system-api/system-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/system-service/system-service.iml" filepath="$PROJECT_DIR$/system-service/system-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-api/ws-api.iml" filepath="$PROJECT_DIR$/ws-api/ws-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-service/ws-service.iml" filepath="$PROJECT_DIR$/ws-service/ws-service.iml" />
+    </modules>
+  </component>
+</project>

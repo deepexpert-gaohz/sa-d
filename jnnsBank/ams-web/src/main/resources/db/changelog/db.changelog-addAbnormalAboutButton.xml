@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="permission-btn_abnormalStatistics_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'abnormalStatistics_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="abnormalStatistics_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="企业风险异动数据"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="52"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="企业风险异动数据"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_abnormalAll_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'abnormalAll_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="abnormalAll_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="企业异动总数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="53"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="企业异动总数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_illegal_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'illegal_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="illegal_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="严重违法数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="54"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="严重违法数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_changeMess_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'changeMess_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="changeMess_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="经营异常数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="55"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="经营异常数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_businessExpires_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'businessExpires_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="businessExpires_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="营业到期数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="56"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="营业到期数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_abnormalState_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'abnormalState_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="abnormalState_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="工商异常状态数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="57"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="工商异常状态数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-btn_changed_div" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'indexHtml'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'changed_div'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="changed_div"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="工商登记信息异动数"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="58"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'indexHtml')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="工商登记信息异动数"/>
+            <column name="yd_url" value="../ui/about.html"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

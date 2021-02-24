@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="view-YD_CRSC_NEW_ALL_V_1" author="houxianghua" runAlways="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <viewExists viewName="YD_CRSC_NEW_V"/>
+            </not>
+        </preConditions>
+        <createView viewName="YD_CRSC_NEW_V" >
+            SELECT max( YD_CREATED_DATE ) AS YD_CREATED_DATE, YD_DEPOSITOR_NAME FROM YD_COMPARE_RESULT_SAIC_CHECK GROUP BY YD_DEPOSITOR_NAME
+        </createView>
+    </changeSet>
+
+    <changeSet id="view-YD_CRSC_NEW_ALL_V_2" author="houxianghua" runAlways="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <tableExists tableName="YD_CRSC_NEW_ALL_V"/>
+            </and>
+        </preConditions>
+        <dropTable tableName="YD_CRSC_NEW_ALL_V"/>
+    </changeSet>
+
+    <changeSet id="view-YD_CRSC_NEW_ALL_V_3" author="houxianghua" runAlways="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <viewExists viewName="YD_CRSC_NEW_ALL_V"/>
+            </not>
+        </preConditions>
+        <createView viewName="YD_CRSC_NEW_ALL_V" >
+            SELECT
+            crsc.YD_ID AS YD_ID,
+            crsc.YD_CREATED_BY AS YD_CREATED_BY,
+            crsc.YD_CREATED_DATE AS YD_CREATED_DATE,
+            crsc.YD_LAST_UPDATE_BY AS YD_LAST_UPDATE_BY,
+            crsc.YD_LAST_UPDATE_DATE AS YD_LAST_UPDATE_DATE,
+            crsc.YD_VERSION_CT AS YD_VERSION_CT,
+            crsc.YD_BUSINESS_EXPIRES AS YD_BUSINESS_EXPIRES,
+            crsc.YD_CHANGE_MESS AS YD_CHANGE_MESS,
+            crsc.YD_COMPARE_RESULT_ID AS YD_COMPARE_RESULT_ID,
+            crsc.YD_COMPARE_TASK_ID AS YD_COMPARE_TASK_ID,
+            crsc.YD_ILLEGAL AS YD_ILLEGAL,
+            crsc.YD_SAIC_INFO_ID AS YD_SAIC_INFO_ID,
+            crsc.YD_SAIC_STATE AS YD_SAIC_STATE,
+            crsc.YD_STRING001 AS YD_STRING001,
+            crsc.YD_STRING002 AS YD_STRING002,
+            crsc.YD_STRING003 AS YD_STRING003,
+            crsc.YD_STRING004 AS YD_STRING004,
+            crsc.YD_STRING005 AS YD_STRING005,
+            crsc.YD_CHANGED AS YD_CHANGED,
+            crsc.YD_ABNORMAL AS YD_ABNORMAL,
+            crsc.YD_PROCESS_ACTION AS YD_PROCESS_ACTION,
+            crsc.YD_PROCESS_STATE AS YD_PROCESS_STATE,
+            crsc.YD_PROCESS_TIME AS YD_PROCESS_TIME,
+            crsc.YD_PROCESSER AS YD_PROCESSER,
+            crsc.YD_ABNORMAL_STATE AS YD_ABNORMAL_STATE,
+            crsc.YD_ABNORMAL_TIME AS YD_ABNORMAL_TIME,
+            crsc.YD_DEPOSITOR_NAME AS YD_DEPOSITOR_NAME,
+            crsc.YD_ORGAN_FULL_ID AS YD_ORGAN_FULL_ID,
+            crsc.YD_ORGAN_NAME AS YD_ORGAN_NAME,
+            crsc.YD_MESSAGE AS YD_MESSAGE,
+            crsc.YD_CODE AS YD_CODE
+            FROM
+            YD_CRSC_NEW_V a
+            LEFT JOIN YD_COMPARE_RESULT_SAIC_CHECK crsc
+            ON a.YD_CREATED_DATE = crsc.YD_CREATED_DATE AND a.YD_DEPOSITOR_NAME = crsc.YD_DEPOSITOR_NAME
+        </createView>
+    </changeSet>
+</databaseChangeLog>

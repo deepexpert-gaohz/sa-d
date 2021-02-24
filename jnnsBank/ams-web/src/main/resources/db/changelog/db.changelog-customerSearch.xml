@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="permission-customerSearch" author="renjiaqi" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'customerManager_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="customerManager_search"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="客户综合尽调"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-pencil-square-o"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="-1"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="客户综合尽调"/>
+            <column name="yd_url" value=""/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="pbc_result_byAcctNo"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="账号查人行信息"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-twitter-square"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="账号查人行信息"/>
+            <column name="yd_url" value="../ui/search/pbcResultByAcctNo.html"/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="pbc_result_byAccountKey"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="开户许可证查人行"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-facebook-square"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="开户许可证查人行"/>
+            <column name="yd_url" value="../ui/search/pbcResultByAccountKey.html"/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="eccs_result_search"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="查询代码证系统"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-camera-retro"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="查询代码证系统"/>
+            <column name="yd_url" value="../ui/search/eccsResultSearch.html"/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="saicInfo_byName"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="工商基本信息查询"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-key"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="工商基本信息查询"/>
+            <column name="yd_url" value="../ui/search/saicInfoByName.html"/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="carrierOperator_search"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="运营商校验"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-cogs"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="运营商校验"/>
+            <column name="yd_url" value="../ui/search/carrierOperatorSearch.html"/>
+        </insert>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="idCard_search"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="联网核查"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-comments"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" valueComputed="(SELECT MAX(ysp3.yd_order_num)+1 FROM yd_sys_permission ysp3)"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'customerManager_search')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="联网核查"/>
+            <column name="yd_url" value="../ui/search/idCardSearch.html"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

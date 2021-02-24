@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>总览</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/common.css" media="all"/>
+    <link rel="stylesheet" href="css/about.css" media="all"/>
+</head>
+<body class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered">
+                <div class="box" style="width: 100%">
+                    <div class="winBox" style="width: 90%;display:inline-block">
+                        <ul class="scroll" id="announcementDetail">
+                            <li><a href="#" data-id="">欢迎来到账户管理平台，祝您使用愉快.</a></li>
+                        </ul>
+                    </div>
+                    <div style="width: 10%;float: right;display:inline-block" class="btn green btn-outline dn" data-code="noticeManager_btn" lay-filter="noticeManger" id="noticeMangerBtn" ><span>公告管理</span></div>
+                </div>
+            </div>
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <!--<img id="banner" style="width:100%;border-radius: 4px;">-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6 dn" data-code="addAcct_div" id="addAcctDiv">
+            <div class="backlog red">
+                <i class="fa fa-pie-chart"></i>
+                <div class="backlog-header">
+                    <h3>新增账户</h3>
+                    <p class="link" data-title="新增账户" data-href="company/addAcct.html?code=addAcct"><span id="addAcctCount"></span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 dn" data-code="addBusiness_div" id="addBusinessDiv">
+            <div class="backlog yellow">
+                <i class="fa fa-users"></i>
+                <div class="backlog-header">
+                    <h3>新增业务</h3>
+                    <p class="link" data-title="新增业务" data-href="company/addBusiness.html?code=addBills"><span id="addBusinessCount"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row dn" data-code="dealtRemind_div" id="dealtRemindDiv">
+        <div class="col-sm-12">
+            <div class="backlog purple">
+                <i class="fa fa-commenting"></i>
+                <div class="backlog-header">
+                    <h3>待办提醒</h3>
+                </div>
+                <div class="backlog-body row">
+                    <div class="col-xs-3 dn" data-code="" id="preUnCompleteDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="待受理" data-href="bank/pre.html"><span id="preUnCompleteCount"></span></p>
+                            <h4>预约待受理</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="zhshCheck_div" id="zhshCheckDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="待审核" data-href="company/dshAccount.html"><span id="zhshCheckCount"></span></p>
+                            <h4>申请待审核</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="dsbCheck_div" id="dsbCheckDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="待上报" data-href="company/dsbAccount.html"><span id="dsbCheckCount"></span></p>
+                            <h4>审核待上报</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="dbllb_div" id="dbllbDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="待补录" data-href="company/daibulu.html"><span id="dbllbCount"></span></p>
+                            <h4>上报待补录</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row dn" data-code="abnormalStatistics_div" id="abnormalStatisticsDiv">
+        <div class="col-sm-12">
+            <div class="backlog blue">
+                <i class="fa fa-commenting"></i>
+                <div class="backlog-header">
+                    <h3>企业风险异动数据</h3>
+                </div>
+                <div class="backlog-body row">
+                    <div class="col-xs-2 dn" data-code="abnormalAll_div" id="abnormalAllDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html"><span id="abnormalAllCount"></span></p>
+                            <h4>企业异动总数</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 dn" data-code="illegal_div" id="illegalDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html?illegal=1"><span id="illegalCount"></span></p>
+                            <h4>严重违法数</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 dn" data-code="changeMess_div" id="changeMessDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html?changeMess=1"><span id="changeMessCount"></span></p>
+                            <h4>经营异常数</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 dn" data-code="businessExpires_div" id="businessExpiresDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html?businessExpires=1"><span id="businessExpiresCount"></span></p>
+                            <h4>营业到期数</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 dn" data-code="abnormalState_div" id="abnormalStateDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html?abnormalState=1"><span id="abnormalStateCount"></span></p>
+                            <h4>工商异常状态数</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 dn" data-code="changed_div" id="changedDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="客户异动管理" data-href="customer/abnormal.html?changed=1"><span id="changedCount"></span></p>
+                            <h4>工商登记信息异动数</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row dn" data-code="passRemind_div" id="passRemindDiv">
+        <div class="col-sm-12">
+            <div class="backlog purple">
+                <i class="fa fa-cubes"></i>
+                <div class="backlog-header">
+                    <h3>通过提醒</h3>
+                </div>
+                <div class="backlog-body row">
+                    <div class="col-xs-3 dn" data-code="preSuccess_div" id="preSuccessDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="受理成功" data-href="bank/success.html?type=indexHtml"><span id="preSuccessCount"></span></p>
+                            <h4>预约受理成功</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="syncSuccsss_div" id="syncSuccsssDiv">
+                        <div class="backlog-item">
+                            <p class="link" data-title="报备成功" data-href="company/cgsbAccount.html?type=indexHtml"><span id="syncSuccsssCount"></span></p>
+                            <h4>上报成功</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="hzSuccsss_div" id="hzSuccsssDiv">
+                        <div class="backlog-item">
+                            <p  class="link" data-title="核准成功" data-href="company/hztgAccount.html?type=indexHtml"><span id="hzSuccsssCount"></span></p>
+                            <h4>核准成功</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 dn" data-code="hzSuccsss_div" id="hzSuccsssDiv1">
+                        <div class="backlog-item">
+                            <p  class="link" data-title="核准成功" data-href="company/hztgAccount.html?type=indexHtml"><span id="hzSuccsssCount1"></span></p>
+                            <h4>核实开变销数据</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="float: right"><h5 class="form-title"><span id="versionSpan"> </span></h5></div>
+
+    <script type="text/javascript" src="plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="js/about.js"></script>
+    <script type="text/javascript" src="ag/common/util.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+           $.get('../organization/root').done(function (data) {
+               if(data && data.orgType && data.orgType === 'BANK'){
+                   $('#banner').attr('src','images/banner-bank.jpg');
+               } else {
+                   // $('#banner').attr('src','images/banner-agency.jpg');
+               }
+           }).fail(function () {
+               // $('#banner').attr('src','images/banner-agency.jpg');
+           })
+
+
+           $('.link').click(function () {
+               var elem = $(this);
+               var title = elem.data('title');
+               var href = elem.data('href');
+               parent.tab.tabAdd({
+                    title: title,
+                    href: href
+                });
+           });
+
+           // $.get('../ui/ag/announcement/json/detail.json', null, function (res) {
+            $.get('../announcement/getTop', null, function (res) {
+                if (res.code === 'ACK') {
+                    var item = res.data;
+
+                    //$('#announcementDetail').text(item.content);
+                    //<li><a href="#" data-id="">欢迎来到账户管理平台，祝您使用愉快.</a></li>
+                    if (item.content==null){
+                        $('#announcementDetail').html("<li><a>欢迎来到账户管理平台，祝您使用愉快。</a></li>");
+                    } else {
+                        $('#announcementDetail').html("<li><a>"+item.content+"</a></li>");
+                    }
+
+                    var  boxWidth = $('.winBox').width();
+                    var  width = $('#announcementDetail li').width();
+
+                    if (boxWidth < width) {
+                        $('#announcementDetail').html($('#announcementDetail').html() + $('#announcementDetail').html());
+                        var num = 0;
+                        function goLeft() {
+                            if (num == -width-50) {
+                                num = 0;
+                            }
+                            num -= 1;
+                            $(".scroll").css({
+                                left: num
+                            })
+                        }
+                        //设置滚动速度
+                        var timer = setInterval(goLeft, 20);
+                        //设置鼠标经过时滚动停止
+                        $(".box").hover(function() {
+                            clearInterval(timer);
+                        },function() {
+                            timer = setInterval(goLeft, 20);
+                        })
+                    }
+
+                    if (item.id!=null){
+                        $('#announcementDetail a').click(function () {
+                            parent.tab.tabAdd({
+                                title: '公告通知详情',
+                                href: 'announcement/detail.html?id=' + item.id
+                            });
+                        });
+                    }
+
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

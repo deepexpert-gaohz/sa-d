@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="admin-main">
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">业务类型</label>
+            <div class="layui-input-inline">
+                <select id="billType" name="billType">
+                    <option value="ALL">所有</option>
+                    <option value="ACCT_INIT">存量</option>
+                    <option value="ACCT_OPEN">新开户</option>
+                    <option value="ACCT_CHANGE">变更</option>
+                    <option value="ACCT_SUSPEND">久悬</option>
+                    <option value="ACCT_SEARCH">查询</option>
+                    <option value="ACCT_REVOKE">销户</option>
+                    <option value="ACCT_SAIC">工商信息</option>
+                </select>
+            </div>
+            <label class="layui-form-label">存款人类别</label>
+            <div class="layui-input-inline">
+                <select id="depositorType" name="depositorType">
+                    <option value="ALL">所有</option>
+                    <option value="DEPOSITOR_TYPE_01">企业法人</option>
+                    <option value="DEPOSITOR_TYPE_02">非法人企业</option>
+                    <option value="DEPOSITOR_TYPE_03">机关</option>
+                    <option value="DEPOSITOR_TYPE_04">实行预算管理的事业单位</option>
+                    <option value="DEPOSITOR_TYPE_05">非预算管理的事业单位</option>
+                    <option value="DEPOSITOR_TYPE_06">团级(含)以上军队及分散执勤的支(分)队</option>
+                    <option value="DEPOSITOR_TYPE_07">团级(含)以上武警部队及分散执勤的支(分)队</option>
+                    <option value="DEPOSITOR_TYPE_08">社会团体</option>
+                    <option value="DEPOSITOR_TYPE_09">宗教组织</option>
+                    <option value="DEPOSITOR_TYPE_10">民办非企业组织</option>
+                    <option value="DEPOSITOR_TYPE_11">外地常设机构</option>
+                    <option value="DEPOSITOR_TYPE_12">外国驻华机构</option>
+                    <option value="DEPOSITOR_TYPE_13">有字号的个体工商户</option>
+                    <option value="DEPOSITOR_TYPE_14">无字号的个体工商户</option>
+                    <option value="DEPOSITOR_TYPE_15">居民委员会、村民委员会、社区委员会</option>
+                    <option value="DEPOSITOR_TYPE_16">单位设立的独立核算的附属机构</option>
+                    <option value="DEPOSITOR_TYPE_17">其他组织</option>
+                    <option value="DEPOSITOR_TYPE_20">境外机构</option>
+                    <option value="DEPOSITOR_TYPE_50">QFII</option>
+                    <option value="DEPOSITOR_TYPE_51">境外贸易机构</option>
+                    <option value="DEPOSITOR_TYPE_52">跨境清算</option>
+                    <option value="DEPOSITOR_TYPE_53">工商信息</option>
+                </select>
+            </div>
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-inline">
+                <select id="acctType" name="acctType">
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+            <label class="layui-form-label">模版名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="templateName">
+            </div>
+            <button type="button" id="btn_query" class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+    <div id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_add">
+            <i class="layui-icon">&#xe654;</i>
+            新建
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_edit">
+            <i class="layui-icon">&#xe642;</i>
+            修改
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_del">
+            <i class="layui-icon">&#xe640;</i>
+            删除
+        </button>
+    </div>
+    <table id="templateTable">
+
+    </table>
+    <div class="layui-hide">
+        <input class="layui-btn layui-btn-small layui-upload-file" type="file" lay-type="file" name="file"
+               id="file"></input>
+    </div>
+</div>
+<form action="../attach/blacklist_template.xls" method="get" id="templateDownloadForm">
+    <input type="hidden" name="id">
+</form>
+<!--<form action="../attach/blacklist_template.xlsx" method="get" id="templatePreviewForm">-->
+    <!--<input type="hidden" name="id">-->
+<!--</form>-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/template/template.js"></script>
+</body>
+
+</html>

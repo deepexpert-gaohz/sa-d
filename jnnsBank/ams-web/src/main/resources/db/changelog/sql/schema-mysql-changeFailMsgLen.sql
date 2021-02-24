@@ -1,0 +1,1 @@
+ALTER TABLE `yd_sync_history` MODIFY COLUMN `yd_fail_msg` VARCHAR ( 1000 );

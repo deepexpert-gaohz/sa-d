@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模型数据补录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css"/>
+
+</head>
+<body>
+<div class="admin-main">
+    <div class="tab-pane" id="tab_3">
+        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-vcard-o font-dark"></i>
+                    <span class="caption-subject uppercase">模型数据补录</span>
+                </div>
+            </div>
+            <div class="portlet-body" id="pbcConfigDiv">
+                <table class="table table-bordered word-break">
+                    <tbody>
+                    <tr>
+                        <td class="td-label">交易模型 ：</td>
+                        <td class="td-label">
+                            <div class="layui-input-inline">
+                                <input type="text" autocomplete="off" class="layui-input date-picker" id="tradeDate"
+                                       placeholder="补录时间" />
+                            </div>
+
+                        </td>
+                        <td class="td-label"><button type="button" id="jyClear" class="layui-btn">&nbsp;&nbsp;&nbsp;&nbsp;补录&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">开户模型 ：</td>
+                        <td class="td-label">
+                            <div class="layui-input-inline">
+                                <input type="text" autocomplete="off" class="layui-input date-picker" id="riskDate"
+                                       placeholder="补录时间" disabled="disabled" />
+                            </div>
+                        </td>
+                        <td class="td-label"><button type="button" id="khClear" class="layui-btn">&nbsp;&nbsp;&nbsp;&nbsp;补录&nbsp;&nbsp;&nbsp;&nbsp;</button></td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--    <div  id="toolbar" class="layui-btn-group">-->
+    <!--        <button class="layui-btn layui-btn-small dn" id="btn_export" data-code="apply:menu_Add">-->
+    <!--            <i class="layui-icon">&#xe601;</i>-->
+    <!--            导出-->
+    <!--        </button>-->
+    <!--    </div>-->
+    <table id="riskdataTradeTable">
+    </table>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+<script type="text/javascript" src="../ag/riskdata/riskClear.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/search.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+</head>
+
+<body class="page-content">
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <span class="caption-subject uppercase">联网身份核查</span>
+        </div>
+    </div>
+    <div class="portlet-body rwhc">
+        <div class="rwhc-box">
+            <table class="rwhc-table" lay-skin="row">
+                <tbody>
+                    <input type="hidden" id="idCardLocalImageByte" class="layui-input">
+                    <tr>
+                        <th class="td-label">姓名：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardName" class="layui-input">
+                        </td>
+                        <td class="td-label-right" colspan="2" rowspan="5">
+                            <!-- <img class="img" src=""> idCardLocalImageByte-->
+                                <img class="no-img" width="150" height="200" id="img">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">身份证号：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardNo" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">性别：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardSex" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">民族：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardNation" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">出生年月：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardBirthday" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">有效期限：</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardValidityBeginData" class="layui-input">
+                        </td>
+                        <th class="td-label">～</th>
+                        <td class="td-label-right">
+                            <input type="text" id="idCardValidityEndData" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">发证机关：</th>
+                        <td class="td-label-right" colspan="3">
+                            <input type="text" id="idCardOrgan" class="layui-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="td-label">住址：</th>
+                        <td class="td-label-right" colspan="3">
+                            <input type="text" id="idCardAddress" class="layui-input">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="type"></div>
+        <script type="text/html" id="typeTpl">
+            <dl class="rwhc-type">
+                <dt>核查人员类型：</dt>
+                <dd>
+                    {{# layui.each(d, function(index, item){ }}
+                    <label class="radio-inline">
+                        <input type="radio" name="idCardedType" id="type{{ index }}" value="{{ item.value }}"> {{ item.name }}
+                    </label>
+                    {{# }); }}
+                </dd>
+            </dl>
+        </script>
+
+        <div class="rwhc-btns">
+            <button class="layui-btn layui-btn-small" id="btnReadCard">
+                <i class="layui-icon">&#xe66f;</i>
+                读卡认证
+            </button>
+
+            <button class="layui-btn layui-btn-small" id="btnBatchInspect">
+                <i class="layui-icon">&#xe630;</i>
+                批量核查
+            </button>
+
+            <button class="layui-btn layui-btn-small" id="btnPrintIdCard">
+                <i class="layui-icon">&#xe63c;</i>
+                打印身份证
+            </button>
+
+            <button class="layui-btn layui-btn-small" id="btnPrintInspect">
+                <i class="layui-icon">&#xe63c;</i>
+                打印核查单
+            </button>
+
+            <button class="layui-btn layui-btn-primary layui-btn-small" id="btnLog">
+                核查日志
+            </button>
+
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="checkbox"> 自动读卡
+            </label>
+        </div>
+
+        <div class="rwhc-result">
+            查询结果：
+            <span id="sus" style="display: none"><i class="fa fa-street-view"></i> <span id="sust"></span></span>
+            <span id="error" style="display: none"><i class="fa fa-user-times red"></i> <span id="errort"></span></span>
+        </div>
+
+    </div>
+</div>
+<script type="text/html" id="printIdCardTpl">
+    <div id="printIdCardArea">
+        <div style="position:relative; width:342px; height:435px; margin:20px auto; font-size:14px;">
+            <img style="position:absolute; top:0; right:0;" width="342" height="435" src="../img/idCard.jpg">
+            <img style="position:absolute; top:20px; right:20px;" width="95" height="120" src="{{ d.imgUrl }}">
+            <div style="position:absolute; top:31px; left:68px;">{{ d.realname }}</div>
+            <div style="position:absolute; top:57px; left:68px;">{{ d.gender }}</div>
+            <div style="position:absolute; top:57px; left:145px;">{{ d.nation }}</div>
+            <div style="position:absolute; top:83px; left:68px;">{{ d.year }}</div>
+            <div style="position:absolute; top:83px; left:120px;">{{ d.month }}</div>
+            <div style="position:absolute; top:83px; left:150px;">{{ d.day }}</div>
+            <div style="position:absolute; top:110px; left:68px; width:150px;">{{ d.address }}</div>
+            <div style="position:absolute; top:176px; left:120px; font-size:15px; font-weight: bold;">{{ d.idCard }}</div>
+            <div style="position:absolute; top:370px; left:145px;">{{ d.issuingAuthority }}</div>
+            <div style="position:absolute; top:399px; left:145px;">{{ d.effectiveDate }}</div>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="printInspectTpl">
+
+    <div id="printInspectArea">
+        <style>
+            .inspect-table {
+                width: 500px;
+                margin: 50px auto;
+                border: 1px solid #ccc;
+            }
+            .inspect-table th {
+                width: 160px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                text-align: right;
+            }
+            .inspect-table td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+            .inspect-table img {
+
+            }
+        </style>
+        <table class="inspect-table">
+            <tbody>
+            <tr>
+                <th>原录入姓名：</th>
+                <td>{{ d.realname }}</td>
+                <td rowspan="4">
+                    <img width="160" height="200" src="{{ d.imgUrl }}">
+                </td>
+            </tr>
+            <tr>
+                <th>原录入身份证号码：</th>
+                <td>{{ d.idCard }}</td>
+            </tr>
+            <tr>
+                <th>核对结果：</th>
+                <td>{{ d.checkResult }}</td>
+            </tr>
+            <tr>
+                <th>签发机关：</th>
+                <td>{{ d.issuingAuthority }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<form action="../attach/idCardModel.xls" method="get" id="templateDownloadForm"></form>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../plugins/jquery.PrintArea.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script src="../js/webuploader/webuploader.js" type="text/javascript" ></script>
+<script type="text/javascript" src="../ag/search/idCardHardWare.js"></script>
+<script type="text/javascript" src="../ag/search/idCardSearch.js"></script>
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+
+</body>
+
+</html>

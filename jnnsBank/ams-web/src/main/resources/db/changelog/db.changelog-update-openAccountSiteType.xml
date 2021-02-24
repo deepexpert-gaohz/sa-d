@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="yd_account_bills_all_openAccountSiteType" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_account_bills_all where yd_open_account_site_type is null </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_account_bills_all">
+            <column name="yd_open_account_site_type" valueNumeric="0"/>
+            <where>yd_open_account_site_type is null</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="yd_account_public_openAccountSiteType" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_account_public where yd_open_account_site_type is null </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_account_public">
+            <column name="yd_open_account_site_type" valueNumeric="0"/>
+            <where>yd_open_account_site_type is null</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="yd_account_public_log_openAccountSiteType" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_account_public_log where yd_open_account_site_type is null </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_account_public_log">
+            <column name="yd_open_account_site_type" valueNumeric="0"/>
+            <where>yd_open_account_site_type is null</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="yd_accounts_all_openAccountSiteType" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_accounts_all where yd_open_account_site_type is null </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_accounts_all">
+            <column name="yd_open_account_site_type" valueNumeric="0"/>
+            <where>yd_open_account_site_type is null</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

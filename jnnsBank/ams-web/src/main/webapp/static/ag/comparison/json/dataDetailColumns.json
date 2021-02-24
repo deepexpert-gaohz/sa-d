@@ -1,0 +1,13 @@
+{
+	"code": "ACK",
+	"list":[{
+			"id":2,
+			"name":"公司名称",
+      "fieldName":"companyName"
+		},{
+			"id":3,
+			"name":"法人名称",
+      "fieldName":"legalName"
+		}
+	]
+}

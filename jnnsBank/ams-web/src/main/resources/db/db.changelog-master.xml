@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="changelog/db.changelog-init.xml" relativeToChangelogFile="true"/>
+    <!--<include file="changelog/db.changelog-view-report-date.xml" relativeToChangelogFile="true"/>-->
+    <include file="changelog/db.changelog-notActiveDelete.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-org-editUser-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-spring-session-init.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-customerSearch.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-verify-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-customerTune.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-account-public.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-dictionary.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-del-manger.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-customerManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-statistics-init.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-org-qianbing-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-systemWhiteList.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-editMenu-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-annualManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-menu-update.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-annualFields.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-systemWhiteListManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-updateSystemWhiteListManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-annualManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-imageManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-user-resetpwd-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-customer-public.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addNotice.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-compare-rolePermission-init.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-updateCustomerTuneMenu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-updateStatisticeMenu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-orgSync.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-systemAnnouncementManager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-imageOption.xml" relativeToChangelogFile="true"/>
+    <!--<include file="changelog/db.changelog-jiebenUniqueIgnore-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-jiebenUnique-menu.xml" relativeToChangelogFile="true"/>-->
+    <include file="changelog/db.changelog-organ-cancel.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-compareField.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-daibulu-button.xml" relativeToChangelogFile="true"/>
+
+    <!--<include file="changelog/db.changelog-jiebenUnique-menu-update.xml" relativeToChangelogFile="true"/>-->
+    <include file="changelog/db.changelog-jiebenChange-cancel.xml" relativeToChangelogFile="true"/>
+
+    <include file="changelog/db.changelog-addSaicMonitor.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-statistice_manager.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-cgsbAccountDelete-button.xml" relativeToChangelogFile="true"/>
+    <!--<include file="changelog/db.changelog-jiebenUnique-menu-delete.xml" relativeToChangelogFile="true"/>-->
+    <include file="changelog/db.changelog-systemDictionary.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addPrintButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-openAccountSiteType.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addNoticeButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-resetPwd-menu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addAccountConfigure.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-menu-update2.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeLegalNameLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-systemDictionary-add-fileType2.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addRole.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addDelButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addDictionaryOption.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-updateDictionaryOption.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-jiebenCancel-menu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addOption-acctCancelReason.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addOpenAccountStatistics.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeColumnColorLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeCompareResultLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addVerify-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addSaicIgnore.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addOrganAccountExcelButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-jiBenResetPrint-menu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-add-compareDataSource.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-jiben-unique-menu-init.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-menu_jibenCancel_search.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu-imageSync.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-view-report-status.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeBusinessScopeLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu-syncHistory.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-updateCustomerMenu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-view-compare_result_saic_check_new.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addAbnormalAboutButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addAbnormalManagerButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addRevokeJibenIgnoreButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addProofMenu.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-sys-noticeManager-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addAnnualCoreResetButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-organ-area-pbc.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu-imageVideo.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu-analysisAccount.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-accountBillsAll-addField1.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-judicial_information-menu-init.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeDetailsRowContentLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-imageSync-syncButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-imageVideo-dictionary.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-imageScan-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-annual-result-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-annual-config-button.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-dictionary.xml" relativeToChangelogFile="true"/>
+
+    <include file="changelog/db.changelog-addAnnualSubmitButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addAnnualReCompareButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addMenu-userTrace.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-dictionary-industryCode.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-update-dictionary-industryCode2.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addCompanyAccountDownButton.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-view-compare_result_saic_check_history.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeFailMsgLen.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-changeFailMsgLen2.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-addDictionary-applynoteOption.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-20200414-addButtonAuth.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-20200509-addButtonAuth.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/db.changelog-annual-result-noCheckAnnual.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

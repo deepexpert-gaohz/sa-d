@@ -1,0 +1,180 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-dark">
+                            <i class="fa fa-university font-dark"></i>
+                            <span class="caption-subject uppercase">新注册企业定时任务采集配置</span>
+                        </div>
+                        <div class="actions">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="checkbox" checked="" name="switchBtn" id="switchBtn" lay-skin="switch" lay-filter="switchBtn"  lay-text="ON|OFF">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form">
+                                    <div class="form-body form-horizontal">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-3">采集省份</span>
+                                                    <div class="col-md-6">
+                                                        <select name="provinceCode" class="form-control" id="provinceCode">
+                                                            <option value="">请选择</option>
+                                                            <option value="BJ">北京</option>
+                                                            <option value="TJ">天津</option>
+                                                            <option value="HB">河北</option>
+                                                            <option value="SX">山西</option>
+                                                            <option value="NMG">内蒙古</option>
+                                                            <option value="LN">辽宁</option>
+                                                            <option value="JL">吉林</option>
+                                                            <option value="HLJ">黑龙江</option>
+                                                            <option value="SH">上海</option>
+                                                            <option value="JS">江苏</option>
+                                                            <option value="ZJ">浙江</option>
+                                                            <option value="AH">安徽</option>
+                                                            <option value="FJ">福建</option>
+                                                            <option value="JX">江西</option>
+                                                            <option value="SD">山东</option>
+                                                            <option value="HEN">河南</option>
+                                                            <option value="HUB">湖北</option>
+                                                            <option value="HUN">湖南</option>
+                                                            <option value="GD">广东</option>
+                                                            <option value="GX">广西</option>
+                                                            <option value="HAIN">海南</option>
+                                                            <option value="CQ">重庆</option>
+                                                            <option value="SC">四川</option>
+                                                            <option value="GZ">贵州</option>
+                                                            <option value="YN">云南</option>
+                                                            <option value="XZ">西藏</option>
+                                                            <option value="SAX">陕西</option>
+                                                            <option value="GS">甘肃</option>
+                                                            <option value="QH">青海</option>
+                                                            <option value="NX">宁夏</option>
+                                                            <option value="XJ">新疆</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="row">-->
+                                            <!--<div class="col-md-12">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<span class="control-label col-md-3">任务执行周期</span>-->
+                                                    <!--<div class="col-md-6">-->
+                                                        <!--<select name="excuteCycle" class="form-control" id="excuteCycle">-->
+                                                            <!--<option value="">请选择</option>-->
+                                                            <!--<option value="everyDay">每天</option>-->
+                                                            <!--<option value="everyWeek">每周</option>-->
+                                                            <!--<option value="everyMonth">每月</option>-->
+                                                        <!--</select>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                        <!--<div class="row">-->
+                                            <!--<div class="col-md-12">-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<span class="control-label col-md-3">执行时间点</span>-->
+                                                    <!--<div class="col-md-6">-->
+                                                        <!--<div class="input-group date form_datetime" data-date-format="hh:ii"-->
+                                                             <!--id="times">-->
+                                                            <!--<input type="text" size="5" readonly class="form-control">-->
+                                                            <!--<span class="input-group-btn">-->
+                                                                <!--<button class="btn default date-set" type="button">-->
+                                                                    <!--<i class="fa fa-calendar"></i>-->
+                                                                <!--</button>-->
+                                                            <!--</span>-->
+                                                        <!--</div>-->
+                                                        <!--<span>如未填写默认早上6点执行</span>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-3">获取范围</span>
+                                                    <div class="col-md-6">
+                                                        <select name="range" class="form-control" id="selectRange" lay-filter="selectRange">
+                                                            <option value="">请选择</option>
+                                                            <option value="months">按日期区间</option>
+                                                            <option value="days">按天数</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="collectBeginDateDiv">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-3">开始日期</span>
+                                                    <div class="col-md-6">
+
+                                                        <input type="text" id="collectBeginDate" placeholder="请选择开始日期" autocomplete="off" class="layui-input date-picker"
+                                                            onclick="layui.laydate({elem: this, min: laydate.now(-60), max: laydate.now()})" />
+                                                        <span>过去60天内</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="collectEndDateDiv">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-3">结束日期</span>
+                                                    <div class="col-md-6">
+
+                                                        <input type="text" id="collectEndDate" placeholder="请选择结束日期" autocomplete="off" class="layui-input date-picker"
+                                                            onclick="layui.laydate({elem: this, min: laydate.now(), max: laydate.now(+60)})" />
+                                                        <span>最大日期到今日(日期默认为今天)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-md-8">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="dayRangeDiv">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="control-label col-md-3">按照最近天数范围采集</span>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="" name="dayRange" id="dayRange" onkeyup="this.value=this.value.replace(/[^\d]/g,'');">
+                                                        <span>【按照过去的60天内进行企业数据采集,范围在1-60之间,最大不能超过60天,默认为1天】</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

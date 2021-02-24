@@ -1,0 +1,16 @@
+{
+	"total":22,
+	"rows":[
+		{
+			"id":1,
+			"accountNo":"111111",
+			"companyName":"宁波软件有限公司",
+			"legalName":"aaa"
+		},{
+			"id":2,
+			"accountNo":"222",
+			"companyName":"宁波软件有限公司2",
+			"legalName":"aaa"
+		}
+	]
+}

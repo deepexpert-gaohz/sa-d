@@ -1,0 +1,170 @@
+<div style="margin: 15px;" class="task-info">
+
+	<div class="tabbable-line boxless tabbable-reversed">
+		<ul class="nav nav-tabs" id="kycTabs">
+			<li class="active">
+				<a href="#tab_001" data-toggle="tab"> 数据采集</a>
+			</li>
+			<li>
+				<a href="#tab_002" data-toggle="tab"> 任务配置详情</a>
+			</li>
+			<li>
+				<a href="#tab_003" data-toggle="tab"> 任务进度</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab_001">
+
+			</div>
+			<div class="tab-pane" id="tab_002">
+				<div class="taskDiv"></div>
+				<div class="ruleDiv"></div>
+			</div>
+			<div class="tab-pane" id="tab_003">
+				<form class="layui-form" onsubmit="javascript:return false;">
+
+					<table class="layui-table">
+						<tr>
+							<th>任务状态：</th>
+							<td id="compareTaskState"></td>
+							<th>总数据量：</th>
+							<td id="dataTotal"></td>
+						</tr>
+						<tr>
+							<!--<th>预计所需时间：</th>-->
+							<!--<td id="processTime"></td>-->
+							<th>已处理数据：</th>
+							<td colspan="3" id="process"></td>
+						</tr>
+					</table>
+
+					<div class="layui-progress" lay-showPercent="yes">
+						<div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+					</div>
+
+					<div class="btns">
+						<button class="layui-btn" id="btn_start">开始</button>
+						<!--<button class="layui-btn layui-btn-disabled" id="btn_stop">暂定</button>
+						<button class="layui-btn" id="btn_continue">恢复</button>-->
+						<button class="layui-btn" id="btn_reset">重置</button>
+						<button class="layui-btn" id="btn_stop">取消</button>
+					</div>
+					<input type="hidden" id="id" name="id">
+					<button lay-filter="edit" lay-submit style="display: none;"></button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+<script id="dataTpl" type="text/html">
+	<table class="layui-table">
+		<thead>
+		<tr>
+			<th>数据源名称</th>
+			<!--<th>创建时间</th>-->
+			<th>采集方式</th>
+			<th>采集状态</th>
+			<th>操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		{{#  layui.each(d, function(index, item){ }}
+		<tr>
+			<td>{{ item.name }}</td>
+			<!--<td>{{ item.createdDate }}</td>-->
+			<td>{{ item.type== 'ONLINE' ? '在线采集':'手动导入' }}</td>
+			<td>{{ item.stateName }}</td>
+			<td>
+				{{#  if(item.type=='ONLINE'){ }}
+				{{#  if(item.state=='-1'){ }}
+				<a href="#" class="collectData" style="color: blue" data-id="{{ item.id }}">采集数据</a>&nbsp;&nbsp;
+				{{#  } else if(item.state=='0') { }}
+				<a href="#" class="viewtaskData" style="color: blue" data-id="{{ item.id }}">明细查看</a>&nbsp;&nbsp;
+				<a href="#" class="importCheck" style="color: blue" data-id="{{ item.id }}">结果查看</a>&nbsp;&nbsp;
+				{{#  } else { }}
+				<a href="#" class="resetCollectData" style="color: blue" data-id="{{ item.id }}">再次采集数据</a>&nbsp;&nbsp;
+				<a href="#" class="viewtaskData" style="color: blue" data-id="{{ item.id }}">明细查看</a>&nbsp;&nbsp;
+				<a href="#" class="importCheck" style="color: blue" data-id="{{ item.id }}">结果查看</a>&nbsp;&nbsp;
+				{{#  } }}
+				{{#  } else { }}
+				{{#  if(item.state==1){ }}
+
+				{{#  if(item.name == '工商数据'){ }}
+				<a href="#" class="exportData" style="color: blue" data-id="{{ item.id }}">采集导出</a>&nbsp;&nbsp;
+				{{# } }}
+				<a href="#" class="importData" style="color: blue" data-id="{{ item.id }}">导入数据</a>&nbsp;&nbsp;
+				<a href="#" class="exportTemplate" style="color: blue" data-id="{{ item.id }}">导出模版</a>&nbsp;&nbsp;
+				<a href="#" class="viewtaskData" style="color: blue" data-id="{{ item.id }}">明细查看</a>&nbsp;&nbsp;
+				<a href="#" class="importCheck" style="color: blue" data-id="{{ item.id }}">结果查看</a>&nbsp;&nbsp;
+				{{#  } else { }}
+				{{#  if(item.name == '工商数据'){ }}
+				<a href="#" class="exportData" style="color: blue" data-id="{{ item.id }}">采集导出</a>&nbsp;&nbsp;
+				<a href="#" class="importData" style="color: blue" data-id="{{ item.id }}">工商导入数据</a>&nbsp;&nbsp;
+				{{# } else{ }}
+				<a href="#" class="importData" style="color: blue" data-id="{{ item.id }}">导入数据</a>&nbsp;&nbsp;
+				{{# } }}
+				<a href="#" class="exportTemplate" style="color: blue" data-id="{{ item.id }}">导出模版</a>&nbsp;&nbsp;
+
+				{{#  } }}
+				{{#  } }}
+			</td>
+		</tr>
+		{{#  }); }}
+		</tbody>
+	</table>
+</script>
+
+<script id="taskTpl" type="text/html">
+	<h4>任务信息</h4>
+	<table class="layui-table">
+		<tr>
+			<th>任务名称</th>
+			<td>{{ d.name }}</td>
+		</tr>
+		<tr>
+			<th>任务类型</th>
+			<td>{{ d.taskTypeCN }}</td>
+		</tr>
+		<tr>
+			<th>任务规则</th>
+			<td>{{ d.compareRuleName }}</td>
+		</tr>
+		<!--<tr>-->
+			<!--<th>创建时间</th>-->
+			<!--<td>{{ d.createdDate }}</td>-->
+		<!--</tr>-->
+		<tr>
+			<th>创建人</th>
+			<td>{{ d.createName }}</td>
+		</tr>
+	</table>
+</script>
+
+<script id="ruleTpl" type="text/html">
+	<h4>规则信息</h4>
+	<table class="layui-table">
+		<tr>
+			<th>规则名称</th>
+			<td>{{ d.name }}</td>
+		</tr>
+		<tr>
+			<th>创建人</th>
+			<td>{{ d.creater }}</td>
+		</tr>
+		<tr>
+			<th>创建时间</th>
+			<td>{{ d.createTime }}</td>
+		</tr>
+		<tr>
+			<th>规则状态</th>
+			<td>使用过{{ d.count }}次</td>
+		</tr>
+		<tr>
+			<th>比对字段</th>
+			<td>{{ d.compareFields }}</td>
+		</tr>
+	</table>
+</script>
+

@@ -1,0 +1,66 @@
+<style>
+    .table-bordered.table-simple>tbody>tr.not-match {
+        background-color: #d9534f;
+        color: white;
+    }
+</style>
+<div class="row" style="padding: 15px;">
+    <div class="col-md-12">
+        <!-- END EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-search-plus font-dark"></i>
+                    <span class="caption-subject uppercase">
+                        {{ d.msg || '开户校验' }}
+                    </span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <table class="table table-bordered word-break table-simple">
+                        <thead>
+                        <tr>
+                            <th width="10%">字段</th>
+                            {{# if(d.result.coreFlag){ }}
+                            <th width="30%">本地客户信息</th>
+                            {{# } }}
+                            <th width="30%">人行信息</th>
+                            <th width="30%">工商信息</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{# if(d.result.coreFlag){ }}
+                            {{#  layui.each(d.result.compareList, function(index, item){ }}
+                            {{#  if( item.CORE === item.PBC && item.CORE === item.SAIC ){ }}
+                            <tr>
+                                {{# } else { }}
+                            <tr class="not-match">
+                                {{# } }}
+                                <td>{{ item.name  || ''  }}</td>
+                                <td>{{ item.CORE  || ''  }}</td>
+                                <td>{{ item.PBC  || ''  }}</td>
+                                <td>{{ item.SAIC || '' }}</td>
+                            </tr>
+                            {{# }); }}
+                        {{# } else { }}
+                            {{#  layui.each(d.result.compareList, function(index, item){ }}
+                            {{#  if( item.PBC === item.SAIC ){ }}
+                            <tr>
+                            {{# } else { }}
+                            <tr class="not-match">
+                            {{# } }}
+                                <td>{{ item.name  || ''  }}</td>
+                                <td>{{ item.PBC  || ''  }}</td>
+                                <td>{{ item.SAIC || '' }}</td>
+                            </tr>
+                            {{# }); }}
+                        {{# } }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>

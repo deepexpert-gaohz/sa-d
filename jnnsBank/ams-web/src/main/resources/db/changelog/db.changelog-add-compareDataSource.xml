@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="addCompareDataSource1" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_data_source where yd_id = 1001</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_data_source where yd_id = 1005</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_data_source">
+            <column name="yd_id" value="1005"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="ams"/>
+            <column name="yd_collect_type" value="ONLINE"/>
+            <column name="yd_data_type" value="AMS"/>
+            <column name="yd_domain" value="CompareData1"/>
+            <column name="yd_name" value="账管异动数据"/>
+            <column name="yd_organ_full_id" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="addCompareDataSource2" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_data_source where yd_id = 1001</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_data_source where yd_id = 1006</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_data_source">
+            <column name="yd_id" value="1006"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="saic"/>
+            <column name="yd_collect_type" value="ONLINE"/>
+            <column name="yd_data_type" value="SAIC"/>
+            <column name="yd_domain" value="CompareData3"/>
+            <column name="yd_name" value="工商异动数据"/>
+            <column name="yd_organ_full_id" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="addCompareDataSource3" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_data_source where yd_id = 1001</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_data_source where yd_id = 1007</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_data_source">
+            <column name="yd_id" value="1007"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="csr"/>
+            <column name="yd_collect_type" value="ONLINE"/>
+            <column name="yd_data_type" value="OTHER"/>
+            <column name="yd_domain" value="CompareData5"/>
+            <column name="yd_name" value="客户异动数据"/>
+            <column name="yd_organ_full_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

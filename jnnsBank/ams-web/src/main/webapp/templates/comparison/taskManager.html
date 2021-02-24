@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>任务管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+	<link rel="stylesheet" href="../plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" type="text/css" />
+	<link rel="stylesheet" href="../plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+	<link rel="stylesheet" href="../css/dashboard.css" media="all">
+	<link rel="stylesheet" href="../css/comparison.css" media="all">
+	<link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+</head>
+
+<body class="page-content">
+<form action="../attach/compareImpotModel.xls" method="get" id="templateDownloadForm"></form>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<div class="portlet light">
+	<div class="portlet-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tabbable-line boxless tabbable-reversed">
+					<ul class="nav nav-tabs" id="kycTabs">
+						<li class="active">
+							<a href="#tab_1" id="tab1" data-toggle="tab" class="dn" data-code="compare:datasource"> 数据源配置</a>
+						</li>
+						<li>
+							<a href="#tab_2" id="tab2" data-toggle="tab" class="dn" data-code="compare:rule"> 规则配置</a>
+						</li>
+						<li>
+							<a href="#tab_3" id="tab3" data-toggle="tab" class="dn" data-code="compare:task"> 任务配置</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_1">
+							<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">数源名称</label>
+									<div class="layui-input-inline">
+										<input type="text" id="dataName" name="dataName" class="layui-input">
+									</div>
+									<label class="layui-form-label">创建时间</label>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="dataBeginDate" name="dataBeginDate" placeholder="开始时间"/>
+									</div>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="dataEndDate" name="dataEndDate" placeholder="结束时间"/>
+									</div>
+								</div>
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">来源方式</label>
+									<div class="layui-input-inline">
+										<select id="_collectType" name="_collectType" class="layui-input">
+											<option value=""></option>
+											<option value="">请选择</option>
+											<option value="ONLINE">在线采集</option>
+											<option value="IMPORT">手动导入</option>
+										</select>
+									</div>
+									<label class="layui-form-label">创建人</label>
+									<div class="layui-input-inline">
+										<input type="text" id="createdBy" class="layui-input">
+									</div>
+									<button type="button" id="btn_search1"  class="layui-btn layui-btn">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</div>
+							</form>
+							
+							<div id="toolbar1" class="layui-btn-group">
+								<button class="layui-btn layui-btn-small dn" data-code="compare:datasource-add" id="btn_add1">
+									<i class="layui-icon">&#xe654;</i>
+									新建
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:datasource-modify" id="btn_edit1">
+									<i class="layui-icon">&#xe642;</i>
+									修改
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:datasource-del" id="btn_del1">
+									<i class="layui-icon">&#xe640;</i>
+									删除
+								</button>
+							</div>
+						
+							<table id="list1"></table>
+						</div>
+						<div class="tab-pane" id="tab_2">
+							<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">规则名称</label>
+									<div class="layui-input-inline">
+										<input type="text" id="ruleName" name="ruleName" class="layui-input">
+									</div>
+									<label class="layui-form-label">创建人</label>
+									<div class="layui-input-inline">
+										<input type="text" id="ruleCreator" name="ruleCreator" class="layui-input">
+									</div>
+
+								</div>
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">创建时间</label>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="ruleBeginDate" name="ruleBeginDate" placeholder="开始时间"/>
+									</div>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="ruleEndDate" name="ruleEndDate" placeholder="结束时间"/>
+									</div>
+									<button type="button" id="btn_search2"  class="layui-btn layui-btn">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</div>
+							</form>
+
+							<div id="toolbar2" class="layui-btn-group">
+								<button class="layui-btn layui-btn-small dn" data-code="compare:rule-add" id="btn_add2">
+									<i class="layui-icon">&#xe654;</i>
+									新建
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:rule-modify" id="btn_edit2">
+									<i class="layui-icon">&#xe642;</i>
+									修改
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:rule-del" id="btn_del2">
+									<i class="layui-icon">&#xe640;</i>
+									删除
+								</button>
+							</div>
+						
+							<table id="list2"></table>
+						</div>
+						<div class="tab-pane" id="tab_3">
+							<form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">任务名称</label>
+									<div class="layui-input-inline">
+										<input type="text" id="taskName" name="taskName" class="layui-input">
+									</div>
+									<label class="layui-form-label">创建时间</label>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="taskBeginDate" name="taskBeginDate" placeholder="开始时间"/>
+									</div>
+									<div class="layui-input-inline">
+										<input type="text" autocomplete="off" class="layui-input date-picker" id="taskEndDate" name="taskEndDate" placeholder="结束时间"/>
+									</div>
+								</div>
+								<div class="layui-form-item" style="margin-bottom:0px;">
+									<label class="layui-form-label">任务状态</label>
+									<div class="layui-input-inline">
+										<select id="taskState" name="taskState" class="layui-input">
+											<option value=""></option>
+											<option value="">请选择</option>
+											<option value="INIT">待导入</option>
+											<option value="COLLECTING">采集中</option>
+											<option value="PAUSE">暂停</option>
+											<option value="COMPARING">比对中</option>
+											<option value="SUCCESS">完成</option>
+											<option value="FAIL">失败</option>
+										</select>
+									</div>
+									<label class="layui-form-label">任务类型</label>
+									<div class="layui-input-inline">
+										<select id="taskType" name="taskType" class="layui-input">
+											<option value=""></option>
+											<option value="">请选择</option>
+											<option value="NOW">即时任务</option>
+											<option value="TIMING">定时任务</option>
+										</select>
+									</div>
+									<label class="layui-form-label">创建人</label>
+									<div class="layui-input-inline">
+										<input type="text" id="taskCreator"  class="layui-input">
+									</div>
+									<button type="button" id="btn_search3"  class="layui-btn layui-btn">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</div>
+							</form>
+
+							<div id="toolbar3" class="layui-btn-group">
+								<button class="layui-btn layui-btn-small dn" data-code="compare:task-add" id="btn_add3">
+									<i class="layui-icon">&#xe654;</i>
+									新建
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:task-modify" id="btn_edit3">
+									<i class="layui-icon">&#xe642;</i>
+									修改
+								</button>
+								<button class="layui-btn layui-btn-small dn" data-code="compare:task-del" id="btn_del3">
+									<i class="layui-icon">&#xe640;</i>
+									删除
+								</button>
+							</div>
+							
+							<table id="list3"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+      	</div>
+  	</div>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script src="../plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../plugins/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/comparison/dataConfig.js"></script>
+<script type="text/javascript" src="../ag/comparison/ruleConfig.js"></script>
+<script type="text/javascript" src="../ag/comparison/taskConfig.js"></script>
+<script src="../js/webuploader/webuploader.js" type="text/javascript" ></script>
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+             height: 50%;
+        }
+
+</style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="name">
+            </div>
+            <label class="layui-form-label" style="font-size: 12px">预约开户支行</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="branch">
+            </div>
+            <label class="layui-form-label" style="font-size: 12px">预约开户性质</label>
+            <div class="layui-input-inline">
+                <select id="type" name="type" lay-filter="ocrFilter" >
+                    <option value=" " >全选</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                    <option value="specialAcct">专用存款账户</option>
+                    <option value="tempAcct">临时存款账户</option>
+                    <option value="unknow">未知账户性质</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">预约编号</label>
+            <div class="layui-input-inline">
+                <input type="text"
+                       class="layui-input"
+                       id="applyid">
+            </div>
+            <!--<label class="layui-form-label" style="width: 120px">预约操作类型</label>
+            <div class="layui-input-inline">
+                <select id="billType" name="billType">
+                    <option value=" " >全选</option>
+                    <option value="ACCT_OPEN">新开户</option>
+                    <option value="ACCT_CHANGE">变更</option>
+                    <option value="ACCT_REVOKE">销户</option>
+                </select>
+            </div>-->
+
+            <label class="layui-form-label">预约状态</label>
+            <div class="layui-input-inline">
+                <select id="status" name="status" lay-filter="ocrFilter" >
+                    <option value=" " >全选</option>
+                    <option value="UnComplete">待受理</option>
+                    <option value="SUCCESS">受理成功</option>
+                    <option value="FAIL">受理退回</option>
+                    <option value="REGISTER_SUCCESS">开户成功</option>
+                    <option value="REGISTER_FAIL">开户失败</option>
+                    <option value="BREAK_APPOINT">爽约</option>
+                </select>
+            </div>
+            <label class="layui-form-label">预约人员</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="operator">
+            </div>
+        </div>
+
+         <!--<div class="layui-form-item" style="margin-bottom:0px;">
+
+
+
+            &lt;!&ndash;<label class="layui-form-label">开始日期</label>&ndash;&gt;
+            &lt;!&ndash;<div class="layui-input-inline">&ndash;&gt;
+                &lt;!&ndash;<input type="text" id="beginDate" lay-verify="date" placeholder="请选择预约日期" autocomplete="off" class="layui-input date-picker"&ndash;&gt;
+                       &lt;!&ndash;onclick="layui.laydate({elem: this, format: 'YYYY-MM-DD'})" />&ndash;&gt;
+            &lt;!&ndash;</div>&ndash;&gt;
+            &lt;!&ndash;<label class="layui-form-label">结束日期</label>&ndash;&gt;
+            &lt;!&ndash;<div class="layui-input-inline">&ndash;&gt;
+                &lt;!&ndash;<input type="text" id="endDate" lay-verify="date" placeholder="请选择预约日期" autocomplete="off" class="layui-input date-picker"&ndash;&gt;
+                       &lt;!&ndash;onclick="layui.laydate({elem: this, format: 'YYYY-MM-DD'})" />&ndash;&gt;
+            &lt;!&ndash;</div>&ndash;&gt;
+
+        </div>-->
+
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">预约手机号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="phone">
+            </div>
+            <label class="layui-form-label">申请时间</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDateApply" placeholder="开始时间"/>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="endDateApply" placeholder="结束时间"/>
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+
+    <div class="row" style="margin-top: 20px;">
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="dsl">
+            <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                <div class="visual">
+                    <i class="fa fa-comments"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="dslCount">0</span>
+                    </div>
+                    <div class="desc"> 待受理 </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="ysl">
+            <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+                <div class="visual">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="yslCount">0</span> </div>
+                    <div class="desc"> 已受理 </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="slcg">
+            <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="slcgCount">0</span>
+                    </div>
+                    <div class="desc"> 受理成功 </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="slsb">
+            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        <span id="slsbCount">0</span> </div>
+                    <div class="desc"> 受理失败 </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small dn" id="btn_view" data-code="apply:view_list">
+            查看
+        </button>
+        <button class="layui-btn layui-btn-small dn" id="btn_khjd" data-code="apply:kyc_list">
+            客户尽调
+        </button>
+        <button class="layui-btn layui-btn-small dn" id="btn_sync" data-code="apply:sync_list">
+            全数据同步
+        </button>
+        <!--<button class="layui-btn layui-btn-small" id="btn_view">-->
+            <!--查看-->
+        <!--</button>-->
+        <!--<button class="layui-btn layui-btn-small" id="btn_khjd">-->
+            <!--客户尽调-->
+        <!--</button>-->
+    </div>
+    
+    <table id="userTable">
+
+    </table>
+
+
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../ag/bank/list.js"></script>
+</body>
+
+</html>

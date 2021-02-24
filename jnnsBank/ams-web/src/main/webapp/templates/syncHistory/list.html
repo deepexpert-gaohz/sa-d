@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>上报记录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">机构</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="organName" name="organName">
+            </div>
+            <label class="layui-form-label">网点机构号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="organCode" name="organCode">
+            </div>
+            <label class="layui-form-label">报送账号</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="acctNo" name="acctNo">
+            </div>
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-inline">
+                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">操作类型</label>
+            <div class="layui-input-inline">
+                <select name="billType" class="layui-input" id="billType" lay-filter="billType">
+                    <option value="">请选择</option>
+                    <option value="ACCT_INIT">存量</option>
+                    <option value="ACCT_OPEN">开户</option>
+                    <option value="ACCT_CHANGE">变更</option>
+                    <option value="ACCT_SUSPEND">久悬</option>
+                    <option value="ACCT_REVOKE">销户</option>
+                    <option value="ACCT_EXTENSION">展期</option>
+                </select>
+            </div>
+            <label class="layui-form-label">报送人</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="syncName" name="syncName">
+            </div>
+            <label class="layui-form-label">报送结果</label>
+            <div class="layui-input-inline">
+                <select name="billType" class="layui-input" id="syncStatus" lay-filter="syncStatus">
+                    <option value="">请选择</option>
+                    <option value="tongBuChengGong">上报成功</option>
+                    <option value="tongBuShiBai">上报失败</option>
+                </select>
+            </div>
+            <label class="layui-form-label">报送时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="beginDate" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDate" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+    <table id="syncTable">
+
+    </table>
+</div>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/syncHistory/list.js"></script>
+</body>
+</html>

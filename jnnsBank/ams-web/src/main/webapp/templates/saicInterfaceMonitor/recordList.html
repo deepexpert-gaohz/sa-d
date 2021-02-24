@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>工商调用记录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+
+<body>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+
+            <label class="layui-form-label">开始时间</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="beginDate" name="beginDate" placeholder="开始时间"/>
+            </div>
+            
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="off" class="layui-input date-picker" id="endDate" name="endDate" placeholder="结束时间"/>
+            </div>
+
+            <label class="layui-form-label">调用类型</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="checkType" name="checkType">
+                    <option value=""></option>
+                    <option value="">请选择</option>
+                    <!--<option value="SAIC">工商调用</option>-->
+                    <option value="KYC">客户尽调</option>
+                    <option value="ANNUAL">年检尽调</option>
+                    <option value="ILLEGAL">批量违法</option>
+                </select>
+            </div>
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="companyName">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">工商注册号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="regNo">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_download">
+            <i class="layui-icon">&#xe601;</i>
+            导出
+        </button>
+    </div>
+
+    <table id="list"></table>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../plugins/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/saicInterfaceMonitor/recordList.js"></script>
+</body>
+
+</html>

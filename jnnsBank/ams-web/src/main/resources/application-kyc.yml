@@ -1,0 +1,47 @@
+#本地配置
+saic:
+  data:
+    #本地数据有效日期
+    validDays: 7
+    #客户尽调操作本地数据有效日期
+    customTuneValidDays: 15
+  api:
+    #访问IDP key
+    key: bc01d91c6c39d40b6b091c2a7560df33
+  url:
+    #工商状态接口
+    stateUrl: http://120.27.165.115/cloudidp
+    baseUrl: http://120.27.165.115/cloudidp
+    #实时工商接口
+    realTime: ${saic.url.baseUrl}/outer/realTimeSaicInfo
+    realTime-encrypt: ${saic.url.baseUrl}/api/encrypt/saic-all-realtime
+#    realTime: ${saic.url.baseUrl}/outer/exactSaicInfo
+    #存量工商接口
+    exact: ${saic.url.baseUrl}/outer/exactSaicInfo
+    #受益人接口
+    beneficiary: ${saic.url.baseUrl}/outer/finalBeneficiary
+    #股权结构(树)
+    equityShareTree: ${saic.url.baseUrl}/outer/equityShareMap
+    #股权结构(列表)
+    equityShareList: ${saic.url.baseUrl}/outer/equityShareList
+    #基本户履历
+    baseAccount: ${saic.url.baseUrl}/api/base-account-record
+    #营商校验
+    carrierOperator: ${saic.url.baseUrl}/outer/operator/mobileNameId3EleVal
+    #严重违法失信
+    illegalQuery: ${saic.url.baseUrl}/api/company-black-list
+    #节假日接口
+    holiday: ${saic.url.baseUrl}/outer/holiday
+    #获得新增企业接口
+    freshCompany: ${saic.url.baseUrl}/api/search-fresh-info
+    #司法信息查询接口
+    judicialInformation: ${saic.url.baseUrl}/api/dishonesty
+    #委托企业进行更新
+    entrustUpdate: ${saic.url.baseUrl}/api/entrust-update
+    #查询委托状态
+    entrustUpdateResult: ${saic.url.baseUrl}/api/entrust-update-result
+  realTimeEncryptFlag: false
+  proxy:
+    flag: false
+    ip: 127.0.0.1
+    port: 8888

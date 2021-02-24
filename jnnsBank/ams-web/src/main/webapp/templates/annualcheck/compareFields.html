@@ -1,0 +1,101 @@
+<div id="view" >
+</div>
+<script id="demo" type="text/html">
+    {{#
+        var fn = function(data){
+            if(data == 'true'|| data == true ){
+                return 'checked';
+            }
+            return '';
+        };
+    }}
+    <table class="layui-table" align="center" >
+        <colgroup>
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>比较字段</th>
+                <th>是否使用</th>
+                <th>核心使用</th>
+                <th>空值过</th>
+                <th>人行账管数据使用</th>
+                <th>空值过</th>
+                <th>工商企业信息使用</th>
+                <th>空值过</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#  if(d.list.length === 0){ }}
+            <tr>无数据</tr>
+        {{#  } }}
+
+        {{#  layui.each(d.list, function(index, item){ }}
+            <tr id="{{ item.compareFieldEnum }}">
+                <td >{{ item.fieldName }}</td>
+                {{#  if(item.lockFiled == true){ }}
+                <td><input type="checkbox"  name="active" {{fn(item.active)}} disabled></td>
+                <td><input type="checkbox"  name="coreActive" {{fn(item.coreActive)}} disabled></td>
+                <td><input type="checkbox"  name="coreNullpass" {{fn(item.coreNullpass)}} disabled></td>
+                <td><input type="checkbox"  name="pbcActive" {{fn(item.pbcActive)}} disabled></td>
+                <td><input type="checkbox"  name="pbcNullpass" {{fn(item.pbcNullpass)}} disabled></td>
+                <td><input type="checkbox"  name="saicActive" {{fn(item.saicActive)}} disabled></td>
+                <td><input type="checkbox"  name="saicNullpass"{{fn(item.saicNullpass)}} disabled></td>
+                {{#  }else { }}
+                <td><input type="checkbox" onchange="update(this);" name="active" {{fn(item.active)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="coreActive" {{fn(item.coreActive)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="coreNullpass" {{fn(item.coreNullpass)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="pbcActive" {{fn(item.pbcActive)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="pbcNullpass" {{fn(item.pbcNullpass)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="saicActive" {{fn(item.saicActive)}}></td>
+                <td><input type="checkbox" onchange="update(this);" name="saicNullpass"{{fn(item.saicNullpass)}}></td>
+                {{#  } }}
+            </tr>
+        {{#  }); }}
+        </tbody>
+    </table>
+</script>
+<script type="text/javascript">
+
+    $.get('../../annualTask/comparefieldsconfig', null, function (response) {
+        var data = { //数据
+            "title":"Layui常用模块2"
+            ,"list": response.result
+        };
+        console.log(response.result)
+        var getTpl = demo.innerHTML;
+        var view = document.getElementById('view');
+        laytpl(getTpl).render(data, function(html){
+            view.innerHTML = html;
+        });
+    });
+
+    function update(obj){
+        console.log($(obj).parent().parent().attr("id"));
+        console.log(obj.name);
+        console.log($(obj).is(":checked"));
+
+        $.get('../../annualTask/comparefieldsconfig/update',
+            data = "field="+$(obj).parent().parent().attr("id")+"&rule="+obj.name+"&checked="+$(obj).is(":checked"),
+            function (response) {
+            console.log(response);
+            if (!response){
+                if ($(obj).is(":checked")) {
+                    $(obj).prop("checked",false);
+                }else {
+                    $(obj).prop("checked",true);
+                }
+                layer.msg("修改失败");
+            }
+        });
+
+    }
+
+</script>

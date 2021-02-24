@@ -1,0 +1,131 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">高管/股东</label>
+            <div class="col-md-8">
+                <select name="companyPartnerInfoSet[0].partnerType" class="layui-input" id="companyPartnerInfoSet[0].partnerType">
+                    <option value=""></option><option value="1">1-高管</option><option value="2">2-股东</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">关系人类型</label>
+            <div class="col-md-8">
+                <select name="companyPartnerInfoSet[0].roleType" class="layui-input" id="companyPartnerInfoSet[0].roleType">
+                    <option value=""></option><option value="1">1-实际控制人</option><option value="2">2-董事长</option><option value="3">3-总经理（主要负责人）</option><option value="4">4-财务负责人</option><option value="5">5-监事长</option><option value="6">6-法定代表人</option><option value="7">7-自然人</option><option value="8">8-机构</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">姓名</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[0].name" id="companyPartnerInfoSet[0].name">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">证件类型</label>
+            <div class="col-md-8">
+                <select name="companyPartnerInfoSet[0].idcardType" class="layui-input" id="companyPartnerInfoSet[0].idcardType">
+                    <option value=""></option><option value="1">1-身份证</option><option value="2">2-军官证</option><option value="3">3-文职干部证</option><option value="4">4-警官证</option><option value="5">5-士兵证</option><option value="6">6-护照</option><option value="7">7-港、澳、台居民通行证</option><option value="9">9-其它合法身份证件</option><option value="8">8-户口簿</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">证件号码</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[0].idcardNo" id="companyPartnerInfoSet[0].idcardNo">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">联系电话</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[0].partnerTelephone" id="companyPartnerInfoSet[0].partnerTelephone">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="stockHoderTpl" type="text/html">
+
+    <fieldset id="stockHoder_{{ d.id }}">
+        <legend></legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">高管/股东</label>
+                    <div class="col-md-8">
+                        <select name="companyPartnerInfoSet[{{ d.id }}].partnerType" class="layui-input" id="companyPartnerInfoSet[{{ d.id }}].partnerType">
+                            <option value=""></option><option value="1">1-高管</option><option value="2">2-股东</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">关系人类型</label>
+                    <div class="col-md-8">
+                        <select name="companyPartnerInfoSet[{{ d.id }}].roleType" class="layui-input" id="companyPartnerInfoSet[{{ d.id }}].roleType">
+                            <option value=""></option><option value="1">1-实际控制人</option><option value="2">2-董事长</option><option value="3">3-总经理（主要负责人）</option><option value="4">4-财务负责人</option><option value="5">5-监事长</option><option value="6">6-法定代表人</option><option value="7">7-自然人</option><option value="8">8-机构</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">姓名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[{{ d.id }}].name" id="companyPartnerInfoSet[{{ d.id }}].name">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">证件类型</label>
+                    <div class="col-md-8">
+                        <select name="companyPartnerInfoSet[{{ d.id }}].idcardType" class="layui-input" id="companyPartnerInfoSet[{{ d.id }}].idcardType">
+                            <option value=""></option><option value="1">1-身份证</option><option value="2">2-军官证</option><option value="3">3-文职干部证</option><option value="4">4-警官证</option><option value="5">5-士兵证</option><option value="6">6-护照</option><option value="7">7-港、澳、台居民通行证</option><option value="9">9-其它合法身份证件</option><option value="8">8-户口簿</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">证件号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[{{ d.id }}].idcardNo" id="companyPartnerInfoSet[{{ d.id }}].idcardNo">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">联系电话</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="companyPartnerInfoSet[{{ d.id }}].partnerTelephone" id="companyPartnerInfoSet[{{ d.id }}].partnerTelephone">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</script>

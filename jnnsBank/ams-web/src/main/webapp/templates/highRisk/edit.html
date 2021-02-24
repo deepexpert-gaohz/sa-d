@@ -1,0 +1,35 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">接口编号</label>
+            <div class="layui-input-block">
+                <input type="text" id="apiNo" name="apiNo" lay-verify="required" autocomplete="off" placeholder="请输入接口编号" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">接口名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="apiName" lay-verify="required" autocomplete="off" placeholder="请输入接口名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">接口地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="apiUrl" lay-verify="required" autocomplete="off" placeholder="请输入接口地址" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">搜索关键字</label>
+            <div class="layui-input-block">
+                <input type="text" name="keyWord" lay-verify="required" autocomplete="off" placeholder="请输入搜索关键字" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">数据关键字</label>
+            <div class="layui-input-block">
+                <input type="text" name="retData" lay-verify="required" autocomplete="off" placeholder="请输入返回的数据关键字" class="layui-input">
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

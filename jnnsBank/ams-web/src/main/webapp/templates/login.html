@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+	<title>账户管理平台</title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/layui.css" media="all">
+	<link rel="stylesheet" href="css/login.css" media="all">
+</head>
+<body class="login">
+<div class="haed">
+	<div class="haed-topnav">
+		<div class="haed-logo"><img src="img/ams-logo.png"></div>
+		<!--<ul class="haed-muen">
+
+			<li><a target="_blank" href="login.html">首页</a></li>
+			<li><a target="_blank" href="http://www.ideatech.info">官网</a></li>
+			<li><a target="_blank" href="http://www.ideatech.info/success.html">案例</a></li>
+			<li><a  target="_blank" href="http://www.ideatech.info/aboutUs.html">关于</a></li>
+			<li style="padding-left: 195px;     padding-top: 5px; height: 37px; "><img src="img/phone.png"></li>
+			<li  class="register"><a  target="_blank" href="">注册</a></li>
+
+		</ul>-->
+	</div>
+</div>
+<div class="content">
+	<!-- BEGIN LOGIN FORM -->
+	<div class="login-form" id="login_form">
+		<h3 class="form-title">用户登录</h3>
+		<div class="alert alert-danger display-hide">
+			<!--<button class="close" data-close="alert"></button>-->
+			<span id="errorMsg"> 用户名或密码不正确 </span>
+		</div>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">用户名</label>
+			<div class="input-icon">
+				<i class="icon-user"></i>
+				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder=""
+					name="username" id="username"> 
+				<span class="placeholder">用户名</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<div class="input-icon">
+				<i class="icon-lock"></i>
+				<input class="form-control placeholder-no-fix" type="password" id="password" autocomplete="off"
+					placeholder="" name="password">
+				<span class="placeholder">密码</span>
+			</div>
+		</div>
+		<div class="form-group" id="imageCodeDiv" style="display: none">
+			<label class="control-label visible-ie8 visible-ie9">验证码</label>
+			<div style="margin-bottom: 10px;">
+				<input class="form-control placeholder-no-fix" type="text" id="imageCode" autocomplete="off"
+					   placeholder="验证码" name="imageCode" style="width:100px;float: left">
+				<img id="codeImg" style="margin-bottom:10px;float: left;" width="200px" height="35px" alt="点击更换" title="点击更换" src="imageCode" onclick="verificationCode()"/>
+			</div>
+		</div>
+		<div class="form-actions">
+			<!--<label class="rememberme mt-checkbox mt-checkbox-outline">-->
+			<!--<input type="checkbox" name="remember" value="1"> Remember me-->
+			<!--<span></span>-->
+			<!--</label>-->
+			<button class="btn blue btn-block" id="submitBtn"><span id="loginSpan">登录</span><i
+					class="fa fa-spinner animation display-hide" id="loginProcessing"></i></button>
+		</div>
+
+		<div style="float: right"><h3 class="form-title"><span id="versionSpan"> </span></h3></div></div>
+
+	</div>
+	<!-- END LOGIN FORM -->
+</div>
+<div class="flexslider">
+	<ul class="slides">
+		<li style="background: url(img/ams-banner.jpg) 50% 0 no-repeat;"></li>
+	</ul>
+	<!--<div class="login-box">-->
+	<!--<div style="width: 1200px; margin: 0 auto">-->
+	<!--<div class="slideTxtBox">-->
+	<!--<div class="hd" >-->
+	<!--<ul><li>用户登录</li><li>微信登录</li> </ul>-->
+	<!--</div>-->
+	<!--<div class="bd">-->
+	<!--<ul>-->
+	<!--<li>-->
+	<!--<ul class="loginList">-->
+	<!--<li><span><img src="img/user.png"></span> <input id="username" name="username"-->
+	<!--placeholder="请输入用户名" /></li>-->
+	<!--<li><span><img src="img/pass.png"></span><input id="password" placeholder="请输入密码" name="password" type="password" /></li>-->
+	<!--<li style="border: none; text-align: center; height: 85px; overflow: hidden">-->
+	<!--<input type="button" value="登录" onclick="login()" class="button" /></li>-->
+	<!--</ul>-->
+	<!--</li>-->
+	<!--</ul>-->
+	<!--&lt;!&ndash;&ndash;&gt;-->
+	<!--<ul>-->
+	<!--<li id="login_container"></li>-->
+	<!--</ul>-->
+
+	<!--</div>-->
+	<!--</div>-->
+	<!--</div>-->
+	<!--</div>-->
+</div>
+<!--<div class="hot-box" style="display:block;">
+	<img src="img/info-basic.png" alt="">
+	<img src="img/info-scan.png" alt="">
+	<img src="img/info-kyc.png" alt="">
+	<img src="img/info-account.png" alt="">
+</div>
+<div class="hot-box">
+	<div class="yzh-title"><p>合作客户</p><span>行业领先银行合作客户</span></div>
+	<div class="yzh-logo">
+		<a href=""><img src="img/bank/zgbank.jpg" alt=""></a>
+		<a href=""><img src="img/bank/hebbank.jpg" alt=""></a>
+		<a href=""><img src="img/bank/nbbank.jpg" alt=""></a>
+		<a href=""><img src="img/bank/gfbank.png" alt=""></a>
+		<a href=""><img src="img/bank/huaxia.png" alt=""></a>
+		<a href=""><img src="img/bank/shanghai.png" alt=""></a>
+		<a href=""><img src="img/bank/mingsheng.png" alt=""></a>
+		<a href=""><img src="img/bank/nbtongshang.png" alt=""></a>
+		<a href=""><img src="img/bank/jianshe.png" alt=""></a>
+		<a href=""><img src="img/bank/zhaoshang.png" alt=""></a>
+		<a href=""><img src="img/bank/zgrenming.jpg" alt=""></a>
+		<a href=""><img src="img/bank/jiaotong.jpg" alt=""></a>
+
+
+	</div>
+</div>-->
+<div class="foorm"> <p class="banquan"> 易得融信 浙ICP备09050989号-1 版权所有<br />© 2009-2018 IDEATECH. All Rights Reserved</p>
+</div>
+
+<!--[if lt IE 9]>
+<script src="plugins/respond.min.js"></script>
+<script src="plugins/excanvas.min.js"></script>
+<script src="plugins/ie8.fix.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="layui.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/AES.js" type="text/javascript"></script>
+<script src="js/pad-zeropadding-min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	var identifyCodeEnabled = false;
+    //检测当login页面出现在iframe里面时,整个页面重载
+    if (window.location !== window.top.location) {
+        window.top.location = window.location;
+    }
+    // $(document).ready(function() {
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
+            layer = layui.layer, //获取当前窗口的layer对象
+            form = layui.form,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+
+		function loadImage(url, callback) {
+        	var img = new Image();
+			img.src = url;
+			
+			img.onload = function () {
+				callback.call(img);
+			};
+		};
+
+		var logoUrl = '../config/download?configKey=login.logo';
+		loadImage(logoUrl, function (img) {
+			var logoHtml = '<img class="logo" src="'+logoUrl+'">';
+			$('#login_form').prepend(logoHtml);
+		});
+
+        $('#submitBtn').on('click', function () {
+            login();
+		});
+
+		placeholder($('.placeholder'));
+		
+		var errorMsg = decodeURI(getReqParam('errorMsg'));
+		if(errorMsg) showAlert(errorMsg);
+
+        $.get('../config/getVersionNumber', function (data) {
+            if(data != null && data != "") {
+                $('#versionSpan').html("version: " + data);
+            }
+
+        });
+
+        $.get('../config/getIdentifyCodeEnabled', function (data) {
+			identifyCodeEnabled = data;
+            if(data) {
+                $('#imageCodeDiv').css('display', '');
+                verificationCode();
+
+            }
+        });
+
+        function encrypt(data) {
+            var key  = CryptoJS.enc.Latin1.parse('ideatech20180223');
+            var iv   = CryptoJS.enc.Latin1.parse('ideatech20180223');
+            return CryptoJS.AES.encrypt(data, key,
+                {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
+        }
+
+        function showAlert(message) {
+            //alert(message);
+            $('#errorMsg').html(message);
+            $('.alert-danger').removeClass('display-hide');
+
+            hideProcess();
+        }
+
+        //显示登录中
+        function showProcess() {
+            $('#loginProcessing').removeClass('display-hide');
+            $('#loginSpan').addClass('display-hide');
+        }
+
+        function hideProcess() {
+            $('#loginProcessing').addClass('display-hide');
+            $('#loginSpan').removeClass('display-hide');
+        }
+
+        function isProcessing() {
+            return !$('#loginProcessing').hasClass('display-hide');
+        }
+        function login() {
+            if(isProcessing()){
+                //已经在登录中
+                return;
+            }
+            showProcess();
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            var postLoginParams = {
+                username : encrypt(username),
+                password : encrypt(password),
+            };
+            if(identifyCodeEnabled) {
+                var imageCode = $("#imageCode").val();
+                postLoginParams = {
+                    username : encrypt(username),
+                    password : encrypt(password),
+                    imageCode : imageCode
+                };
+            }
+
+            if (username === "") {
+                showAlert("用户名不能为空");
+				$("#username").focus();
+            } else if (password === "") {
+                showAlert("密码不能为空");
+				$("#password").focus();
+            } else if (identifyCodeEnabled && imageCode === "") {
+                showAlert("验证码不能为空");
+                $("#imageCode").focus();
+            } else {
+				$.post('../auth', postLoginParams).done(function (result) {
+					if(result.code === 'ACK'){
+                        var timestamp = Date.parse(new Date());
+                        window.location = "index.html?_t="+timestamp;
+                    } else {
+						showAlert(result.message);
+						if(result.message.indexOf('用户') > -1) {
+							$("#username").focus();
+						} else if(result.message.indexOf('密码') > -1) {
+							$("#password").focus();
+						} else if(identifyCodeEnabled && result.message.indexOf('验证码') > -1) {
+                            $("#imageCode").focus();
+                        }
+
+						if(result.message.indexOf('密码超过有效期') > -1 || result.message.indexOf('当前登录密码为初始密码，请修改！') > -1) {
+                            //本表单通过ajax加载 --以模板的形式，当然你也可以直接写在页面上读取
+                            $.get('user/changePwd.html', null, function (form) {
+                                addBoxIndex = layer.open({
+                                    type: 1,
+                                    title: '修改密码',
+                                    content: form,
+                                    btn: ['保存', '取消'],
+                                    shade: false,
+                                    offset: ['20px', '20%'],
+                                    area: ['600px', '500px'],
+                                    yes: function (index) {
+                                        //触发表单的提交事件
+                                        $('form.layui-form').find('button[lay-filter=edit]').click();
+                                    },
+                                    full: function (elem) {
+                                        var win = window.top === window.self ? window : parent.window;
+                                        $(win).on('resize', function () {
+                                            var $this = $(this);
+                                            elem.width($this.width()).height($this.height()).css({
+                                                top: 0,
+                                                left: 0
+                                            });
+                                            elem.children('div.layui-layer-content').height($this.height() - 95);
+                                        });
+                                    },
+                                    success: function (layero, index) {
+                                        var form = layui.form();
+                                        form.render();
+
+                                        layero.find(":input[name='username']").val(username);
+                                        layero.find(":input[name='oldPassword']").val(password);
+
+                                        form.on('submit(edit)', function (data) {
+
+                                            var username =  data.field.username;
+                                            var oldPassword = data.field.oldPassword;
+                                            var password1 = data.field.password1;
+                                            var password2 = data.field.password2;
+                                            var postLoginParams = {
+                                                username : username,
+                                                oldPassword : encrypt(oldPassword),
+                                                password1 : encrypt(password1),
+                                                password2 : encrypt(password2),
+                                            };
+
+                                            $.ajax({
+												url: "../user/change",
+												type: 'post',
+												data: postLoginParams,
+												dataType: "json",
+												success: function (res) {
+													if (res.code === 'ACK') {
+														layerTips.msg('密码更新成功,请重新登录');
+														layer.close(addBoxIndex);
+													} else {
+														layerTips.msg(res.message);
+													}
+												}
+
+											});
+                                            //这里可以写ajax方法提交表单
+                                            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                                        });
+
+                                    },
+                                    end: function () {
+                                        addBoxIndex = -1;
+                                    }
+                                });
+                            });
+
+                        }
+
+                    }
+                }).fail(function (result) {
+                    console.log(result);
+                    if(result.status === 500){
+                        showAlert('系统异常,请重试');
+                    }
+                }).always(function () {
+                    hideProcess();
+                });
+            }
+
+
+        }
+        //回车提交表单
+        document.onkeydown = function(evt) {
+            var evt = window.event ? window.event : evt;
+            if (evt.keyCode === 13) {
+                login();
+            }
+        };
+	});
+	
+	function placeholder(elem) {
+
+		var value = elem.prev().val();
+		if (value) {
+			elem.hide();
+		} else {
+			elem.show();
+		}
+
+		elem.on('click', function () {
+			$(this).prev().focus();
+		});
+
+		elem.prev().on('change', function () {
+			if($(this).val() == '') {
+				$(this).next().show();
+			} else {
+				$(this).next().hide();
+			}
+		});
+
+		elem.prev().on('keyup', function () {
+			if($(this).val() == '') {
+				$(this).next().show();
+			} else {
+				$(this).next().hide();
+			}
+		});
+	}
+
+	function getReqParam(str) {
+		var reg = new RegExp("(^|&)" + str + "=([^&]*)(&|$)","i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r!=null) return (r[2]); return "";
+	}
+
+    /**
+     *验证码刷新
+     */
+    function verificationCode(){
+        $("#codeImg").attr("src", "../imageCode?abc="+Math.random());
+    }
+
+</script>
+</body>
+</html>

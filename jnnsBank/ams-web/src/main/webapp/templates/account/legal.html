@@ -1,0 +1,326 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">法定代表人(负责人)<span id="legalTypeSpan" style="color: red; ">*</span></label>
+            <div class="col-md-8">
+                <select name="legalType" class="layui-input" id="legalType" required lay-verify="required">
+                    <option value=""></option><option value="1">1-法定代表人</option><option value="2">2-单位负责人</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">姓名<span id="legalNameSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="legalName" id="legalName" required lay-verify="required">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">证件类型<span id="legalIdcardTypeSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <select name="legalIdcardType" class="layui-input" id="legalIdcardType" required lay-verify="required">
+                    <option value=""></option><option value="1">1-身份证</option><option value="2">2-军官证</option><option value="3">3-文职干部证</option><option value="4">4-警官证</option><option value="5">5-士兵证</option><option value="6">6-护照</option><option value="7">7-港、澳、台居民通行证</option><option value="9">9-其它合法身份证件</option><option value="8">8-户口簿</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">证件号码<span id="legalIdcardNoSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="legalIdcardNo" id="legalIdcardNo" required lay-verify="required">
+                <!--<button type="button" id="carrierBtn2" class="layui-btn">联网核查</button>-->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">法人证件到期日<span id="legalIdcardDueSpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-4">
+                <input type="text" name="legalIdcardDue" id="legalIdcardDue" placeholder="请选择日期" autocomplete="off" class="layui-input date-picker" required/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">法人联系电话</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="legalTelephone" id="legalTelephone"><button type="button" id="carrierBtn" onclick="carrierBtnClick()" class="layui-btn">运营商校验</button>
+                <span style='display:block; width:100px;color: red;'id='carrierResult'></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label col-md-4">国家或地区<span id="nationalitySpan" style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <select lay-search name="nationality" class="layui-input" id="nationality" required lay-verify="required">
+                    <option value=""></option>
+                    <option value="CHN" selected>CHN(中国 China)</option>
+                    <option value="ALB">ALB(阿尔巴尼亚Albania)</option>
+                    <option value="DZA">DZA(阿尔及利亚Algeria)</option>
+                    <option value="AFG">AFG(阿富汗Afghanistan)</option>
+                    <option value="ARG">ARG(阿根廷 Argentina)</option>
+                    <option value="ARE">ARE(阿联酋 United Arab Emirates)</option>
+                    <option value="ABW">ABW(阿鲁巴 Aruba)</option>
+                    <option value="OMN">OMN(阿曼 Oman)</option>
+                    <option value="AZE">AZE(阿塞拜疆Azerbaijan)</option>
+                    <option value="EGY">EGY(埃及 Egypt)</option>
+                    <option value="ETH">ETH(埃塞俄比亚Ethiopia)</option>
+                    <option value="IRL">IRL(爱尔兰 Ireland)</option>
+                    <option value="EST">EST(爱沙尼亚 Estonia)</option>
+                    <option value="AND">AND(安道尔 Andorra)</option>
+                    <option value="AGO">AGO(安哥拉 Angola)</option>
+                    <option value="AIA">AIA(安圭拉 Anguilla)</option>
+                    <option value="ATG">ATG(安提瓜和巴布达Antigua and Barbuda)</option>
+                    <option value="AUT">AUT(奥地利 Austria)</option>
+                    <option value="AUS">AUS(澳大利亚Australia)</option>
+                    <option value="MAC">MAC(澳门 Macau)</option>
+                    <option value="BRB">BRB(巴巴多斯Barbados)</option>
+                    <option value="PNG">PNG(巴布亚新几内亚Papua New Guinea)</option>
+                    <option value="BHS">BHS(巴哈马 Bahamas)</option>
+                    <option value="PAK">PAK(巴基斯坦Pakistan)</option>
+                    <option value="PRY">PRY(巴拉圭 Paraguay)</option>
+                    <option value="PSE">PSE(巴勒斯坦Palestine)</option>
+                    <option value="BHR">BHR(巴林 Bahrain)</option>
+                    <option value="PAN">PAN(巴拿马 Panama)</option>
+                    <option value="BRA">BRA(巴西 Brazil)</option>
+                    <option value="BLR">BLR(白俄罗斯 Belarus)</option>
+                    <option value="BMU">BMU(百慕大 Bermuda)</option>
+                    <option value="BGR">BGR(保加利亚Bulgaria)</option>
+                    <option value="MNP">MNP(北马里亚纳Northern Marianas)</option>
+                    <option value="PLW">PLW(帕劳 Palau)</option>
+                    <option value="BEN">BEN(贝宁 Benin)</option>
+                    <option value="BEL">BEL(比利时 Belgium)</option>
+                    <option value="ISL">ISL(冰岛 Iceland)</option>
+                    <option value="PRI">PRI(波多黎各 Puerto Rico)</option>
+                    <option value="POL">POL(波兰 Poland)</option>
+                    <option value="BOL">BOL(玻利维亚 Bolivia)</option>
+                    <option value="BIH">BIH(波斯尼亚和黑塞哥维那 Bosnia and Herzegovina)</option>
+                    <option value="BWA">BWA(博茨瓦纳Botswana)</option>
+                    <option value="BLZ">BLZ(伯利兹 Belize)</option>
+                    <option value="BTN">BTN(不丹 Bhutan)</option>
+                    <option value="BFA">BFA(布基纳法索Burkina Faso)</option>
+                    <option value="BDI">BDI(布隆迪 Burundi)</option>
+                    <option value="BVT">BVT(布维岛Bouvet Island)</option>
+                    <option value="PRK">PRK(朝鲜Korea)</option>
+                    <option value="GNQ">GNQ(赤道几内亚Equatorial Guinea)</option>
+                    <option value="DNK">DNK(丹麦 Denmark)</option>
+                    <option value="DEU">DEU(德国 Germany)</option>
+                    <option value="TLS">TLS(东帝汶 East Timor)</option>
+                    <option value="TGO">TGO(多哥 Togo)</option>
+                    <option value="DOM">DOM(多米尼加共和国Dominican Republic)</option>
+                    <option value="DMA">DMA(多米尼克Dominica)</option>
+                    <option value="RUS">RUS(俄罗斯联邦Russia Federation)</option>
+                    <option value="ECU">ECU(厄瓜多尔 Ecuador)</option>
+                    <option value="ERI">ERI(厄立特里亚 Eritrea)</option>
+                    <option value="FRA">FRA(法国 France)</option>
+                    <option value="FRO">FRO(法罗群岛 Faroe Islands)</option>
+                    <option value="PYF">PYF(法属波利尼西亚French Polynesia)</option>
+                    <option value="GUF">GUF(法属圭亚那 French Guiana)</option>
+                    <option value="ATF">ATF(法属南部领土French Southern Territories)</option>
+                    <option value="VAT">VAT(梵蒂冈 Vatican)</option>
+                    <option value="PHL">PHL(菲律宾Philippines)</option>
+                    <option value="FJI">FJI(斐济 Fiji)</option>
+                    <option value="FIN">FIN(芬兰 Finland)</option>
+                    <option value="CPV">CPV(佛得角 Cape Verde)</option>
+                    <option value="GMB">GMB(冈比亚Gambia)</option>
+                    <option value="COD">COD(刚果（金）Congo，the Democratic Republic of the Congo)</option>
+                    <option value="COG">COG(刚果（布） Congo)</option>
+                    <option value="COL">COL(哥伦比亚Colombia)</option>
+                    <option value="CRI">CRI(哥斯达黎加 Costa Rica)</option>
+                    <option value="GRD">GRD(格林纳达 Grenada)</option>
+                    <option value="GRL">GRL(格陵兰 Greenland)</option>
+                    <option value="GEO">GEO(格鲁吉亚 Georgia)</option>
+                    <option value="CUB">CUB(古巴 Cuba)</option>
+                    <option value="GLP">GLP(瓜德罗普uadeloupe)</option>
+                    <option value="GUM">GUM(关岛 Guam)</option>
+                    <option value="GUY">GUY(圭亚那 Guyana)</option>
+                    <option value="KAZ">KAZ(哈萨克斯坦Kazakhstan)</option>
+                    <option value="HTI">HTI(海地 Haiti)</option>
+                    <option value="KOR">KOR(韩国Korea)</option>
+                    <option value="NLD">NLD(荷兰 Netherlands)</option>
+                    <option value="ANT">ANT(荷属安的列斯Netherlands Antilles)</option>
+                    <option value="HMD">HMD(赫德岛和麦克唐纳岛 Heard islands and Mc Donald Islands)</option>
+                    <option value="HND">HND(洪都拉斯Honduras)</option>
+                    <option value="KIR">KIR(基里巴斯Kiribati)</option>
+                    <option value="DJI">DJI(吉布提 Djibouti)</option>
+                    <option value="KGZ">KGZ(吉尔吉斯斯Kyrgyzstan)</option>
+                    <option value="GIN">GIN(几内亚 Guinea)</option>
+                    <option value="GNB">GNB(几内亚比绍Guine-bissau)</option>
+                    <option value="CAN">CAN(加拿大 Canada)</option>
+                    <option value="GHA">GHA(加纳 Ghana)</option>
+                    <option value="GAB">GAB(加蓬 Gabon)</option>
+                    <option value="KHM">KHM(柬埔寨 Cambodia)</option>
+                    <option value="CZE">CZE(捷克 Czech Repoublic)</option>
+                    <option value="ZWE">ZWE(津巴布韦 Zimbabwe)</option>
+                    <option value="CMR">CMR(喀麦隆 Cameroon)</option>
+                    <option value="QAT">QAT(卡塔尔 Qatar)</option>
+                    <option value="CYM">CYM(开曼群岛 Cayman Islands)</option>
+                    <option value="CCK">CCK(科科斯(基林)</option>群岛 Cocos(Keeling)</option> Islands)</option>
+                    <option value="COM">COM(科摩罗 Comoros)</option>
+                    <option value="CIV">CIV(科特迪瓦 Coted"Ivoire)</option>
+                    <option value="KWT">KWT(科威特 Kuwait)</option>
+                    <option value="HRV">HRV(克罗地亚 Croatia)</option>
+                    <option value="KEN">KEN(肯尼亚 Kenya)</option>
+                    <option value="COK">COK(库克群岛 Cook Islands)</option>
+                    <option value="LVA">LVA(拉脱维亚 Latvia)</option>
+                    <option value="LSO">LSO(莱索托 Lesotho)</option>
+                    <option value="LAO">LAO(老挝 Lao)</option>
+                    <option value="LBN">LBN(黎巴嫩 Lebanon)</option>
+                    <option value="LBR">LBR(利比里亚 Liberia)</option>
+                    <option value="LBY">LBY(利比亚 Libya)</option>
+                    <option value="LTU">LTU(立陶宛 Lithuania)</option>
+                    <option value="LIE">LIE(列支敦士登Liechtenstein)</option>
+                    <option value="REU">REU(留尼汪 Reunion)</option>
+                    <option value="LUX">LUX(卢森堡 Luxembourg)</option>
+                    <option value="RWA">RWA(卢旺达 Rwanda)</option>
+                    <option value="ROU">ROU(罗马尼亚 Romania)</option>
+                    <option value="MDG">MDG(马达加斯加 Madagascar)</option>
+                    <option value="MLT">MLT(马耳他 Malta)</option>
+                    <option value="MDV">MDV(马尔代夫 Maldives)</option>
+                    <option value="FLK">FLK(福克兰群岛（马尔维纳斯群岛） Falkland Islands ( Malvinas)</option>)</option>
+                    <option value="MWI">MWI(马拉维 Malawi)</option>
+                    <option value="MYS">MYS(马来西亚 Malaysia)</option>
+                    <option value="MLI">MLI(马里 Mali)</option>
+                    <option value="MKD">MKD(前南马其顿Macedonia， The Former Yugoslav Republic of Macedonia)</option>
+                    <option value="MHL">MHL(马绍尔群岛 Marshall Islands)</option>
+                    <option value="MTQ">MTQ(马提尼克 Martinique)</option>
+                    <option value="MYT">MYT(马约特 Mayotte)</option>
+                    <option value="MUS">MUS(毛里求斯 Mauritius)</option>
+                    <option value="MRT">MRT(毛里塔尼亚 Mauritania)</option>
+                    <option value="USA">USA(美国 United States)</option>
+                    <option value="ASM">ASM(美属萨摩亚 American Samoa)</option>
+                    <option value="UMI">UMI(美国本土外小岛屿United States Minor Outlying Islands)</option>
+                    <option value="VIR">VIR(美属维尔京群岛 United States Virgin Is-lands)</option>
+                    <option value="MNG">MNG(蒙古 Mongolia)</option>
+                    <option value="MSR">MSR(蒙特塞拉特 Montserrat)</option>
+                    <option value="BGD">BGD(孟加拉国 Bangladesh)</option>
+                    <option value="PER">PER(秘鲁 Peru)</option>
+                    <option value="FSM">FSM(密克罗尼西亚联邦 Federated States of Micronesia)</option>
+                    <option value="MMR">MMR(缅甸 Myanmar)</option>
+                    <option value="MDA">MDA(摩尔多瓦 Moldova)</option>
+                    <option value="MAR">MAR(摩洛哥 Morocco)</option>
+                    <option value="MCO">MCO(摩纳哥 Monaco)</option>
+                    <option value="MOZ">MOZ(莫桑比克 Mozambique)</option>
+                    <option value="MEX">MEX(墨西哥 Mexico)</option>
+                    <option value="NAM">NAM(纳米比亚 Namibia)</option>
+                    <option value="ZAF">ZAF(南非 South Africa)</option>
+                    <option value="ATA">ATA(南极洲 Antarctica)</option>
+                    <option value="SGS">SGS(南乔治亚岛和南桑德韦奇岛 South Georgia and South Sandwich Islands)</option>
+                    <option value="NRU">NRU(瑙鲁 Nauru)</option>
+                    <option value="NPL">NPL(尼泊尔 Nepal)</option>
+                    <option value="NIC">NIC(尼加拉瓜 Nicaragua)</option>
+                    <option value="NER">NER(尼日尔 Niger)</option>
+                    <option value="NGA">NGA(尼日利亚 Nigeria)</option>
+                    <option value="NIU">NIU(纽埃 Niue)</option>
+                    <option value="NOR">NOR(挪威 Norway)</option>
+                    <option value="NFK">NFK(诺福克岛 Norfolk Island)</option>
+                    <option value="PCN">PCN(皮特凯恩 Pitcairn)</option>
+                    <option value="PRT">PRT(葡萄牙 Portugal)</option>
+                    <option value="JPN">JPN(日本 Japan)</option>
+                    <option value="SWE">SWE(瑞典 Sweden)</option>
+                    <option value="CHE">CHE(瑞士 Switzerland)</option>
+                    <option value="SLV">SLV(萨尔瓦多 El Salvador)</option>
+                    <option value="SLE">SLE(塞拉利昂 Sierra leone)</option>
+                    <option value="SEN">SEN(塞内加尔 Senegal)</option>
+                    <option value="CYP">CYP(塞浦路斯 Cyprus)</option>
+                    <option value="SYC">SYC(塞舌尔 Seychells)</option>
+                    <option value="SAU">SAU(沙竺阿拉伯 Saudi Arabia)</option>
+                    <option value="CXR">CXR(圣诞岛 Christmas Island)</option>
+                    <option value="STP">STP(圣多美和普林西比 Sao Tome and Principe)</option>
+                    <option value="SHN">SHN(圣赫勒拿 Saint helena)</option>
+                    <option value="KNA">KNA(圣基茨和尼维斯Saint Kitts and nevis)</option>
+                    <option value="LCA">LCA(圣卢西亚 Saint lucia)</option>
+                    <option value="SMR">SMR(圣马力诺 San Marion)</option>
+                    <option value="SPM">SPM(圣皮埃尔和密克隆Saint Pierre and Miquelon)</option>
+                    <option value="VCT">VCT(圣文森特和格林纳丁斯 Saint Vincent and the Grenadines)</option>
+                    <option value="LKA">LKA(斯里兰卡 Sri Lanka)</option>
+                    <option value="SVK">SVK(斯洛伐克 Slovakia)</option>
+                    <option value="SVN">SVN(斯洛文尼亚 Slovenia)</option>
+                    <option value="SJM">SJM(斯瓦尔巴岛和扬马延岛 Svalbard and jan Mayen Islands)</option>
+                    <option value="SWZ">SWZ(斯威士兰 Swaziland)</option>
+                    <option value="SDN">SDN(苏丹 Sudan)</option>
+                    <option value="SUR">SUR(苏里南 Suriname)</option>
+                    <option value="SOM">SOM(索马里 Somalia)</option>
+                    <option value="SLB">SLB(所罗门群岛 Solomon Islands)</option>
+                    <option value="TJK">TJK(塔吉克斯坦 Tajikistan)</option>
+                    <option value="THA">THA(泰国 Thailand)</option>
+                    <option value="TZA">TZA(坦桑尼亚 Tanzania)</option>
+                    <option value="TON">TON(汤加 Tonga)</option>
+                    <option value="TCA">TCA(特克斯科斯群岛 Turks and Caicos Islands)</option>
+                    <option value="TTO">TTO(特立尼达和多巴哥Trinidad and Tobago)</option>
+                    <option value="TUN">TUN(突尼斯 Tunisia)</option>
+                    <option value="TUV">TUV(图瓦卢 Tuvalu)</option>
+                    <option value="TUR">TUR(土耳其 Turkey)</option>
+                    <option value="TKM">TKM(土库曼斯坦Turkmenistan)</option>
+                    <option value="TKL">TKL(托克劳 Tokelau)</option>
+                    <option value="WLF">WLF(瓦利斯和富图纳 Wallis and Futuna)</option>
+                    <option value="VUT">VUT(瓦努阿图 Vanuatu)</option>
+                    <option value="GTM">GTM(危地马拉 Guatemala)</option>
+                    <option value="VEN">VEN(委内瑞拉 Venezuela)</option>
+                    <option value="BRN">BRN(文莱Brunei Darussalam)</option>
+                    <option value="UGA">UGA(乌干达 Uganda)</option>
+                    <option value="UKR">UKR(乌克兰 Ukraine)</option>
+                    <option value="URY">URY(乌拉圭 Uruguay)</option>
+                    <option value="UZB">UZB(乌兹别克斯坦 Uzbekistan)</option>
+                    <option value="ESP">ESP(西班牙 Spain)</option>
+                    <option value="ESH">ESH(西撒哈拉 Western Sahara)</option>
+                    <option value="WSM">WSM(萨摩亚 Samoa)</option>
+                    <option value="GRC">GRC(希腊 Greece)</option>
+                    <option value="HKG">HKG(香港 Hong Kong)</option>
+                    <option value="SGP">SGP(新加坡 Singapore)</option>
+                    <option value="NCL">NCL(新喀里多尼亚 New Caledonia)</option>
+                    <option value="NZL">NZL(新西兰 New Zealand)</option>
+                    <option value="HUN">HUN(匈牙利 Hungary)</option>
+                    <option value="SYR">SYR(叙利亚 Syria)</option>
+                    <option value="JAM">JAM(牙买加 Jamaica)</option>
+                    <option value="ARM">ARM(亚美尼亚 Armenia)</option>
+                    <option value="YEM">YEM(也门 Yemen)</option>
+                    <option value="IRQ">IRQ(伊拉克 Iraq)</option>
+                    <option value="IRN">IRN(伊朗 Iran)</option>
+                    <option value="ISR">ISR(以色列 Israel)</option>
+                    <option value="ITA">ITA(意大利 Italy)</option>
+                    <option value="IND">IND(印度 India)</option>
+                    <option value="IDN">IDN(印度尼西亚 Indonesia)</option>
+                    <option value="GBR">GBR(英国 United Kingdom)</option>
+                    <option value="VGB">VGB(英属维尔京群岛British Virgin Islands)</option>
+                    <option value="IOT">IOT(英属印度洋领地British Indian Ocean Territory)</option>
+                    <option value="JOR">JOR(约旦 Jordan)</option>
+                    <option value="VNM">VNM(越南 Viet Nam)</option>
+                    <option value="ZMB">ZMB(赞比亚 Zambia)</option>
+                    <option value="TCD">TCD(乍得 Chad)</option>
+                    <option value="GIB">GIB(直布罗陀 Gibraltar)</option>
+                    <option value="CHL">CHL(智利 Chile)</option>
+                    <option value="CAF">CAF(中非 Central Africa)</option>
+                    <option value="TWN">TWN(中国台湾 Taiwan)</option>
+                    <option value="SRB">SRB(塞尔维亚 The Republic of Serbia )</option>
+                    <option value="MNE">MNE(黑山Montenegro)</option>
+                    <option value="GGY">GGY(格恩西岛 Guernsey )</option>
+                    <option value="IMN">IMN(马恩岛 ISLE OF MAN )</option>
+                    <option value="JEY">JEY(泽西岛 JERSEY)</option>
+                    <option value="ALA">ALA(奥兰群岛 Aland Islands )</option>
+                    <option value="BES">BES(博奈尔岛、圣尤斯特歇斯岛和萨巴岛BONAIR ST EUSTATIUS SABA )</option>
+                    <option value="CUW">CUW(荷属克鲁索 Curacao )</option>
+                    <option value="XKD">XKD(科索沃 Kosovo )</option>
+                    <option value="BLM">BLM(圣巴托洛缪岛 Saint Barthelemy )</option>
+                    <option value="MAF">MAF(法属圣马丁 SAINT MARTIN (FRENCH PART)</option> )</option>
+                    <option value="SXM">SXM(荷属圣马丁 SINT MAARTEN (DUTCH PART)</option>)</option>
+                    <option value="SSD">SSD(南部苏丹 South Sudan )</option>
+                    <option value="XLE">XLE(纳闽岛LABUAN )</option>
+                    <option value="ZZZ">ZZZ(其他)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

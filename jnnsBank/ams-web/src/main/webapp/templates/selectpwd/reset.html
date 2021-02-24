@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">基本存款账户编号</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="text" id="accountKey" name="accountKey" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">新查询密码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="password" id="selectPwd" name="selectPwd" autocomplete="off" maxlength="32" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4">确认新查询密码</label>
+                        <div class="col-xs-7 col-md-6">
+                            <input type="password" id="rselectPwd" name="rselectPwd" autocomplete="off" maxlength="32" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3 col-md-4"></label>
+                        <div class="col-xs-7 col-md-6">
+                            <button type="button" class="layui-btn layui-btn" id="btnSubmit">提交</button>
+                            <button type="button" class="layui-btn layui-btn" id="printPwd" style="display: none">打印</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="depositorName" name="depositorName"/>
+        </div>
+    </div>
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script src="../js/loading.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ag/selecpwd/reset.js"></script>
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+
+</body>
+
+</html>

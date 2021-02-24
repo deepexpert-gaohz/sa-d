@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../plugins/jquery-magnify/css/jquery.magnify.css">
+    <link rel="stylesheet" href="../css/common.css" media="all"/>
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css" media="all"/>
+    <link rel="stylesheet" href="../css/videoInfo.css" />
+    <link rel="stylesheet" href="../plugins/jPlayer/skin/blue.monday/css/jplayer.blue.monday.min.css">
+
+    <style>
+        .control-label {
+            text-align: right;
+        }
+        .image-set img{
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        .image-add span {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 180px;
+            background-color: #ccc;
+        }
+        .image-add i{
+            font-size: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" action="" id="formId">
+    <!-- BEGIN MAIN CONTENT -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-calendar-check-o font-dark"></i>
+                        <span class="caption-subject uppercase">校验信息</span>
+                    </div>
+                    <div class="actions">
+
+                        <div class="btn-group btn-group-devided">
+                            <div class="btn green btn-outline" id="validate"><span>校验</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-2">企业名称</label>
+                                <div class="col-xs-9 col-md-10">
+                                    <label class="control-label" id="name"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="pbcValidationFields" style="display: none;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">基本户核准号</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <input type="text" name="accountKey" placeholder="请输入基本户核准号" id="accountKey" class="layui-input"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">基本户地区代码</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <input type="text" name="regAreaCode" placeholder="请输入注册地区编号" id="regAreaCode" class="layui-input"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-calendar-check-o font-dark"></i>
+                        <span class="caption-subject uppercase">预约信息</span>
+                    </div>
+                    <div class="actions">
+
+                        <div class="btn-group btn-group-devided">
+                            <!--<div class="btn green btn-outline"><span>受理</span></div>-->
+                            <div class="btn green btn-outline" id="save"><span>受理</span></div>
+                            <div class="btn green btn-outline" id="cancel"><span>退回</span></div>
+                            <div class="btn green btn-outline" id="printBtn" style="display: none" data-code="apply:bank_edit_print"><span>打印</span></div>
+                            <div class="btn green btn-outline" id="back"><span>返回</span></div>
+                            <input type="hidden" id="submitBtnType" name="submitBtnType"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <input type="hidden" name="status">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">预约人员</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="operator"> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">开户性质</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="type"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">预约手机</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="phone"> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">预约时间</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="applytime"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">预约网点</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="branch"> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3 col-md-4">预约编号</label>
+                                <div class="col-xs-9 col-md-8">
+                                    <label class="control-label" id="applyid"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
+        </div>
+    </div>
+
+    <div class="row" id="saicRowDiv" style="display: none">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="blockui_equity_portlet_body2">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-calendar-check-o font-dark"></i>
+                        <span class="caption-subject uppercase">客户工商信息</span>
+                    </div>
+                </div>
+                <div class="portlet-body" id="saicDiv">
+
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="legalRowDiv" style="display: none">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered" id="blockui_equity_portlet_body3">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="fa fa-calendar-check-o font-dark"></i>
+                        <span class="caption-subject uppercase">法人/负责人信息</span>
+                    </div>
+                </div>
+                <div class="portlet-body" id="legalDiv">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="row" id="imageRowDiv" style="display: none">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tabbable-line boxless tabbable-reversed">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_0" data-toggle="tab"> 影像资料</a>
+                                    </li>
+                                    <li id="videoInfo" style="display: none">
+                                        <a href="#tab_video" data-toggle="tab"> 双录信息</a>
+                                    </li>
+                                    <!--<li>-->
+                                    <!--<a href="#tab_1" data-toggle="tab"> 工商信息</a>-->
+                                    <!--</li>-->
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_0">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-file-image-o font-dark"></i>
+                                                    <span class="caption-subject uppercase">影像资料</span>
+                                                    <span class="caption-subject uppercase showNumber">: 需要同步影像的数量为</span>
+                                                    <span class="caption-subject uppercase showNumber" id="totalNumId"></span>
+                                                    <span class="caption-subject uppercase showNumber">,已经同步影像的数量为</span>
+                                                    <span class="caption-subject uppercase showNumber" id="curNumId"></span>
+                                                    <span class="caption-subject uppercase showNumber" id="loadingId">正在同步中...</span>
+                                                </div>
+                                                <div class="actions showNumberButton">
+                                                    <div class="btn-group btn-group-devided">
+                                                        <!--<div class="btn green btn-outline"><span>受理</span></div>-->
+                                                        <div class="btn green btn-outline" id="resetSync"><span>同步重置</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <input type="hidden" id="hasocrHiddenId"/>
+                                                <input type="hidden" id="idHiddenId"/>
+                                                <!--<div class="ocrImages">
+                                                </div>-->
+                                                <div class="image-set" id="imageList">
+                                                    <!--<a data-magnify="gallery" data-caption="Rémi Bizouard triple champion du monde by malainxx24" href="http://www.jq22.com/demo/magnify201712261506/examples/img/a1.png">
+                                                        <img width="200" src="http://www.jq22.com/demo/magnify201712261506/examples/img/a1.png" alt="">
+                                                    </a>-->
+                                                  <!--  <a data-magnify="gallery" data-caption="Rémi Bizouard triple champion du monde by malainxx24" href="../../apply/bank/images/downLoadImage/99526930540670?reqPageNum=1">
+                                                        <img width="200" src="../../apply/bank/images/downLoadImage/99526930540670?reqPageNum=1" alt="">
+                                                    </a>
+                                                    <a data-magnify="gallery" data-caption="A SELFROOME by MASSILIA JMMC" href="http://www.jq22.com/demo/magnify201712261506/examples/img/a2.png">
+                                                        <img width="200" src="http://www.jq22.com/demo/magnify201712261506/examples/img/a2.png" alt="">
+                                                    </a>
+                                                    <a data-magnify="gallery" data-caption="Paraglider flying over Aurlandfjord, Norway by framedbythomas" href="http://www.jq22.com/demo/magnify201712261506/examples/img/a3.png">
+                                                        <img width="200" src="http://www.jq22.com/demo/magnify201712261506/examples/img/a3.png" alt="">
+                                                    </a>-->
+                                                    <!--<a class="image-add" id="imageAdd">
+                                                        <span><i class="fa fa-plus"></i></span>
+                                                    </a>-->
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+
+                                    <div class="tab-pane" id="tab_video">
+                                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                        <div class="portlet light bordered">
+                                            <div class="portlet-title">
+                                                <div class="caption font-dark">
+                                                    <i class="fa fa-institution font-dark"></i>
+                                                    <span class="caption-subject uppercase">双录信息</span>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body" id="videoDiv">
+                                                <!--<div class="form-group" id="imageVideoDiv">
+                                                    <label class="control-label col-sm-4">双录视频编号</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" name="videoNo" id="videoNo" class="layui-input">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="btn green btn-outline" id="btnVideoQuery" ><span>查询</span></div>
+                                                    </div>
+                                                </div>-->
+
+                                                <div class="video-list" id="video_list">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- END EXAMPLE TABLE PORTLET-->
+                                    </div>
+
+                                    <div class="tab-pane" id="tab_1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="valiationResultModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">校验结果</h4>
+            </div>
+            <div class="modal-body" id="validationResultBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script id="validationRusultTemplate" type="text/html">
+    <div class="scroller" data-always-visible="1" data-rail-visible1="1">
+        {{# if(d.saicCheckPassed){ }}
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: #5FB878;">
+                    {{= d.saicValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } else { }}
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: #FF5722;">
+                    {{= d.saicValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } }}
+        {{# if(d.pbcCheckPassed === true){ }}
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: #5FB878;">
+                    {{= d.pbcValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } else if(d.pbcCheckPassed === false){ }}
+        <div class="row" id="pbcMessage">
+            <div class="col-md-12">
+                <span style="color: #FF5722;">
+                    {{= d.pbcValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } }}
+        {{# if(d.blackCheckPassed){ }}
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: #5FB878;">
+                    {{= d.blackValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } else { }}
+        <div class="row">
+            <div class="col-md-12">
+                <span style="color: #FF5722;">
+                    {{= d.blackValidationMessage }}
+                </span>
+            </div>
+        </div>
+        {{# } }}
+        {{# if(d.saicIdpInfo != null){ }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-line boxless tabbable-reversed">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab_saicValidationInfo" data-toggle="tab"> 工商校验信息</a>
+                        </li>
+                        {{# if(d.pbcCheckPassed != null ){ }}
+                        <li>
+                            <a href="#tab_pbc" data-toggle="tab" id="pbcDiv"> 人行校验信息</a>
+                        </li>
+                        {{# } }}
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_saicValidationInfo">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-dark">
+                                                <i class="fa fa-book font-dark"></i>
+                                                <span class="caption-subject uppercase">基本信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <table class="table table-bordered word-break">
+                                                <tbody>
+                                                <tr>
+                                                    <td width="150" class="td-label">统一社会信用代码：</td>
+                                                    <td width="150" class="td-label-right">{{d.saicIdpInfo.unitycreditcode || ''}}
+                                                    </td>
+                                                    <td width="150" class="td-label">注册号：</td>
+                                                    <td width="150" class="td-label-right">{{d.saicIdpInfo.registno || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">公司类型：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.type || ''}}</td>
+                                                    <td class="td-label">经营状态：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.state || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">成立日期：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.opendate || ''}}</td>
+                                                    <td class="td-label">营业期限：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.startdate || ''}}-
+                                                        {{d.saicIdpInfo.enddate || ''}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">注册资本：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.registfund || ''}}</td>
+                                                    <td class="td-label">核准日期：</td>
+                                                    <td class="td-label-right">{{d.saicIdpInfo.licensedate || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">登记机关：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.saicIdpInfo.registorgan
+                                                        || ''}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">企业地址：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.saicIdpInfo.address ||
+                                                        ''}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">经营范围：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.saicIdpInfo.scope ||
+                                                        ''}}
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-dark">
+                                                <i class="fa fa-exclamation-circle  font-dark"></i>
+                                                <span class="caption-subject uppercase">经营异常信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            {{# if(d.saicIdpInfo.changemess.length > 0){ }}
+                                            <table class="table table-bordered word-break">
+                                                <thead>
+                                                    <tr>
+                                                        <th>列入经营异常名录原因</th>
+                                                        <th>列入日期</th>
+                                                        <th>移出经营异常名录原因</th>
+                                                        <th>移出日期</th>
+                                                        <th>作出决定机关</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{# layui.each(d.saicIdpInfo.changemess, function(index, item){ }}
+                                                    <tr>
+                                                        <td>{{= item.inreason}}</td>
+                                                        <td>{{= item.indate}}</td>
+                                                        <td>{{= item.outreason}}</td>
+                                                        <td>{{= item.outdate}}</td>
+                                                        <td>{{= item.belongorg}}</td>
+                                                    </tr>
+                                                {{# }); }}
+                                                </tbody>
+                                            </table>
+                                            {{# } else { }}
+                                            暂无相关信息
+                                            {{# } }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-dark">
+                                                <i class="fa fa-exclamation-triangle font-dark"></i>
+                                                <span class="caption-subject uppercase">严重违法信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            {{# if(d.saicIdpInfo.illegals.length > 0){ }}
+                                            <table class="table table-bordered word-break">
+                                                <thead>
+                                                    <tr>
+                                                        <th>类别</th>
+                                                        <th>列入严重违法失信企业名单（黑名单）原因</th>
+                                                        <th>列入日期</th>
+                                                        <th>做出决定机关(列入)</th>
+                                                        <th>移出严重违法失信企业名单(黑名单)原因</th>
+                                                        <th>移出日期</th>
+                                                        <th>作出决定机关(移出)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{# layui.each(d.saicIdpInfo.illegals, function(index, item){ }}
+                                                <tr>
+                                                    <td>{{= item.type}}</td>
+                                                    <td>{{= item.reason}}</td>
+                                                    <td>{{= item.date}}</td>
+                                                    <td>{{= item.organ}}</td>
+                                                    <td>{{= item.reasonout}}</td>
+                                                    <td>{{= item.dateout}}</td>
+                                                    <td>{{= item.organout}}</td>
+                                                </tr>
+                                                {{# }); }}
+                                                </tbody>
+                                            </table>
+                                            {{# } else { }}
+                                            暂无相关信息
+                                            {{# } }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{# if(d.pbcCheckPassed != null ){ }}
+                        {{# if(d.amsAccountInfo != null){ }}
+                        <div class="tab-pane" id="tab_pbc">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-dark">
+                                                <i class="fa fa-book font-dark"></i>
+                                                <span class="caption-subject uppercase">客户信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <table class="table table-bordered word-break">
+                                                <tbody>
+                                                <tr>
+                                                    <td width="150" class="td-label">账号：</td>
+                                                    <td width="150" class="td-label-right">{{d.amsAccountInfo.acctNo || ''}}</td>
+                                                    <td width="150" class="td-label">账户名称：</td>
+                                                    <td width="150" class="td-label-right">{{d.amsAccountInfo.acctName || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">注册地地区代码：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.regAreaCode || ''}}</td>
+                                                    <td class="td-label">基本户状态：</td>
+                                                    <td class="td-label-right" id="accountStatus">{{d.amsAccountInfo.accountStatus || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">存款人名称：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.depositorName || ''}}</td>
+                                                    <td class="td-label">存款人类别：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.depositorType || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">证明文件种类1：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.fileType || ''}}</td>
+                                                    <td class="td-label">证明文编号1：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.fileNo || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">证明文件种类2：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.fileType2 || ''}}</td>
+                                                    <td class="td-label">证明文编号2：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.fileNo2 || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">法人类型：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.legalType || ''}}</td>
+                                                    <td class="td-label">法人姓名：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.legalName || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">法人证件类型：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.legalIdcardType || ''}}</td>
+                                                    <td class="td-label">法人证件编号：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.legalIdcardNo || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">邮政编码：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.zipCode || ''}}</td>
+                                                    <td class="td-label">联系电话：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.telephone || ''}}</td>
+                                                <tr>
+                                                    <td class="td-label">注册资金：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.registeredCapital || ''}}</td>
+                                                    <td class="td-label">注册币种：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.regCurrencyType || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">纳税人识别号(地税)：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.taxRegNo || ''}}</td>
+                                                    <td class="td-label">纳税人识别号(国税)：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.stateTaxRegNo || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">组织机构代码：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.amsAccountInfo.orgCode || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">无需办理税务登记证的文件或税务机关出具的证明：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.amsAccountInfo.noTaxProve || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">经营范围：</td>
+                                                    <td class="td-label-right" colspan="3">{{d.amsAccountInfo.businessScope || ''}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-dark">
+                                                <i class="fa fa-book font-dark"></i>
+                                                <span class="caption-subject uppercase">上机机构信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <table class="table table-bordered word-break">
+                                                <tbody>
+                                                <tr>
+                                                    <td width="150" class="td-label">基本户开户许可证核准号：</td>
+                                                    <td width="150" class="td-label-right">{{d.amsAccountInfo.accountKey || ''}}</td>
+                                                    <td width="150" class="td-label">上级组织机构代码：</td>
+                                                    <td width="150" class="td-label-right">{{d.amsAccountInfo.parOrgCode || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">上级存款人名称：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parCorpName || ''}}</td>
+                                                    <td class="td-label">上级基本户开户许可证：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parAccountKey || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">上级法人类型：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parLegalType || ''}}</td>
+                                                    <td class="td-label">上级法人姓名：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parLegalName || ''}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-label">上级法人证件类型：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parLegalIdcardType || ''}}</td>
+                                                    <td class="td-label">上级法人证件编号：</td>
+                                                    <td class="td-label-right">{{d.amsAccountInfo.parLegalIdcardNo || ''}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{# } else { }}
+                        <div class="tab-pane" id="tab_pbc">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{d.pbcValidationMessage || ''}}
+                                </div>
+                            </div>
+                        </div>
+                        {{# } }}
+                        {{# } }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{# } }}
+    </div>
+</script>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script type="text/javascript" src="../plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../plugins/jPlayer/jplayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="../ag/bank/videoInfo.js"></script>
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<!-- <script type="text/javascript" src="../lay/modules/laydate.js"></script> -->
+<script type="text/javascript" src="../plugins/jquery-magnify/js/jquery.magnify.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/bank/edit.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../js/saic.js"></script>
+</body>
+
+</html>

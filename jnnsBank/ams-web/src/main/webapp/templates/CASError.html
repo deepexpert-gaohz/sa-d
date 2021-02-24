@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录账管系统失败</title>
+<script>
+	function getReqParam() {
+		var url = window.location.search;
+		var theRequest = new Object();
+		if (url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			var strs = str.split("&");
+			for (var i = 0; i < strs.length; i++) {
+				theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+			}
+		}
+		return theRequest;
+	}
+
+	window.onload = function () {
+		var errorMsg = getReqParam().errorMsg;
+		var sErrorMsg = document.getElementById("errorMsg");
+		var succ = document.getElementById("success_h3");
+		var err = document.getElementById("failed_h3");
+		if (typeof (errorMsg) == "undefined") {
+			err.style.display = "inline";
+		} else {
+			succ.style.display = "inline";
+			sErrorMsg.innerText = errorMsg;
+		}
+	}
+</script>
+</head>
+<body>
+	<h3 id="success_h3" style="display: none;">登录账管系统失败，错误原因：
+		<span style="color: red" id="errorMsg"></span>
+		<br />
+		如有疑问，请联系账管系统管理员，如果不操作请关闭浏览器。
+	</h3>
+	<h3 id="failed_h3" style="display: none;">
+		登录账管系统遇到意料之外的情况，请关闭浏览器后重新尝试登录。
+	</h3>
+</body>
+</html>
+

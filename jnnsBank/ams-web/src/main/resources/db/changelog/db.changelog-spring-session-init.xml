@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--<changeSet id="1" author="fantao" runAlways="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <tableExists tableName="SPRING_SESSION"/>
+            </and>
+        </preConditions>
+        <delete tableName="SPRING_SESSION_ATTRIBUTES"/>
+        <delete tableName="SPRING_SESSION"/>
+    </changeSet>-->
+
+    <changeSet id="2" author="fantao" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <tableExists tableName="SPRING_SESSION"/>
+            </not>
+        </preConditions>
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-mysql.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+    <changeSet id="3" author="fantao" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <tableExists tableName="SPRING_SESSION"/>
+            </not>
+        </preConditions>
+        <sqlFile dbms="oracle"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-oracle.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+    <changeSet id="4" author="fantao" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <tableExists tableName="SPRING_SESSION"/>
+            </not>
+        </preConditions>
+        <sqlFile dbms="db2"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-db2.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+</databaseChangeLog>

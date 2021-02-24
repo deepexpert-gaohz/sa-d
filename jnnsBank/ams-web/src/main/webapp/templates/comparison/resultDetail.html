@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>结果管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <style>
+        .layui-table thead th {
+            white-space:nowrap;
+        }
+    </style>
+</head>
+
+<body>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<input type="hidden" id="organId">
+
+<div class="admin-main">
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="tree_list" class="layui-table">
+            </table>
+        </div>
+        <div class="col-sm-6">
+
+            <div id="toolbar" >
+                <div class="layui-input-inline">
+                    <div class="btn-group dropdown-div">
+                        <button type="button" class="btn dropdown-toggle layui-btn layui-btn-small" id="btn_export_excel" data-toggle="dropdown">
+                            导出EXCEL
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btn_export_excel">
+                            <li><a role="menuitem" href="0">所有结果</a></li>
+                            <li><a role="menuitem" href="1">比对一致结果</a></li>
+                            <li><a role="menuitem" href="2">比对不一致结果</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group dropdown-div">
+                        <button type="button" class="btn dropdown-toggle layui-btn layui-btn-small" id="btn_export_txt" data-toggle="dropdown">
+                            导出TXT
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="btn_export_txt">
+                            <li><a role="menuitemtxt" href="0">所有结果</a></li>
+                            <li><a role="menuitemtxt" href="1">比对一致结果</a></li>
+                            <li><a role="menuitemtxt" href="2">比对不一致结果</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <table id="list">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script id="listTpl" type="text/html">
+	<div style="margin:20px">
+		<table class="layui-table">
+			<thead>
+				<tr>
+					<th>数据名称</th>
+					<!--<th>账号</th>-->
+                    <!--<th>企业名称</th>-->
+                    {{#  layui.each(d.fieldList, function(index, item){ }}
+					<th>{{ item.fieldName }}</th>
+                    {{#  }); }}
+					<!--<th>是否黑名称</th>-->
+				</tr>
+			</thead>
+			<tbody>
+				{{#  layui.each(d.list, function(index, item){ }}
+				<tr>
+					<td>{{ item.name }}</td>
+					<!--<td>{{ item.account }}</td>-->
+                    <!--<td>{{ item.company }}</td>-->
+                    {{#  layui.each(item.fieldList, function(index, fieldItem){ }}
+					<td class="{{ fieldItem.isEquals==false?'error':''}}">{{ fieldItem.fieldValue }}</td>
+                    {{#  }); }}
+					<!--<td>{{ item.isBlack?'是':'否' }}</td>-->
+				</tr>
+				{{#  }); }}
+			</tbody>
+		</table>
+	</div>
+</script>
+
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/comparison/resultDetail.js"></script>
+</body>
+
+</html>

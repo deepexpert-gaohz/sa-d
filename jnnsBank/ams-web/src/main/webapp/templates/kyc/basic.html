@@ -1,0 +1,54 @@
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="fa fa-book font-dark"></i>
+            <span class="caption-subject uppercase">{{d.portletTitle || '基本信息'}}</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-bordered word-break">
+            <tbody>
+            <tr>
+                <td class="td-label">统一社会信用代码：</td>
+                <td class="td-label-right">{{d.unitycreditcode || ''}}</td>
+                <td class="td-label">注册号：</td>
+                <td class="td-label-right">{{d.registno || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">公司类型：</td>
+                <td class="td-label-right">{{d.type || ''}}</td>
+                <td class="td-label saicState">经营状态：</td>
+                <td class="td-label-right saicState">{{d.state || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">成立日期：</td>
+                <td class="td-label-right">{{d.opendate || ''}}</td>
+                <td class="td-label saicEnddate">营业期限：</td>
+                <td class="td-label-right saicEnddate">{{d.startdate || ''}}-
+                    {{d.enddate || ''}}
+                </td>
+            </tr>
+            <tr>
+                <td class="td-label">注册资本：</td>
+                <td class="td-label-right">{{d.registfund || ''}}</td>
+                <td class="td-label">核准日期：</td>
+                <td class="td-label-right">{{d.licensedate || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">登记机关：</td>
+                <td class="td-label-right" colspan="3">{{d.registorgan || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">企业地址：</td>
+                <td class="td-label-right" colspan="3">{{d.address || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">经营范围：</td>
+                <td class="td-label-right" colspan="3">{{d.scope || ''}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->

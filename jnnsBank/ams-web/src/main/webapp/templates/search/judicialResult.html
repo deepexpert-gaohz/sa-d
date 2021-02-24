@@ -1,0 +1,66 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="fa fa-book font-dark"></i>
+            <span class="caption-subject uppercase">司法信息</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-bordered word-break">
+            <tbody>
+                <tr>
+                    <td class="td-label">被执行人姓名/名称：</td>
+                    <td class="td-label-right" colspan="3">{{ d.pname || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">身份证号码/组织机构代码：</td>
+                    <td class="td-label-right">{{ d.idcardNo || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">法定代表人或者负责人姓名：</td>
+                    <td class="td-label-right">{{ d.ownerName || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">执行法院：</td>
+                    <td class="td-label-right">{{ d.court || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">省份：</td>
+                    <td class="td-label-right">{{ d.province || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">执行依据文号：</td>
+                    <td class="td-label-right">{{ d.yjCode || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">立案时间：</td>
+                    <td class="td-label-right">{{ d.sortTime || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">案号：</td>
+                    <td class="td-label-right">{{ d.caseNo || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">做出执行依据单位：</td>
+                    <td class="td-label-right">{{ d.yjdw || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">生效法律文书确定的义务：</td>
+                    <td class="td-label-right">{{ d.yiwu || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">被执行人的履行情况：</td>
+                    <td class="td-label-right">{{ d.lxqk || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">失信被执行人行为具体情形：</td>
+                    <td class="td-label-right">{{ d.jtqx || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">发布时间：</td>
+                    <td class="td-label-right">{{ d.postTime || '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

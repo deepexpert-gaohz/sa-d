@@ -1,0 +1,1 @@
+ALTER TABLE `yd_compare_result` MODIFY COLUMN `yd_column_color` longtext;

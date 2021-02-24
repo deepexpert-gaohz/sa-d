@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="addOption-acctCancelReason" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_dictionary where yd_name = 'core2pbc-acctCancelReason'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_option where yd_id = '20002366'</sqlCheck>
+            </and>
+        </preConditions>
+
+        <insert tableName="yd_sys_option">
+            <column name="yd_id" value="20002366"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_dictionary_id" value="40000062"/>
+            <column name="yd_name" value=""/>
+            <column name="yd_value" value="1"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

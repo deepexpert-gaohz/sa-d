@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模型设计</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap3-editable/css/bootstrap-editable.css"/>
+
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css"/>
+</head>
+<body>
+<div class="admin-main">
+    <form class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">模型编号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="modelId">
+            </div>
+            <label class="layui-form-label">模型名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="name">
+            </div>
+         <!--   <label class="layui-form-label">风险规则</label>
+            <div class="layui-input-inline">
+                <select id="ruleId" name="ruleId" lay-verify="required">
+                    <option value=" ">请选择风险规则</option>
+                </select>
+            </div>-->
+            <label class="layui-form-label">风险类型</label>
+            <div class="layui-input-inline">
+                <select id="typeId" name="typeId" lay-verify="required">
+                    <option value=" ">请选择风类型</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">风险等级</label>
+            <div class="layui-input-inline">
+                <select id="levelId" name="levelId" lay-search="">
+                    <option value=" ">请选择风险等级</option>
+                </select>
+            </div>
+            <label class="layui-form-label">当前状态</label>
+            <div class="layui-input-inline">
+                <select id="status" name="status" lay-verify="required">
+                    <option value=" ">请选择状态</option>
+                    <option value="1">启用中</option>
+                    <option value="0">停用中</option>
+                </select>
+            </div>
+            <button type="button" id="btn_query" class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <div id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small " id="btn_add" >
+            <i class="layui-icon">&#xe654;</i>
+            新建
+        </button>
+        <button class="layui-btn layui-btn-small " id="btn_edit">
+            <i class="layui-icon">&#xe642;</i>
+            修改
+        </button>
+        <button class="layui-btn layui-btn-small " id="btn_del">
+            <i class="layui-icon">&#xe640;</i>
+            删除
+        </button>
+     <!--   <button class="layui-btn layui-btn-small dn" id="btn_rely" data-code="apply:model_rely">
+            <i class="layui-icon">&#xe641;</i>
+            依赖
+        </button>-->
+        <button class="layui-btn layui-btn-small " id="btn_field">
+            <i class="layui-icon">&#xe643;</i>
+            字段
+        </button>
+        <button class="layui-btn layui-btn-small " id="btn_init">
+            <i class="layui-icon">&#xe644;</i>
+            模型初始化
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_initField" >
+            <i class="layui-icon">&#xe644;</i>
+            模型字段初始化
+        </button>
+    </div>
+    <table id="modelTable">
+    </table>
+</div>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/model/model.js"></script>
+<script type="text/javascript" src="../ag/model/modelField.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table-editable.min.js"></script>
+
+<script src="../plugins/echarts/echarts.min.js" type="text/javascript" ></script>
+<script src="../ag/model/modelRely.js" type="text/javascript" ></script>
+</body>
+</html>

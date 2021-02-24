@@ -1,0 +1,59 @@
+<div class="row" style="position: relative;top: 200px;">
+    <div class="col-md-6" style="width: 100%">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-2">证件类型<span style="color: red; padding-left: 5px">*</span></label>
+            <div class="col-md-8">
+                <select name="docCode" class="layui-input" id="docCode" lay-filter="docCode">
+                    <option value="">请选择</option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="position: relative;top: 200px;">
+    <div class="col-md-6" style="width: 100%">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-2">证件名称</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" autocomplete="off" placeholder="" name="fileNmeCN" id="fileNmeCN">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="position: relative;top: 200px;">
+    <div class="col-md-6" style="width: 100%">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-2">证件编号</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input"  placeholder="" name="number" id="number">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="position: relative;top: 200px;">
+    <div class="col-md-6" style="width: 100%">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-2">证件到期日</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input"  placeholder="请选择日期" name="expireDateStr" id="expireDateStr">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="position: relative;top: 200px;">
+    <div class="col-md-6" style="width: 30%;margin-left:360px" >
+        <div  id="toolbar" class="layui-btn-group">
+            <button class="layui-btn layui-btn-small" id="btn_addImageInfo" >
+                <i class="layui-icon">&#xe654;</i>
+                保存
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_cancelImageInfo">
+                <i class="layui-icon">&#xe642;</i>
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+<input type="hidden" class="layui-input" autocomplete="off" placeholder="" name="imageid" id="imageid">

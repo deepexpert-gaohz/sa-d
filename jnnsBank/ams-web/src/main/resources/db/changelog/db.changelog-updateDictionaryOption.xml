@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="dictionary_option_depositorTypeValue2Item_update" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">
+                    select count(1) FROM yd_sys_option
+                    WHERE yd_dictionary_id = (select yd_id from yd_sys_dictionary where yd_name = 'depositorTypeValue2Item')
+                    and yd_name = '07-团级(含)以上武警部队及分散执勤的支(分)队'
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="07"/>
+            <column name="yd_value" value="团级(含)以上武警部队及分散执勤的支(分)队"/>
+            <where>yd_dictionary_id = (select yd_id from yd_sys_dictionary where yd_name = 'depositorTypeValue2Item')
+                and yd_name = '07-团级(含)以上武警部队及分散执勤的支(分)队'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,47 @@
+{
+	"code": "",
+	"data":
+	{ 
+		"id":1,
+		"name":"规则1",
+		"isCompanyBlack": true,
+		"isLegalBlack": true,
+		"checkedDataList": [
+			{ 
+				"id": 1, 
+				"name": "人行数据1"
+			},
+			{ 
+				"id": 3, 
+				"name": "工商数据1"
+			}
+		],
+		"checkedFieldList": [
+			{ 
+				"id":1,
+				"name":"企业名称",
+				"isEnabled": true,
+				"dataList":[
+					{ "id":1, "use": true, "empty": true },
+					{ "id":3, "use": true, "empty": true }
+				]
+			},{
+				"id":2,
+				"name":"组织机构代码",
+				"isEnabled": true,
+				"dataList":[
+					{ "id":1, "use": true, "empty": true },
+					{ "id":3, "use": true, "empty": true }
+				]
+			},{
+				"id":3,
+				"name":"机构代码",
+				"isEnabled": true,
+				"dataList":[
+					{ "id":1, "use": true, "empty": true },
+					{ "id":3, "use": true, "empty": true }
+				]
+			}
+		]
+	}
+}

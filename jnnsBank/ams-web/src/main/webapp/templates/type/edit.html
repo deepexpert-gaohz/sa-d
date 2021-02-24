@@ -1,0 +1,23 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">风险类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="typeName" lay-verify="required" autocomplete="off" placeholder="请输入风险类型" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="display: none">
+            <label class="layui-form-label">上级id</label>
+            <div class="layui-input-block">
+                <input type="text" name="parentId" lay-verify="required" autocomplete="off"  class="layui-input" value="-1" readonly="readonly">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <textarea type="text" name="remakes" lay-verify="required" autocomplete="off"  class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

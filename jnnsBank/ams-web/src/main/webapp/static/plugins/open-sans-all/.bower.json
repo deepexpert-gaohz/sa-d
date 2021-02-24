@@ -1,0 +1,23 @@
+{
+  "name": "open-sans-all",
+  "description": "SCSS, LESS and CSS webfont kit for the awesome Open Sans webfont.",
+  "version": "0.1.2",
+  "homepage": "https://github.com/stenin-nikita/open-sans",
+  "author": "Nikita Stenin <stenin.nikita@gmail.com>",
+  "main": "css/open-sans.css",
+  "keywords": [
+    "font",
+    "open sans",
+    "webfont"
+  ],
+  "license": "MIT",
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.2",
+    "commit": "29a6b73e742ff2c2691ada2c979f9b3869fd751e"
+  },
+  "_source": "https://github.com/stenin-nikita/open-sans.git",
+  "_target": "0.1.2",
+  "_originalSource": "open-sans-all"
+}

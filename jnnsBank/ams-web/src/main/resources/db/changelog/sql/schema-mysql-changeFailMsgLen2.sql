@@ -1,0 +1,1 @@
+ALTER TABLE `yd_sys_operate_log` MODIFY COLUMN `yd_fail_msg` VARCHAR ( 1000 );

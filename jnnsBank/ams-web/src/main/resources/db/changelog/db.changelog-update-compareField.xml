@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="updateCompareField" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_compare_field </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="证明文件编号"/>
+            <where>yd_id=1018</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="工商注册编号"/>
+            <where>yd_id=1006</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="基本户开户许可核准号"/>
+            <where>yd_id=1016</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="证明文件种类"/>
+            <where>yd_id=1017</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="证件种类"/>
+            <where>yd_id=1023</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="产业分类"/>
+            <where>yd_id=1026</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="注册地地区代码"/>
+            <where>yd_id=1027</where>
+        </update>
+        <update tableName="yd_compare_field">
+            <column name="yd_name" value="登记部门"/>
+            <where>yd_id=1028</where>
+        </update>
+    </changeSet>
+    <changeSet id="addCompareField" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_compare_field where yd_id = 1001</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_compare_field where yd_id = 1030</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_compare_field where yd_id = 1031</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_compare_field">
+            <column name="yd_id" value="1030"></column>
+            <column name="yd_created_by" value="1"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="1"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_field" value="opendate"/>
+            <column name="yd_name" value="成立日期"/>
+        </insert>
+        <insert tableName="yd_compare_field">
+            <column name="yd_id" value="1031"></column>
+            <column name="yd_created_by" value="1"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="1"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_field" value="enddate"/>
+            <column name="yd_name" value="营业执照到期日"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

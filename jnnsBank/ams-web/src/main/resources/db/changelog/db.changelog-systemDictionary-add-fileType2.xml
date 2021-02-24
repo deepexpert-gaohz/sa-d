@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="addFileType2" author="jinzhihang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_option where yd_id = 6856976451 and yd_dictionary_id = 4903780269</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_dictionary where yd_id = 4903780269</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_option">
+            <column name="yd_id" value="6856976451"/>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_dictionary_id" value="4903780269"/>
+            <column name="yd_name" value="08-财政部门批复书"/>
+            <column name="yd_value" value="08"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

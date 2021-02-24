@@ -1,0 +1,40 @@
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="fa fa-book font-dark"></i>
+            <span class="caption-subject uppercase">{{d.parentTitle || '上机机构信息'}}</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-bordered word-break">
+            <tbody>
+            <tr>
+                <td class="td-label">基本户开户许可证核准号：</td>
+                <td class="td-label-right">{{d.accountKey || ''}}</td>
+                <td class="td-label">上级组织机构代码：</td>
+                <td class="td-label-right">{{d.parOrgCode || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">上级存款人名称：</td>
+                <td class="td-label-right">{{d.parCorpName || ''}}</td>
+                <td class="td-label">上级基本户开户许可证：</td>
+                <td class="td-label-right">{{d.parAccountKey || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">上级法人类型：</td>
+                <td class="td-label-right">{{d.parLegalType || ''}}</td>
+                <td class="td-label">上级法人姓名：</td>
+                <td class="td-label-right">{{d.parLegalName || ''}}</td>
+            </tr>
+            <tr>
+                <td class="td-label">上级法人证件类型：</td>
+                <td class="td-label-right">{{d.parLegalIdcardType || ''}}</td>
+                <td class="td-label">上级法人证件编号：</td>
+                <td class="td-label-right">{{d.parLegalIdcardNo || ''}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END EXAMPLE TABLE PORTLET-->

@@ -1,0 +1,51 @@
+<div style="margin: 15px;">
+	<form class="layui-form" action="">
+		<!--<input type="hidden" id="compareRuleId" name="compareRuleId" value="1231">-->
+		<div class="layui-form-item">
+			<label class="layui-form-label">任务类型</label>
+			<div class="layui-input-block">
+			<select id="taskType" name="taskType" lay-filter="taskType" lay-verify="required">
+				<option value="">请选择</option>
+				<option value="NOW">即时任务</option>
+				<option value="TIMING">定时任务</option>
+			</select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">任务名称</label>
+			<div class="layui-input-block">
+			<input type="text" id="name" name="name" class="layui-input" lay-verify="required">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">任务规则</label>
+			<div class="layui-input-block">
+			<select id="compareRuleId"  name="compareRuleId" class="layui-input" lay-verify="required">
+				<option value=""></option>
+				<option value="">请选择</option>
+			</select>
+			</div>
+		</div>
+		<div class="layui-form-item timing">
+			<label class="layui-form-label">任务定时</label>
+			<div class="layui-input-block">
+				<div class="row">
+					<div class="col-xs-5">
+						<select id="rate" name="rate" class="layui-input">
+							<option value=""></option>
+							<option value="">请选择</option>
+							<option value="day">一次</option>
+							<option value="week">每周</option>
+							<option value="month">每月</option>
+							<option value="quarter">每季度</option>
+						</select>
+					</div>
+					<div class="col-xs-7">
+						<input type="text" id="startTime" name="startTime" placeholder="任务时间" autocomplete="off" class="layui-input date-picker" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

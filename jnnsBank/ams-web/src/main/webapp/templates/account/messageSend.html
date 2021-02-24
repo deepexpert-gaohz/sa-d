@@ -1,0 +1,93 @@
+<style>
+  .form-group{
+    height: 35px;
+  }
+  .col-md-4{
+    height: 26px;
+  }
+
+  .control-label{
+    text-align: center;
+    padding-top: 7px;
+  }
+
+</style>
+
+<div class="" style="margin-top: 10px;padding-right: 15px;padding-left: 15px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4">业务种类</label>
+        <div class="col-md-8">
+          <select class="form-control" id="businessType" name="businessType">
+            <option value="corporate">对公业务</option>
+            <option value="personal">个人业务</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="msgDepositorNameDiv">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4 form-horizontal">企业名称</label>
+        <div class="col-md-8">
+          <input type="text" class="layui-input" placeholder="" name="msgDepositorName" id="msgDepositorName" required lay-verify="required">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="msgLegalNameDiv">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4 .form-horizontal">法人姓名</label>
+        <div class="col-md-8">
+          <input type="text" class="layui-input" placeholder="" name="msgLegalName" id="msgLegalName" required lay-verify="required">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="msgCustomerNameDiv" style="display: none">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4 .form-horizontal">客户姓名</label>
+        <div class="col-md-8">
+          <input type="text" class="layui-input" placeholder="" name="msgCustomerName" id="msgCustomerName" required lay-verify="required">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4">证件号码</label>
+        <div class="col-md-8">
+          <input type="text" class="layui-input" placeholder="" name="msgLegalIdcardNo" id="msgLegalIdcardNo" required lay-verify="required">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4">手机号码</label>
+        <div class="col-md-8">
+          <input type="text" class="layui-input" placeholder="" name="msgLegalTelephone" id="msgLegalTelephone" required lay-verify="required">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="randomFlagDiv">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label col-md-4">是否随机坐席</label>
+        <div class="col-md-8">
+          <select class="form-control" id="randomFlag" name="randomFlag">
+            <option value="false">否</option>
+            <option value="true">是</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

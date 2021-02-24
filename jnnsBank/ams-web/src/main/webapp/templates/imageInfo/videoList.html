@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+</head>
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="acctNo" name="acctNo">
+            </div>
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="depositorName" name="depositorName">
+            </div>
+            <label class="layui-form-label">法人名称</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="legalName" name="legalName">
+            </div>
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-inline">
+                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">工商注册编号</label>
+            <div class="layui-input-inline">
+                <input type="text"  class="layui-input" id="regNo" name="regNo">
+            </div>
+            <label class="layui-form-label">双录时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="beginDate" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDate" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input date-picker" />
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary">
+                重置
+            </button>
+        </div>
+    </form>
+    <div id="toolbar" >
+        <div class="layui-input-inline">
+            <div class="btn-group dropdown-div">
+                <button class="layui-btn layui-btn-small dn" data-code="video:create" id="btn_video_open">
+                    双录
+                </button>
+            </div>
+        </div>
+    </div>
+    <table id="videoTable">
+
+    </table>
+</div>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/json2.js"></script>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtil.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/imageInfo/list.js"></script>
+</body>
+</html>

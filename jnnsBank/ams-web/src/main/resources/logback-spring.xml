@@ -1,0 +1,62 @@
+<configuration>
+
+    <property name="appName" value="ams-web"/>
+    <property name="htmlName" value="ams-html"/>
+    <springProperty name="logPath" source="systemlog.file.location"/>
+
+    <conversionRule conversionWord="msg" converterClass="com.ideatech.ams.config.SensitiveDataConverter"> </conversionRule>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%date] [%-5level] [%thread] [%logger{55}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <file>/var/log/${appName}/${appName}.log</file> -->
+        <file>${logPath}/${appName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- <fileNamePattern>/data/logs/${appName}/${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
+            <fileNamePattern>${logPath}/${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%date] [%-5level] [%thread] [%logger{55}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="html_log"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <file>/var/log/${appName}/${appName}.log</file> -->
+        <file>${logPath}/html/${htmlName}.log</file>
+        <encoder>
+            <pattern>[%date] [%-5level] [%thread] [%logger{55}] - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- <fileNamePattern>/data/logs/${appName}/${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
+            <fileNamePattern>${logPath}/html/${htmlName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFileAppender"/>
+    </root>
+
+    <logger name="com.ideatech.ams.pbc.utils.HtmlUtils" level="INFO" additivity="false">
+        <appender-ref ref="html_log"/>
+    </logger>
+
+    <!-- <logger name="druid.sql.Statement" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>-->
+</configuration>

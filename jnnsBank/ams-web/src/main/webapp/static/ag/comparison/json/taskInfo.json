@@ -1,0 +1,10 @@
+{
+	"code": 0,
+	"data": {
+		"taskState": "进行中",
+		"dataTotal": 12,
+		"processTime": "2小时5分钟",
+		"process": 133,
+		"percent":"90%"
+	}
+}

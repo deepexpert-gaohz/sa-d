@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>提醒列表</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+            height: 50%;
+        }
+
+        .dropdown-div{
+            margin-left: 10px;
+        }
+
+        #toolbar {
+            width: 1000px;
+        }
+
+        .row .col-20 {
+            width: 20%;
+        }
+
+        .row {
+            margin-top: 15px;
+            margin-bottom: -20px;
+        }
+
+        .W120 .th-inner {
+            width:120px !important;
+        }
+        .W80 .th-inner {
+            width:80px !important;
+        }
+        .W60 .th-inner {
+            width:60px !important;
+        }
+
+        .W160 .th-inner {
+            width:160px !important;
+        }
+
+        .W180 .th-inner {
+            width:180px !important;
+        }
+
+        .W200 .th-inner {
+            width:200px !important;
+        }
+
+    </style>
+</head>
+
+<body>
+<iframe id="downloadFrame" src="" style="display: none;"></iframe>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px; display: none" id="tempAcctContionDiv">
+
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="acctNo" id="acctNo"autocomplete="off" class="layui-input">
+            </div>
+
+            <label class="layui-form-label" style="width: 120px">临时户到期日</label>
+            <div class="layui-input-inline">
+                <input type="text" name="effectiveDate" id="effectiveDate" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker" onclick="layui.laydate({elem: this})">
+            </div>
+
+            <label class="layui-form-label">是否超期</label>
+            <div class="layui-input-inline">
+                <select name="isEffectiveDateOver" class="layui-input" id="isEffectiveDateOver" style="width: 120px">
+                    <option value="">请选择</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+
+           <!-- <div  id="toolbar1" class="layui-btn-group">
+                <button type="button" id="btn_download"  class="layui-btn layui-btn dn" data-code="apply:log_Down">
+                    <i class="layui-icon">&#xe601;</i>
+                    核实
+                </button>
+            </div>-->
+        </div>
+    </form>
+    <iframe id="downloadFrame" src="" style="display: none;"></iframe>
+    <!--预约未及时处理-->
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div id="resvrUnprocessDiv" style="display: none" >
+            <div class="layui-form-item" style="margin-bottom:0px;" >
+                <label class="layui-form-label">预约号</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="applyid" id="applyid" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">客户名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" id="name" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">预约类型</label>
+                <div class="layui-input-inline">
+                    <select name="type" class="layui-input" id="type" style="width: 120px">
+                        <option value="">请选择</option>
+                        <option value="">请选择</option>
+                        <option value="jiben">基本户</option>
+                        <option value="yiban">一般户</option>
+                        <option value="yusuan">预算单位专用户</option>
+                        <option value="feiyusuan">非预算单位专用户</option>
+                        <option value="teshu">特殊单位专用户</option>
+                        <option value="linshi">临时机构临时户</option>
+                        <option value="feilinshi">非临时机构临时户</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="layui-form-item" style="margin-bottom:0px;">
+                <label class="layui-form-label">预约网点</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="branch" id="branch" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">预约时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="createdDateStart" id="createdDateStart" autocomplete="off" class="layui-input date-picker" placeholder="开始时间">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" name="createdDateEnd" id="createdDateEnd" autocomplete="off" class="layui-input date-picker" placeholder="结束时间">
+                </div>
+                <button type="button" id="btn_query_resvr"  class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <button type="reset" class="layui-btn layui-btn-primary">
+                    重置
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+    <div  id="toolbar" class="layui-btn-group">
+
+    </div>
+
+    <table id="noticeList">
+
+    </table>
+
+</div>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<script src="../plugins/es5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtilAll.js"></script>
+<script type="text/javascript" src="../ag/notice/notice.js"></script>
+</body>
+
+</html>

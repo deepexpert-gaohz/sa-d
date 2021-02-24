@@ -1,0 +1,62 @@
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=31005&customerStatus=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103655.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=31005&customerStatus=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103638.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=31005&customerStatus=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103637.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=31005&customerStatus=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103632.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=31005&customerStatus=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103629.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=00001&customerStatus=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103051.500.json
+
+###
+
+POST http://32.114.81.145:7001/ams/zhjn/getCustomerByClerk?clerkNo=00001&customerStatus=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-01-19T103041.500.json
+
+###
+
+POST http://localhost:8080/resources?clerkNo=00001&customerStatus=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+

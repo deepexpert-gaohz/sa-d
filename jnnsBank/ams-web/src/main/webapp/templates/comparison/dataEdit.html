@@ -1,0 +1,59 @@
+<div style="margin: 15px;">
+	<form class="layui-form" action="">
+		<div class="layui-form-item">
+			<label class="layui-form-label">数据名称</label>
+			<div class="layui-input-block">
+				<input type="text" id="name" name="name" class="layui-input" lay-verify="required">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">来源方式</label>
+			<div class="layui-input-block">
+				<select id="collectType" class="collectType1" name="collectType" lay-filter="collectType" lay-verify="required">
+					<option value=""></option>
+					<option value="">请选择</option>
+					<option value="ONLINE">在线采集</option>
+					<option value="IMPORT">手动导入</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item collect">
+			<label class="layui-form-label">采集数据</label>
+			<div class="layui-input-block">
+				<select id="dataType" name="dataType" lay-filter="dataType">
+					<option value="">请选择</option>
+					<option value="AMS">账管数据</option>
+					<option value="PBC">人行数据</option>
+					<option value="SAIC">工商数据</option>
+					<option value="CORE">核心数据</option>
+					<option value="OTHER">其他数据</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item dataNo">
+			<label class="layui-form-label">数据编码</label>
+			<div class="layui-input-block">
+				<input type="text" id="code" name="code" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item timingForEveryday">
+			<label class="layui-form-label">采集开始时间</label>
+			<div class="layui-input-block">
+				<div class="input-group bootstrap-timepicker timepicker" data-template="modal">
+					<input id="bankStartDatetime" type="text" readonly class="form-control input-small">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item timingForEveryday">
+			<label class="layui-form-label">采集结束时间</label>
+			<div class="layui-input-block">
+				<div class="input-group bootstrap-timepicker timepicker" data-template="modal">
+					<input id="bankEndDatetime" type="text" readonly class="form-control input-small">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+				</div>
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+	</div>

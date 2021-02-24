@@ -1,0 +1,86 @@
+    <div style="padding: 15px;">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-book font-dark"></i>
+                    <span class="caption-subject uppercase">{{'基本信息'}}</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-bordered word-break">
+                    <tbody>
+                    <tr>
+                        <td width="150" class="td-label">账号：</td>
+                        <td width="150" class="td-label-right">{{d.acctNo || ''}}</td>
+                        <td width="150" class="td-label">企业名称：</td>
+                        <td width="150" class="td-label-right">{{d.depositorName || ''}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">组织机构代码证：</td>
+                        <td class="td-label-right">{{d.orgCode || ''}}</td>
+                        <td class="td-label">工商注册号：</td>
+                        <td class="td-label-right">{{d.fileNo || ''}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">法定代表人：</td>
+                        <td class="td-label-right">{{d.legalName || ''}}</td>
+                        <td class="td-label">开户日期：</td>
+                        <td class="td-label-right">{{d.acctCreateDate || ''}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">注册资本(元)：</td>
+                        <td class="td-label-right">{{d.registeredCapital || ''}}</td>
+                        <td class="td-label">账户状态：</td>
+                        <td class="td-label-right">{{accountStatusFormat(d.accountStatus) || ''}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">企业地址：</td>
+                        <td class="td-label-right" colspan="3">{{d.regAddress || ''}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">经营范围：</td>
+                        <td class="td-label-right" colspan="3">{{d.businessScope || ''}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">账户性质：</td>
+                        <td class="td-label-right" colspan="3">{{d.string020 || ''}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+        {{#  if( d.reportList != null && d.reportList.length !== 0){ }}
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-newspaper-o font-dark"></i>
+                    <span class="caption-subject uppercase">企业年报信息</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-bordered word-break table-simple">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>报送年度</th>
+                        <th>发布时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#  layui.each(d.reportList, function(index, item){ }}
+                    <tr>
+                        <td>{{ item.index  || ''  }}</td>
+                        <td>{{ item.year  || ''  }}</td>
+                        <td>{{ item.date || '' }}</td>
+                    </tr>
+                    {{#  }); }}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+        {{#  } }}
+    </div>

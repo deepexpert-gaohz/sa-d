@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="jiebenRevoke-cancel-01" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'jiben' and yd_depositor_type='01' and yd_operate_type='ACCT_REVOKE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="jiben"/>
+            <column name="yd_depositor_type" value="01"/>
+            <column name="yd_operate_type" value="ACCT_REVOKE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="jiebenRevoke-cancel-02" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'jiben' and yd_depositor_type='02' and yd_operate_type='ACCT_REVOKE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="jiben"/>
+            <column name="yd_depositor_type" value="02"/>
+            <column name="yd_operate_type" value="ACCT_REVOKE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="jiebenRevoke-cancel-13" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'jiben' and yd_depositor_type='13' and yd_operate_type='ACCT_REVOKE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="jiben"/>
+            <column name="yd_depositor_type" value="13"/>
+            <column name="yd_operate_type" value="ACCT_REVOKE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="jiebenRevoke-cancel-14" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'jiben' and yd_depositor_type='14' and yd_operate_type='ACCT_REVOKE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="jiben"/>
+            <column name="yd_depositor_type" value="14"/>
+            <column name="yd_operate_type" value="ACCT_REVOKE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="feilinshiOpen-cancel-1" author="chenluxiang" runOnChange="true">
+    <preConditions onFail="CONTINUE">
+        <and>
+            <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'feilinshi' and yd_operate_type='ACCT_OPEN'</sqlCheck>
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+            </not>
+        </and>
+    </preConditions>
+    <insert tableName="yd_sys_account_configure">
+        <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+        <column name="yd_created_by" value="2"/>
+        <column name="yd_created_date" valueDate="${now}"/>
+        <column name="yd_last_update_by" value="2"/>
+        <column name="yd_last_update_date" valueDate="${now}"/>
+        <column name="yd_version_ct" value="0"/>
+        <column name="yd_acct_type" value="feilinshi"/>
+        <column name="yd_depositor_type" value=""/>
+        <column name="yd_operate_type" value="ACCT_OPEN"/>
+    </insert>
+    </changeSet>
+
+    <changeSet id="feilinshiChange-cancel-2" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'feilinshi' and yd_operate_type='ACCT_CHANGE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="feilinshi"/>
+            <column name="yd_depositor_type" value=""/>
+            <column name="yd_operate_type" value="ACCT_CHANGE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="feilinshiRevoke-cancel-3" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'feilinshi' and yd_operate_type='ACCT_REVOKE'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="feilinshi"/>
+            <column name="yd_depositor_type" value=""/>
+            <column name="yd_operate_type" value="ACCT_REVOKE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="feilinshiExtension-cancel-4" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure where yd_acct_type = 'feilinshi' and yd_operate_type='ACCT_EXTENSION'</sqlCheck>
+                <not>
+                    <sqlCheck expectedResult="0">select count(*) from yd_sys_account_configure</sqlCheck>
+                </not>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_account_configure">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_account_configure ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_acct_type" value="feilinshi"/>
+            <column name="yd_depositor_type" value=""/>
+            <column name="yd_operate_type" value="ACCT_EXTENSION"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

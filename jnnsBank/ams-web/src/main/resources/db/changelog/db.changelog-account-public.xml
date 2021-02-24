@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="taire" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <not>
+                    <sqlCheck expectedResult="0">SELECT count(*) from yd_account_public ap</sqlCheck>
+                </not>
+                <sqlCheck expectedResult="0">SELECT count(*) from yd_account_public ap where yd_organ_full_id is not NULL</sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-updateField.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>

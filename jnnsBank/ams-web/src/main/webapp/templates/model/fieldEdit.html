@@ -1,0 +1,27 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">字段名称</label>
+            <div class="layui-input-block">
+                <select id="fieldName" name="fieldName"  lay-filter="fieldsName">
+                    <option value="">请选择字段</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">字段</label>
+            <div class="layui-input-block">
+                <input type="text" name="field" readonly="readonly" id="field" lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模型编号</label>
+            <div class="layui-input-block">
+                <input type="text" name="riskId" readonly="readonly" id="riskId"  lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

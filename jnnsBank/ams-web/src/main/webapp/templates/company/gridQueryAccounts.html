@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .stat-title {
+            color: #FFFFFF;
+            width: 120px;
+            height: 70px;
+            overflow: hidden;
+            float: left;
+            margin: 10px;
+            border: 1px solid #FFFFFF;
+            text-align: right;
+            _text-align: center;
+            padding-right: 10px;
+            font-size: 13px;
+        }
+
+        .stat-title h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            height: 50%;
+        }
+
+        .stat-title .stat-size{
+            font-size: 15px;
+            height: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">预约状态</label>
+            <div class="layui-input-inline">
+                <select id="status" name="status"  onchange="javascript:$('#btn_query').click();" lay-filter="ocrFilter" >
+                    <option value=" " >全选</option>
+                    <option value="UnComplete">待受理</option>
+                    <option value="SUCCESS">受理成功</option>
+                    <option value="FAIL">受理退回</option>
+                    <!--<option value="REGISTER_SUCCESS">开户成功</option>-->
+                    <!--<option value="REGISTER_FAIL">开户失败</option>-->
+                </select>
+            </div>
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();" class="layui-input" id="name">
+            </div>
+            <label class="layui-form-label">预约人员</label>
+            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();"
+                       class="layui-input"
+                       id="operator">
+            </div>
+            <label class="layui-form-label">预约手机号</label>
+            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();"
+                       class="layui-input"
+                       id="phone">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_view">
+            查看
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_khjd">
+            客户尽调
+        </button>
+    </div>
+
+    <table id="paging_container">
+        <tr>
+            <td style="height: 100px; background: url(../img/timg.jpg) no-repeat;max-width:100%;">
+                <div id="dsl" style="display: block; _text-align: center;min-width:15%;" class="stat-title">
+                    <h1 id="dslCount">0</h1>
+                    <span class="stat-size">待受理</span>
+                </div>
+                <div id="ysl" style="display: block;min-width:15%" class="stat-title";
+                     onclick="openWin('company/gridQuery.html?code=zhshCheck','已受理')">
+                    <h1 id="yslCount" >0</h1>
+                    <span class="stat-size" >已受理</span>
+                </div>
+                <div id="slcg" style="display: block;min-width:15%" class="stat-title"
+                     onclick="openWin('company/gridQuery.html?code=zhshtgCheck','受理成功')">
+                    <h1 id="slcgCount" >0</h1>
+                    <span class="stat-size" >受理成功</span>
+                </div>
+                <div id="slsb" style="display: block; min-width:15%" class="stat-title"
+                     onclick="openWin('company/gridQuery.html?code=zhdsbCheck','受理失败')">
+                    <h1 id="slsbCount" >0</h1>
+                    <span class="stat-size">受理失败</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="userTable">
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/company/gridQueryAccounts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">人行IP地址</label>
+
+            <div class="layui-input-block">
+                <input type="text" id="ip" name = "ip" lay-verify="required" autocomplete="off" placeholder="请输入人行IP地址"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item orgSyncClass">
+            <label class="layui-form-label">省份</label>
+
+            <div class="layui-input-block">
+                <input type="text" id="provinceName" name = "provinceName" autocomplete="off" placeholder="请输入省份"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">人行年检提交</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isAnnualSubmit" value="true" title="启用" checked>
+                <input type="radio" name="isAnnualSubmit" value="false" title="禁用">
+            </div>
+        </div>
+
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

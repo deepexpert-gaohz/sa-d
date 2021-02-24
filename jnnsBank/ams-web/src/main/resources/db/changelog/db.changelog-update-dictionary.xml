@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="dictionaryOption" author="chenluxiang" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_option </sqlCheck>
+            </not>
+        </preConditions>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="11-社会保障基金"/>
+            <where>yd_name='11-社会保障金'</where>
+        </update>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="7-港、澳、台居民通行证"/>
+            <where>yd_name='7-港、澳、台通行证'</where>
+        </update>
+        <update tableName="yd_sys_option">
+            <column name="yd_name" value="20-境外机构"/>
+            <where>yd_name='20-境外组织'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

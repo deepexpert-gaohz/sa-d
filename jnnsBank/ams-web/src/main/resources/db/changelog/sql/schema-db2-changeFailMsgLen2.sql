@@ -1,0 +1,1 @@
+alter table YD_SYS_OPERATE_LOG alter YD_FAIL_MSG set data type varchar(1000);

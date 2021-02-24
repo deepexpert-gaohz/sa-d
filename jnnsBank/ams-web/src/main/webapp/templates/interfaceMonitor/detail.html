@@ -1,0 +1,36 @@
+<div style="padding: 15px;">
+    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-book font-dark"></i>
+                <span class="caption-subject uppercase">详细信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-bordered word-break">
+                <tbody>
+                <tr>
+                    <td width="150" class="td-label">调用类型</td>
+                    <td width="150" class="td-label-right">{{operateType(d.tranType) || ''}}</td>
+                    <td width="150" class="td-label">报送类型：</td>
+                    <td width="150" class="td-label-right">{{billType(d.billType) || ''}}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">接口校验结果：</td>
+                    <td class="td-label-right">{{stateFormat(d.processResult) || ''}}</td>
+                    <td class="td-label">传入参数：</td>
+                    <td class="td-label-right">{{d.requestMsg || ''}}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">返回结果：</td>
+                    <td class="td-label-right">{{d.responseMsg|| d.errorCode}}</td>
+                    <td class="td-label">接口调用时间</td>
+                    <td class="td-label-right">{{d.tranTime || ''}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+</div>

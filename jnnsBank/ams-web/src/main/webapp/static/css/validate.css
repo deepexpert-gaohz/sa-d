@@ -1,0 +1,97 @@
+.search-page .search-bar button {
+    color: #fff;
+    height: 55px;
+    width: 130px;
+    margin-left: -3px;
+    margin-top: -2px;
+    font-size: 14px;
+}
+.search-page .search-bar {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+.search-page .search-bar input {
+    border: none;
+    background-color: #f3f6f9;
+    color: #a0a9b4;
+    height: 55px;
+    border-radius: 0!important;
+}
+
+/***kyc detail**/
+.company{
+    position: relative;
+}
+
+.company table th {
+    font-weight: 400;
+    color: #9a9a9a;
+}
+
+.company .table-bordered>thead>tr>th {
+    /*border: 1px solid #dfeaf6;*/
+    background: #f6fafd;
+    text-align: center;
+    font-weight: 400;
+}
+
+.company .table-bordered {
+    border-color: #dfeaf6;
+}
+
+.company .table-bordered>tbody>tr>td,.table-bordered>tbody>tr>th,.table-bordered>tfoot>tr>td,.table-bordered>tfoot>tr>th,.table-bordered>thead>tr>td,.table-bordered>thead>tr>th {
+    border-color: #dfeaf6;
+}
+
+.company .table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th {
+    padding: 10px 8px;
+    font-size: 14px;
+}
+
+.company-state{
+    font-size: 14px;
+    padding-left: 3px;
+    border: 1px solid;
+    padding-right: 3px;
+    border-radius: 5px;
+}
+
+.final-benificial{
+    background-color: #36c6d3;
+}
+
+.company table{
+    table-layout:fixed;
+}
+
+.company .font-green-meadow {
+    color: #1BBC9B !important; }
+.company .border-green-meadow {
+    border-color: #1BBC9B !important; }
+
+.company .portlet-body .dt-buttons {
+    float: right;
+}
+
+.company label {
+    font-weight: 500;
+}
+
+.company table .long-name {
+    width:30%;
+}
+
+.width-label{
+	width:150px !important;
+}
+
+.width-input{
+	width:300px !important;
+}
+
+/*查询历史表格*/
+#historyTable_length{
+    padding-top: 4px;
+    padding-left: 20px;
+}

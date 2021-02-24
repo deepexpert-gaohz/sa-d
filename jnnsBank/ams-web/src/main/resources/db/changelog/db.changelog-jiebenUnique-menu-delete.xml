@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <changeSet id="jibenUnique_searchIdDelete" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'jibenUnique_search'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_permission">
+            <where>yd_code = 'jibenUnique_search'</where>
+        </delete>
+    </changeSet>
+
+    <changeSet id="jibenUnique_searchIdDeleteButton" author="yangqiu" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'account:open_amsJibenIgnore'</sqlCheck>
+            </and>
+        </preConditions>
+        <delete tableName="yd_sys_permission">
+            <where>yd_code = 'account:open_amsJibenIgnore'</where>
+        </delete>
+    </changeSet>
+</databaseChangeLog>

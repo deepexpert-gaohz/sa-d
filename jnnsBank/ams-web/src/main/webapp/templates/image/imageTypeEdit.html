@@ -1,0 +1,58 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">操作类型</label>
+            <div class="layui-input-block">
+                <select id="operateType" name="operateType" lay-verify="required" lay-search="">
+                    <option value="-1">请选择操作类型</option>
+                    <option value="ACCT_OPEN">新开户</option>
+                    <option value="ACCT_CHANGE">变更</option>
+                    <option value="ACCT_SUSPEND">久悬</option>
+                    <option value="ACCT_REVOKE">销户</option>
+                    <option value="ACCT_INIT">存量</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-block">
+                <select id="acctType" name="acctType" lay-verify="required" lay-search="">
+                    <option value="-1">请选择账户性质</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="specialAcct">专用存款账户</option>
+                    <option value="tempAcct">临时存款账户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">存款人性质</label>
+            <div class="layui-input-block">
+                <select id="depositorTypeCode" name="depositorTypeCode" lay-verify="required" lay-search="">
+                    <option value="-1">请选择存款人性质</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">证件种类</label>
+            <div class="layui-input-block">
+                <select id="value" name="value" lay-verify="required" lay-search="">
+                    <option value="-1">请选择证件种类</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否必填</label>
+            <div class="layui-input-block">
+                <input type="radio" name="choose" value="1" title="是" checked>
+                <input type="radio" name="choose" value="0" title="否">
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

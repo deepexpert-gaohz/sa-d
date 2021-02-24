@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css">
+    <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="page-content">
+
+<form class="form-horizontal layui-form" id="editForm">
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">开户审核及控制信息</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">存款人名称</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="depositorName" name="depositorName" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">注册地（住所地）地区代码</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="regAreaCode" name="regAreaCode" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">存款人类别</label>
+						<div class="col-xs-7 col-md-6">
+							<select id="depositorType" name="depositorType" class="layui-input">
+								<option value="">请选择</option>
+								<option value="01">01-企业法人</option>
+								<option value="02">02-非法人企业</option>
+								<!--<option value="03">03-机关</option>
+								<option value="04">04-实行预算管理的事业单位</option>
+								<option value="05">05-非预算管理的事业单位</option>
+								<option value="06">06-团级(含)以上军队及分散执勤的支(分)队</option>
+								<option value="07">07-团级(含)以上武警部队及分散执勤的支(分)队</option>
+								<option value="08">08-社会团体</option>
+								<option value="09">09-宗教组织</option>
+								<option value="10">10-民办非企业组织</option>
+								<option value="11">11-外地常设机构</option>
+								<option value="12">12-外国驻华机构</option>-->
+								<option value="13">13-有字号的个体工商户</option>
+								<option value="14">14-无字号的个体工商户</option>
+								<!--<option value="15">15-居民委员会、村民委员会、社区委员会</option>
+								<option value="16">16-单位设立的独立核算的附属机构</option>
+								<option value="17">17-其他组织</option>
+								<option value="20">20-境外机构</option>-->
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">工商营业执照注册号</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="fileNo" name="fileNo" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row legal">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">法人证件类型</label>
+						<div class="col-xs-7 col-md-6">
+							<select id="legalIdcardTypeAms" name="legalIdcardTypeAms" class="layui-input">
+								<option value=""></option>
+								<option value="1">1-身份证</option>
+								<option value="2">2-军官证</option>
+								<option value="3">3-文职干部证</option>
+								<option value="4">4-警官证</option>
+								<option value="5">5-士兵证</option>
+								<option value="6">6-护照</option>
+								<option value="7">7-港、澳、台居民通行证</option>
+								<option value="9">9-其它合法身份证件</option>
+								<option value="8">8-户口簿</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row legal">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">法人证件编号</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="lgalIdcardNo" name="lgalIdcardNo" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">组织机构代码</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="orgCode" name="orgCode" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">银行机构代码</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="bankCode" name="bankCode" class="layui-input" disabled>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">银行机构名称</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="bankName" name="bankName" class="layui-input" disabled>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">账号</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="acctNo" name="acctNo" autocomplete="off" maxlength="32" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">开户日期</label>
+						<div class="col-xs-4 col-md-3">
+							<input type="text" id="acctCreateDate" name="acctCreateDate" placeholder="请选择日期" autocomplete="off" class="layui-input date-picker">
+						</div>
+					</div>
+				</div>
+			</div>
+			-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4">原基本存款账户编号</label>
+						<div class="col-xs-7 col-md-6">
+							<input type="text" id="oldAccountKey" name="oldAccountKey" autocomplete="off" maxlength="32" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-xs-3 col-md-4"></label>
+						<div class="col-xs-7 col-md-6">
+							<button type="button" class="layui-btn layui-btn" id="btnSubmit">唯一性校验</button>
+                            <button type="button" class="layui-btn layui-btn" id="btnNext" style="display: none">下一步</button>
+                            <button type="button" id="btn_pbcIgnore" class="layui-btn layui-btn" data-code="account:open_amsJibenIgnore">
+                                <span>跳过</span>
+                            </button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<input type="hidden" class="layui-input" id="tovoidDate">
+
+			<button class="layui-btn layui-btn-small" id="btn_log">
+				<i class="layui-icon">&#xe63c;</i>
+				查询记录
+			</button>
+
+			<div id="khResult">
+
+			</div>
+		</div>
+    </div>
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/additional-methods.js"></script>
+<script type="text/javascript" src="../plugins/jquery-validation/localization/messages_zh.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/validate/unique.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for ams" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processor name="lombok.launch.AnnotationProcessorHider$AnnotationProcessor" />
+        <processorPath useClasspath="false">
+          <entry name="E:/zhjn/repository/org/projectlombok/lombok/1.16.20/lombok-1.16.20.jar" />
+        </processorPath>
+        <module name="account-api" />
+        <module name="account-service" />
+        <module name="ams-ui" />
+        <module name="ams-web" />
+        <module name="annual-api" />
+        <module name="annual-service" />
+        <module name="api-common" />
+        <module name="apply-api" />
+        <module name="apply-service" />
+        <module name="common" />
+        <module name="compare-api" />
+        <module name="compare-service" />
+        <module name="customer-api" />
+        <module name="customer-service" />
+        <module name="db-entity" />
+        <module name="image-api" />
+        <module name="image-service" />
+        <module name="kyc-api" />
+        <module name="kyc-service" />
+        <module name="mivs-api" />
+        <module name="mivs-service" />
+        <module name="pbc-api" />
+        <module name="pbc-service" />
+        <module name="poi" />
+        <module name="proj-jnns" />
+        <module name="risk-api" />
+        <module name="risk-service" />
+        <module name="system-api" />
+        <module name="system-service" />
+        <module name="ws-api" />
+        <module name="ws-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="account-api" target="8" />
+      <module name="account-service" target="8" />
+      <module name="ams" target="8" />
+      <module name="ams-ui" target="8" />
+      <module name="ams-web" target="8" />
+      <module name="annual-api" target="8" />
+      <module name="annual-service" target="8" />
+      <module name="api-common" target="8" />
+      <module name="apply-api" target="8" />
+      <module name="apply-service" target="8" />
+      <module name="common" target="8" />
+      <module name="compare-api" target="8" />
+      <module name="compare-service" target="8" />
+      <module name="customer-api" target="8" />
+      <module name="customer-service" target="8" />
+      <module name="db-entity" target="8" />
+      <module name="image-api" target="8" />
+      <module name="image-service" target="8" />
+      <module name="kyc-api" target="8" />
+      <module name="kyc-service" target="8" />
+      <module name="mivs-api" target="8" />
+      <module name="mivs-service" target="8" />
+      <module name="pbc-api" target="8" />
+      <module name="pbc-service" target="8" />
+      <module name="poi" target="8" />
+      <module name="proj-jnns" target="8" />
+      <module name="risk-api" target="8" />
+      <module name="risk-service" target="8" />
+      <module name="system-api" target="8" />
+      <module name="system-service" target="8" />
+      <module name="ws-api" target="8" />
+      <module name="ws-service" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
+  </component>
+</project>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        .W120 .th-inner {
+            width:120px !important;
+        }
+        .W80 .th-inner {
+            width:80px !important;
+        }
+        .W60 .th-inner {
+            width:60px !important;
+        }
+
+        .W160 .th-inner {
+            width:160px !important;
+        }
+
+        .W180 .th-inner {
+            width:180px !important;
+        }
+
+        .W200 .th-inner {
+            width:200px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="acctNo">
+            </div>
+            <label class="layui-form-label">账户性质</label>
+            <div class="layui-input-inline">
+                <select name="acctType" class="layui-input" id="acctType" lay-filter="acctType">
+                    <option value="">请选择</option>
+                    <option value="jiben">基本存款账户</option>
+                    <option value="yiban">一般存款账户</option>
+                    <option value="yusuan">预算单位专用存款账户</option>
+                    <option value="feiyusuan">非预算单位专用存款账户</option>
+                    <option value="teshu">特殊单位专用存款账户</option>
+                    <option value="linshi">临时机构临时存款账户</option>
+                    <option value="feilinshi">非临时机构临时存款账户</option>
+                    <option value="yanzi">验资户临时存款账户</option>
+                    <option value="zengzi">增资户临时存款账户</option>
+                </select>
+            </div>
+            <label class="layui-form-label">网点机构号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="kernelOrgCode">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">存款人名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="depositorName">
+            </div>
+            <label class="layui-form-label">存款人类别</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="depositorType" lay-filter="depositorType">
+                    <option value="">请选择</option>
+                    <option value="01">企业法人</option>
+                    <option value="02">非法人企业</option>
+                    <option value="03">机关</option>
+                    <option value="04">实行预算管理的事业单位</option>
+                    <option value="05">非预算管理的事业单位</option>
+                    <option value="06">团级(含)以上军队及分散执勤的支(分)队</option>
+                    <option value="07">团级(含)以上武警部队及分散执勤的支(分)队</option>
+                    <option value="08">社会团体</option>
+                    <option value="09">宗教组织</option>
+                    <option value="10">民办非企业组织</option>
+                    <option value="11">外地常设机构</option>
+                    <option value="12">外国驻华机构</option>
+                    <option value="13">有字号的个体工商户</option>
+                    <option value="14">无字号的个体工商户</option>
+                    <option value="15">居民委员会、村民委员会、社区委员会</option>
+                    <option value="16">单位设立的独立核算的附属机构</option>
+                    <option value="17">其他组织</option>
+                    <option value="20">境外机构</option>
+                    <option value="50">QFII</option>
+                    <option value="51">境外贸易机构</option>
+                    <option value="52">跨境清算</option>
+                    <option value="53">工商信息</option>
+                </select>
+            </div>
+            <label class="layui-form-label">本异地标识</label>
+            <div class="layui-input-inline">
+                <select class="layui-input" id="openAccountSiteType" lay-filter="openAccountSiteType">
+                    <option value="">请选择</option>
+                    <option value="LOCAL">本地</option>
+                    <option value="ALLOPATRIC">异地</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">申请人</label>
+            <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="createdBy">
+            </div>
+            <label class="layui-form-label">申请时间</label>
+            <div class="layui-input-inline">
+                <input type="text" id="beginDateApply" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input date-picker">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDateApply" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input date-picker">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <script type="text/html" id="tpl">
+        {{# layui.each(d.list, function(index, item){ }}
+
+        {{# }); }}
+    </script>
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_view">
+            查看
+        </button>
+    </div>
+    <table id="dshTable">
+
+    </table>
+
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script type="text/javascript" src="../ag/common/laydateUtilAll.js"></script>
+<script type="text/javascript" src="../ag/accttype/commonAcctType.js"></script>
+<script type="text/javascript" src="../ag/company/statisticsOpenAccount.js"></script>
+</body>
+
+</html>

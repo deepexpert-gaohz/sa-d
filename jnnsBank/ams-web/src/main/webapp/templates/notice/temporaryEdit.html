@@ -1,0 +1,22 @@
+
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">临时户到期日:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="effectiveDate" id="effectiveDate" lay-verify="date" placeholder="请输入日期" autocomplete="off" class="layui-input date-picker">
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>
+<script>
+    layui.use([ 'laydate'], function () {
+        laydate = layui.laydate;
+      laydate.render({
+            elem: '#effectiveDate',
+            format: 'yyyy-MM-dd'
+        });
+
+    })
+</script>

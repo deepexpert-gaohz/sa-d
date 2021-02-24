@@ -1,0 +1,9 @@
+networkVerify:
+  announcement:
+    query: true
+  institutionAbnormal:
+    query: true
+  enterpriseAbnormal:
+    query: true
+  businessAcceptTimeNotice:
+    query: true

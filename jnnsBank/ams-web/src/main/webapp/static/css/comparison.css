@@ -1,0 +1,21 @@
+.layui-form-text {
+    padding: 9px 0;
+    font-weight: 400;
+}
+.layui-form-text a {
+	color: #337ab7;
+}
+.layui-form-remind {
+	padding: 9px 0;
+	text-align: center;
+	font-weight: 400;
+	color: red;
+}
+.task-info .btns {
+	margin-top: 20px;
+	margin-bottom: 16px;
+	text-align: center;
+}
+.task-info .layui-progress {
+	margin-top: 30px;
+}

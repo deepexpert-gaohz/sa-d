@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>配置信息</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/common.css" media="all"/>
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css">
+    <link rel="stylesheet" href="../css/uploaderImg.css" media="all">
+</head>
+<body class="page-content">
+<form class="form-horizontal layui-form">
+    <div class="portlet light">
+        <div class="portlet-body">
+
+            <div class="tabbable-line boxless tabbable-reversed">
+                <ul class="nav nav-tabs" id="kycTabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab"> 业务提醒管理</a></li>
+                    <li><a href="#tab_2" data-toggle="tab"> 定时任务执行IP</a></li>
+                    <li><a href="#tab_3" data-toggle="tab"> 人行交互管理</a></li>
+                    <!--<li><a href="#tab_4" data-toggle="tab"> 预约交互管理</a></li>-->
+                    <li><a href="#tab_5" data-toggle="tab"> 年检配置</a></li>
+                    <!--<li><a href="#tab_6" data-toggle="tab"> 影像服务配置</a></li>-->
+                    <li><a href="#tab_7" data-toggle="tab"> 首页通知管理</a></li>
+                    <li><a href="#tab_8" data-toggle="tab"> 初始导入管理</a></li>
+                    <!--<li><a href="#tab_9" data-toggle="tab"> 打印管理</a></li>-->
+                    <li><a href="#tab_10" data-toggle="tab"> 业务流水管理</a></li>
+                    <!--<li><a href="#tab_11" data-toggle="tab"> 工商网络状态监测管理</a></li>-->
+                    <li><a href="#tab_12" data-toggle="tab"> LOGO管理</a></li>
+                    <li><a href="#tab_13" data-toggle="tab"> 纯接口上报配置</a></li>
+                    <!--<li><a href="#tab_14" data-toggle="tab"> 停用取消核准业务上报</a></li>-->
+                    <li><a href="#tab_15" data-toggle="tab">批量任务管理</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">业务提醒管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveNotice"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="noticeDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">预约接洽提醒 ：</td>
+
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="resvrConfigEnabled" value="true" title="启用">
+                                                <input type="radio" name="resvrConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="resvrProcessDay" id="resvrProcessDay">个工作日未接洽，系统自动提醒
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">证件到期是否启用 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="fileDueConfigEnabled" value="true" title="启用" >
+                                                <input type="radio" name="fileDueConfigEnabled" value="false" title="禁用" checked="checked">
+                                            </div>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">临时户到期提醒 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="tempConfigEnabled" value="true" title="启用">
+                                                <input type="radio" name="tempConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="tempAcctNoticeDay" id="tempAcctNoticeDay">到期提醒/天(相关超期和到期提醒默认3天)
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="tempAcctOverNoticeDay" id="tempAcctOverNoticeDay">超期提醒/天
+                                                <input type="radio" name="tempAcctOverConfigEnabled" value="true" title="启用" checked="checked">
+                                                <input type="radio" name="tempAcctOverConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">证明文件 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="fileDueConfigEnabled" value="true" title="启用">
+                                                <input type="radio" name="fileDueConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="fileDueNoticeDay" id="fileDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="fileOverNoticeDay" id="fileOverNoticeDay">超期提醒/天
+                                                <input type="radio" name="fileOverConfigEnabled" value="true" title="启用" checked="checked">
+                                                <input type="radio" name="fileOverConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">法人证件 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="legalDueConfigEnabled" value="true" title="启用">
+                                                <input type="radio" name="legalDueConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="legalDueNoticeDay" id="legalDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="legalOverNoticeDay" id="legalOverNoticeDay">超期提醒/天
+                                                <input type="radio" name="legalOverConfigEnabled" value="true" title="启用" checked="checked">
+                                                <input type="radio" name="legalOverConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">经办人证件 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="operatorDueConfigEnabled" value="true" title="启用">
+                                                <input type="radio" name="operatorDueConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="operatorDueNoticeDay" id="operatorDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="operatorOverNoticeDay" id="operatorOverNoticeDay">超期提醒/天
+                                                <input type="radio" name="operatorOverConfigEnabled" value="true" title="启用" checked="checked">
+                                                <input type="radio" name="operatorOverConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">短信提醒是否启用(通知提醒是否) ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="msgNoticeConfigEnabled" value="true" title="启用" >
+                                                <input type="radio" name="msgNoticeConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">临时户短信提醒 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="tempAcctMsgNoticeDay" id="tempAcctMsgNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="tempAcctMsgOverNoticeDay" id="tempAcctMsgOverNoticeDay">超期提醒/天
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">证明文件短信提醒 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="fileMsgDueNoticeDay" id="fileMsgDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="fileMsgOverNoticeDay" id="fileMsgOverNoticeDay">超期提醒/天
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">法人证件短信提醒 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="legalMsgDueNoticeDay" id="legalMsgDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="legalMsgOverNoticeDay" id="legalMsgOverNoticeDay">超期提醒/天
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">经办人证件短信提醒 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="operatorMsgDueNoticeDay" id="operatorMsgDueNoticeDay">到期提醒/天
+                                            </div>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="operatorMsgOverNoticeDay" id="operatorMsgOverNoticeDay">超期提醒/天
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_2">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">定时任务执行IP</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveSystemIP"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="systemIPDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">系统IP ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="systemIP" id="systemIP">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_3">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">人行交互管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="savePbcConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="pbcConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">访问总程控制 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="pbcEnabled" value="true" title="启用">
+                                                <input type="radio" name="pbcEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">访问时间设置 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline">
+                                                    <select name="pbcStartHour" id="pbcStartHour">
+                                                        <option value="">请选择开始时间</option>
+                                                    </select>
+                                                </div>
+                                                <div class="layui-input-inline">:</div>
+                                                <div class="layui-input-inline">
+                                                    <select name="pbcStartMinute" id="pbcStartMinute">
+                                                        <option value="">--</option>
+                                                    </select>
+                                                </div>
+                                                <div class="layui-input-inline">-</div>
+                                                <div class="layui-input-inline">
+                                                    <select name="pbcEndHour" id="pbcEndHour">
+                                                        <option value="">请选择结束时间</option>
+                                                    </select>
+                                                </div>
+                                                <div class="layui-input-inline">:</div>
+                                                <div class="layui-input-inline">
+                                                    <select name="pbcEndMinute" id="pbcEndMinute">
+                                                        <option value="">--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">登录挡板控制管理 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="pbcLoginMockEnabled" value="true" title="启用">
+                                                <input type="radio" name="pbcLoginMockEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">报送挡板控制管理 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="pbcSyncMockEnabled" value="true" title="启用">
+                                                <input type="radio" name="pbcSyncMockEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">T+1自动报送管理 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="tpoAutoSyncEnabled" value="true" title="启用">
+                                                <input type="radio" name="tpoAutoSyncEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">联网核查登录挡板 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="idcardLoginEnabled" value="true" title="启用">
+                                                <input type="radio" name="idcardLoginEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">联网核查挡板 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="idcardEnabled" value="true" title="启用">
+                                                <input type="radio" name="idcardEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">批量久悬自动报送管理（默认自动报送) ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="batchSuspendAutoSyncEnabled" value="true" title="启用">
+                                                <input type="radio" name="batchSuspendAutoSyncEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">是否启用影像上报 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="syncImageUse" value="true" title="启用" >
+                                                <input type="radio" name="syncImageUse" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">影像挡板报送管理 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="syncImageEnabled" value="true" title="启用">
+                                                <input type="radio" name="syncImageEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">基于基本户开户校验后返回默认数据 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="openPriority" value="local" title="本地账管">
+                                                <input type="radio" name="openPriority" value="pbc" title="人行数据">
+                                                <input type="radio" name="openPriority" value="saic" title="部分工商数据和人行数据">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_4">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">预约交互管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveIdpConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="idpConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">预约校验是否启用 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="reservationValidationEnabled" value="true" title="启用" >
+                                                <input type="radio" name="reservationValidationEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">预约交互公钥 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <textarea rows="10" cols="100" readonly="readonly" id="publicKey" style="resize:none"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">预约易账户公钥 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <textarea rows="10" cols="100" id="thirdParthPublicKey" name="thirdParthPublicKey" style="resize:none"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">预约交互机构号 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="organId" id="organId">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">客户工商信息区块显示：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="customerDivEnabled" value="true" title="启用">
+                                                <input type="radio" name="customerDivEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">法人/负责人信息区块显示：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="legalDivEnabled" value="true" title="启用">
+                                                <input type="radio" name="legalDivEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">影像资料区块显示：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="imageDivEnabled" value="true" title="启用">
+                                                <input type="radio" name="imageDivEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">爽约客户管理：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="breakAppointCustomDivEnabled" value="true" title="启用">
+                                                <input type="radio" name="breakAppointCustomDivEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-label">爽约客户时间周期配置 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="breakAppointCustomTime" id="breakAppointCustomTime" value="30"> /以天为单位，默认为30
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_5">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">年检配置</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveAnnualConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="annualConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">启用年检轮循 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="annualAgainEnabled" lay-filter="annualAgainEnabled" value="true" title="启用">
+                                                <input type="radio" name="annualAgainEnabled" lay-filter="annualAgainEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">工商数据重新采集 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="annualSaicAgainEnabled" lay-filter="annualSaicAgainEnabled" value="true" title="是">
+                                                <input type="radio" name="annualSaicAgainEnabled" lay-filter="annualSaicAgainEnabled" value="false" title="否">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_6">
+                        <div class="portlet light bordered" id="image_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">影像服务配置</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveAccountImageConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="accountImageConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">启用控制 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="accountImageMockEnabled" lay-filter ="accountImageMockEnabled" value="true" title="启用" >
+                                                <input type="radio" name="accountImageMockEnabled" lay-filter ="accountImageMockEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="display: none;" id="collectType">
+                                        <td class="td-label">影像采集方式 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="imageCollect" lay-filter ="imageCollect" value="accountImage" title="本地上传" >
+                                                <input type="radio" name="imageCollect" lay-filter ="imageCollect" value="hardWareImage" title="外部硬件采集" >
+                                                <input type="radio" name="imageCollect" lay-filter ="imageCollect" value="thirdImage" title="插件调用" >
+                                                <span style="display: none; cursor: pointer;" id="a" onclick="openImageTypeManger()">
+                                                    影像业务配置
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--<tr style="display: none;" id="a">
+                                        <td class="td-label">影像业务配置 ：</td>
+                                        <td class="td-label-right" >
+                                            <div class="layui-input-block">
+                                                <a style="color: red" href="../../ui/image/imageTypeManger.html">影像业务配置</a>
+                                            </div>
+                                        </td>
+                                    </tr>-->
+                                    <tr style="display: none;" id="third">
+                                        <td class="td-label">调用URL ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <textarea rows="1" cols="100" id="thirdUrl" name="thirdUrl" style="resize:none"></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_7">
+                        <div class="portlet light bordered" id="account_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">首页通知管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveAccount"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="accountConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">首页账户统计数据范围配置：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline">
+                                                    <select name="acctStatisticsRange" id="acctStatisticsRange">
+                                                        <option value="">请选择统计数据范围</option>
+                                                        <option value="beforeOneDay">按昨日</option>
+                                                        <option value="beforeOneWeek">按过去7天</option>
+                                                        <option value="beforeOneMonth">按过去30天</option>
+                                                    </select>
+                                                    <span>包括新增账户、新增业务、预约成功、上报成功、核准成功</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_8">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">初始导入管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveImportConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="importConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">账户性质是否转换 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="importConfigEnabled" value="true" title="启用" >
+                                                <input type="radio" name="importConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_9">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body5">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">打印管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="savePrintConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="printConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">打印功能是否启用 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="printConfigEnabled" value="true" title="启用" >
+                                                <input type="radio" name="printConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_10">
+                        <div class="portlet light bordered" >
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">业务流水管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveBillLockConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="billLockConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">业务员操作流水时是否上锁 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="billLockConfigEnabled" value="true" title="是" >
+                                                <input type="radio" name="billLockConfigEnabled" value="false" title="否">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="portlet-body" id="uniqueDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">基本户开户是否加唯一性校验 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="uniqueEnabled" value="true" title="是" >
+                                                <input type="radio" name="uniqueEnabled" value="false" title="否">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_11">
+                        <div class="portlet light bordered" id="blockui_equity_portlet_body6">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">工商网络状态监测管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saicStateConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="saicStateConfigDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">监测功能是否启用 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="saicStateConfigEnabled" value="true" title="启用" >
+                                                <input type="radio" name="saicStateConfigEnabled" value="false" title="禁用">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_12">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">LOGO管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveTitleConfig"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">系统主页浏览器标签页名称：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="text" name="titleName" id="titleName">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">登录页LOGO ：</td>
+                                        <td class="td-label-right">
+
+                                            <div id="logoView1" class="logo-view" style="display:none">
+                                            </div>
+
+                                            <div id="uploader1" class="uploader">
+                                                <div class="queueList">
+                                                    <div id="dndArea" class="placeholder">
+                                                        <div id="filePicker1"></div>
+                                                        <p>或将照片拖到这里，图片尺寸: 300*60，文件格式：jpg,png</p>
+                                                    </div>
+                                                </div>
+                                                <div class="statusBar" style="display: none;">
+                                                    <div class="progress">
+                                                        <span class="text">0%</span>
+                                                        <span class="percentage"></span>
+                                                    </div>
+                                                    <div class="info"></div>
+                                                    <div class="btns">
+                                                        <div id="addFilePicker1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">左上角LOGO ：</td>
+                                        <td class="td-label-right">
+
+                                            <div id="logoView2" class="logo-view" style="display:none">
+                                            </div>
+
+                                            <div id="uploader2" class="uploader">
+                                                <div class="queueList">
+                                                    <div id="dndArea" class="placeholder">
+                                                        <div id="filePicker2"></div>
+                                                        <p>或将照片拖到这里，图片尺寸: 200*60，文件格式：jpg,png</p>
+                                                    </div>
+                                                </div>
+                                                <div class="statusBar" style="display: none;">
+                                                    <div class="progress">
+                                                        <span class="text">0%</span>
+                                                        <span class="percentage"></span>
+                                                    </div>
+                                                    <div class="info"></div>
+                                                    <div class="btns">
+                                                        <div id="addFilePicker2"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-label">左上角小LOGO ：</td>
+                                        <td class="td-label-right">
+
+                                            <div id="logoView3" class="logo-view" style=" display:none">
+                                            </div>
+
+                                            <div id="uploader3" class="uploader">
+                                                <div class="queueList">
+                                                    <div id="dndArea" class="placeholder">
+                                                        <div id="filePicker3"></div>
+                                                        <p>或将照片拖到这里，图片尺寸: 60*60，文件格式：jpg,png</p>
+                                                    </div>
+                                                </div>
+                                                <div class="statusBar" style="display: none;">
+                                                    <div class="progress">
+                                                        <span class="text">0%</span>
+                                                        <span class="percentage"></span>
+                                                    </div>
+                                                    <div class="info"></div>
+                                                    <div class="btns">
+                                                        <div id="addFilePicker3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_13">
+                        <div class="portlet light bordered" id="account_equity_portlet_body13">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">纯接口上报配置</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="saveInterfaceSync"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="portlet-body" id="interfaceConfigDiv">-->
+                            <!--<table class="table table-bordered word-break">-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                            <!--<td class="td-label">纯接口上报人行配置：</td>-->
+                            <!--<td class="td-label-right">-->
+                            <!--<div class="layui-input-block">-->
+                            <!--<div class="layui-input-inline">-->
+                            <!--<select name="syncStatus" id="syncStatus">-->
+                            <!--<option value="">请选择上报人行方式</option>-->
+                            <!--<option value="autoSync">直接上报人行</option>-->
+                            <!--<option value="beforeCheckSync">审核后上报人行</option>-->
+                            <!--<option value="cancelHeZhunSync">只针对取消核准业务审核</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                            <!--</table>-->
+                            <!--</div>-->
+
+                            <div class="portlet-body" id="interfaceConfigDiv1">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">开户业务纯接口上报人行配置：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <select name="openSyncStatus" id="openSyncStatus">
+                                                    <option value="">请选择上报人行方式</option>
+                                                    <option value="autoSync">直接上报人行</option>
+                                                    <option value="beforeCheckSync">审核后上报人行</option>
+                                                    <option value="cancelHeZhunSync">只针对取消核准业务审核</option>
+                                                    <option value="cancelHeZhunOrgan">针对取消核准机构业务审核</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="portlet-body" id="interfaceConfigDiv2">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">变更业务纯接口上报人行配置：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <select name="changeSyncStatus" id="changeSyncStatus">
+                                                    <option value="">请选择上报人行方式</option>
+                                                    <option value="autoSync">直接上报人行</option>
+                                                    <option value="beforeCheckSync">审核后上报人行</option>
+                                                    <option value="cancelHeZhunSync">只针对取消核准业务审核</option>
+                                                    <option value="cancelHeZhunOrgan">针对取消核准机构业务审核</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="portlet-body" id="interfaceConfigDiv3">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">久悬纯接口上报人行配置：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <select name="suspendSyncStatus" id="suspendSyncStatus">
+                                                    <option value="">请选择上报人行方式</option>
+                                                    <option value="autoSync">直接上报人行</option>
+                                                    <option value="beforeCheckSync">审核后上报人行</option>
+                                                    <option value="cancelHeZhunSync">只针对取消核准业务审核</option>
+                                                    <option value="cancelHeZhunOrgan">针对取消核准机构业务审核</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="portlet-body" id="interfaceConfigDiv4">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">销户业务纯接口上报人行配置：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <select name="revokeSyncStatus" id="revokeSyncStatus">
+                                                    <option value="">请选择上报人行方式</option>
+                                                    <option value="autoSync">直接上报人行</option>
+                                                    <option value="beforeCheckSync">审核后上报人行</option>
+                                                    <option value="cancelHeZhunSync">只针对取消核准业务审核</option>
+                                                    <option value="cancelHeZhunOrgan">针对取消核准机构业务审核</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_14">
+                        <div class="portlet light bordered" id="stopped_cancelHeZhun_body">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">停用取消核准上报</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="savaStoppedCancelHeZhun"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="stoppedCancelHeZhun">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">启用控制 ：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="stoppedCancelHezhun" lay-filter ="stoppedCancelHezhun" value="true" title="停止上报" >
+                                                <input type="radio" name="stoppedCancelHezhun" lay-filter ="stoppedCancelHezhun" value="false" title="正常上报">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab_15">
+                        <div class="portlet light bordered" id="account_equity_portlet_body15">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="fa fa-vcard-o font-dark"></i>
+                                    <span class="caption-subject uppercase">批量文件管理</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group btn-group-devided">
+                                        <div class="btn green btn-outline" lay-filter="batchFileManage"
+                                             lay-submit><span>保存</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body" id="batchFIleManageDiv">
+                                <table class="table table-bordered word-break">
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-label">核心文件处理日期：</td>
+                                        <td class="td-label-right">
+                                            <div class="layui-input-block">
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="coreBatchFileDate" id="coreBatchFileDate"> （最新日期为当天,格式:yyyyyMMdd）
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js" type="text/javascript"></script>
+
+<script src="../plugins/jquery.blockui.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="../layui.js"></script>
+
+<script src="../js/loading.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script src="../js/webuploader/webuploader.js" type="text/javascript" ></script>
+<script type="text/javascript" src="../ag/config/config.js"></script>
+<script type="text/javascript" src="../ag/config/uploaderImg.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<div class="row" style="margin: 15px;">
+    <div class="col-sm-12">
+        <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+            <div class="layui-form-item" style="margin-bottom:0px;">
+                <label class="layui-form-label">人行IP地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="ipAddress">
+                </div>
+                <label class="layui-form-label">省份</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="provinceName">
+                </div>
+                <button type="button" id="btn_ca_query"  class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-sm-12">
+        <div  id="ca_list_toolbar" class="layui-btn-group">
+            <button class="layui-btn layui-btn-small" id="btn_edit_pbc_audit">
+                <i class="layui-icon">&#xe642;</i> 修改
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_refresh_pbc_audit">
+                <i class="layui-icon layui-icon-refresh-3"></i>刷新
+            </button>
+        </div>
+
+        <table id="ca_list"></table>
+    </div>
+</div>

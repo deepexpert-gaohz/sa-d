@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开户监测风险数据统计</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+
+</head>
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">模型名称</label>
+            <div class="layui-input-inline">
+                <select id="modelName" name="modelName" lay-verify="required">
+                    <option value=" ">请选择模型名称</option>
+                </select>
+            </div>
+            <label class="layui-form-label">账户号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="accountNo">
+            </div>
+            <label class="layui-form-label">机构号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="organCode">
+            </div>
+            <div class="layui-inline" >
+                <!--<label class="layui-form-label">数据日期</label>-->
+                <!--<div class="layui-input-inline">-->
+                    <!--<input type="text" class="layui-input" id="startEndTime" placeholder="开始 到 结束">-->
+                <!--</div>-->
+                <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!--<div  id="toolbar" class="layui-btn-group">-->
+        <!--<button class="layui-btn layui-btn-small dn" id="btn_export" data-code="apply:menu_Add">-->
+            <!--<i class="layui-icon">&#xe601;</i>-->
+            <!--导出-->
+        <!--</button>-->
+    <!--</div>-->
+    <table id="riskdataStaticTable">
+    </table>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+
+
+
+<script type="text/javascript" src="../ag/riskdata/riskDataStatic.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+</body>
+
+</html>

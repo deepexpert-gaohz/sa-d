@@ -1,0 +1,43 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label">企业名称</label>
+					<div class="layui-input-block">
+						<input type="text" name="entName" lay-verify="required" autocomplete="off" placeholder="请输入企业名称" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">黑名单来源</label>
+					<div class="layui-input-block">
+						<select id="source" name="source">
+							<option value="AMS">账管系统维护</option>
+							<option value="AMLRS">反洗钱系统</option>
+							<option value="TF">电信欺诈</option>
+							<option value="SAIC">工商经营异常</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">级别</label>
+					<div class="layui-input-block">
+						<input type="text" name="level" autocomplete="off" placeholder="请输入级别" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">类型</label>
+					<div class="layui-input-block">
+						<input type="text" name="type" autocomplete="off" placeholder="请输入类型" class="layui-input">
+					</div>
+				</div>
+				<!--<div class="layui-form-item">
+					<label class="layui-form-label">白名单</label>
+					<div class="layui-input-block">
+						<input type="radio" name="isWhite" value="true" title="是" >
+						<input type="radio" name="isWhite" value="false" title="否" checked>
+					</div>
+				</div>-->
+
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

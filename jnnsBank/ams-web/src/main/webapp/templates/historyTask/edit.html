@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css" media="all">
+    <link rel="stylesheet" href="../css/dashboard.css" media="all">
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+</head>
+<style>
+    .text-center strong{
+        line-height: 50px;
+        font-size: 18px;
+    }
+    .text-left strong{
+        line-height: 10px;
+        font-size: 12px;
+        color: #1BBC9B;
+    }
+    .admin-main{
+        margin-bottom: 10px;
+        height: 38px;
+    }
+</style>
+<body>
+
+<div class="admin-main">
+    <div id="accountInfo"></div>
+    <script type="text/html" id="accountTpl">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="fa fa-vcard-o font-dark"></i>
+                    <span class="caption-subject uppercase">案例账户信息</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>账户号: </th>
+                        <td>{{ d.accountNo || '-' }}</td>
+                        <th>账户名称: </th>
+                        <td>{{ d.accountName || '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>客户号: </th>
+                        <td>{{ d.customerNo || '-' }}</td>
+                        <th>账户名称: </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>开户机构号: </th>
+                        <td>{{ d.bankCode || '-' }}</td>
+                        <th>开户机构名称: </th>
+                        <td>{{ d.bankName || '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>账户状态: </th>
+                        <td>{{ d.accountStatus || '-' }}</td>
+                        <th>开户日期: </th>
+                        <td>{{ d.accCreateDate || '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>风险点描述: </th>
+                        <td>{{ d.riskDesc || '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>监测日期: </th>
+                        <td>{{ d.riskDate || '-' }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </script>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">检查意见</span>
+            </div>
+        </div>
+        <table class="layui-table" id="commentMessage">
+            <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="250">
+            </colgroup>
+            <tr>
+                <th>处理人</th>
+                <th>处理时间</th>
+                <th>意见</th>
+            </tr>
+        </table>
+    </div>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-dark">
+                <i class="fa fa-vcard-o font-dark"></i>
+                <span class="caption-subject uppercase">流程追踪</span>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="overlayBox" >
+                <div id="" class="diagramBreadCrumbs"  onselectstart="return false"></div>
+                <div id="diagramHolder" class="diagramHolder"></div>
+            </div>
+            <div class="text-left"><strong>注：红色框代表当前任务处理人，红色连线：代表任务已经流转的路线</strong></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../layui.all.js"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+
+<script type="text/javascript" src="../ag/historyTask/checkHistory.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../diagram-viewer/js/jstools.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/raphael.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../diagram-viewer/js/jquery/jquery.progressbar.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/jquery/jquery.asyncqueue.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../diagram-viewer/js/Color.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/Polyline.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/ActivityImpl.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/ActivitiRest.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/LineBreakMeasurer.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/ProcessDiagramGenerator.js" type="text/javascript" charset="utf-8"></script>
+<script src="../diagram-viewer/js/ProcessDiagramCanvas.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+</html>

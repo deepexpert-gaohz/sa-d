@@ -1,0 +1,53 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label">字段名称</label>
+					<div class="layui-input-block">
+						<select id="fieldNmae" name="ruleId" lay-verify="required" lay-search="searchFieldName" lay-filter="fieldName">
+							<option value="">请选择字段</option>
+						</select>
+					</div>
+					<div class="layui-input-block layui-word-aux">可通过搜索来获取字段名称</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">字段</label>
+					<div class="layui-input-block">
+						<input type="text" id="field" name="field" lay-verify="required" readonly="true"  class="layui-input">
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">条件</label>
+					<div class="layui-input-block">
+						<select id="condition" name="condition" lay-filter="test">
+							<option selected="selected">请选择</option>
+							<option value="bigThan">大于</option>
+							<option value="lessThan">小于</option>
+							<option value="equal">等于</option>
+							<option value="bigEqualThan">大于等于</option>
+							<option value="lessEqualThan">小于等于</option>
+							<option value="notEqual">不等于</option>
+							<option value="in">包含</option>
+							<option value="notIn">不包含</option>
+							<option value="like">匹配</option>
+							<option value="between">在...之间</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label">值</label>
+					<div class="layui-input-block" id="isValue">
+						<input type="text" id="value" name="value" lay-verify="required|number" placeholder="请输入值"  class="layui-input">
+						<input type="text" id="inValueS" name="inValueS" lay-verify="required|number" placeholder="第二个值"  class="layui-input" style="display: none">
+					</div>
+				</div>
+
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>
+
+		<script type="text/javascript">
+
+
+		</script>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app
+        xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app
+		http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+    <wls:container-descriptor>
+        <wls:prefer-application-packages>
+            <wls:package-name>org.slf4j.*</wls:package-name>
+            <wls:package-name>org.apache.commons.*</wls:package-name>
+            <wls:package-name>antlr.*</wls:package-name>
+            <wls:package-name>org.hibernate.*</wls:package-name>
+            <wls:package-name>javax.persistence.*</wls:package-name>
+    		<wls:package-name>javax.validation.*</wls:package-name>
+            <wls:package-name>org.springframework.*</wls:package-name>
+            <wls:package-name>org.apache.xmlbeans.*</wls:package-name>
+            <wls:package-name>org.hibernate.validator.*</wls:package-name>
+            <wls:package-name>org.joda.*</wls:package-name>
+            <!--<wls:package-name>com.sun.xml.*</wls:package-name>-->
+            <!--<wls:package-name>net.sf.cglib.*</wls:package-name>-->
+            <wls:package-name>com.google.*</wls:package-name>
+        </wls:prefer-application-packages>
+    </wls:container-descriptor>
+    <wls:charset-params>
+    	<wls:input-charset>
+    		<wls:resource-path>/*</wls:resource-path>
+    		<wls:java-charset-name>UTF-8</wls:java-charset-name>
+    	</wls:input-charset>
+    </wls:charset-params>
+    <wls:jsp-descriptor>
+    	<wls:encoding>UTF-8</wls:encoding>
+    </wls:jsp-descriptor>
+    <wls:session-descriptor>
+        <wls:timeout-secs>600</wls:timeout-secs>
+    </wls:session-descriptor>
+</wls:weblogic-web-app>

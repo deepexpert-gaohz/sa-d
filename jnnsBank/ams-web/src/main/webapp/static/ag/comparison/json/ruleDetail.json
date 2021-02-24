@@ -1,0 +1,13 @@
+{
+	"code": 0,
+	"data": {
+		"id":1,
+		"name":"季度比对任务",
+		"taskType":1,
+		"rule":"年检测试规则",
+		"creator":"admin",
+		"createdDate":"2018-5-5",
+		"state":"使用过1次",
+		"fields":"企业名称、法人名称、账户名称、机构代码"
+	}
+}

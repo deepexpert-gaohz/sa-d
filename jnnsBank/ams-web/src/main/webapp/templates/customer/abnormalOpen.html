@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>企业异动详情</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../css/global.css" media="all">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link href="../plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/common.css" media="all"/>
+    <link rel="stylesheet" href="../css/modules/jquery-validation/validate.css" media="all"/>
+    <link rel="stylesheet" href="../css/image/image.css" />
+    <link rel="stylesheet" href="../css/webuploader/webuploader.css" />
+    <style>
+        .cus-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 160px;
+            font-weight: 400;
+            text-align: right;
+            /*background-color: #d2d2d2;*/
+        }
+        .cus-3-layui-form-label{
+            float: left;
+            display: block;
+            padding: 9px 15px;
+            width: 220px;
+            font-weight: 400;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="page-content">
+<h1 class="page-title"><span id="name">企业名称</span>
+</h1>
+<form class="form-horizontal layui-form" id="formId">
+    <div style="margin-top: 1px; margin-bottom: 8px; font-size: 11px">
+        <div style="margin-top: 10px">创建时间：<span id="createTimeSpan"></span></div>
+        <div style="margin-top: 10px; margin-bottom: 10px;">创建机构：<span id="createOrgSpan"></span></div>
+    </div>
+    <div style="float:right" class="portlet-title">
+        <div class="actions">
+            <div class="btn-group btn-group-devided">
+                <div class="btn green btn-outline" lay-filter="cancel" id="exportAbnormalExcel"><span>导出异动信息</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tabbable-line boxless tabbable-reversed">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a id="illegalTab" href="#tab_1" data-toggle="tab"> 严重违法信息</a>
+                                    </li>
+                                    <li>
+                                        <a id="changeMessTab" href="#tab_2" data-toggle="tab"> 经营异常信息</a>
+                                    </li>
+                                    <li>
+                                        <a id="businessExpiresTab" href="#tab_3" data-toggle="tab"> 营业到期信息</a>
+                                    </li>
+                                    <li>
+                                        <a id="abnormalStateTab" href="#tab_4" data-toggle="tab"> 工商状态异常</a>
+                                    </li>
+                                    <li>
+                                        <a id="changedTab" href="#tab_5" data-toggle="tab"> 登记信息异动</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div class="portlet light bordered">
+                                            <div class="caption font-dark">
+                                                <span class="caption-subject uppercase">严重违法信息</span>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="break"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+                                        <div class="portlet light bordered">
+                                            <div class="caption font-dark">
+                                                <span class="caption-subject uppercase">经营异常信息</span>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="abnormal"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_3">
+                                        <div class="portlet light bordered">
+                                            <div class="caption font-dark">
+                                                <span class="caption-subject uppercase">营业到期信息</span>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="businessDate"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_4">
+                                        <div class="portlet light bordered">
+                                            <div class="caption font-dark">
+                                                <span class="caption-subject uppercase">工商状态异常</span>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="saicType"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_5">
+                                        <div class="portlet light bordered">
+                                            <div class="caption font-dark">
+                                                <span class="caption-subject uppercase">登记信息异动</span>
+                                                <div class="btn green btn-outline" style="float:right" lay-filter="cancel" id="dataChange"><span>信息变更</span></div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="registerAbnormal"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!--[if lt IE 9]>
+<script src="../plugins/respond.min.js"></script>
+<script src="../plugins/excanvas.min.js"></script>
+<script src="../plugins/ie8.fix.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<script type="text/javascript" src="../layui.all.js"></script>
+
+<script src="../js/loading.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ag/common/util.js"></script>
+<script src="../js/webuploader/webuploader.js" type="text/javascript" ></script>
+<script type="text/javascript" src="../ag/customer/common.js"></script>
+<script type="text/javascript" src="../ag/customer/abnormalOpen.js"></script>
+
+</body>
+
+</html>

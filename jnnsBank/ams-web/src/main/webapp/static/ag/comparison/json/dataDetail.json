@@ -1,0 +1,34 @@
+{
+	"code":0,
+	"list":[
+		{ 
+			"id":1,
+			"name":"人行数据1",
+			"creator":"admin",
+			"createdDate":"2018-5-5",
+			"type":1,
+			"state":2
+		},{
+			"id":2,
+			"name":"人行数据2",
+			"creator":"admin",
+			"createdDate":"2018-10-10",
+			"type":1,
+			"state":1
+		},{
+			"id":3,
+			"name":"工商数据1",
+			"creator":"分行管理员",
+			"createdDate":"2019-1-1",
+			"type":1,
+			"state":1
+		},{
+			"id":4,
+			"name":"工商数据2",
+			"creator":"分行管理员",
+			"createdDate":"2019-1-9",
+			"type":2,
+			"state":1
+		}
+	]
+}

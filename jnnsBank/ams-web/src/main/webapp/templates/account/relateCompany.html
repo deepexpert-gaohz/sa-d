@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">企业名称</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[0].relateCompanyName" id="relateCompanyInfoSet[0].relateCompanyName">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">企业证件类型</label>
+            <div class="col-md-8">
+                <select name="relateCompanyInfoSet[0].companyCertificateType" class="layui-input" id="relateCompanyInfoSet[0].companyCertificateType">
+                    <option value=""></option><option value="01">01-工商营业执照</option><option value="02">02-批文</option><option value="03">03-等级证书</option><option value="04">04-开户证明</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">社会信用代码</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[0].companyOrgEccsNo" id="relateCompanyInfoSet[0].companyOrgEccsNo">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">企业证件号码</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[0].companyCertificateNo" id="relateCompanyInfoSet[0].companyCertificateNo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="cus-layui-form-label col-md-4">企业法人</label>
+            <div class="col-md-8">
+                <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[0].companyLegalName" id="relateCompanyInfoSet[0].companyLegalName">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="relateCompanyTpl" type="text/html">
+
+    <fieldset id="relateCompany_{{ d.id }}">
+        <legend></legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">企业名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[{{ d.id }}].relateCompanyName" id="relateCompanyInfoSet[{{ d.id }}].relateCompanyName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">企业证件类型</label>
+                    <div class="col-md-8">
+                        <select name="relateCompanyInfoSet[{{ d.id }}].companyCertificateType" class="layui-input" id="relateCompanyInfoSet[{{ d.id }}].companyCertificateType">
+                            <option value=""></option><option value="01">01-工商营业执照</option><option value="02">02-批文</option><option value="03">03-等级证书</option><option value="04">04-开户证明</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">社会信用代码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[{{ d.id }}].companyOrgEccsNo" id="relateCompanyInfoSet[{{ d.id }}].companyOrgEccsNo">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">企业证件号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[{{ d.id }}].companyCertificateNo" id="relateCompanyInfoSet[{{ d.id }}].companyCertificateNo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="cus-layui-form-label col-md-4">企业法人</label>
+                    <div class="col-md-8">
+                        <input type="text" class="layui-input" placeholder="" name="relateCompanyInfoSet[{{ d.id }}].companyLegalName" id="relateCompanyInfoSet[{{ d.id }}].companyLegalName">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</script>

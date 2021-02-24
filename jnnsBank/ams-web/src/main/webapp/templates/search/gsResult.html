@@ -1,0 +1,62 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="fa fa-book font-dark"></i>
+            <span class="caption-subject uppercase">客户信息</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table class="table table-bordered word-break">
+            <tbody>
+                <tr>
+                    <td class="td-label">企业名称：</td>
+                    <td class="td-label-right" colspan="3">{{ d.name || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">法定代表人姓名：</td>
+                    <td class="td-label-right">{{ d.legalperson || '' }}</td>
+                    <td class="td-label">注册号：</td>
+                    <td class="td-label-right">{{ d.registno || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">注册资本（万元）：</td>
+                    <td class="td-label-right">{{ d.registfund || '' }}</td>
+                    <td class="td-label">币种：</td>
+                    <td class="td-label-right">{{ d.registfundcurrency || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">开业日期：</td>
+                    <td class="td-label-right">{{ d.opendate || '' }}</td>
+                    <td class="td-label">经营期限起始日期：</td>
+                    <td class="td-label-right">{{ d.startdate || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">经营期限截止日期：</td>
+                    <td class="td-label-right">{{ d.enddate || '' }}</td>
+                    <td class="td-label">企业（机构类型）：</td>
+                    <td class="td-label-right">{{ d.type || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">经营状态：</td>
+                    <td class="td-label-right">{{ d.state || '' }}</td>
+                    <td class="td-label">登记机关：</td>
+                    <td class="td-label-right">{{ d.registorgan || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">公司地址：</td>
+                    <td class="td-label-right" colspan="3">{{ d.address || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">经营（业务）范围：</td>
+                    <td class="td-label-right" colspan="3">{{ d.scope || '' }}</td>
+                </tr>
+                <tr>
+                    <td class="td-label">注销日期：</td>
+                    <td class="td-label-right">{{ d.revokedate || '' }}</td>
+                    <td class="td-label">吊销日期：</td>
+                    <td class="td-label-right">{{ d.revokedate || '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property  name="now" dbms="mysql" value="now()"></property>
+    <property  name="now" dbms="oracle" value="sysdate"></property>
+    <property  name="now" dbms="db2" value="current_timestamp"></property>
+    <changeSet id="permission-annualMenuManager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="annual_manager_menu"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="年检管理"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa fa-gavel"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="0"/>
+            <column name="yd_parent_id" valueComputed="-1"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="年检管理"/>
+            <column name="yd_url" value=""/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-annualHistory_manager" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'annualHistory_manager'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="annualHistory_manager"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="历史年检"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value="fa-hourglass"/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="1"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'annual_manager_menu')"/>
+            <column name="yd_permission_type" value="menu"/>
+            <column name="yd_title" value="历史年检"/>
+            <column name="yd_url" value="../ui/annualcheck/history.html"/>
+        </insert>
+    </changeSet>
+    <changeSet id="permission-annual_manager_mysql" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager' and yd_parent_id = '-1'</sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-mysql-annual_manager.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+    <changeSet id="permission-annual_manager_oracle" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager' and yd_parent_id = '-1'</sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile dbms="oracle"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="sql/schema-oracle-annual_manager.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="permission-annualHistory_button_result_export" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annualHistory_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'annualHistory:result_export'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="annualHistory:result_export"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="历史年检-导出年检统计"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="175"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'annualHistory_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="历史年检-导出年检统计"/>
+            <column name="yd_url" value="../ui/annualcheck/history.html"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="permission-annualHistory_button_result_exportResult" author="houxianghua" runOnChange="true">
+        <preConditions onFail="CONTINUE">
+            <and>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'sys_manager'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annual_manager_menu'</sqlCheck>
+                <sqlCheck expectedResult="1">select count(*) from yd_sys_permission where yd_code = 'annualHistory_manager'</sqlCheck>
+                <sqlCheck expectedResult="0">select count(*) from yd_sys_permission where yd_code = 'annualHistory:result_exportResult'</sqlCheck>
+            </and>
+        </preConditions>
+        <insert tableName="yd_sys_permission">
+            <column name="yd_id" valueComputed="(SELECT MAX(ysp1.yd_id)+1 FROM yd_sys_permission ysp1)"></column>
+            <column name="yd_created_by" value="2"/>
+            <column name="yd_created_date" valueDate="${now}"/>
+            <column name="yd_last_update_by" value="2"/>
+            <column name="yd_last_update_date" valueDate="${now}"/>
+            <column name="yd_version_ct" value="0"/>
+            <column name="yd_code" value="annualHistory:result_exportResult"/>
+            <column name="yd_deleted" valueBoolean="false"/>
+            <column name="yd_description" value="历史年检-导出年检结果"/>
+            <column name="yd_enabled" valueBoolean="true"/>
+            <column name="yd_icon" value=""/>
+            <column name="yd_method" value="GET"/>
+            <column name="yd_order_num" value="176"/>
+            <column name="yd_parent_id" valueComputed="(SELECT ysp2.yd_id FROM yd_sys_permission ysp2 where ysp2.yd_code = 'annualHistory_manager')"/>
+            <column name="yd_permission_type" value="button"/>
+            <column name="yd_title" value="历史年检-导出年检结果"/>
+            <column name="yd_url" value="../ui/annualcheck/history.html"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

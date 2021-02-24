@@ -1,0 +1,46 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">模型编号</label>
+            <div class="layui-input-block">
+                <input type="text" name="modelId" lay-verify="required" autocomplete="off" placeholder="请输入模型编号" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模型名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入模型名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">风险类型</label>
+            <div class="layui-input-block">
+                <select id="typeId" name="typeId" lay-verify="required" lay-search="">
+                    <option value="">请选择风险类型</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">风险等级</label>
+            <div class="layui-input-block">
+                <select id="levelId" name="levelId" lay-verify="required" lay-search="">
+                    <option value="">请选择风险等级</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否启用</label>
+            <div class="layui-input-block">
+                <input type="radio" name="status" value="1" title="启用">
+                <input type="radio" name="status" value="0" title="禁用" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模型描述</label>
+            <div class="layui-input-block">
+                <textarea type="text" name="mdesc" lay-verify="required" autocomplete="off" placeholder="请输入描述" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+{
+  "total":22,
+  "rows":[
+    {
+      "id":1,
+      "name":"规则1",
+      "creator":"admin",
+      "createdDate":"2018-5-5",
+      "count":1
+    },{
+      "id":2,
+      "name":"规则2",
+      "creator":"admin",
+      "createdDate":"2018-10-10",
+      "count":1
+    },{
+      "id":3,
+      "name":"季度比对规则",
+      "creator":"分行管理员",
+      "createdDate":"2019-1-1",
+      "count":1
+    },{
+      "id":4,
+      "name":"年检测试规则",
+      "creator":"支行管理员",
+      "createdDate":"2019-1-9",
+      "count":2
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.huadong:kettle-engine:8.1.0.0-365">
+    <CLASSES>
+      <root url="jar://E:/zhjn/repository/com/huadong/kettle-engine/8.1.0.0-365/kettle-engine-8.1.0.0-365.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/zhjn/repository/com/huadong/kettle-engine/8.1.0.0-365/kettle-engine-8.1.0.0-365-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/zhjn/repository/com/huadong/kettle-engine/8.1.0.0-365/kettle-engine-8.1.0.0-365-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

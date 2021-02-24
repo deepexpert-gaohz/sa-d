@@ -1,0 +1,239 @@
+
+body {
+    overflow-x: auto;
+}
+.content {
+    min-width: 1400px;
+    min-height: 570px;
+    padding: 0;
+}
+.login-page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: url(../img/dualRecord/bg.png) no-repeat center;
+    background-size: 100% 100%;
+}
+.login-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 660px;
+    height: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 10px 20px 60px 0px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+.logo {
+    float: left;
+    margin-top: 103px;
+    margin-left: 67px;
+    font-size: 15px;
+}
+.logo-img {
+    width: 154px;
+    height: 110px;
+}
+
+.login-content {
+    float: right;
+    width: 280px;
+    margin-top: 74px;
+    margin-right: 50px;
+    font-size: 16px;
+}
+
+.login-content .form-control {
+    height: 46px;
+    border-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.login-content .btn {
+    height: 52px;
+    border-radius: 26px;
+    font-size: 16px;
+}
+
+.login-content .btn-primary {
+    background: rgb(0, 114, 255);
+}
+
+.login-content .btn-link {
+    color: rgb(0, 114, 255);
+}
+
+.serve-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 660px;
+    height: 400px;
+    margin: auto;
+    background: rgba(0,0,0,0.4);
+    border-radius: 20px;
+    z-index: 8;
+}
+
+.serve-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 612px;
+    height: 200px;
+	margin: auto;
+	background: #fff;
+	border-radius: 20px;
+}
+
+.serve-content {
+	margin: 50px;
+	font-size: 16px;
+}
+
+.serve-content .form-control {
+    height: 46px;
+    border-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.serve-content .btn {
+    height: 46px;
+    border-radius: 26px;
+    font-size: 16px;
+}
+.serve-content .btn-primary {
+    background: rgb(0, 114, 255);
+}
+
+.c1 {
+    float: left;
+    width: 300px;
+}
+.c2 {
+    float: left;
+    width: 400px;
+    margin-left: 15px;
+}
+.c3 {
+    float: left;
+    width: 300px;
+    margin-left: 15px;
+}
+.c1-c2-c3 {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 1055px;
+}
+.c4 {
+    margin: 15px 15px 0 1060px;
+}
+
+.box-body {
+    overflow-y: auto;
+}
+.c1-body {
+    min-height: 564px;
+}
+.c2-r1-body {
+    min-height: 422px;
+}
+.c2-r2-body {
+    min-height: 160px;
+}
+.c3-body {
+    min-height: 564px;
+}
+.c4-r1-body {
+    min-height: 250px;
+}
+.c4-r2-body {
+    min-height: 250px;
+}
+
+.tools-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tools-list li {
+    float: left;
+    width: 76px;
+    height: 70px;
+    text-align: center;
+    cursor: pointer;
+}
+.tools-list img {
+    width: 40px;
+    height: 40px;
+}
+.tools-list span {
+    display: block;
+}
+
+.folders {
+    float: left;
+    width: 76px;
+    height: 80px;
+    margin: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.folders i {
+    width: 60px;
+    height: 60px;
+    font-size: 60px;
+    color: green;
+}
+.folders span {
+    display: block;
+}
+
+.file-back span{
+    cursor: pointer;
+}
+
+.files-item {
+    float: left;
+    width: 76px;
+    height: 80px;
+    margin: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.files-item i {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 5px;
+    font-size: 60px;
+    color: #ccc;
+}
+.files-item span {
+    display: block;
+}
+
+textarea.info-txt {
+    min-height: 372px;
+}
+.info-counts {
+    padding: 15px;
+    text-align: center;
+}
+
+.info-btns {
+    text-align: center;
+}
+.info-btns .btn{
+    margin: 5px;
+}

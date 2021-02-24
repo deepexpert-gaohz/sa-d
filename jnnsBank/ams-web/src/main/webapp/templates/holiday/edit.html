@@ -1,0 +1,22 @@
+
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">日期</label>
+            <div class="layui-input-block">
+                <input type="text" name="dateStr" id="dateStr" lay-verify="" placeholder="请选择日期" autocomplete="off" class="layui-input date-picker" onclick="layui.laydate({elem: this})">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">节假日类型</label>
+            <div class="layui-input-block">
+                <select id="holidayType" name="holidayType" lay-verify="required">
+                    <option value="">请选择</option>
+                    <option value="WORKDAY_REST">放假调休</option>
+                    <option value="HOLIDAY_WORK">上班</option>
+                </select>
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>

@@ -1,0 +1,141 @@
+
+.layout {
+    border: 1px solid #DDDDDD;
+    width: 96%;
+    margin: 10px auto;
+    height: 350px;
+    position: relative;
+    overflow: hidden
+}
+
+.butUpload {
+    width: 160px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px
+}
+
+#imgBox {
+    background: #fbfbfb;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 500px;
+}
+
+.imgLiet {
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    overflow-x: auto;
+    height: 49px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #7d7d7d\9;
+}
+
+.imgLiet ul {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.imgLiet li {
+    width: 40px;
+    height: 36px;
+    margin-right: 5px;
+    padding: 1px;
+    float: left;
+    list-style: none;
+}
+
+.imgLiet li img.min-img {
+    width: 100%;
+    height: 100%
+}
+
+.imgLiet li.on {
+    border: 2px solid #0a93d8;
+    padding: 0;
+}
+
+.prev {
+    float: left;
+    cursor: pointer;
+}
+
+.num {
+    height: 38px;
+    overflow: hidden;
+    width: 88%;
+    position: relative;
+    float: left;
+}
+
+.min_pic {
+    padding-top: 10px;
+    width: 95%;
+}
+
+.imgLiet ul li img {
+    width: 100%
+}
+
+.prev_btn1 {
+    width: 16px;
+    text-align: center;
+    height: 18px;
+    margin-top: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+    float: left;
+}
+
+.next_btn1 {
+    width: 16px;
+    text-align: center;
+    height: 18px;
+    margin-top: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.max-img {
+    width: 100%
+}
+
+#imgHt {
+    height: auto;
+    padding: 5px 0 5px 10px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    background-color: #7d7d7d\9;
+    padding-left: 10px
+}
+
+#imgHt button {
+    height: 30px;
+    cursor: pointer;
+    line-height: 20px\9
+}
+
+.choice {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #7d7d7d\9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    text-align: center;
+}
+
+.onRed {
+    color: red;
+}

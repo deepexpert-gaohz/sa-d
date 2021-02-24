@@ -1,0 +1,99 @@
+<div class="row" style="margin: 15px;">
+    <div class="col-sm-7">
+        <div id="pbc_toolbar" class="layui-btn-group">
+            <button class="layui-btn layui-btn-small" id="btn_add">
+                <i class="layui-icon">&#xe654;</i>新建
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_edit">
+                <i class="layui-icon">&#xe642;</i>编辑
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_del">
+                <i class="layui-icon">&#xe640;</i>删除
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_enable">
+                <i class="layui-icon">&#xe605;</i>启用
+            </button>
+            <button class="layui-btn layui-btn-small" id="btn_disable">
+                <i class="layui-icon">&#x1006;</i>禁用
+            </button>
+        </div>
+        <table id="pbcUserTable">
+
+        </table>
+    </div>
+    <div class="col-sm-5" style="display: none;" id="formArea">
+        <div class="site-text site-block" >
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">机构名称</label>
+
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <input type="text" name="name" id="name" readonly disabled autocomplete="off" placeholder="请输入机构名称"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设置系统</label>
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <select id="accountType" name="accountType" lay-verify="required" lay-search="">
+                            <option value="AMS">人行账管系统</option>
+                            <option value="PICP">身份证联网核查</option>
+                            <option value="ECCS">机构信用代码证</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">IP</label>
+
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <input type="text" name="ip" lay-verify="required|ip" autocomplete="off" placeholder="请输入IP"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <input type="text" name="account" lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">密码</label>
+
+                        <div class="layui-input-block" style="margin-left: 110px;">
+                            <input type="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-form-mid" >
+                            <button type="button" id="btn_updateECCS" style="display: none;" class="layui-btn layui-btn-mini">更新密码</button>
+                        </div></div>
+
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">登录状态</label>
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <label class="layui-form-label" id="loginStatus">失败</label>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="margin-left: 110px;">
+                        <button class="layui-btn layui-btn-primary" id="btn_reset">重置</button>
+                        <button class="layui-btn" lay-submit lay-filter="validate">校验</button>
+                        <button class="layui-btn" id="btn_create" lay-submit lay-filter="create">保存</button>
+                        <button class="layui-btn" id="btn_update" lay-submit lay-filter="update" style="display: none;">保存</button>
+                    </div>
+                </div>
+                <input type="hidden" name="orgId" id="orgId"/>
+                <input type="hidden" name="id" id="id"/>
+                <input type="hidden" name="enabled" value="true"/>
+                <input type="hidden" name="accountStatus" id="accountStatus" value="NEW"/>
+                <input type="hidden" name="errorReason" id="errorReason">
+            </form>
+        </div>
+
+    </div>
+</div>
